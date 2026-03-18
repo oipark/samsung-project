@@ -303,428 +303,8 @@
               </div>
             </section>
 
-            <!-- 4. 테이블 & 버튼 그룹 -->
-            <section class="asset-table-section flex-grow-1 min-h-0 d-flex flex-column">
-              <div class="card asset-table-card flex-grow-1 d-flex flex-column min-h-0">
-                <div class="asset-table-toolbar">
-                  <span class="asset-table-count-text">전체 <strong>158</strong>건</span>
-                  <div class="asset-table-actions">
-                    <button type="button" class="btn-ds btn-ds-1st">서버 정보 수정</button>
-                    <button type="button" class="btn-ds btn-ds-2nd">자산현황 동기화</button>
-                    <button type="button" class="btn-ds btn-ds-2nd">다운로드</button>
-                  </div>
-                </div>
-                <div class="table-responsive asset-table-responsive flex-grow-1 min-h-0 custom-scrollbar">
-                  <table class="table table-borderless asset-table mb-0 text-nowrap">
-                    <thead class="asset-table-thead sticky-top bg-white">
-                      <tr>
-                        <th class="asset-table-th asset-table-th-check"><label class="custom-checkbox-wrap" for="th-check-all"><input type="checkbox" class="custom-checkbox" id="th-check-all" aria-label="전체 선택" /><span class="custom-checkbox-box"></span></label></th>
-                        <th class="asset-table-th">순번</th>
-                        <th class="asset-table-th">서버 명</th>
-                        <th class="asset-table-th">IP</th>
-                        <th class="asset-table-th">OS</th>
-                        <th class="asset-table-th">OS버전</th>
-                        <th class="asset-table-th">VM여부</th>
-                        <th class="asset-table-th">국내/해외</th>
-                        <th class="asset-table-th">사업장/권역</th>
-                        <th class="asset-table-th">사업부/법인</th>
-                        <th class="asset-table-th asset-table-th-clamp">담당자</th>
-                        <th class="asset-table-th">서버 위치</th>
-                        <th class="asset-table-th">연계 시스템</th>
-                        <th class="asset-table-th">용도</th>
-                        <th class="asset-table-th asset-table-th-clamp">운영자</th>
-                        <th class="asset-table-th">IRP 코드</th>
-                        <th class="asset-table-th">도입년도</th>
-                        <th class="asset-table-th">수정일시</th>
-                      </tr>
-                    </thead>
-                    <tbody class="asset-table-tbody">
-                      <tr>
-                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
-                        <td class="asset-table-td">1</td>
-                        <td class="asset-table-td">DESKTOP-0001</td>
-                        <td class="asset-table-td">193.186.4.132</td>
-                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/window_logo.png" alt="" class="asset-os-icon" />Window</span></td>
-                        <td class="asset-table-td">11 Pro</td>
-                        <td class="asset-table-td">Yes</td>
-                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
-                        <td class="asset-table-td">수원사업장</td>
-                        <td class="asset-table-td">MX</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong<br>솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
-                        <td class="asset-table-td">HQ-1F</td>
-                        <td class="asset-table-td">ERP</td>
-                        <td class="asset-table-td">개발</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong<br>솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
-                        <td class="asset-table-td">IRP-001</td>
-                        <td class="asset-table-td">2022</td>
-                        <td class="asset-table-td">2026-02-06 14:30</td>
-                      </tr>
-                      <tr>
-                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
-                        <td class="asset-table-td">2</td>
-                        <td class="asset-table-td">DESKTOP-0002</td>
-                        <td class="asset-table-td">193.186.4.133</td>
-                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/window_logo.png" alt="" class="asset-os-icon" />Window</span></td>
-                        <td class="asset-table-td">11 Pro</td>
-                        <td class="asset-table-td">No</td>
-                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
-                        <td class="asset-table-td">수원사업장</td>
-                        <td class="asset-table-td">-</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
-                        <td class="asset-table-td">HQ-2F</td>
-                        <td class="asset-table-td">ERP</td>
-                        <td class="asset-table-td">운영</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="인프라팀 / 홍길동 / H.Gildong">인프라팀 / 홍길동 / H.Gildong<br>솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
-                        <td class="asset-table-td">IRP-002</td>
-                        <td class="asset-table-td">2023</td>
-                        <td class="asset-table-td">2026-02-05 11:20</td>
-                      </tr>
-                      <tr>
-                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
-                        <td class="asset-table-td">3</td>
-                        <td class="asset-table-td">DESKTOP-0003</td>
-                        <td class="asset-table-td">193.186.4.134</td>
-                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/window_logo.png" alt="" class="asset-os-icon" />Window</span></td>
-                        <td class="asset-table-td">11 Pro</td>
-                        <td class="asset-table-td">No</td>
-                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
-                        <td class="asset-table-td">수원사업장</td>
-                        <td class="asset-table-td">MX</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong<br>솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
-                        <td class="asset-table-td">HQ-3F</td>
-                        <td class="asset-table-td">ERP</td>
-                        <td class="asset-table-td">개발</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
-                        <td class="asset-table-td">IRP-003</td>
-                        <td class="asset-table-td">2022</td>
-                        <td class="asset-table-td">2026-02-04 09:15</td>
-                      </tr>
-                      <tr>
-                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
-                        <td class="asset-table-td">4</td>
-                        <td class="asset-table-td">DESKTOP-0004</td>
-                        <td class="asset-table-td">193.186.4.135</td>
-                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/window_logo.png" alt="" class="asset-os-icon" />Window</span></td>
-                        <td class="asset-table-td">10 Pro</td>
-                        <td class="asset-table-td">No</td>
-                        <td class="asset-table-td"><span class="region-badge region-badge-overseas">해외</span></td>
-                        <td class="asset-table-td">중남미</td>
-                        <td class="asset-table-td">-</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="웹개발팀 / 김철수 / H.Gildong">웹개발팀 / 김철수 / H.Gildong</div></td>
-                        <td class="asset-table-td">HQ-4F</td>
-                        <td class="asset-table-td">ERP</td>
-                        <td class="asset-table-td">테스트</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="웹개발팀 / 김철수 / H.Gildong">웹개발팀 / 김철수 / H.Gildong<br>솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
-                        <td class="asset-table-td">IRP-004</td>
-                        <td class="asset-table-td">2024</td>
-                        <td class="asset-table-td">2026-02-03 16:00</td>
-                      </tr>
-                      <tr>
-                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
-                        <td class="asset-table-td">5</td>
-                        <td class="asset-table-td">DESKTOP-0005</td>
-                        <td class="asset-table-td">193.186.4.136</td>
-                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/Linux_logo.png" alt="" class="asset-os-icon" />Linux</span></td>
-                        <td class="asset-table-td">RedHat 1.0.2</td>
-                        <td class="asset-table-td">Yes</td>
-                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
-                        <td class="asset-table-td">구미사업장</td>
-                        <td class="asset-table-td">-</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
-                        <td class="asset-table-td">HQ-5F</td>
-                        <td class="asset-table-td">ERP</td>
-                        <td class="asset-table-td">운영</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong<br>솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
-                        <td class="asset-table-td">IRP-005</td>
-                        <td class="asset-table-td">2021</td>
-                        <td class="asset-table-td">2026-02-02 10:45</td>
-                      </tr>
-                      <tr>
-                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
-                        <td class="asset-table-td">6</td>
-                        <td class="asset-table-td">DESKTOP-0006</td>
-                        <td class="asset-table-td">193.186.4.137</td>
-                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/Linux_logo.png" alt="" class="asset-os-icon" />Linux</span></td>
-                        <td class="asset-table-td">Ubuntu 2.3</td>
-                        <td class="asset-table-td">Yes</td>
-                        <td class="asset-table-td"><span class="region-badge region-badge-overseas">해외</span></td>
-                        <td class="asset-table-td">중동</td>
-                        <td class="asset-table-td">-</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong<br>솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
-                        <td class="asset-table-td">HQ-6F</td>
-                        <td class="asset-table-td">ERP</td>
-                        <td class="asset-table-td">개발</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
-                        <td class="asset-table-td">IRP-006</td>
-                        <td class="asset-table-td">2023</td>
-                        <td class="asset-table-td">2026-02-01 14:20</td>
-                      </tr>
-                      <tr>
-                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
-                        <td class="asset-table-td">7</td>
-                        <td class="asset-table-td">DESKTOP-0007</td>
-                        <td class="asset-table-td">193.186.4.138</td>
-                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/Oracle_logo.png" alt="" class="asset-os-icon" />Solaris</span></td>
-                        <td class="asset-table-td">11.4</td>
-                        <td class="asset-table-td">Yes</td>
-                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
-                        <td class="asset-table-td">구미사업장</td>
-                        <td class="asset-table-td">MX</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="미들웨어팀 / 김기영 / K.Kim">미들웨어팀 / 김기영 / K.Kim</div></td>
-                        <td class="asset-table-td">HQ-7F</td>
-                        <td class="asset-table-td">ERP</td>
-                        <td class="asset-table-td">운영</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="미들웨어팀 / 김기영 / K.Kim">미들웨어팀 / 김기영 / K.Kim<br>솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
-                        <td class="asset-table-td">IRP-007</td>
-                        <td class="asset-table-td">2022</td>
-                        <td class="asset-table-td">2026-01-31 09:00</td>
-                      </tr>
-                      <tr>
-                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
-                        <td class="asset-table-td">8</td>
-                        <td class="asset-table-td">DESKTOP-0008</td>
-                        <td class="asset-table-td">193.186.4.139</td>
-                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/AIX_logo.png" alt="" class="asset-os-icon" />AIX</span></td>
-                        <td class="asset-table-td">AIX 7.3 TL2</td>
-                        <td class="asset-table-td">Yes</td>
-                        <td class="asset-table-td"><span class="region-badge region-badge-overseas">해외</span></td>
-                        <td class="asset-table-td">동남아</td>
-                        <td class="asset-table-td">-</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
-                        <td class="asset-table-td">HQ-8F</td>
-                        <td class="asset-table-td">ERP</td>
-                        <td class="asset-table-td">개발</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
-                        <td class="asset-table-td">IRP-008</td>
-                        <td class="asset-table-td">2024</td>
-                        <td class="asset-table-td">2026-01-30 17:30</td>
-                      </tr>
-                      <tr>
-                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
-                        <td class="asset-table-td">9</td>
-                        <td class="asset-table-td">DESKTOP-0009</td>
-                        <td class="asset-table-td">193.186.4.140</td>
-                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/window_logo.png" alt="" class="asset-os-icon" />Window</span></td>
-                        <td class="asset-table-td">11 Pro</td>
-                        <td class="asset-table-td">No</td>
-                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
-                        <td class="asset-table-td">수원사업장</td>
-                        <td class="asset-table-td">MX</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="웹개발팀 / 이영희 / Y.Lee">웹개발팀 / 이영희 / Y.Lee</div></td>
-                        <td class="asset-table-td">HQ-1F</td>
-                        <td class="asset-table-td">ERP</td>
-                        <td class="asset-table-td">개발</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="웹개발팀 / 이영희 / Y.Lee">웹개발팀 / 이영희 / Y.Lee</div></td>
-                        <td class="asset-table-td">IRP-009</td>
-                        <td class="asset-table-td">2023</td>
-                        <td class="asset-table-td">2026-01-29 11:15</td>
-                      </tr>
-                      <tr>
-                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
-                        <td class="asset-table-td">10</td>
-                        <td class="asset-table-td">DESKTOP-0010</td>
-                        <td class="asset-table-td">193.186.4.141</td>
-                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/Linux_logo.png" alt="" class="asset-os-icon" />Linux</span></td>
-                        <td class="asset-table-td">CentOS 7.9</td>
-                        <td class="asset-table-td">Yes</td>
-                        <td class="asset-table-td"><span class="region-badge region-badge-overseas">해외</span></td>
-                        <td class="asset-table-td">중동</td>
-                        <td class="asset-table-td">-</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="인프라팀 / 박준호 / J.Park">인프라팀 / 박준호 / J.Park</div></td>
-                        <td class="asset-table-td">HQ-2F</td>
-                        <td class="asset-table-td">MES</td>
-                        <td class="asset-table-td">운영</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="인프라팀 / 박준호 / J.Park">인프라팀 / 박준호 / J.Park</div></td>
-                        <td class="asset-table-td">IRP-010</td>
-                        <td class="asset-table-td">2022</td>
-                        <td class="asset-table-td">2026-01-28 15:45</td>
-                      </tr>
-                      <tr>
-                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
-                        <td class="asset-table-td">11</td>
-                        <td class="asset-table-td">DESKTOP-0011</td>
-                        <td class="asset-table-td">193.186.4.142</td>
-                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/window_logo.png" alt="" class="asset-os-icon" />Window</span></td>
-                        <td class="asset-table-td">10 Pro</td>
-                        <td class="asset-table-td">No</td>
-                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
-                        <td class="asset-table-td">구미사업장</td>
-                        <td class="asset-table-td">MX</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 최민수 / M.Choi">솔루션개발그룹 / 최민수 / M.Choi</div></td>
-                        <td class="asset-table-td">HQ-3F</td>
-                        <td class="asset-table-td">ERP</td>
-                        <td class="asset-table-td">테스트</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 최민수 / M.Choi">솔루션개발그룹 / 최민수 / M.Choi</div></td>
-                        <td class="asset-table-td">IRP-011</td>
-                        <td class="asset-table-td">2021</td>
-                        <td class="asset-table-td">2026-01-27 10:20</td>
-                      </tr>
-                      <tr>
-                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
-                        <td class="asset-table-td">12</td>
-                        <td class="asset-table-td">DESKTOP-0012</td>
-                        <td class="asset-table-td">193.186.4.143</td>
-                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/Oracle_logo.png" alt="" class="asset-os-icon" />Solaris</span></td>
-                        <td class="asset-table-td">11.4</td>
-                        <td class="asset-table-td">Yes</td>
-                        <td class="asset-table-td"><span class="region-badge region-badge-overseas">해외</span></td>
-                        <td class="asset-table-td">동남아</td>
-                        <td class="asset-table-td">-</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="미들웨어팀 / 정수진 / S.Jung">미들웨어팀 / 정수진 / S.Jung</div></td>
-                        <td class="asset-table-td">HQ-4F</td>
-                        <td class="asset-table-td">ERP</td>
-                        <td class="asset-table-td">운영</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="미들웨어팀 / 정수진 / S.Jung">미들웨어팀 / 정수진 / S.Jung</div></td>
-                        <td class="asset-table-td">IRP-012</td>
-                        <td class="asset-table-td">2020</td>
-                        <td class="asset-table-td">2026-01-26 14:00</td>
-                      </tr>
-                      <tr>
-                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
-                        <td class="asset-table-td">13</td>
-                        <td class="asset-table-td">DESKTOP-0013</td>
-                        <td class="asset-table-td">193.186.4.144</td>
-                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/Linux_logo.png" alt="" class="asset-os-icon" />Linux</span></td>
-                        <td class="asset-table-td">Ubuntu 22.04</td>
-                        <td class="asset-table-td">Yes</td>
-                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
-                        <td class="asset-table-td">수원사업장</td>
-                        <td class="asset-table-td">MX</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="웹개발팀 / 한지우 / J.Han">웹개발팀 / 한지우 / J.Han</div></td>
-                        <td class="asset-table-td">HQ-5F</td>
-                        <td class="asset-table-td">CRM</td>
-                        <td class="asset-table-td">개발</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="웹개발팀 / 한지우 / J.Han">웹개발팀 / 한지우 / J.Han</div></td>
-                        <td class="asset-table-td">IRP-013</td>
-                        <td class="asset-table-td">2024</td>
-                        <td class="asset-table-td">2026-01-25 09:30</td>
-                      </tr>
-                      <tr>
-                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
-                        <td class="asset-table-td">14</td>
-                        <td class="asset-table-td">DESKTOP-0014</td>
-                        <td class="asset-table-td">193.186.4.145</td>
-                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/window_logo.png" alt="" class="asset-os-icon" />Window</span></td>
-                        <td class="asset-table-td">11 Pro</td>
-                        <td class="asset-table-td">No</td>
-                        <td class="asset-table-td"><span class="region-badge region-badge-overseas">해외</span></td>
-                        <td class="asset-table-td">중남미</td>
-                        <td class="asset-table-td">-</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="인프라팀 / 오서연 / S.Oh">인프라팀 / 오서연 / S.Oh</div></td>
-                        <td class="asset-table-td">HQ-6F</td>
-                        <td class="asset-table-td">ERP</td>
-                        <td class="asset-table-td">운영</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="인프라팀 / 오서연 / S.Oh">인프라팀 / 오서연 / S.Oh</div></td>
-                        <td class="asset-table-td">IRP-014</td>
-                        <td class="asset-table-td">2023</td>
-                        <td class="asset-table-td">2026-01-24 16:45</td>
-                      </tr>
-                      <tr>
-                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
-                        <td class="asset-table-td">15</td>
-                        <td class="asset-table-td">DESKTOP-0015</td>
-                        <td class="asset-table-td">193.186.4.146</td>
-                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/window_logo.png" alt="" class="asset-os-icon" />Window</span></td>
-                        <td class="asset-table-td">11 Pro</td>
-                        <td class="asset-table-td">Yes</td>
-                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
-                        <td class="asset-table-td">수원사업장</td>
-                        <td class="asset-table-td">MX</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 윤도현 / D.Yoon">솔루션개발그룹 / 윤도현 / D.Yoon</div></td>
-                        <td class="asset-table-td">HQ-1F</td>
-                        <td class="asset-table-td">ERP</td>
-                        <td class="asset-table-td">테스트</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 윤도현 / D.Yoon">솔루션개발그룹 / 윤도현 / D.Yoon</div></td>
-                        <td class="asset-table-td">IRP-015</td>
-                        <td class="asset-table-td">2022</td>
-                        <td class="asset-table-td">2026-01-23 11:00</td>
-                      </tr>
-                      <tr>
-                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
-                        <td class="asset-table-td">16</td>
-                        <td class="asset-table-td">DESKTOP-0016</td>
-                        <td class="asset-table-td">193.186.4.147</td>
-                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/Linux_logo.png" alt="" class="asset-os-icon" />Linux</span></td>
-                        <td class="asset-table-td">RHEL 8.6</td>
-                        <td class="asset-table-td">Yes</td>
-                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
-                        <td class="asset-table-td">구미사업장</td>
-                        <td class="asset-table-td">-</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="미들웨어팀 / 강민지 / M.Kang">미들웨어팀 / 강민지 / M.Kang</div></td>
-                        <td class="asset-table-td">HQ-2F</td>
-                        <td class="asset-table-td">MES</td>
-                        <td class="asset-table-td">개발</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="미들웨어팀 / 강민지 / M.Kang">미들웨어팀 / 강민지 / M.Kang</div></td>
-                        <td class="asset-table-td">IRP-016</td>
-                        <td class="asset-table-td">2021</td>
-                        <td class="asset-table-td">2026-01-22 14:20</td>
-                      </tr>
-                      <tr>
-                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
-                        <td class="asset-table-td">17</td>
-                        <td class="asset-table-td">DESKTOP-0017</td>
-                        <td class="asset-table-td">193.186.4.148</td>
-                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/Oracle_logo.png" alt="" class="asset-os-icon" />Solaris</span></td>
-                        <td class="asset-table-td">11.3</td>
-                        <td class="asset-table-td">No</td>
-                        <td class="asset-table-td"><span class="region-badge region-badge-overseas">해외</span></td>
-                        <td class="asset-table-td">중동</td>
-                        <td class="asset-table-td">MX</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="웹개발팀 / 조현우 / H.Jo">웹개발팀 / 조현우 / H.Jo</div></td>
-                        <td class="asset-table-td">HQ-7F</td>
-                        <td class="asset-table-td">ERP</td>
-                        <td class="asset-table-td">운영</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="웹개발팀 / 조현우 / H.Jo">웹개발팀 / 조현우 / H.Jo</div></td>
-                        <td class="asset-table-td">IRP-017</td>
-                        <td class="asset-table-td">2020</td>
-                        <td class="asset-table-td">2026-01-21 10:15</td>
-                      </tr>
-                      <tr>
-                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
-                        <td class="asset-table-td">18</td>
-                        <td class="asset-table-td">DESKTOP-0018</td>
-                        <td class="asset-table-td">193.186.4.149</td>
-                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/window_logo.png" alt="" class="asset-os-icon" />Window</span></td>
-                        <td class="asset-table-td">11 Pro</td>
-                        <td class="asset-table-td">Yes</td>
-                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
-                        <td class="asset-table-td">수원사업장</td>
-                        <td class="asset-table-td">-</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="인프라팀 / 신동혁 / D.Shin">인프라팀 / 신동혁 / D.Shin</div></td>
-                        <td class="asset-table-td">HQ-3F</td>
-                        <td class="asset-table-td">ERP</td>
-                        <td class="asset-table-td">개발</td>
-                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="인프라팀 / 신동혁 / D.Shin">인프라팀 / 신동혁 / D.Shin</div></td>
-                        <td class="asset-table-td">IRP-018</td>
-                        <td class="asset-table-td">2024</td>
-                        <td class="asset-table-td">2026-01-20 13:40</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <!-- 5. 페이지네이션 -->
-                <div class="asset-pagination">
-                  <div class="asset-pagination-left">
-                    <select class="form-select form-select-sm asset-pagination-select" id="asset-pagination-select" aria-label="행 개수">
-                      <option value="10" selected>10 rows</option>
-                      <option value="25">25 rows</option>
-                      <option value="50">50 rows</option>
-                    </select>
-                    <span class="asset-pagination-info" id="asset-pagination-info">전체 18개 중 1-10 표시</span>
-                  </div>
-                  <div class="asset-pagination-right">
-                    <nav class="asset-pagination-nav" aria-label="페이지 네비게이션">
-                      <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="처음"><span class="material-symbols-outlined">first_page</span></button>
-                      <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="이전"><span class="material-symbols-outlined">chevron_left</span></button>
-                      <button type="button" class="btn btn-link btn-sm asset-pagination-btn active">1</button>
-                      <button type="button" class="btn btn-link btn-sm asset-pagination-btn">2</button>
-                      <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="다음"><span class="material-symbols-outlined">chevron_right</span></button>
-                      <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="마지막"><span class="material-symbols-outlined">last_page</span></button>
-                    </nav>
-                  </div>
-                </div>
-              </div>
-            </section>
+            <!-- 4. 테이블 & 버튼 그룹 (컴포넌트: components/asset-table-section.html + asset-table-tbody-rows.html) -->
+            <section class="asset-table-section flex-grow-1 min-h-0 d-flex flex-column" id="asset-table-section-placeholder"></section>
           </div>
         </main>
       </div>
@@ -910,62 +490,76 @@
           closeBtn.addEventListener('click', function () { alertEl.classList.add('d-none'); });
         }
 
-        /* 테이블: 얼룩무늬 + 체크박스 선택 행 하이라이트 + 전체 선택 연동 */
-        var assetTbody = document.querySelector('.asset-table-tbody');
-        var thCheckAll = document.getElementById('th-check-all');
-        function syncThCheckAll() {
-          if (!thCheckAll || !assetTbody) return;
-          var rowCbs = assetTbody.querySelectorAll('.custom-checkbox');
-          var checkedCount = 0;
-          rowCbs.forEach(function (cb) { if (cb.checked) checkedCount++; });
-          thCheckAll.checked = checkedCount === rowCbs.length && rowCbs.length > 0;
-          thCheckAll.indeterminate = checkedCount > 0 && checkedCount < rowCbs.length;
-        }
-        if (assetTbody) {
+        /* 테이블 초기화: 컴포넌트 로드 후 'asset-table-ready' 이벤트로 실행됨 */
+        function initAssetTable() {
+          var assetTbody = document.querySelector('.asset-table-tbody');
+          var thCheckAll = document.getElementById('th-check-all');
+          if (!assetTbody) return;
+
+          function syncThCheckAll() {
+            if (!thCheckAll || !assetTbody) return;
+            var rowCbs = assetTbody.querySelectorAll('.custom-checkbox');
+            var checkedCount = 0;
+            rowCbs.forEach(function (cb) { if (cb.checked) checkedCount++; });
+            thCheckAll.checked = checkedCount === rowCbs.length && rowCbs.length > 0;
+            thCheckAll.indeterminate = checkedCount > 0 && checkedCount < rowCbs.length;
+          }
+
           assetTbody.querySelectorAll('.custom-checkbox').forEach(function (cb) {
-            cb.addEventListener('change', function () {
+            cb.removeEventListener('change', cb._rowChange);
+            cb._rowChange = function () {
               var row = this.closest('tr');
               if (row) {
                 if (this.checked) row.classList.add('asset-table-row-selected');
                 else row.classList.remove('asset-table-row-selected');
               }
               syncThCheckAll();
-            });
+            };
+            cb.addEventListener('change', cb._rowChange);
           });
-        }
-        if (thCheckAll && assetTbody) {
-          thCheckAll.addEventListener('change', function () {
-            var checked = this.checked;
-            assetTbody.querySelectorAll('tr').forEach(function (tr) {
-              var cb = tr.querySelector('.custom-checkbox');
-              if (cb) {
-                cb.checked = checked;
-                if (checked) tr.classList.add('asset-table-row-selected');
-                else tr.classList.remove('asset-table-row-selected');
-              }
+
+          if (thCheckAll) {
+            thCheckAll.removeEventListener('change', thCheckAll._thChange);
+            thCheckAll._thChange = function () {
+              var checked = this.checked;
+              assetTbody.querySelectorAll('tr').forEach(function (tr) {
+                var cb = tr.querySelector('.custom-checkbox');
+                if (cb) {
+                  cb.checked = checked;
+                  if (checked) tr.classList.add('asset-table-row-selected');
+                  else tr.classList.remove('asset-table-row-selected');
+                }
+              });
+            };
+            thCheckAll.addEventListener('change', thCheckAll._thChange);
+          }
+
+          function applyAssetTableRowLimit() {
+            var tbody = document.querySelector('.asset-table-tbody');
+            var sel = document.getElementById('asset-pagination-select');
+            var infoEl = document.getElementById('asset-pagination-info');
+            if (!tbody || !sel) return;
+            var rows = tbody.querySelectorAll('tr');
+            var total = rows.length;
+            var limit = Math.max(1, parseInt(sel.value, 10) || 10);
+            rows.forEach(function (tr, i) {
+              if (i < limit) tr.classList.remove('d-none');
+              else tr.classList.add('d-none');
             });
-          });
+            var shown = Math.min(limit, total);
+            if (infoEl) infoEl.textContent = '전체 ' + total + '개 중 1-' + shown + ' 표시';
+          }
+
+          var rowLimitSelect = document.getElementById('asset-pagination-select');
+          if (rowLimitSelect) {
+            rowLimitSelect.removeEventListener('change', rowLimitSelect._limitChange);
+            rowLimitSelect._limitChange = applyAssetTableRowLimit;
+            rowLimitSelect.addEventListener('change', applyAssetTableRowLimit);
+          }
+          applyAssetTableRowLimit();
         }
 
-        /* 테이블 행 개수: 셀렉트 값(10/25/50)만큼만 tr 표시, 기본 10 */
-        function applyAssetTableRowLimit() {
-          var tbody = document.querySelector('.asset-table-tbody');
-          var sel = document.getElementById('asset-pagination-select');
-          var infoEl = document.getElementById('asset-pagination-info');
-          if (!tbody || !sel) return;
-          var rows = tbody.querySelectorAll('tr');
-          var total = rows.length;
-          var limit = Math.max(1, parseInt(sel.value, 10) || 10);
-          rows.forEach(function (tr, i) {
-            if (i < limit) tr.classList.remove('d-none');
-            else tr.classList.add('d-none');
-          });
-          var shown = Math.min(limit, total);
-          if (infoEl) infoEl.textContent = '전체 ' + total + '개 중 1-' + shown + ' 표시';
-        }
-        var rowLimitSelect = document.getElementById('asset-pagination-select');
-        if (rowLimitSelect) rowLimitSelect.addEventListener('change', applyAssetTableRowLimit);
-        applyAssetTableRowLimit();
+        document.addEventListener('asset-table-ready', initAssetTable);
 
         var filterTrigger = document.getElementById('asset-filter-trigger');
         var filterPanel = document.getElementById('asset-filter-panel');

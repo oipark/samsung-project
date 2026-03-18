@@ -1,0 +1,57 @@
+<div class="card asset-table-card flex-grow-1 d-flex flex-column min-h-0">
+  <div class="asset-table-toolbar">
+    <span class="asset-table-count-text">전체 <strong id="asset-table-total-count">158</strong>건</span>
+    <div class="asset-table-actions">
+      <button type="button" class="btn-ds btn-ds-1st">서버 정보 수정</button>
+      <button type="button" class="btn-ds btn-ds-2nd">자산현황 동기화</button>
+      <button type="button" class="btn-ds btn-ds-2nd">다운로드</button>
+    </div>
+  </div>
+  <div class="table-responsive asset-table-responsive flex-grow-1 min-h-0 custom-scrollbar">
+    <table class="table table-borderless asset-table mb-0 text-nowrap">
+      <thead class="asset-table-thead sticky-top bg-white">
+        <tr>
+          <th class="asset-table-th asset-table-th-check"><label class="custom-checkbox-wrap" for="th-check-all"><input type="checkbox" class="custom-checkbox" id="th-check-all" aria-label="전체 선택" /><span class="custom-checkbox-box"></span></label></th>
+          <th class="asset-table-th">순번</th>
+          <th class="asset-table-th">서버 명</th>
+          <th class="asset-table-th">IP</th>
+          <th class="asset-table-th">OS</th>
+          <th class="asset-table-th">OS버전</th>
+          <th class="asset-table-th">VM여부</th>
+          <th class="asset-table-th">국내/해외</th>
+          <th class="asset-table-th">사업장/권역</th>
+          <th class="asset-table-th">사업부/법인</th>
+          <th class="asset-table-th asset-table-th-clamp">담당자</th>
+          <th class="asset-table-th">서버 위치</th>
+          <th class="asset-table-th">연계 시스템</th>
+          <th class="asset-table-th">용도</th>
+          <th class="asset-table-th asset-table-th-clamp">운영자</th>
+          <th class="asset-table-th">IRP 코드</th>
+          <th class="asset-table-th">도입년도</th>
+          <th class="asset-table-th">수정일시</th>
+        </tr>
+      </thead>
+      <tbody class="asset-table-tbody" id="asset-table-tbody"></tbody>
+    </table>
+  </div>
+  <div class="asset-pagination">
+    <div class="asset-pagination-left">
+      <select class="form-select form-select-sm asset-pagination-select" id="asset-pagination-select" aria-label="행 개수">
+        <option value="10" selected>10 rows</option>
+        <option value="25">25 rows</option>
+        <option value="50">50 rows</option>
+      </select>
+      <span class="asset-pagination-info" id="asset-pagination-info">전체 18개 중 1-10 표시</span>
+    </div>
+    <div class="asset-pagination-right">
+      <nav class="asset-pagination-nav" aria-label="페이지 네비게이션">
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="처음"><span class="material-symbols-outlined">first_page</span></button>
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="이전"><span class="material-symbols-outlined">chevron_left</span></button>
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn active">1</button>
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn">2</button>
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="다음"><span class="material-symbols-outlined">chevron_right</span></button>
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="마지막"><span class="material-symbols-outlined">last_page</span></button>
+      </nav>
+    </div>
+  </div>
+</div>

@@ -407,6 +407,181 @@ body {
 .asset-status-main { padding: 40px; }
 .asset-status-inner { gap: 20px; }
 
+/* 점검계획 관리: 자산현황과 동일한 전체·섹션 패딩 */
+.check-plan-main { padding: 40px; }
+.check-plan-inner { gap: 20px; }
+
+/* ========== 점검계획 관리 — 상태별 현황 포틀릿 (Figma 384-3393) ========== */
+.check-status-portlet-wrap {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+  min-height: 150px;
+}
+.check-status-portlet-wrap .check-status-card {
+  flex: 1 1 0;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.check-status-portlet-wrap .check-status-card:not(:last-of-type) {
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.check-status-portlet-wrap .check-status-card:not(:first-of-type) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.check-status-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+.check-status-card-icon {
+  font-family: 'Material Symbols Outlined' !important;
+  font-size: 20px !important;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.check-status-card-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+.check-status-card-body {
+  flex: 1;
+  min-height: 0;
+  gap: 0;
+}
+.check-status-card-left {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.check-status-card-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+.check-status-card-divider {
+  width: 1px;
+  min-width: 1px;
+  background: var(--color-border-light);
+  margin: 0 16px;
+  align-self: stretch;
+}
+.check-status-card-right {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+}
+.check-status-card-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--color-text-primary);
+}
+.check-status-row-label {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.check-status-row-num {
+  font-weight: 700;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+.check-status-bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.check-status-bullet-blue { background: var(--color-primary); }
+.check-status-bullet-purple { background: var(--color-status-purple); }
+.check-status-bullet-cyan { background: var(--color-status-cyan); }
+.check-status-bullet-red { background: var(--color-status-red); }
+
+/* 카드 3: 점검 오류 정보 — 빨간색 테마 */
+.check-status-card-error {
+  background: var(--color-status-red-10);
+  border-color: rgba(232, 11, 56, 0.25);
+}
+.check-status-card-error .check-status-card-icon,
+.check-status-card-error .check-status-card-label {
+  color: var(--color-status-red);
+}
+.check-status-card-error .check-status-card-value,
+.check-status-card-error .check-status-row-num {
+  color: var(--color-status-red);
+}
+.check-status-card-error .check-status-card-divider {
+  background: rgba(232, 11, 56, 0.2);
+}
+.check-status-card-error .check-status-bullet-red {
+  background: var(--color-status-red);
+}
+
+/* 우측 접기/펼치기 토글 */
+.check-status-portlet-toggle {
+  width: 40px;
+  min-width: 40px;
+  height: 100%;
+  min-height: 110px;
+  align-self: stretch;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border-light);
+  border-left: none;
+  border-radius: 0 var(--radius-card) var(--radius-card) 0;
+  background: #fff;
+  box-shadow: var(--shadow-card);
+  text-decoration: none !important;
+}
+.check-status-portlet-toggle:hover {
+  color: var(--color-primary);
+  background: var(--color-bg-subtle);
+  text-decoration: none !important;
+}
+.check-status-toggle-icon {
+  font-family: 'Material Symbols Outlined' !important;
+  font-size: 24px !important;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  text-decoration: none !important;
+}
+.check-status-portlet-wrap.collapsed .check-status-card {
+  display: none;
+}
+.check-status-portlet-wrap.collapsed {
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.check-status-portlet-wrap.collapsed .check-status-portlet-toggle {
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-border-light);
+  min-height: 48px;
+}
+.check-status-portlet-wrap.collapsed .check-status-toggle-icon {
+  transform: rotate(180deg);
+}
+
 /* 알림 배너 */
 .asset-alert { background-color: var(--color-badge-success); border-radius: var(--radius-card); padding: 12px 20px; border: 1px solid rgba(10, 133, 41, 0.2); }
 .asset-alert-inner { display: flex; align-items: center; gap: 10px; position: relative; }
@@ -440,6 +615,8 @@ body {
 /* 체크 아이콘: 비활성 시 숨김, 액티브 시에만 파란 원형 바탕 + 흰색 체크 */
 .asset-portlet-box-check { display: none; flex-shrink: 0; width: 24px; height: 24px; align-items: center; justify-content: center; font-size: 16px !important; color: #fff !important; background: var(--color-primary); border-radius: 50%; }
 .asset-portlet-box-active .asset-portlet-box-check { display: inline-flex; }
+.asset-portlet-box-filter .asset-portlet-box-value { display: none !important; }
+.asset-portlet-box-filter .asset-portlet-box-icon { font-size: 22px; color: var(--color-text-secondary); flex-shrink: 0; }
 /* 기타 OS 드롭다운: 액티브 시 체크 아이콘 동일 스타일(파란 원형 + 흰 체크) */
 .asset-portlet-box-extra.asset-portlet-box-active .asset-portlet-os-extra-check { display: inline-flex !important; width: 24px; height: 24px; align-items: center; justify-content: center; font-size: 16px !important; color: #fff !important; background: var(--color-primary); border-radius: 50%; }
 .asset-portlet-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
@@ -722,6 +899,28 @@ body {
 .asset-detail-panel-2:focus-visible {
   outline: none !important;
 }
+
+/* 점검계획 상세 슬라이드: 열림 시 오버레이 표시 및 클릭으로 닫기 */
+/* modal-placeholder: 레이아웃 공간 차지·컨텐츠 가림 방지 (고정 오버레이, 평소 클릭 통과) */
+#modal-placeholder {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1100;
+}
+#modal-placeholder > * { pointer-events: auto; }
+
+#check-plan-detail-wrap.is-open { pointer-events: auto; }
+#check-plan-detail-wrap.is-open .asset-detail-overlay {
+  display: block !important;
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 0;
+  cursor: pointer;
+}
+#check-plan-detail-wrap .asset-detail-body { flex: 1; min-height: 0; overflow-y: auto; }
+.check-plan-detail-footer { flex-shrink: 0; }
 
 /* --- 슬라이드 팝업 부드러운 좌측 그림자 --- */
 .offcanvas.offcanvas-end,

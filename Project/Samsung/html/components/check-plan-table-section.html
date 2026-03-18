@@ -1,0 +1,47 @@
+<div class="card asset-table-card flex-grow-1 d-flex flex-column min-h-0">
+  <div class="asset-table-toolbar">
+    <span class="asset-table-count-text">전체 <strong id="check-plan-table-total-count">8</strong>건</span>
+    <div class="asset-table-actions">
+      <button type="button" class="btn-ds btn-ds-1st">점검계획 등록</button>
+      <button type="button" class="btn-ds btn-ds-2nd">다운로드</button>
+    </div>
+  </div>
+  <div class="table-responsive asset-table-responsive flex-grow-1 min-h-0 custom-scrollbar">
+    <table class="table table-borderless asset-table mb-0 text-nowrap check-plan-table">
+      <thead class="asset-table-thead sticky-top bg-white">
+        <tr>
+          <th class="asset-table-th asset-table-th-check"><label class="custom-checkbox-wrap" for="check-plan-th-check-all"><input type="checkbox" class="custom-checkbox" id="check-plan-th-check-all" aria-label="전체 선택" /><span class="custom-checkbox-box"></span></label></th>
+          <th class="asset-table-th">순번</th>
+          <th class="asset-table-th">점검계획ID</th>
+          <th class="asset-table-th">계획명</th>
+          <th class="asset-table-th">점검 유형</th>
+          <th class="asset-table-th">사업장/권역</th>
+          <th class="asset-table-th">권역 상세</th>
+          <th class="asset-table-th">점검 대상 수</th>
+          <th class="asset-table-th">진행 상태</th>
+          <th class="asset-table-th">액션</th>
+        </tr>
+      </thead>
+      <tbody class="asset-table-tbody" id="check-plan-tbody"></tbody>
+    </table>
+  </div>
+  <div class="asset-pagination">
+    <div class="asset-pagination-left">
+      <select class="form-select form-select-sm asset-pagination-select" id="check-plan-pagination-select" aria-label="행 개수">
+        <option value="10" selected>10 rows</option>
+        <option value="25">25 rows</option>
+        <option value="50">50 rows</option>
+      </select>
+      <span class="asset-pagination-info" id="check-plan-pagination-info">전체 8개 중 1-8 표시</span>
+    </div>
+    <div class="asset-pagination-right">
+      <nav class="asset-pagination-nav" aria-label="페이지 네비게이션">
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="처음"><span class="material-symbols-outlined">first_page</span></button>
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="이전"><span class="material-symbols-outlined">chevron_left</span></button>
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn active">1</button>
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="다음"><span class="material-symbols-outlined">chevron_right</span></button>
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="마지막"><span class="material-symbols-outlined">last_page</span></button>
+      </nav>
+    </div>
+  </div>
+</div>

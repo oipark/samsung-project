@@ -1,0 +1,63 @@
+<aside id="lnb" class="lnb-aside position-fixed start-0 top-0 flex-shrink-0 d-flex flex-column justify-content-between border-end bg-white" style="width: 260px; height: 100vh; z-index: 40;">
+  <div class="lnb-top flex-shrink-0">
+    <div class="text-center pb-4 lnb-logo-wrap">
+      <span class="lnb-logo-full text-xl fw-bold text-uppercase tracking-tight text-custom-primary">SAMSUNG</span>
+      <span class="lnb-logo-collapsed d-none fw-bold text-custom-primary" style="font-size: 28px; line-height: 40px;">M</span>
+    </div>
+    <div class="border-bottom border-secondary lnb-divider"></div>
+    <div class="pt-4"></div>
+  </div>
+  <nav class="lnb-nav flex-grow-1 d-flex flex-column gap-2 overflow-y-auto overflow-x-hidden custom-scrollbar">
+    <div class="lnb-group p-2">
+      <a href="index.html" class="lnb-item lnb-link d-flex align-items-center gap-2 rounded-lg px-3 py-2 text-decoration-none text-custom-secondary fw-bold">
+        <span class="material-symbols-outlined" style="font-size: 20px;">dashboard</span>
+        <span>대시보드</span>
+      </a>
+    </div>
+    <div class="lnb-group p-2">
+      <div class="d-flex align-items-center justify-content-between rounded-lg px-3 py-2 text-custom-secondary fw-bold">
+        <div class="d-flex align-items-center gap-2">
+          <span class="material-symbols-outlined" style="font-size: 20px;">description</span>
+          <span>전자결재</span>
+        </div>
+        <span class="material-symbols-outlined text-custom-muted" style="font-size: 20px;">chevron_right</span>
+      </div>
+      <a href="#" class="d-flex align-items-center rounded-lg py-2 px-3 ps-4 text-decoration-none text-custom-muted small fw-medium">기안함</a>
+      <a href="#" class="d-flex align-items-center rounded-lg py-2 px-3 ps-4 text-decoration-none text-custom-muted small fw-medium">결제함</a>
+    </div>
+    <div class="lnb-group active p-2">
+      <div class="d-flex align-items-center justify-content-between rounded-lg px-3 py-2 text-custom-primary fw-bold">
+        <div class="d-flex align-items-center gap-2">
+          <span class="material-symbols-outlined" style="font-size: 20px;">shield</span>
+          <span>점검 관리</span>
+        </div>
+        <span class="material-symbols-outlined text-custom-primary" style="font-size: 20px;">chevron_right</span>
+      </div>
+      <a href="#" class="d-flex align-items-center rounded-lg py-2 px-3 ps-4 text-decoration-none text-custom-muted small fw-medium">점검 서버 현황 관리</a>
+      <a href="#" class="d-flex align-items-center rounded-lg py-2 px-3 ps-4 text-decoration-none text-custom-muted small fw-medium">점검 계획 관리</a>
+      <a href="#" class="d-flex align-items-center rounded-lg py-2 px-3 ps-4 text-decoration-none text-custom-muted small fw-medium">점검 결과 관리</a>
+      <a href="asset-status.html" class="d-flex align-items-center rounded-lg py-2 px-3 ps-4 text-decoration-none small fw-medium bg-custom-primary text-white">자산 소유 현황</a>
+    </div>
+    <div class="lnb-group p-2">
+      <div class="d-flex align-items-center justify-content-between rounded-lg px-3 py-2 text-custom-secondary fw-bold">
+        <div class="d-flex align-items-center gap-2">
+          <span class="material-symbols-outlined" style="font-size: 20px;">assignment</span>
+          <span>이력 조회</span>
+        </div>
+        <span class="material-symbols-outlined text-custom-muted" style="font-size: 20px;">chevron_right</span>
+      </div>
+      <a href="#" class="d-flex align-items-center rounded-lg py-2 px-3 ps-4 text-decoration-none text-custom-muted small fw-medium">신청서 조회</a>
+    </div>
+    <a href="#" class="lnb-item lnb-link d-flex align-items-center gap-2 rounded-lg px-3 py-2 text-decoration-none text-custom-secondary fw-bold">
+      <span class="material-symbols-outlined" style="font-size: 20px;">settings</span>
+      <span>환경설정</span>
+    </a>
+  </nav>
+  <div class="lnb-bottom flex-shrink-0 mt-3 pt-3 pb-2 d-flex align-items-center justify-content-end">
+    <button type="button" id="lnb-toggle" class="btn btn-link text-custom-muted p-0 rounded" aria-label="사이드바 접기">
+      <span class="material-symbols-outlined lnb-chevron-expand" style="font-size: 24px;">keyboard_double_arrow_left</span>
+      <span class="material-symbols-outlined lnb-chevron-collapse d-none" style="font-size: 24px;">keyboard_double_arrow_right</span>
+    </button>
+  </div>
+</aside>
+<div id="lnb-submenu" class="lnb-submenu position-fixed d-none" aria-hidden="true"></div>

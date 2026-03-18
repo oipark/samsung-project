@@ -1,0 +1,24 @@
+<!-- 자산 상세 슬라이드 팝업 컴포넌트: 빈 껍데기 (1단 1000px + 2단 900px) -->
+<!-- 페이지에서 #asset-detail-panel-content, #asset-detail-panel-2-content 내용을 주입 -->
+<div class="asset-detail-wrap" id="asset-detail-wrap" aria-hidden="true">
+  <div class="asset-detail-overlay" id="asset-detail-overlay"></div>
+  <div class="asset-detail-panel custom-scrollbar" id="asset-detail-panel" role="dialog" aria-labelledby="asset-detail-title" tabindex="-1">
+    <div class="asset-detail-header">
+      <h2 class="asset-detail-title" id="asset-detail-title">자산 상세 정보</h2>
+      <button type="button" class="asset-detail-close btn btn-link p-0" id="asset-detail-close" aria-label="닫기">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="asset-detail-body" id="asset-detail-panel-body"></div>
+  </div>
+
+  <div class="asset-detail-panel-2 custom-scrollbar" id="asset-detail-panel-2" role="dialog" aria-labelledby="asset-history-title" aria-hidden="true" tabindex="-1">
+    <div class="asset-detail-header">
+      <h2 class="asset-detail-title" id="asset-history-title">자산 변경 이력</h2>
+      <button type="button" class="asset-detail-close btn btn-link p-0" id="asset-detail-close-2" aria-label="닫기">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="asset-detail-body" id="asset-detail-panel-2-body"></div>
+  </div>
+</div>

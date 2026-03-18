@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "samsung-dashboard": "file:../.."
+  }
+}

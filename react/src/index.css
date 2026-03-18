@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+/* 전체 sans 폰트를 Pretendard로 통일 */
+@theme {
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  /* Figma 디자인시스템 Color (node 2-363) → Tailwind 유틸리티용 */
+  --color-primary: #13289f;
+  --color-primary-80: rgba(19, 40, 159, 0.8);
+  --color-primary-60: rgba(19, 40, 159, 0.6);
+  --color-primary-40: rgba(19, 40, 159, 0.4);
+  --color-primary-20: rgba(19, 40, 159, 0.2);
+  --color-primary-10: rgba(19, 40, 159, 0.1);
+  --color-primary-5: rgba(19, 40, 159, 0.05);
+  --color-black: #111111;
+  --color-black-80: rgba(17, 17, 17, 0.8);
+  --color-black-60: rgba(17, 17, 17, 0.6);
+  --color-black-40: rgba(17, 17, 17, 0.4);
+  --color-black-20: rgba(17, 17, 17, 0.2);
+  --color-black-10: rgba(17, 17, 17, 0.1);
+  --color-black-4: rgba(17, 17, 17, 0.04);
+  --color-white: #ffffff;
+  --color-bg-base: #edf0f4;
+  --color-bg-subtle: #f2f4f8;
+  --color-status-purple: #af52de;
+  --color-status-indigo: #5856d6;
+  --color-status-blue: #007aff;
+  --color-status-cyan: #1ea5e4;
+  --color-status-green: #0a8529;
+  --color-status-yellow: #f1c100;
+  --color-status-orange: #ff8400;
+  --color-status-red: #e80b38;
+}
+
+/* M3 Material Symbols Outlined (Google Fonts CDN) */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga';
+}
+
+/* 대시보드 전체 폰트: Pretendard (웹폰트) · Figma Color Scheme 반영 */
+:root {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  line-height: 1.5;
+  color: #111111;
+  background-color: #edf0f4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Figma 디자인시스템 색상 (Color node 2-363) */
+  --color-bg-base: #edf0f4;
+  --color-bg-white: #ffffff;
+  --color-bg-subtle: #f2f4f8;
+  --color-text-primary: #111111;
+  --color-text-secondary: rgba(17, 17, 17, 0.8);
+  --color-text-muted: rgba(17, 17, 17, 0.6);
+  --color-primary: #13289f;
+  --color-primary-hover: #0f2085;
+  /** 공통 버튼 1st(Primary) Hover (Figma Button node 323-3588) */
+  --color-button-primary-hover: #5856d6;
+  --color-primary-bg: rgba(19, 40, 159, 0.1);
+  --color-primary-border: rgba(19, 40, 159, 0.2);
+  --color-logo: #007aff;
+  --color-border-light: rgba(17, 17, 17, 0.1);
+  --color-border: rgba(17, 17, 17, 0.2);
+  --color-divider: #c9d0d7;
+  --color-border-card: #edf0f4;
+  --color-border-panel: #e2e8f0;
+  --color-card-accent: #e3ebf9;
+  --color-emergency: #ffd8e0;
+  --color-badge-success: #d5f5dd;
+  --color-badge-success-text: #0a8529;
+  --color-f1f5f9: #f1f5f9;
+
+  /* Status (Figma) */
+  --color-status-purple: #af52de;
+  --color-status-indigo: #5856d6;
+  --color-status-blue: #007aff;
+  --color-status-cyan: #1ea5e4;
+  --color-status-green: #0a8529;
+  --color-status-yellow: #f1c100;
+  --color-status-orange: #ff8400;
+  --color-status-red: #e80b38;
+
+  /* Shadow from design */
+  --shadow-card: 0 1px 1.75px rgba(0, 0, 0, 0.05);
+  --shadow-popover: 0 4px 3.5px rgba(0, 0, 0, 0.25);
+
+  /* Border radius from design */
+  --radius-card: 8px;
+  --radius-button: 4px;
+  --radius-popover: 8px;
+  --radius-badge: 4px;
+}
+
+/* 하이브리드 반응형: 데스크탑 100vh 채움, 작은 화면에서는 min-h(900px)로 세로 스크롤 */
+html,
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: inherit;
+  overflow-y: auto;
+}
+
+#root {
+  min-height: 100vh;
+  overflow: visible;
+}
+
+table thead th { background-color: var(--color-bg-subtle); }
+table tr td:first-child span { color: var(--color-status-blue); }

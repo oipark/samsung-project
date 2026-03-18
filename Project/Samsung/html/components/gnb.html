@@ -1,0 +1,148 @@
+<header class="gnb-header flex-shrink-0 d-flex align-items-center justify-content-between bg-white py-0 border-bottom" style="height: 60px; border-color: var(--color-border); padding-left: 40px; padding-right: 40px;">
+  <div class="d-flex align-items-center gap-2">
+    <span class="material-symbols-outlined text-custom-primary" style="font-size: 20px;">dashboard</span>
+    <span class="fs-6 fw-bold text-custom-primary" data-gnb-title>대시보드</span>
+  </div>
+  <div class="d-flex align-items-center gap-0">
+    <div class="d-flex align-items-center gap-2 pe-4">
+      <span class="material-symbols-outlined text-custom-primary" style="font-size: 20px;">calendar_today</span>
+      <span class="small fw-medium text-custom-muted" id="gnb-date">2026.03.16 월요일</span>
+    </div>
+    <div class="gnb-divider border-start border-secondary" style="height: 20px;"></div>
+    <div class="d-flex align-items-center px-4">
+      <button type="button" id="btn-manual" class="btn btn-outline-secondary border rounded d-flex align-items-center gap-2 px-3 py-2 small fw-semibold text-custom-primary">
+        <span class="material-symbols-outlined" style="font-size: 20px;">info</span>
+        매뉴얼(Manual)
+        <span class="material-symbols-outlined manual-chevron" style="font-size: 16px;">expand_more</span>
+      </button>
+    </div>
+    <div class="gnb-divider border-start border-secondary" style="height: 20px;"></div>
+    <div class="d-flex align-items-center ps-4 pe-0">
+      <button type="button" id="btn-profile" class="btn btn-link text-decoration-none d-flex align-items-center gap-2 px-2 py-2 rounded">
+        <span class="d-flex align-items-center justify-center rounded-circle bg-custom-subtle" style="width: 32px; height: 32px;">
+          <span class="material-symbols-outlined text-custom-primary" style="font-size: 20px;">person</span>
+        </span>
+        <span class="small fw-semibold text-custom-primary">김메니</span>
+        <span class="material-symbols-outlined profile-chevron text-custom-muted" style="font-size: 16px;">expand_more</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Manual Popover -->
+<div id="manual-popover" class="manual-popover position-absolute rounded shadow border border-custom-primary bg-white d-none" style="width: 300px; padding: 20px; z-index: 1050; box-shadow: 0 4px 4px rgba(0,0,0,0.25); border-radius: 8px;">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <span class="small fw-bold text-custom-primary">Manual List</span>
+    <button type="button" id="manual-popover-close" class="btn btn-link text-custom-muted p-0 rounded" aria-label="닫기">
+      <span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+    </button>
+  </div>
+  <div class="d-flex flex-column gap-0">
+    <div class="manual-popover-section border-bottom pb-3 mb-3">
+      <p class="text-center small fw-bold mb-2">사용자 메뉴얼 (User Manual)</p>
+      <div class="d-flex gap-2 flex-wrap">
+        <button type="button" class="btn btn-outline-primary btn-sm flex-grow-1 d-flex align-items-center justify-content-center gap-1">
+          <img src="img/Korean_flag.png" alt="" class="manual-lang-flag" />
+          <span>한국어</span>
+        </button>
+        <button type="button" class="btn btn-outline-primary btn-sm flex-grow-1 d-flex align-items-center justify-content-center gap-1">
+          <img src="img/American_flag.png" alt="" class="manual-lang-flag" />
+          <span>English</span>
+        </button>
+      </div>
+    </div>
+    <div class="manual-popover-section border-bottom py-3 pb-3">
+      <p class="text-center small fw-bold mb-2">테니엄 에이전트 (Tanium Agent)</p>
+      <div class="d-flex flex-column gap-2">
+        <button type="button" class="btn btn-primary btn-sm rounded px-2 py-1 small fw-bold">설치 가이드 Install Guide</button>
+        <div class="d-flex gap-2 flex-wrap">
+          <button type="button" class="btn btn-outline-primary btn-sm flex-grow-1 d-flex align-items-center justify-content-center gap-1">
+            <img src="img/window_logo.png" alt="" class="manual-os-logo" /><span>Windows</span>
+          </button>
+          <button type="button" class="btn btn-outline-primary btn-sm flex-grow-1 d-flex align-items-center justify-content-center gap-1">
+            <img src="img/Linux_logo.png" alt="" class="manual-os-logo" /><span>Linux</span>
+          </button>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+          <button type="button" class="btn btn-outline-primary btn-sm flex-grow-1 d-flex align-items-center justify-content-center gap-1">
+            <img src="img/Oracle_logo.png" alt="" class="manual-os-logo" /><span>Solaris</span>
+          </button>
+          <button type="button" class="btn btn-outline-primary btn-sm flex-grow-1 d-flex align-items-center justify-content-center gap-1">
+            <img src="img/AIX_logo.png" alt="" class="manual-os-logo" /><span>AIX</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="manual-popover-section border-bottom py-3 pb-3">
+      <p class="text-center small fw-bold mb-2">서버 보안 점검 체크리스트<br>(Server Security Checklist)</p>
+      <div class="d-flex gap-2 flex-wrap">
+        <button type="button" class="btn btn-outline-primary btn-sm flex-grow-1 d-flex align-items-center justify-content-center gap-1">
+          <img src="img/Korean_flag.png" alt="" class="manual-lang-flag" />
+          <span>한국어</span>
+        </button>
+        <button type="button" class="btn btn-outline-primary btn-sm flex-grow-1 d-flex align-items-center justify-content-center gap-1">
+          <img src="img/American_flag.png" alt="" class="manual-lang-flag" />
+          <span>English</span>
+        </button>
+      </div>
+    </div>
+    <div class="manual-popover-section border-bottom py-3 pb-3">
+      <p class="text-center small fw-bold mb-2">보안 담당자 메뉴얼<br>(Manual for Security Manager)</p>
+      <div class="d-flex gap-2 flex-wrap">
+        <button type="button" class="btn btn-outline-primary btn-sm flex-grow-1 d-flex align-items-center justify-content-center gap-1">
+          <img src="img/Korean_flag.png" alt="" class="manual-lang-flag" />
+          <span>한국어</span>
+        </button>
+        <button type="button" class="btn btn-outline-primary btn-sm flex-grow-1 d-flex align-items-center justify-content-center gap-1">
+          <img src="img/American_flag.png" alt="" class="manual-lang-flag" />
+          <span>English</span>
+        </button>
+      </div>
+    </div>
+    <div class="pt-3 pb-2">
+      <p class="text-center small fw-bold mb-2">주요 Q&A (Major Q&A) - Mosaic</p>
+      <button type="button" class="btn btn-outline-primary btn-sm w-100 d-flex align-items-center justify-content-center gap-1 py-2">
+        <span class="material-symbols-outlined" style="font-size: 16px;">description</span>
+        <span class="text-start small">전사 보안 점검 상세 가이드<br>Security Diagnosis Detailed Guide</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- GNB User Popover -->
+<div id="profile-popover" class="position-absolute bg-white rounded-3 border shadow-lg d-none" style="width: 260px; right: 40px; top: 72px; z-index: 1050; padding: 20px; border-radius: 8px;">
+  <div class="d-flex align-items-center justify-content-between mb-4">
+    <h3 class="fs-6 fw-bold text-dark mb-0">My Page</h3>
+    <button type="button" id="profile-popover-close" class="btn btn-link text-secondary p-0 rounded" aria-label="닫기">×</button>
+  </div>
+  <div class="d-flex flex-column gap-3 border-bottom border-secondary pb-4">
+    <div>
+      <p class="small text-secondary mb-0">부서명</p>
+      <p class="mb-0 text-dark">knox & 개발그룹</p>
+    </div>
+    <div>
+      <p class="small text-secondary mb-0">이름</p>
+      <p class="mb-0 text-dark">홍길동</p>
+    </div>
+    <div>
+      <p class="small text-secondary mb-0">ID</p>
+      <p class="mb-0 text-dark">R02</p>
+    </div>
+  </div>
+  <div>
+    <button type="button" class="btn btn-link w-100 text-start p-0 py-3 fw-bold text-primary border-0">대시보드 위젯 설정</button>
+    <div class="border-top border-secondary py-4 d-flex align-items-center justify-content-between">
+      <span class="fw-bold text-primary">언어 변경</span>
+      <div class="dropdown">
+        <button type="button" class="btn btn-light btn-sm border dropdown-toggle" id="langDropdown" data-bs-toggle="dropdown">한국어</button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><button type="button" class="dropdown-item lang-opt" data-lang="ko">한국어</button></li>
+          <li><button type="button" class="dropdown-item lang-opt" data-lang="en">English</button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="border-top border-secondary pt-4">
+    <button type="button" class="btn w-100 rounded py-2 fw-bold text-white" style="background-color: #13289f;">Logout</button>
+  </div>
+</div>

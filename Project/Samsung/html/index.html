@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>대시보드 | Samsung</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .min-h-0 { min-height: 0 !important; }
+  </style>
+</head>
+<body class="bg-custom-base custom-scrollbar">
+  <div id="app" class="vh-100 d-flex flex-column">
+    <div class="d-flex flex-grow-1 min-h-0 bg-custom-base" style="min-width: 1440px;">
+      <!-- LNB (공통 컴포넌트) -->
+      <div id="lnb-placeholder" class="flex-shrink-0" style="width: 260px;"></div>
+
+      <div class="main-content-wrap d-flex flex-column flex-grow-1 min-h-0 position-relative">
+        <!-- GNB (공통 컴포넌트) -->
+        <div id="gnb-placeholder"></div>
+
+        <!-- Main -->
+        <main class="flex-grow-1 d-flex flex-column min-h-0 overflow-y-auto main-content custom-scrollbar" style="padding: 40px;">
+          <div class="d-flex flex-column main-inner" style="gap: 20px;">
+            <!-- Summary Cards -->
+            <section class="flex-shrink-0">
+              <div class="row g-4 summary-cards">
+                <div class="col-12 col-sm-6 col-lg-3">
+                  <div class="card summary-card h-100 border rounded bg-white">
+                    <div class="card-body d-flex flex-column justify-content-between" style="min-height: 160px;">
+                      <div class="d-flex justify-content-between align-items-start">
+                        <div class="d-flex flex-column gap-1">
+                          <span class="small fw-medium text-custom-primary">전체 서버 현황</span>
+                          <span class="fs-2 fw-bold text-custom-primary">1,240</span>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center rounded-lg flex-shrink-0" style="width: 40px; height: 40px; background: #e3ebf9;">
+                          <span class="material-symbols-outlined text-custom-primary" style="font-size: 20px;">storage</span>
+                        </div>
+                      </div>
+                      <div class="mt-3 pt-3 d-flex flex-wrap gap-3 border-top" style="border-color: var(--color-f1f5f9) !important;">
+                        <div class="d-flex align-items-center gap-2">
+                          <span class="rounded-circle flex-shrink-0" style="width: 8px; height: 8px; background: var(--color-primary);"></span>
+                          <span class="small text-custom-primary">국내: <strong>800</strong></span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                          <span class="rounded-circle flex-shrink-0" style="width: 8px; height: 8px; background: #71dd8c;"></span>
+                          <span class="small text-custom-primary">해외: <strong>440</strong></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                  <div class="card summary-card h-100 border rounded bg-white">
+                    <div class="card-body d-flex flex-column justify-content-between" style="min-height: 160px;">
+                      <div class="d-flex justify-content-between align-items-start">
+                        <div class="d-flex flex-column gap-1">
+                          <span class="small fw-medium text-custom-primary">진행 중인 점검</span>
+                          <span class="fs-2 fw-bold text-custom-primary">45</span>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center rounded-lg flex-shrink-0" style="width: 40px; height: 40px; background: #e3ebf9;">
+                          <span class="material-symbols-outlined text-custom-primary" style="font-size: 20px;">checklist</span>
+                        </div>
+                      </div>
+                      <div class="mt-3 pt-3 d-flex flex-wrap gap-3 border-top" style="border-color: var(--color-f1f5f9) !important;">
+                        <div class="d-flex align-items-center gap-2"><span class="rounded-circle flex-shrink-0" style="width: 8px; height: 8px; background: var(--color-primary);"></span><span class="small text-custom-primary">전체 <strong>30</strong></span></div>
+                        <div class="d-flex align-items-center gap-2"><span class="rounded-circle flex-shrink-0" style="width: 8px; height: 8px; background: #71dd8c;"></span><span class="small text-custom-primary">사업장/권역 <strong>10</strong></span></div>
+                        <div class="d-flex align-items-center gap-2"><span class="rounded-circle flex-shrink-0" style="width: 8px; height: 8px; background: #ffb55b;"></span><span class="small text-custom-primary">개별 <strong>5</strong></span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                  <div class="card summary-card h-100 border rounded bg-white">
+                    <div class="card-body d-flex flex-column justify-content-between" style="min-height: 160px;">
+                      <div class="d-flex justify-content-between align-items-start">
+                        <div class="d-flex flex-column gap-1">
+                          <span class="small fw-medium text-custom-primary">전체 취약점 현황</span>
+                          <span class="fs-2 fw-bold text-custom-primary">23.0K</span>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center rounded-lg flex-shrink-0" style="width: 40px; height: 40px; background: #e3ebf9;">
+                          <span class="material-symbols-outlined text-custom-primary" style="font-size: 20px;">bug_report</span>
+                        </div>
+                      </div>
+                      <div class="mt-3 pt-3 d-flex flex-wrap gap-3 border-top" style="border-color: var(--color-f1f5f9) !important;">
+                        <div class="d-flex align-items-center gap-2"><span class="rounded-circle flex-shrink-0" style="width: 8px; height: 8px; background: #71dd8c;"></span><span class="small text-custom-primary">양호 <strong>22.6K</strong></span></div>
+                        <div class="d-flex align-items-center gap-2"><span class="rounded-circle flex-shrink-0" style="width: 8px; height: 8px; background: #ff7b96;"></span><span class="small text-custom-primary">취약 <strong>300</strong></span></div>
+                        <div class="d-flex align-items-center gap-2"><span class="rounded-circle flex-shrink-0" style="width: 8px; height: 8px; background: #ffb55b;"></span><span class="small text-custom-primary">인터뷰 <strong>50</strong></span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                  <div class="card summary-card summary-card-error h-100 border rounded bg-white">
+                    <div class="card-body d-flex flex-column justify-content-between" style="min-height: 160px;">
+                      <div class="d-flex justify-content-between align-items-start">
+                        <div class="d-flex flex-column gap-1">
+                          <span class="small fw-medium text-custom-primary">점검 오류 현황</span>
+                          <span class="fs-2 fw-bold" style="color: var(--color-status-red);">12</span>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center rounded-lg flex-shrink-0" style="width: 40px; height: 40px; background: #ffd8e0;">
+                          <span class="material-symbols-outlined" style="font-size: 20px; color: var(--color-status-red);">warning</span>
+                        </div>
+                      </div>
+                      <div class="mt-3 pt-3 d-flex flex-wrap gap-3 border-top" style="border-color: var(--color-f1f5f9) !important;">
+                        <div class="d-flex align-items-center gap-2"><span class="rounded-circle flex-shrink-0" style="width: 8px; height: 8px; background: var(--color-primary);"></span><span class="small text-custom-primary">전체 <strong>3</strong></span></div>
+                        <div class="d-flex align-items-center gap-2"><span class="rounded-circle flex-shrink-0" style="width: 8px; height: 8px; background: #71dd8c;"></span><span class="small text-custom-primary">사업장/권역 <strong>1</strong></span></div>
+                        <div class="d-flex align-items-center gap-2"><span class="rounded-circle flex-shrink-0" style="width: 8px; height: 8px; background: #ffb55b;"></span><span class="small text-custom-primary">개별 <strong>8</strong></span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- 위젯 레이아웃 영역 -->
+            <div class="d-flex flex-column widgets-wrap" style="gap: 20px;">
+            <div class="row g-3 widget-row">
+              <div class="col-12 col-lg-7 d-flex flex-column">
+                <div class="card widget-card d-flex flex-column shadow-sm bg-white overflow-hidden" style="height: 340px; border-radius: 8px;">
+                  <div class="card-header flex-shrink-0 bg-white d-flex align-items-center justify-content-between border-bottom widget-card-header">
+                    <div class="d-flex align-items-center gap-2">
+                      <div class="my-apps-header-icon d-flex align-items-center justify-content-center rounded" style="width: 32px; height: 32px; border-radius: 8px; background: var(--color-bg-subtle);">
+                        <span class="material-symbols-outlined text-custom-primary" style="font-size: 20px;">event</span>
+                      </div>
+                      <span class="fw-bold text-custom-primary">최근 점검 계획 리스트</span>
+                    </div>
+                    <button type="button" class="btn btn-link text-custom-muted p-1 rounded" aria-label="더보기">
+                      <span class="material-symbols-outlined" style="font-size: 20px;">arrow_forward</span>
+                    </button>
+                  </div>
+                  <div class="card-body d-flex flex-column p-0 flex-grow-1 min-h-0 overflow-hidden">
+                    <div class="table-responsive flex-grow-1 overflow-auto min-h-0 custom-scrollbar" style="min-height: 0;">
+                      <table class="table inspection-table table-borderless mb-0" style="min-width: 800px;">
+                        <thead class="sticky-top bg-white inspection-thead">
+                          <tr>
+                            <th style="width: 29%;">점검명</th>
+                            <th style="width: 17%;">점검 유형</th>
+                            <th class="col-region" style="width: 12%;">사업장/권역</th>
+                            <th style="width: 12%;">권역 상세</th>
+                            <th style="width: 17%;">상태</th>
+                            <th class="col-date" style="width: 13%;">점검일</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr><td><span class="line-clamp-2">3분기 글로벌 보안 감사3분기 글로벌 보안 감사3분기 글로벌 보안 감사</span></td><td><span class="line-clamp-2">전체 대상</span></td><td><span class="line-clamp-2">-</span></td><td><span class="line-clamp-2">-</span></td><td><span class="badge-inspection badge-plan">계획 수립</span></td><td><span class="line-clamp-2">2026-02-20</span></td></tr>
+                          <tr><td><span class="line-clamp-2">APAC 지역 취약점 점검</span></td><td><span class="line-clamp-2">권역/사업장별 대상</span></td><td><span class="line-clamp-2">국내</span></td><td><span class="line-clamp-2">수원사업장</span></td><td><span class="badge-inspection badge-progress">진행중</span></td><td><span class="line-clamp-2">2026-02-19</span></td></tr>
+                          <tr><td><span class="line-clamp-2">결제 게이트웨이 검토</span></td><td><span class="line-clamp-2">개별 대상</span></td><td><span class="line-clamp-2">국내</span></td><td><span class="line-clamp-2">구미사업장</span></td><td><span class="badge-inspection badge-done">점검 완료</span></td><td><span class="line-clamp-2">2026-02-18</span></td></tr>
+                          <tr><td><span class="line-clamp-2">EU 컴플라이언스 스캔 (GDPR)</span></td><td><span class="line-clamp-2">권역/사업장별 대상</span></td><td><span class="line-clamp-2">해외</span></td><td><span class="line-clamp-2">중남미</span></td><td><span class="badge-inspection badge-error">점검 오류</span></td><td><span class="line-clamp-2">2026-02-16</span></td></tr>
+                          <tr><td><span class="line-clamp-2">레거시 시스템 감사</span></td><td><span class="line-clamp-2">전체 대상</span></td><td><span class="line-clamp-2">-</span></td><td><span class="line-clamp-2">-</span></td><td><span class="badge-inspection badge-plan">계획 수립</span></td><td><span class="line-clamp-2">2026-02-12</span></td></tr>
+                          <tr><td><span class="line-clamp-2">1분기 정기 보안 점검</span></td><td><span class="line-clamp-2">권역/사업장별 대상</span></td><td><span class="line-clamp-2">해외</span></td><td><span class="line-clamp-2">APAC</span></td><td><span class="badge-inspection badge-progress">진행중</span></td><td><span class="line-clamp-2">2026-02-10</span></td></tr>
+                          <tr><td><span class="line-clamp-2">인프라 장애 대응 점검</span></td><td><span class="line-clamp-2">개별 대상</span></td><td><span class="line-clamp-2">국내</span></td><td><span class="line-clamp-2">서초사업장</span></td><td><span class="badge-inspection badge-done">점검 완료</span></td><td><span class="line-clamp-2">2026-02-08</span></td></tr>
+                          <tr><td><span class="line-clamp-2">클라우드 설정 검증</span></td><td><span class="line-clamp-2">전체 대상</span></td><td><span class="line-clamp-2">-</span></td><td><span class="line-clamp-2">-</span></td><td><span class="badge-inspection badge-plan">계획 수립</span></td><td><span class="line-clamp-2">2026-02-05</span></td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-5 d-flex flex-column">
+                <div class="card widget-card d-flex flex-column shadow-sm bg-white" style="height: 340px; border-radius: 8px;">
+                  <div class="card-header flex-shrink-0 bg-white border-bottom widget-card-header">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <div class="my-apps-header-icon d-flex align-items-center justify-content-center rounded" style="width: 32px; height: 32px; border-radius: 8px; background: var(--color-bg-subtle);">
+                          <span class="material-symbols-outlined text-custom-primary" style="font-size: 20px;">assignment_add</span>
+                        </div>
+                        <span class="fw-bold text-custom-primary">나의 신청 현황</span>
+                        <div class="dropdown">
+                          <button type="button" id="period-dropdown-btn" class="btn btn-light btn-sm border rounded d-flex align-items-center gap-1 my-apps-period-btn text-dark" data-bs-toggle="dropdown">
+                            <span>Month</span>
+                            <span class="material-symbols-outlined" style="font-size: 18px;">expand_more</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><button type="button" class="dropdown-item period-opt" data-period="week">주(Week)</button></li>
+                            <li><button type="button" class="dropdown-item period-opt" data-period="month">월(Month)</button></li>
+                            <li><button type="button" class="dropdown-item period-opt" data-period="year">년(Year)</button></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <button type="button" class="btn btn-link text-custom-muted p-1 rounded" aria-label="더보기">
+                        <span class="material-symbols-outlined" style="font-size: 20px;">arrow_forward</span>
+                      </button>
+                    </div>
+                    <div class="d-flex w-100 gap-2 my-apps-filters">
+                      <button type="button" class="btn btn-sm flex-grow-1 filter-tab filter-tab-all active" data-filter="전체"><span class="filter-tab-label">전체</span><span class="filter-tab-count">4<span class="filter-tab-unit">건</span></span></button>
+                      <button type="button" class="btn btn-sm flex-grow-1 filter-tab filter-tab-pending" data-filter="결재중"><span class="filter-tab-label">결재중</span><span class="filter-tab-count">2<span class="filter-tab-unit">건</span></span></button>
+                      <button type="button" class="btn btn-sm flex-grow-1 filter-tab filter-tab-reject" data-filter="반려"><span class="filter-tab-label">반려</span><span class="filter-tab-count">1<span class="filter-tab-unit">건</span></span></button>
+                      <button type="button" class="btn btn-sm flex-grow-1 filter-tab filter-tab-complete" data-filter="완료"><span class="filter-tab-label">완료</span><span class="filter-tab-count">1<span class="filter-tab-unit">건</span></span></button>
+                    </div>
+                  </div>
+                  <div class="card-body flex-grow-1 overflow-auto min-h-0 my-apps-card-body custom-scrollbar">
+                    <div class="d-flex flex-column my-apps-items">
+                      <div class="my-app-item rounded border bg-white d-flex align-items-center justify-content-between gap-3" data-status="완료">
+                        <div class="min-w-0 flex-grow-1">
+                          <p class="small text-custom-muted mb-0">소유권 변경 신청</p>
+                          <p class="small fw-medium text-custom-primary text-truncate mb-0 mt-1 my-app-item-title">DESKTOP-2342 서버 권한 이전 신청</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-end gap-1 flex-shrink-0">
+                          <span class="badge-application badge-complete">완료</span>
+                          <span class="small text-custom-muted">2026-02-13</span>
+                        </div>
+                      </div>
+                      <div class="my-app-item rounded border bg-white d-flex align-items-center justify-content-between gap-3" data-status="결재중">
+                        <div class="min-w-0 flex-grow-1">
+                          <p class="small text-custom-muted mb-0">자산 이관 신청</p>
+                          <p class="small fw-medium text-custom-primary text-truncate mb-0 mt-1 my-app-item-title">SERVER-8891 호스트 소유권 변경 요청</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-end gap-1 flex-shrink-0">
+                          <span class="badge-application badge-pending">결재중</span>
+                          <span class="small text-custom-muted">2026-02-12</span>
+                        </div>
+                      </div>
+                      <div class="my-app-item rounded border bg-white d-flex align-items-center justify-content-between gap-3" data-status="반려">
+                        <div class="min-w-0 flex-grow-1">
+                          <p class="small text-custom-muted mb-0">소유권 변경 신청</p>
+                          <p class="small fw-medium text-custom-primary text-truncate mb-0 mt-1 my-app-item-title">LAPTOP-AB12 사용자 권한 이전</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-end gap-1 flex-shrink-0">
+                          <span class="badge-application badge-reject">반려</span>
+                          <span class="small text-custom-muted">2026-02-11</span>
+                        </div>
+                      </div>
+                      <div class="my-app-item rounded border bg-white d-flex align-items-center justify-content-between gap-3" data-status="결재중">
+                        <div class="min-w-0 flex-grow-1">
+                          <p class="small text-custom-muted mb-0">점검 계획 신청</p>
+                          <p class="small fw-medium text-custom-primary text-truncate mb-0 mt-1 my-app-item-title">2026년 1분기 정기 점검 계획 승인 요청</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-end gap-1 flex-shrink-0">
+                          <span class="badge-application badge-pending">결재중</span>
+                          <span class="small text-custom-muted">2026-02-10</span>
+                        </div>
+                      </div>
+                      <div class="my-app-item rounded border bg-white d-flex align-items-center justify-content-between gap-3" data-status="완료">
+                        <div class="min-w-0 flex-grow-1">
+                          <p class="small text-custom-muted mb-0">자산 등록 신청</p>
+                          <p class="small fw-medium text-custom-primary text-truncate mb-0 mt-1 my-app-item-title">신규 서버 3대 자산 등록 요청</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-end gap-1 flex-shrink-0">
+                          <span class="badge-application badge-complete">완료</span>
+                          <span class="small text-custom-muted">2026-02-09</span>
+                        </div>
+                      </div>
+                      <div class="my-app-item rounded border bg-white d-flex align-items-center justify-content-between gap-3" data-status="결재중">
+                        <div class="min-w-0 flex-grow-1">
+                          <p class="small text-custom-muted mb-0">소유권 변경 신청</p>
+                          <p class="small fw-medium text-custom-primary text-truncate mb-0 mt-1 my-app-item-title">WORKSTATION-01 담당자 변경 신청</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-end gap-1 flex-shrink-0">
+                          <span class="badge-application badge-pending">결재중</span>
+                          <span class="small text-custom-muted">2026-02-08</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Registered Servers + OS Servers -->
+            <div class="row g-3 widget-row">
+              <div class="col-12 col-lg-7 d-flex flex-column">
+                <div class="card widget-card d-flex flex-column shadow-sm bg-white" style="height: 340px; border-radius: 8px;">
+                  <div class="card-header flex-shrink-0 bg-white d-flex align-items-center justify-content-between border-bottom widget-card-header">
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="my-apps-header-icon d-flex align-items-center justify-content-center rounded" style="width: 32px; height: 32px; border-radius: 8px; background: var(--color-bg-subtle);">
+                        <span class="material-symbols-outlined text-custom-primary" style="font-size: 20px;">event</span>
+                      </div>
+                      <span class="fw-bold text-custom-primary">등록 서버 현황</span>
+                      <div class="btn-group registered-tab-group" role="group">
+                        <button type="button" class="btn btn-sm registered-tab active rounded-start" data-tab="국내">국내</button>
+                        <button type="button" class="btn btn-sm registered-tab rounded-end" data-tab="해외">해외</button>
+                      </div>
+                    </div>
+                    <button type="button" class="btn btn-link text-custom-muted p-1 rounded" aria-label="더보기">
+                      <span class="material-symbols-outlined" style="font-size: 20px;">arrow_forward</span>
+                    </button>
+                  </div>
+                  <div class="card-body flex-grow-1 overflow-hidden widget-chart-body d-flex align-items-center justify-content-center">
+                    <div class="d-flex gap-4 flex-wrap flex-lg-nowrap align-items-center w-100">
+                      <div class="registered-chart-wrap flex-shrink-0">
+                        <canvas id="chart-registered" width="200" height="200"></canvas>
+                      </div>
+                      <div class="registered-legend d-flex flex-grow-1">
+                        <div id="registered-legend-domestic" class="registered-legend-tab registered-legend-grid gap-2">
+                          <div class="d-flex align-items-center justify-content-between gap-2 rounded px-3 py-2 bg-light"><div class="d-flex align-items-center gap-2 min-w-0"><span class="rounded flex-shrink-0" style="width: 4px; height: 16px; background: #13289f;"></span><span class="small text-truncate">수원 사업장</span></div><span class="small fw-bold text-custom-primary flex-shrink-0">10 <span class="fw-normal text-secondary">대</span></span></div>
+                          <div class="d-flex align-items-center justify-content-between gap-2 rounded px-3 py-2 bg-light"><div class="d-flex align-items-center gap-2 min-w-0"><span class="rounded flex-shrink-0" style="width: 4px; height: 16px; background: #5856d6;"></span><span class="small text-truncate">우면 사업장</span></div><span class="small fw-bold text-custom-primary flex-shrink-0">1 <span class="fw-normal text-secondary">대</span></span></div>
+                          <div class="d-flex align-items-center justify-content-between gap-2 rounded px-3 py-2 bg-light"><div class="d-flex align-items-center gap-2 min-w-0"><span class="rounded flex-shrink-0" style="width: 4px; height: 16px; background: #7dbbff;"></span><span class="small text-truncate">구미 사업장</span></div><span class="small fw-bold text-custom-primary flex-shrink-0">1 <span class="fw-normal text-secondary">대</span></span></div>
+                          <div class="d-flex align-items-center justify-content-between gap-2 rounded px-3 py-2 bg-light"><div class="d-flex align-items-center gap-2 min-w-0"><span class="rounded flex-shrink-0" style="width: 4px; height: 16px; background: #1ea5e4;"></span><span class="small text-truncate">광주 사업장</span></div><span class="small fw-bold text-custom-primary flex-shrink-0">0 <span class="fw-normal text-secondary">대</span></span></div>
+                          <div class="d-flex align-items-center justify-content-between gap-2 rounded px-3 py-2 bg-light"><div class="d-flex align-items-center gap-2 min-w-0"><span class="rounded flex-shrink-0" style="width: 4px; height: 16px; background: #e3ebf9;"></span><span class="small text-truncate">서초 사업장</span></div><span class="small fw-bold text-custom-primary flex-shrink-0">0 <span class="fw-normal text-secondary">대</span></span></div>
+                          <div class="d-flex align-items-center justify-content-between gap-2 rounded px-3 py-2 bg-light"><div class="d-flex align-items-center gap-2 min-w-0"><span class="rounded flex-shrink-0" style="width: 4px; height: 16px; background: #71dd8c;"></span><span class="small text-truncate">인재개발원</span></div><span class="small fw-bold text-custom-primary flex-shrink-0">0 <span class="fw-normal text-secondary">대</span></span></div>
+                          <div class="d-flex align-items-center justify-content-between gap-2 rounded px-3 py-2 bg-light"><div class="d-flex align-items-center gap-2 min-w-0"><span class="rounded flex-shrink-0" style="width: 4px; height: 16px; background: #c9d0d7;"></span><span class="small text-truncate">한국 총괄</span></div><span class="small fw-bold text-custom-primary flex-shrink-0">0 <span class="fw-normal text-secondary">대</span></span></div>
+                          <div class="d-flex align-items-center justify-content-between gap-2 rounded px-3 py-2 bg-light"><div class="d-flex align-items-center gap-2 min-w-0"><span class="rounded flex-shrink-0" style="width: 4px; height: 16px; background: #ffb55b;"></span><span class="small text-truncate">기타</span></div><span class="small fw-bold text-custom-primary flex-shrink-0">0 <span class="fw-normal text-secondary">대</span></span></div>
+                        </div>
+                        <div id="registered-legend-overseas" class="registered-legend-tab d-none registered-legend-grid gap-2">
+                          <div class="d-flex align-items-center justify-content-between gap-2 rounded px-3 py-2 bg-light"><div class="d-flex align-items-center gap-2 min-w-0"><span class="rounded flex-shrink-0" style="width: 4px; height: 16px; background: #13289f;"></span><span class="small text-truncate">중남미</span></div><span class="small fw-bold text-custom-primary flex-shrink-0">5 <span class="fw-normal text-secondary">대</span></span></div>
+                          <div class="d-flex align-items-center justify-content-between gap-2 rounded px-3 py-2 bg-light"><div class="d-flex align-items-center gap-2 min-w-0"><span class="rounded flex-shrink-0" style="width: 4px; height: 16px; background: #5856d6;"></span><span class="small text-truncate">APAC</span></div><span class="small fw-bold text-custom-primary flex-shrink-0">3 <span class="fw-normal text-secondary">대</span></span></div>
+                          <div class="d-flex align-items-center justify-content-between gap-2 rounded px-3 py-2 bg-light"><div class="d-flex align-items-center gap-2 min-w-0"><span class="rounded flex-shrink-0" style="width: 4px; height: 16px; background: #7dbbff;"></span><span class="small text-truncate">유럽</span></div><span class="small fw-bold text-custom-primary flex-shrink-0">2 <span class="fw-normal text-secondary">대</span></span></div>
+                          <div class="d-flex align-items-center justify-content-between gap-2 rounded px-3 py-2 bg-light"><div class="d-flex align-items-center gap-2 min-w-0"><span class="rounded flex-shrink-0" style="width: 4px; height: 16px; background: #1ea5e4;"></span><span class="small text-truncate">기타</span></div><span class="small fw-bold text-custom-primary flex-shrink-0">2 <span class="fw-normal text-secondary">대</span></span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-5 d-flex flex-column">
+                <div class="card widget-card d-flex flex-column shadow-sm bg-white" style="height: 340px; border-radius: 8px;">
+                  <div class="card-header flex-shrink-0 bg-white d-flex align-items-center justify-content-between border-bottom widget-card-header">
+                    <div class="d-flex align-items-center gap-2">
+                      <div class="my-apps-header-icon d-flex align-items-center justify-content-center rounded" style="width: 32px; height: 32px; border-radius: 8px; background: var(--color-bg-subtle);">
+                        <span class="material-symbols-outlined text-custom-primary" style="font-size: 20px;">account_tree</span>
+                      </div>
+                      <span class="fw-bold text-custom-primary">OS별 서버 현황</span>
+                    </div>
+                    <button type="button" class="btn btn-link text-custom-muted p-1 rounded" aria-label="더보기">
+                      <span class="material-symbols-outlined" style="font-size: 20px;">arrow_forward</span>
+                    </button>
+                  </div>
+                  <div class="card-body flex-grow-1 overflow-hidden widget-chart-body d-flex flex-column align-items-center justify-content-center">
+                    <div class="d-flex gap-4 flex-nowrap align-items-center w-100 min-w-0">
+                      <div class="os-chart-wrap position-relative">
+                        <canvas id="chart-os" width="200" height="200"></canvas>
+                      </div>
+                      <div class="d-flex flex-column gap-2 os-legend-wrap flex-grow-1 min-w-0">
+                        <div class="d-flex align-items-center justify-content-between gap-2 rounded px-3 py-2 bg-light">
+                          <div class="d-flex align-items-center gap-2 min-w-0">
+                            <span class="rounded flex-shrink-0" style="width: 4px; height: 16px; background: #13289f;"></span>
+                            <img src="img/window_logo.png" alt="" class="os-legend-logo" />
+                            <span class="small text-truncate">Windows</span>
+                          </div>
+                          <span class="small fw-bold text-custom-primary flex-shrink-0">5009 <span class="fw-normal text-secondary">대</span></span>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between gap-2 rounded px-3 py-2 bg-light">
+                          <div class="d-flex align-items-center gap-2 min-w-0">
+                            <span class="rounded flex-shrink-0" style="width: 4px; height: 16px; background: #1ea5e4;"></span>
+                            <img src="img/Linux_logo.png" alt="" class="os-legend-logo" />
+                            <span class="small text-truncate">Linux</span>
+                          </div>
+                          <span class="small fw-bold text-custom-primary flex-shrink-0">4 <span class="fw-normal text-secondary">대</span></span>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between gap-2 rounded px-3 py-2 bg-light">
+                          <div class="d-flex align-items-center gap-2 min-w-0">
+                            <span class="rounded flex-shrink-0" style="width: 4px; height: 16px; background: #e80b38;"></span>
+                            <img src="img/Oracle_logo.png" alt="" class="os-legend-logo" />
+                            <span class="small text-truncate">Oracle Solaris</span>
+                          </div>
+                          <span class="small fw-bold text-custom-primary flex-shrink-0">1 <span class="fw-normal text-secondary">대</span></span>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between gap-2 rounded px-3 py-2 bg-light">
+                          <div class="d-flex align-items-center gap-2 min-w-0">
+                            <span class="rounded flex-shrink-0" style="width: 4px; height: 16px; background: #666;"></span>
+                            <img src="img/AIX_logo.png" alt="" class="os-legend-logo" />
+                            <span class="small text-truncate">IBM AIX</span>
+                          </div>
+                          <span class="small fw-bold text-custom-primary flex-shrink-0">0 <span class="fw-normal text-secondary">대</span></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="components/load.js"></script>
+</body>
+</html>

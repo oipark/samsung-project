@@ -1,0 +1,78 @@
+/* 디자인 시스템 CSS 변수 (기존 index.css --color-... 토큰) */
+:root {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  line-height: 1.5;
+  color: #111111;
+  background-color: #edf0f4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Figma 디자인시스템 색상 (Color node 2-363) */
+  --color-bg-base: #edf0f4;
+  --color-bg-white: #ffffff;
+  --color-bg-subtle: #f2f4f8;
+  --color-text-primary: #111111;
+  --color-text-secondary: rgba(17, 17, 17, 0.8);
+  --color-text-muted: rgba(17, 17, 17, 0.6);
+  --color-primary: #13289f;
+  --color-primary-hover: #0f2085;
+  --color-button-primary-hover: #5856d6;
+  --color-primary-bg: rgba(19, 40, 159, 0.1);
+  --color-primary-10: rgba(19, 40, 159, 0.1);
+  --color-primary-border: rgba(19, 40, 159, 0.2);
+  --color-logo: #007aff;
+  --color-border-light: rgba(17, 17, 17, 0.1);
+  --color-border: rgba(17, 17, 17, 0.2);
+  --color-divider: #c9d0d7;
+  --color-border-card: #edf0f4;
+  --color-border-panel: #e2e8f0;
+  --color-card-accent: #e3ebf9;
+  --color-emergency: #ffd8e0;
+  --color-badge-success: #d5f5dd;
+  --color-badge-success-text: #0a8529;
+  --color-f1f5f9: #f1f5f9;
+
+  /* Status (Figma) */
+  --color-status-purple: #af52de;
+  --color-status-indigo: #5856d6;
+  --color-status-blue: #007aff;
+  --color-status-cyan: #1ea5e4;
+  --color-status-green: #0a8529;
+  --color-status-yellow: #f1c100;
+  --color-status-orange: #ff8400;
+  --color-status-red: #e80b38;
+
+  /* Shadow & radius */
+  --shadow-card: 0 1px 1.75px rgba(0, 0, 0, 0.05);
+  --shadow-popover: 0 4px 3.5px rgba(0, 0, 0, 0.25);
+  --radius-card: 8px;
+  --radius-button: 4px;
+  --radius-popover: 8px;
+  --radius-badge: 4px;
+}
+
+/* 커스텀 primary 등 유틸리티 (Bootstrap $primary 대신 CSS 변수 사용) */
+.bg-custom-primary { background-color: var(--color-primary) !important; }
+.bg-custom-primary-10 { background-color: var(--color-primary-10) !important; }
+.bg-custom-base { background-color: var(--color-bg-base) !important; }
+.bg-custom-subtle { background-color: var(--color-bg-subtle) !important; }
+.text-custom-primary { color: var(--color-primary) !important; }
+.text-custom-muted { color: var(--color-text-muted) !important; }
+.text-custom-secondary { color: var(--color-text-secondary) !important; }
+.border-custom-primary { border-color: var(--color-primary-border) !important; }
+
+html, body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: inherit;
+  overflow-y: auto;
+}
+
+/* Tailwind 호환 rounded-lg */
+.rounded-lg { border-radius: var(--radius-card); }
+
+/* 테이블 헤더 등 */
+.table thead th { background-color: var(--color-bg-subtle); }
+
+/* LNB active 링크 */
+.lnb-item.active { background-color: var(--color-primary-10); color: var(--color-primary); }

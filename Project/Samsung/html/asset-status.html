@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="gnb-title" content="자산 현황" />
+  <title>자산 소유 현황 | Samsung</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .min-h-0 { min-height: 0 !important; }
+  </style>
+</head>
+<body class="bg-custom-base custom-scrollbar">
+  <div id="app" class="vh-100 d-flex flex-column">
+    <div class="d-flex flex-grow-1 min-h-0 bg-custom-base" style="min-width: 1440px;">
+      <div id="lnb-placeholder" class="flex-shrink-0" style="width: 260px;"></div>
+
+      <div class="main-content-wrap d-flex flex-column flex-grow-1 min-h-0 position-relative">
+        <div id="gnb-placeholder"></div>
+
+        <main class="flex-grow-1 d-flex flex-column min-h-0 overflow-y-auto main-content asset-status-main custom-scrollbar">
+          <div class="d-flex flex-column main-inner asset-status-inner">
+            <!-- 1. 상단 알림 배너 -->
+            <section class="asset-alert flex-shrink-0">
+              <div class="asset-alert-inner">
+                <span class="material-symbols-outlined asset-alert-icon">info</span>
+                <p class="asset-alert-text">등록한 사업부/법인별 IP 대역에 따라 에이전트 설치 시 자동 등록되며, Agent 삭제 시 2주 뒤 서버 현황에서 삭제됩니다.</p>
+                <button type="button" class="asset-alert-close btn btn-link p-0" aria-label="닫기">
+                  <span class="material-symbols-outlined">close</span>
+                </button>
+              </div>
+            </section>
+
+            <!-- 2. 요약 포틀릿 (Figma 376-2667) -->
+            <section class="asset-portlet-section flex-shrink-0" id="asset-portlet">
+              <div class="asset-portlet-card card border rounded bg-white">
+                <div class="asset-portlet-inner d-flex align-items-stretch">
+                  <!-- 그룹 1: 지역별 자산 현황 -->
+                  <div class="asset-portlet-group asset-portlet-group-region">
+                    <h3 class="asset-portlet-group-title">지역별 자산 현황</h3>
+                    <div class="asset-portlet-boxes d-flex flex-nowrap gap-3">
+                      <div class="asset-portlet-box asset-portlet-box-active flex-grow-1">
+                        <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
+                          <span class="asset-portlet-box-label">전체</span>
+                          <span class="material-symbols-outlined asset-portlet-box-check" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        </div>
+                        <p class="asset-portlet-box-value">500</p>
+                      </div>
+                      <div class="asset-portlet-box flex-grow-1">
+                        <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
+                          <span class="d-flex align-items-center gap-2">
+                            <span class="asset-portlet-dot asset-portlet-dot-domestic"></span>
+                            <span class="asset-portlet-box-label">국내</span>
+                          </span>
+                        </div>
+                        <p class="asset-portlet-box-value">420</p>
+                      </div>
+                      <div class="asset-portlet-box flex-grow-1">
+                        <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
+                          <span class="d-flex align-items-center gap-2">
+                            <span class="asset-portlet-dot asset-portlet-dot-overseas"></span>
+                            <span class="asset-portlet-box-label">해외</span>
+                          </span>
+                        </div>
+                        <p class="asset-portlet-box-value">80</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="asset-portlet-divider" aria-hidden="true"></div>
+                  <!-- 그룹 2: OS별 자산 현황 -->
+                  <div class="asset-portlet-group asset-portlet-group-os">
+                    <h3 class="asset-portlet-group-title">OS별 자산 현황</h3>
+                    <div class="asset-portlet-boxes d-flex flex-nowrap gap-3">
+                      <div class="asset-portlet-box flex-grow-1">
+                        <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
+                          <span class="asset-portlet-box-label">Window</span>
+                          <img src="img/window_logo.png" alt="" class="asset-portlet-os-logo" />
+                        </div>
+                        <p class="asset-portlet-box-value">200</p>
+                      </div>
+                      <div class="asset-portlet-box flex-grow-1">
+                        <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
+                          <span class="asset-portlet-box-label">Linux</span>
+                          <img src="img/Linux_logo.png" alt="" class="asset-portlet-os-logo" />
+                        </div>
+                        <p class="asset-portlet-box-value">200</p>
+                      </div>
+                      <div class="asset-portlet-box flex-grow-1">
+                        <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
+                          <span class="asset-portlet-box-label">Solaris</span>
+                          <img src="img/Oracle_logo.png" alt="" class="asset-portlet-os-logo" />
+                        </div>
+                        <p class="asset-portlet-box-value">150</p>
+                      </div>
+                      <div class="asset-portlet-box asset-portlet-box-extra flex-grow-1">
+                        <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
+                          <span class="asset-portlet-box-label">기타 OS</span>
+                        </div>
+                        <p class="asset-portlet-box-value">50</p>
+                        <span class="material-symbols-outlined asset-portlet-box-chevron">expand_more</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="asset-portlet-divider" aria-hidden="true"></div>
+                  <!-- 그룹 3: 환경별 자산 현황 -->
+                  <div class="asset-portlet-group asset-portlet-group-env">
+                    <h3 class="asset-portlet-group-title">환경별 자산 현황</h3>
+                    <div class="asset-portlet-boxes d-flex flex-nowrap gap-3">
+                      <div class="asset-portlet-box flex-grow-1">
+                        <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
+                          <span class="asset-portlet-box-label">PRD</span>
+                        </div>
+                        <p class="asset-portlet-box-value">250</p>
+                      </div>
+                      <div class="asset-portlet-box flex-grow-1">
+                        <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
+                          <span class="asset-portlet-box-label">DEV</span>
+                        </div>
+                        <p class="asset-portlet-box-value">200</p>
+                      </div>
+                      <div class="asset-portlet-box flex-grow-1">
+                        <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
+                          <span class="asset-portlet-box-label">STG</span>
+                        </div>
+                        <p class="asset-portlet-box-value">50</p>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                <button type="button" class="asset-portlet-toggle btn btn-link p-0 border-0 bg-transparent" id="asset-portlet-toggle" aria-label="포틀릿 접기">
+                  <span class="material-symbols-outlined">expand_less</span>
+                </button>
+              </div>
+            </section>
+
+            <!-- 3. 필터 바 + 상세 필터 팝업 (Figma 376-2667: 항목1=Filter 버튼, 항목2=칩+초기화) -->
+            <section class="asset-filter-bar flex-shrink-0 position-relative">
+              <ul class="asset-filter-bar-inner list-unstyled mb-0 ps-0 d-flex align-items-center">
+                <li class="asset-filter-bar-item asset-filter-trigger-wrap">
+                  <button type="button" class="asset-filter-trigger-btn d-flex align-items-center gap-2 fw-bold" id="asset-filter-trigger" aria-expanded="false" aria-haspopup="true">
+                    <span class="material-symbols-outlined asset-filter-icon" style="font-variation-settings: 'FILL' 1;">filter_alt</span>
+                    <span class="asset-filter-label">Filter</span>
+                    <span class="asset-filter-badge">2</span>
+                  </button>
+                </li>
+                <li class="asset-filter-bar-item asset-filter-right-wrap d-flex align-items-center flex-grow-1 min-w-0">
+                  <div class="asset-filter-chips-wrap">
+                    <span class="filter-chip">국내/해외 : <strong class="text-custom-primary">전체</strong> <span class="material-symbols-outlined filter-chip-close">close</span></span>
+                    <span class="filter-chip">OS : <strong class="text-custom-primary">Window</strong> <span class="material-symbols-outlined filter-chip-close">close</span></span>
+                  </div>
+                  <button type="button" class="asset-filter-reset-btn">
+                    <span class="material-symbols-outlined">refresh</span>
+                    필터 초기화
+                  </button>
+                </li>
+              </ul>
+              <!-- 상세 필터 팝업 패널 -->
+              <div class="asset-filter-panel d-none" id="asset-filter-panel" role="dialog" aria-label="상세 필터">
+                <div class="asset-filter-panel-inner">
+                  <div class="asset-filter-panel-body">
+                    <div class="row g-3">
+                      <div class="col-12 col-md-6">
+                        <label class="form-label asset-filter-field-label">국내/해외</label>
+                        <div class="d-flex gap-3">
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="filterRegion" id="filterRegionAll" value="전체" checked />
+                            <label class="form-check-label" for="filterRegionAll">전체</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="filterRegion" id="filterRegionDomestic" value="국내" />
+                            <label class="form-check-label" for="filterRegionDomestic">국내</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="filterRegion" id="filterRegionOverseas" value="해외" />
+                            <label class="form-check-label" for="filterRegionOverseas">해외</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <label class="form-label asset-filter-field-label" for="filterSite">사업장/권역</label>
+                        <select class="form-select form-select-sm" id="filterSite" name="filterSite">
+                          <option value="">전체</option>
+                          <option value="수원사업장">수원사업장</option>
+                          <option value="구미사업장">구미사업장</option>
+                          <option value="중남미">중남미</option>
+                          <option value="중동">중동</option>
+                          <option value="동남아">동남아</option>
+                        </select>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <label class="form-label asset-filter-field-label" for="filterServerName">서버 명</label>
+                        <input type="text" class="form-control form-control-sm" id="filterServerName" name="filterServerName" placeholder="서버 명 입력" />
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <label class="form-label asset-filter-field-label">VM 여부</label>
+                        <div class="d-flex gap-3">
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="filterVM" id="filterVMAll" value="" checked />
+                            <label class="form-check-label" for="filterVMAll">전체</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="filterVM" id="filterVMYes" value="Yes" />
+                            <label class="form-check-label" for="filterVMYes">Yes</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="filterVM" id="filterVMNo" value="No" />
+                            <label class="form-check-label" for="filterVMNo">No</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="asset-filter-panel-footer">
+                    <button type="button" class="btn btn-outline-secondary btn-sm asset-filter-panel-btn" id="asset-filter-panel-reset">필터 초기화</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm asset-filter-panel-btn" id="asset-filter-panel-cancel">취소</button>
+                    <button type="button" class="btn btn-primary btn-sm asset-filter-panel-btn" id="asset-filter-panel-apply">필터 적용</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- 4. 테이블 & 버튼 그룹 -->
+            <section class="asset-table-section flex-grow-1 min-h-0 d-flex flex-column">
+              <div class="card asset-table-card flex-grow-1 d-flex flex-column min-h-0">
+                <div class="asset-table-toolbar">
+                  <span class="asset-table-count-text">전체 <strong>158</strong>건</span>
+                  <div class="asset-table-actions">
+                    <button type="button" class="btn-ds btn-ds-1st">서버 정보 수정</button>
+                    <button type="button" class="btn-ds btn-ds-2nd">자산현황 동기화</button>
+                    <button type="button" class="btn-ds btn-ds-2nd">다운로드</button>
+                  </div>
+                </div>
+                <div class="table-responsive asset-table-responsive flex-grow-1 min-h-0 custom-scrollbar">
+                  <table class="table table-borderless asset-table mb-0 text-nowrap">
+                    <thead class="asset-table-thead sticky-top bg-white">
+                      <tr>
+                        <th class="asset-table-th asset-table-th-check"><span class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" id="th-check-all" aria-label="전체 선택" /><span class="custom-checkbox-box"></span></span></th>
+                        <th class="asset-table-th">순번</th>
+                        <th class="asset-table-th">서버 명</th>
+                        <th class="asset-table-th">IP</th>
+                        <th class="asset-table-th">OS</th>
+                        <th class="asset-table-th">OS버전</th>
+                        <th class="asset-table-th">VM여부</th>
+                        <th class="asset-table-th">국내/해외</th>
+                        <th class="asset-table-th">사업장/권역</th>
+                        <th class="asset-table-th">사업부/법인</th>
+                        <th class="asset-table-th asset-table-th-clamp">담당자</th>
+                        <th class="asset-table-th">서버 위치</th>
+                        <th class="asset-table-th">연계 시스템</th>
+                        <th class="asset-table-th">용도</th>
+                        <th class="asset-table-th asset-table-th-clamp">운영자</th>
+                        <th class="asset-table-th">IRP 코드</th>
+                        <th class="asset-table-th">도입년도</th>
+                        <th class="asset-table-th">수정일시</th>
+                      </tr>
+                    </thead>
+                    <tbody class="asset-table-tbody">
+                      <tr>
+                        <td class="asset-table-td"><span class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></span></td>
+                        <td class="asset-table-td">1</td>
+                        <td class="asset-table-td">DESKTOP-0001</td>
+                        <td class="asset-table-td">193.186.4.132</td>
+                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/window_logo.png" alt="" class="asset-os-icon" />Window</span></td>
+                        <td class="asset-table-td">11 Pro</td>
+                        <td class="asset-table-td">Yes</td>
+                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
+                        <td class="asset-table-td">수원사업장</td>
+                        <td class="asset-table-td">MX</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong<br>솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
+                        <td class="asset-table-td">HQ-1F</td>
+                        <td class="asset-table-td">ERP</td>
+                        <td class="asset-table-td">개발</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong<br>솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
+                        <td class="asset-table-td">IRP-001</td>
+                        <td class="asset-table-td">2022</td>
+                        <td class="asset-table-td">2026-02-06 14:30</td>
+                      </tr>
+                      <tr>
+                        <td class="asset-table-td"><span class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></span></td>
+                        <td class="asset-table-td">2</td>
+                        <td class="asset-table-td">DESKTOP-0002</td>
+                        <td class="asset-table-td">193.186.4.133</td>
+                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/window_logo.png" alt="" class="asset-os-icon" />Window</span></td>
+                        <td class="asset-table-td">11 Pro</td>
+                        <td class="asset-table-td">No</td>
+                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
+                        <td class="asset-table-td">수원사업장</td>
+                        <td class="asset-table-td">-</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
+                        <td class="asset-table-td">HQ-2F</td>
+                        <td class="asset-table-td">ERP</td>
+                        <td class="asset-table-td">운영</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="인프라팀 / 홍길동 / H.Gildong">인프라팀 / 홍길동 / H.Gildong<br>솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
+                        <td class="asset-table-td">IRP-002</td>
+                        <td class="asset-table-td">2023</td>
+                        <td class="asset-table-td">2026-02-05 11:20</td>
+                      </tr>
+                      <tr>
+                        <td class="asset-table-td"><span class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></span></td>
+                        <td class="asset-table-td">3</td>
+                        <td class="asset-table-td">DESKTOP-0003</td>
+                        <td class="asset-table-td">193.186.4.134</td>
+                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/window_logo.png" alt="" class="asset-os-icon" />Window</span></td>
+                        <td class="asset-table-td">11 Pro</td>
+                        <td class="asset-table-td">No</td>
+                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
+                        <td class="asset-table-td">수원사업장</td>
+                        <td class="asset-table-td">MX</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong<br>솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
+                        <td class="asset-table-td">HQ-3F</td>
+                        <td class="asset-table-td">ERP</td>
+                        <td class="asset-table-td">개발</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
+                        <td class="asset-table-td">IRP-003</td>
+                        <td class="asset-table-td">2022</td>
+                        <td class="asset-table-td">2026-02-04 09:15</td>
+                      </tr>
+                      <tr>
+                        <td class="asset-table-td"><span class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></span></td>
+                        <td class="asset-table-td">4</td>
+                        <td class="asset-table-td">DESKTOP-0004</td>
+                        <td class="asset-table-td">193.186.4.135</td>
+                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/window_logo.png" alt="" class="asset-os-icon" />Window</span></td>
+                        <td class="asset-table-td">10 Pro</td>
+                        <td class="asset-table-td">No</td>
+                        <td class="asset-table-td"><span class="region-badge region-badge-overseas">해외</span></td>
+                        <td class="asset-table-td">중남미</td>
+                        <td class="asset-table-td">-</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="웹개발팀 / 김철수 / H.Gildong">웹개발팀 / 김철수 / H.Gildong</div></td>
+                        <td class="asset-table-td">HQ-4F</td>
+                        <td class="asset-table-td">ERP</td>
+                        <td class="asset-table-td">테스트</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="웹개발팀 / 김철수 / H.Gildong">웹개발팀 / 김철수 / H.Gildong<br>솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
+                        <td class="asset-table-td">IRP-004</td>
+                        <td class="asset-table-td">2024</td>
+                        <td class="asset-table-td">2026-02-03 16:00</td>
+                      </tr>
+                      <tr>
+                        <td class="asset-table-td"><span class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></span></td>
+                        <td class="asset-table-td">5</td>
+                        <td class="asset-table-td">DESKTOP-0005</td>
+                        <td class="asset-table-td">193.186.4.136</td>
+                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/Linux_logo.png" alt="" class="asset-os-icon" />Linux</span></td>
+                        <td class="asset-table-td">RedHat 1.0.2</td>
+                        <td class="asset-table-td">Yes</td>
+                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
+                        <td class="asset-table-td">구미사업장</td>
+                        <td class="asset-table-td">-</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
+                        <td class="asset-table-td">HQ-5F</td>
+                        <td class="asset-table-td">ERP</td>
+                        <td class="asset-table-td">운영</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong<br>솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
+                        <td class="asset-table-td">IRP-005</td>
+                        <td class="asset-table-td">2021</td>
+                        <td class="asset-table-td">2026-02-02 10:45</td>
+                      </tr>
+                      <tr>
+                        <td class="asset-table-td"><span class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></span></td>
+                        <td class="asset-table-td">6</td>
+                        <td class="asset-table-td">DESKTOP-0006</td>
+                        <td class="asset-table-td">193.186.4.137</td>
+                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/Linux_logo.png" alt="" class="asset-os-icon" />Linux</span></td>
+                        <td class="asset-table-td">Ubuntu 2.3</td>
+                        <td class="asset-table-td">Yes</td>
+                        <td class="asset-table-td"><span class="region-badge region-badge-overseas">해외</span></td>
+                        <td class="asset-table-td">중동</td>
+                        <td class="asset-table-td">-</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong<br>솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
+                        <td class="asset-table-td">HQ-6F</td>
+                        <td class="asset-table-td">ERP</td>
+                        <td class="asset-table-td">개발</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
+                        <td class="asset-table-td">IRP-006</td>
+                        <td class="asset-table-td">2023</td>
+                        <td class="asset-table-td">2026-02-01 14:20</td>
+                      </tr>
+                      <tr>
+                        <td class="asset-table-td"><span class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></span></td>
+                        <td class="asset-table-td">7</td>
+                        <td class="asset-table-td">DESKTOP-0007</td>
+                        <td class="asset-table-td">193.186.4.138</td>
+                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/Oracle_logo.png" alt="" class="asset-os-icon" />Solaris</span></td>
+                        <td class="asset-table-td">11.4</td>
+                        <td class="asset-table-td">Yes</td>
+                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
+                        <td class="asset-table-td">구미사업장</td>
+                        <td class="asset-table-td">MX</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="미들웨어팀 / 김기영 / K.Kim">미들웨어팀 / 김기영 / K.Kim</div></td>
+                        <td class="asset-table-td">HQ-7F</td>
+                        <td class="asset-table-td">ERP</td>
+                        <td class="asset-table-td">운영</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="미들웨어팀 / 김기영 / K.Kim">미들웨어팀 / 김기영 / K.Kim<br>솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
+                        <td class="asset-table-td">IRP-007</td>
+                        <td class="asset-table-td">2022</td>
+                        <td class="asset-table-td">2026-01-31 09:00</td>
+                      </tr>
+                      <tr>
+                        <td class="asset-table-td"><span class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></span></td>
+                        <td class="asset-table-td">8</td>
+                        <td class="asset-table-td">DESKTOP-0008</td>
+                        <td class="asset-table-td">193.186.4.139</td>
+                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/AIX_logo.png" alt="" class="asset-os-icon" />AIX</span></td>
+                        <td class="asset-table-td">AIX 7.3 TL2</td>
+                        <td class="asset-table-td">Yes</td>
+                        <td class="asset-table-td"><span class="region-badge region-badge-overseas">해외</span></td>
+                        <td class="asset-table-td">동남아</td>
+                        <td class="asset-table-td">-</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
+                        <td class="asset-table-td">HQ-8F</td>
+                        <td class="asset-table-td">ERP</td>
+                        <td class="asset-table-td">개발</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 홍길동 / H.Gildong">솔루션개발그룹 / 홍길동 / H.Gildong</div></td>
+                        <td class="asset-table-td">IRP-008</td>
+                        <td class="asset-table-td">2024</td>
+                        <td class="asset-table-td">2026-01-30 17:30</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- 5. 페이지네이션 -->
+                <div class="asset-pagination">
+                  <div class="asset-pagination-left">
+                    <select class="form-select form-select-sm asset-pagination-select" aria-label="행 개수">
+                      <option value="10">10 rows</option>
+                      <option value="20">20 rows</option>
+                      <option value="50">50 rows</option>
+                    </select>
+                    <span class="asset-pagination-info">전체 158개 중 1-20 표시 (필터됨)</span>
+                  </div>
+                  <div class="asset-pagination-right">
+                    <nav class="asset-pagination-nav" aria-label="페이지 네비게이션">
+                      <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="처음"><span class="material-symbols-outlined">first_page</span></button>
+                      <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="이전"><span class="material-symbols-outlined">chevron_left</span></button>
+                      <button type="button" class="btn btn-link btn-sm asset-pagination-btn active">1</button>
+                      <button type="button" class="btn btn-link btn-sm asset-pagination-btn">2</button>
+                      <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="다음"><span class="material-symbols-outlined">chevron_right</span></button>
+                      <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="마지막"><span class="material-symbols-outlined">last_page</span></button>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- 자산 상세 정보 슬라이드 팝업 (컴포넌트 로드) -->
+    <div id="asset-detail-placeholder"></div>
+
+    <!-- 1단 패널 콘텐츠: 페이지별로 교체 가능 -->
+    <template id="asset-detail-panel-content">
+      <section class="asset-detail-section">
+        <div class="asset-detail-section-head">
+          <h3 class="asset-detail-section-title">자산 정보</h3>
+          <button type="button" class="btn-ds btn-ds-2nd asset-detail-open-history" aria-controls="asset-detail-panel-2">자산 변경 이력</button>
+        </div>
+        <div class="asset-detail-form">
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <label class="form-label asset-detail-label">서버명</label>
+              <input type="text" class="form-control asset-detail-input" id="detail-server-name" readonly />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label asset-detail-label">IP</label>
+              <input type="text" class="form-control asset-detail-input" id="detail-ip" readonly />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label asset-detail-label">OS</label>
+              <input type="text" class="form-control asset-detail-input" id="detail-os" readonly />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label asset-detail-label">OS 버전</label>
+              <input type="text" class="form-control asset-detail-input" id="detail-os-version" readonly />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label asset-detail-label">국내/해외</label>
+              <input type="text" class="form-control asset-detail-input" id="detail-region" readonly />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label asset-detail-label">사업장/권역</label>
+              <input type="text" class="form-control asset-detail-input" id="detail-site" readonly />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label asset-detail-label">서버 위치</label>
+              <input type="text" class="form-control asset-detail-input" id="detail-location" readonly />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label asset-detail-label">연계시스템</label>
+              <input type="text" class="form-control asset-detail-input" id="detail-system" readonly />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label asset-detail-label">용도</label>
+              <input type="text" class="form-control asset-detail-input" id="detail-usage" readonly />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label asset-detail-label">IRP 코드</label>
+              <input type="text" class="form-control asset-detail-input" id="detail-irp" readonly />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label asset-detail-label">도입년도</label>
+              <input type="text" class="form-control asset-detail-input" id="detail-year" readonly />
+            </div>
+            <div class="col-12">
+              <label class="form-label asset-detail-label">비고</label>
+              <textarea class="form-control asset-detail-textarea" id="detail-remark" rows="3" readonly></textarea>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="asset-detail-section">
+        <div class="asset-detail-section-head">
+          <h3 class="asset-detail-section-title">담당자 정보</h3>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn-ds btn-ds-2nd">담당자 수정</button>
+            <button type="button" class="btn-ds btn-ds-2nd">담당자 변경 이력</button>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-bordered asset-detail-table mb-0">
+            <thead class="asset-detail-thead">
+              <tr>
+                <th class="asset-detail-th">순번</th>
+                <th class="asset-detail-th">담당자 구분</th>
+                <th class="asset-detail-th">부서 코드</th>
+                <th class="asset-detail-th">담당자</th>
+                <th class="asset-detail-th">변경신청 상태</th>
+              </tr>
+            </thead>
+            <tbody class="asset-detail-tbody" id="asset-detail-tbody">
+              <tr>
+                <td class="asset-detail-td">1</td>
+                <td class="asset-detail-td">담당자</td>
+                <td class="asset-detail-td">C60A00001</td>
+                <td class="asset-detail-td">웹개발팀 / 김철수 / H.Gildong</td>
+                <td class="asset-detail-td"><span class="asset-detail-badge asset-detail-badge-pending">결재중</span></td>
+              </tr>
+              <tr>
+                <td class="asset-detail-td">2</td>
+                <td class="asset-detail-td">담당자</td>
+                <td class="asset-detail-td">C60A00002</td>
+                <td class="asset-detail-td">솔루션개발그룹 / 홍길동 / H.Gildong</td>
+                <td class="asset-detail-td"><span class="asset-detail-badge asset-detail-badge-reject">반려</span></td>
+              </tr>
+              <tr>
+                <td class="asset-detail-td">3</td>
+                <td class="asset-detail-td">운영자</td>
+                <td class="asset-detail-td">C60A00003</td>
+                <td class="asset-detail-td">솔루션개발그룹 / 홍길동 / H.Gildong</td>
+                <td class="asset-detail-td"><span class="asset-detail-badge asset-detail-badge-done">완료</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </template>
+
+    <!-- 2단 패널 콘텐츠: 페이지별로 교체 가능 -->
+    <template id="asset-detail-panel-2-content">
+      <div class="asset-history-toolbar">
+        <p class="asset-history-toolbar-text">전체 <strong>158</strong>건</p>
+      </div>
+      <div class="asset-history-table-wrap custom-scrollbar">
+        <table class="table table-bordered mb-0 text-nowrap">
+          <thead class="sticky-top bg-white">
+            <tr>
+              <th>순번</th>
+              <th>서버 명</th>
+              <th>IP</th>
+              <th>OS</th>
+              <th>OS버전</th>
+              <th>제조사</th>
+              <th>모델</th>
+              <th>VM여부</th>
+              <th>국내/해외</th>
+              <th>사업장/권역</th>
+              <th>사업부/법인</th>
+              <th>서버 위치</th>
+              <th>연계 시스템</th>
+              <th>용도</th>
+              <th>IRP 코드</th>
+              <th>도입년도</th>
+              <th>변경일시</th>
+              <th>변경자</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>DESKTOP-0001</td><td>193.186.4.132</td><td>Window</td><td>11 Pro</td><td>삼성전자</td><td>OptiPlex 7090</td><td>Yes</td><td>국내</td><td>수원사업장</td><td>MX</td><td>HQ-1F</td><td>ERP</td><td>운영</td><td>test001</td><td>2023</td><td>2026-02-20 10:47:28</td><td>박변경</td></tr>
+            <tr><td>2</td><td>DESKTOP-0002</td><td>193.186.4.133</td><td>Window</td><td>11 Pro</td><td>삼성전자</td><td>OptiPlex 7091</td><td>No</td><td>국내</td><td>수원사업장</td><td>-</td><td>HQ-2F</td><td>ERP</td><td>운영</td><td>test002</td><td>2023</td><td>2026-02-19 10:47:28</td><td>홍길동</td></tr>
+            <tr><td>3</td><td>DESKTOP-0003</td><td>193.186.4.134</td><td>Window</td><td>11 Pro</td><td>삼성전자</td><td>OptiPlex 7092</td><td>No</td><td>국내</td><td>수원사업장</td><td>MX</td><td>HQ-3F</td><td>ERP</td><td>운영</td><td>test003</td><td>2024</td><td>2026-02-18 10:47:28</td><td>박변경</td></tr>
+            <tr><td>4</td><td>DESKTOP-0004</td><td>193.186.4.135</td><td>Window</td><td>10 Pro</td><td>HP</td><td>OptiPlex 7093</td><td>No</td><td>해외</td><td>중남미</td><td>-</td><td>HQ-4F</td><td>ERP</td><td>운영</td><td>test001</td><td>2025</td><td>2026-02-16 10:47:28</td><td>박변경</td></tr>
+            <tr><td>5</td><td>DESKTOP-0005</td><td>193.186.4.136</td><td>Linux</td><td>RedHat 1.0.2</td><td>DELL</td><td>OptiPlex 7094</td><td>Yes</td><td>국내</td><td>구미사업장</td><td>-</td><td>HQ-5F</td><td>ERP</td><td>운영</td><td>test001</td><td>2020</td><td>2026-02-18 10:47:28</td><td>박변경</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="asset-history-pagination">
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <select class="form-select form-select-sm asset-history-rows">
+            <option value="10">10 rows</option>
+            <option value="20">20 rows</option>
+            <option value="50">50 rows</option>
+          </select>
+          <span class="asset-history-pagination-info">전체 158개 중 1-20 표시 (필터됨)</span>
+        </div>
+        <div class="d-flex align-items-center gap-1">
+          <button type="button" class="btn btn-sm btn-outline-secondary" aria-label="처음">«</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary" aria-label="이전">‹</button>
+          <button type="button" class="btn btn-sm btn-primary">1</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary">2</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary" aria-label="다음">›</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary" aria-label="마지막">»</button>
+        </div>
+      </div>
+    </template>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="components/load.js"></script>
+  <script>
+    (function () {
+      document.addEventListener('DOMContentLoaded', function () {
+        var alertEl = document.querySelector('.asset-alert');
+        var closeBtn = document.querySelector('.asset-alert-close');
+        if (alertEl && closeBtn) {
+          closeBtn.addEventListener('click', function () { alertEl.classList.add('d-none'); });
+        }
+
+        var filterTrigger = document.getElementById('asset-filter-trigger');
+        var filterPanel = document.getElementById('asset-filter-panel');
+        var panelReset = document.getElementById('asset-filter-panel-reset');
+        var panelCancel = document.getElementById('asset-filter-panel-cancel');
+        var panelApply = document.getElementById('asset-filter-panel-apply');
+
+        function openFilterPanel() {
+          if (filterPanel) {
+            filterPanel.classList.remove('d-none');
+            if (filterTrigger) filterTrigger.setAttribute('aria-expanded', 'true');
+          }
+        }
+        function closeFilterPanel() {
+          if (filterPanel) {
+            filterPanel.classList.add('d-none');
+            if (filterTrigger) filterTrigger.setAttribute('aria-expanded', 'false');
+          }
+        }
+
+        if (filterTrigger && filterPanel) {
+          filterTrigger.addEventListener('click', function (e) {
+            e.stopPropagation();
+            if (filterPanel.classList.contains('d-none')) openFilterPanel();
+            else closeFilterPanel();
+          });
+        }
+        if (panelCancel) panelCancel.addEventListener('click', closeFilterPanel);
+        if (panelApply) panelApply.addEventListener('click', closeFilterPanel);
+        if (panelReset) {
+          panelReset.addEventListener('click', function () {
+            var rAll = document.getElementById('filterRegionAll');
+            var vAll = document.getElementById('filterVMAll');
+            var site = document.getElementById('filterSite');
+            var serverName = document.getElementById('filterServerName');
+            if (rAll) rAll.checked = true;
+            if (vAll) vAll.checked = true;
+            if (site) site.selectedIndex = 0;
+            if (serverName) serverName.value = '';
+          });
+        }
+        document.addEventListener('click', function (e) {
+          if (filterPanel && !filterPanel.classList.contains('d-none') && filterTrigger && !filterPanel.contains(e.target) && !filterTrigger.contains(e.target)) {
+            closeFilterPanel();
+          }
+        });
+
+        var portletSection = document.getElementById('asset-portlet');
+        var portletToggle = document.getElementById('asset-portlet-toggle');
+        if (portletSection && portletToggle) {
+          portletToggle.addEventListener('click', function () {
+            portletSection.classList.toggle('collapsed');
+            portletToggle.setAttribute('aria-label', portletSection.classList.contains('collapsed') ? '포틀릿 펼치기' : '포틀릿 접기');
+          });
+        }
+
+      });
+    })();
+  </script>
+</body>
+</html>

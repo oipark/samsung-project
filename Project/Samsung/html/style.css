@@ -428,18 +428,33 @@ body {
 .asset-portlet-group:last-of-type { padding-right: 0; }
 .asset-portlet-group-title { font-size: 14px; font-weight: 700; color: var(--color-text-primary); margin: 0 0 10px 0; line-height: 19px; }
 .asset-portlet-boxes { display: flex; flex-wrap: nowrap !important; gap: 10px !important; align-items: stretch; min-width: 0; width: 100%; height: 95px; }
-.asset-portlet-box { flex: 1 1 0; min-width: 0 !important; overflow: hidden; min-height: 95px; background: var(--color-bg-subtle); border-radius: 8px; padding: 12px !important; display: flex; flex-direction: column; justify-content: flex-start; position: relative; border: 1px solid transparent; }
+.asset-portlet-box { flex: 1 1 0; min-width: 0 !important; overflow: hidden; min-height: 95px; background: var(--color-bg-subtle); border-radius: 8px; padding: 12px !important; display: flex; flex-direction: column; justify-content: flex-start; position: relative; border: 1px solid transparent; cursor: pointer; transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease; }
+.asset-portlet-box:hover { border-color: var(--color-primary-border); background: rgba(19, 40, 159, 0.06); }
 .asset-portlet-box-head { margin-bottom: 8px; min-height: 24px; gap: 4px; }
 .asset-portlet-box-label { font-size: 13px !important; color: var(--color-text-secondary); white-space: nowrap !important; overflow: hidden; text-overflow: ellipsis; }
 .asset-portlet-box-value { font-size: 22px !important; font-weight: 700; color: var(--color-text-primary); margin: 0; margin-top: auto; line-height: 1.2; white-space: nowrap !important; }
-.asset-portlet-box-active { background: var(--color-primary-10); border-color: var(--color-primary); }
+/* 액티브: 연한 파란 배경, 파란 테두리, 그림자, 숫자만 파란색, 라벨은 기존 색 유지 */
+.asset-portlet-box-active { background: var(--color-primary-10); border-color: var(--color-primary); box-shadow: 0 2px 8px rgba(19, 40, 159, 0.15); }
 .asset-portlet-box-active .asset-portlet-box-value { color: var(--color-primary); }
-.asset-portlet-box-check { color: var(--color-primary) !important; font-size: 24px !important; flex-shrink: 0; }
+.asset-portlet-box-active:hover { background: var(--color-primary-10); border-color: var(--color-primary); }
+/* 체크 아이콘: 비활성 시 숨김, 액티브 시에만 파란 원형 바탕 + 흰색 체크 */
+.asset-portlet-box-check { display: none; flex-shrink: 0; width: 24px; height: 24px; align-items: center; justify-content: center; font-size: 16px !important; color: #fff !important; background: var(--color-primary); border-radius: 50%; }
+.asset-portlet-box-active .asset-portlet-box-check { display: inline-flex; }
+/* 기타 OS 드롭다운: 액티브 시 체크 아이콘 동일 스타일(파란 원형 + 흰 체크) */
+.asset-portlet-box-extra.asset-portlet-box-active .asset-portlet-os-extra-check { display: inline-flex !important; width: 24px; height: 24px; align-items: center; justify-content: center; font-size: 16px !important; color: #fff !important; background: var(--color-primary); border-radius: 50%; }
 .asset-portlet-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 .asset-portlet-dot-domestic { background: var(--color-primary); }
 .asset-portlet-dot-overseas { background: var(--color-status-light-green); }
 .asset-portlet-os-logo { width: 20px; height: 20px; object-fit: contain; flex-shrink: 0; }
 .asset-portlet-box-chevron { position: absolute; right: 8px; bottom: 8px; font-size: 20px; color: var(--color-text-muted); }
+/* 기타 OS 드롭다운: 트리거는 카드 전체, 메뉴는 시안(Figma 383-2085) 기준 패딩·둥글기·그림자 */
+#asset-portlet-os-extra-wrap.dropdown { position: relative; z-index: 1050; }
+.asset-portlet-os-extra-trigger { cursor: pointer; outline: none; }
+.asset-portlet-os-extra-trigger:hover { background: transparent !important; }
+.asset-portlet-os-dropdown-menu { position: fixed !important; min-width: 140px; padding: 10px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); border: 1px solid var(--color-border-light); margin-top: 4px; z-index: 1100; }
+.asset-portlet-os-dropdown-menu .dropdown-item { padding: 10px 12px; border-radius: 6px; font-size: 14px; color: var(--color-text-primary); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.asset-portlet-os-dropdown-menu .dropdown-item:hover { background: var(--color-primary-10); color: var(--color-primary); }
+.asset-portlet-os-dropdown-menu .dropdown-item.active { background: var(--color-primary-10); color: var(--color-primary); font-weight: 600; }
 .asset-portlet-divider { width: 1px; min-width: 1px; background: var(--color-border-light); align-self: stretch; margin: 0 12px !important; }
 .asset-portlet-card { align-items: center; flex-wrap: nowrap; }
 .asset-portlet-toggle { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex-shrink: 0; margin-left: auto; margin-right: 12px; align-self: center; color: var(--color-text-muted); text-decoration: none !important; }
@@ -465,22 +480,64 @@ body {
 .asset-filter-trigger-btn .asset-filter-icon { color: inherit; }
 .asset-filter-label { font-size: 16px; font-weight: 700; color: inherit; }
 .asset-filter-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 6px; background: var(--color-primary); color: var(--color-white-100); font-size: 14px; font-weight: 600; border-radius: var(--radius-badge); }
+/* 동적 필터 태그 컨테이너 — 트리거 버튼 바로 옆, Figma 376-2667 */
+.asset-filter-tags-container { display: flex; flex-wrap: wrap; gap: 12px; flex: 1; align-items: center; min-width: 0; margin-right: 12px; }
 .asset-filter-chips-wrap { display: flex; flex-wrap: wrap; gap: 12px; flex: 1; align-items: center; min-width: 0; margin-right: 12px; }
 .filter-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--color-primary); border-radius: 6px; font-size: 14px; color: var(--color-text-primary); background: #fff; }
 .filter-chip .text-custom-primary { color: var(--color-primary); }
 .filter-chip-close { font-size: 18px; cursor: pointer; color: var(--color-primary); flex-shrink: 0; }
 .filter-chip-close:hover { opacity: 0.8; }
+/* 필터 초기화 버튼 — 우측 끝 고정(margin-left: auto), Figma 시안 */
 .asset-filter-reset-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; margin-left: auto; background: transparent; border: none; color: var(--color-primary); cursor: pointer; padding: 6px 0; }
 .asset-filter-reset-btn:hover { color: var(--color-primary); opacity: 0.9; }
 .asset-filter-reset-btn .material-symbols-outlined { font-size: 18px; }
 
-/* 상세 필터 팝업 패널 */
-.asset-filter-panel { position: absolute; left: 20px; top: 100%; margin-top: 4px; min-width: 420px; max-width: 520px; background: var(--color-bg-white); border: 1px solid var(--color-border-card); border-radius: var(--radius-card); box-shadow: var(--shadow-card); z-index: 1050; }
+/* 상세 필터 팝업 패널 — Figma 383-2087 (3단 그리드, 구분선, 커스텀 라디오, 운영부서 검색 드롭다운) */
+.asset-filter-panel { position: absolute; left: 20px; top: 100%; margin-top: 4px; width: 100%; max-width: 1213px; background: var(--color-bg-white); border: 1px solid var(--color-border-card); border-radius: var(--radius-card); box-shadow: var(--shadow-card); z-index: 1050; }
 .asset-filter-panel-inner { padding: 20px; }
 .asset-filter-panel-body { margin-bottom: 16px; }
-.asset-filter-field-label { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 8px; }
-.asset-filter-panel-footer { display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding-top: 16px; border-top: 1px solid var(--color-border-light); }
-.asset-filter-panel-btn { font-size: 14px; }
+.asset-filter-panel-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; }
+.asset-filter-panel-col { padding: 0 24px; border-right: 1px dashed var(--color-border-light); }
+.asset-filter-panel-col:last-child { border-right: none; padding-right: 0; }
+.asset-filter-panel-col:first-child { padding-left: 0; }
+.asset-filter-field { display: flex; align-items: center; gap: 3px; margin-bottom: 10px; min-height: 40px; }
+.asset-filter-field:last-child { margin-bottom: 0; }
+.asset-filter-field-label { flex-shrink: 0; width: 90px; margin: 0; font-size: 14px; font-weight: 600; color: var(--color-text-primary); }
+.asset-filter-field .asset-filter-input { flex: 1; min-width: 0; }
+.asset-filter-field .asset-filter-radio-group { flex: 1; min-width: 0; }
+.asset-filter-field .asset-filter-dept-dropdown { flex: 1; min-width: 0; }
+.asset-filter-input { width: 100%; height: 40px; font-size: 14px; border: 1px solid var(--color-border-light); border-radius: 4px; }
+/* 커스텀 라디오 — 파란 테두리/텍스트 버튼 형태 */
+.asset-filter-radio-group { display: flex; flex-wrap: nowrap; gap: 8px; align-items: center; width: 100%; min-width: 0; }
+.asset-filter-radio-btn { margin: 0; cursor: pointer; flex: 1; min-width: 0; }
+.asset-filter-radio-btn input { position: absolute; opacity: 0; pointer-events: none; }
+/* 비선택: 연한 회색 테두리, 흰 배경, 라디오 원은 파란 테두리+흰 채움 */
+.asset-filter-radio-btn span { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-width: 0; width: 100%; height: 40px; padding: 0 8px; font-size: 14px; color: #333; border: 1px solid #a0a0a0; border-radius: 8px; background: #fff; transition: border-color .15s, background .15s; box-sizing: border-box; }
+.asset-filter-radio-btn span::before { content: ''; flex-shrink: 0; width: 16px; height: 16px; border: 2px solid var(--color-primary); border-radius: 50%; background: #fff; transition: border-color .15s, background .15s; }
+/* 선택(활성): 흰 배경 + 파란 실선 테두리 + 검정 굵은 글씨 — 선택 여부 명확히 구분 */
+.asset-filter-radio-btn input:checked + span { border: 2px solid var(--color-primary); color: #000; background: #fff; font-weight: 700; }
+.asset-filter-radio-btn input:checked + span::before { border-color: var(--color-primary); background: radial-gradient(circle 4px at 50% 50%, var(--color-primary) 0%, var(--color-primary) 4px, #fff 4px); }
+.asset-filter-radio-btn:hover span { border-color: #a0a0a0; background: #f5f5f5; }
+.asset-filter-radio-btn:hover span::before { border-color: var(--color-primary); }
+.asset-filter-radio-btn input:checked + span:hover { border-color: var(--color-primary); background: #fff; color: #000; font-weight: 700; }
+/* 필터 셀렉트/인풋: 선택된 값이 있을 때 동일하게 흰 배경 + 파란 테두리 + 굵은 글씨 */
+.asset-filter-input.is-selected { background: #fff !important; border: 2px solid var(--color-primary) !important; font-weight: 700 !important; color: #000 !important; }
+/* 푸터: 필터 초기화 왼쪽, 취소·필터 적용 오른쪽 */
+.asset-filter-panel-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--color-border-light); }
+.asset-filter-panel-footer-right { display: flex; align-items: center; gap: 8px; }
+.asset-filter-panel-btn { font-size: 14px; height: 32px; }
+/* 운영부서 검색형 커스텀 드롭다운 */
+.asset-filter-dept-dropdown { position: relative; }
+.asset-filter-dept-trigger { width: 100%; height: 40px; cursor: pointer; }
+.asset-filter-dept-chevron { font-size: 20px; color: var(--color-text-muted); flex-shrink: 0; }
+.asset-filter-dept-panel { position: absolute; left: 0; top: 100%; margin-top: 4px; min-width: 100%; width: 290px; max-width: 100%; background: #fff; border: 1px solid var(--color-border-light); border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.12); z-index: 1060; overflow: hidden; }
+.asset-filter-dept-search-wrap { display: flex; align-items: center; gap: 8px; padding: 10px; border-bottom: 1px solid var(--color-border-light); background: var(--color-bg-subtle); }
+.asset-filter-dept-search-icon { font-size: 20px; color: var(--color-text-muted); flex-shrink: 0; }
+.asset-filter-dept-search { flex: 1; border: 1px solid var(--color-border-light); border-radius: 4px; padding: 6px 10px; font-size: 14px; }
+.asset-filter-dept-list { max-height: 280px; overflow-y: auto; padding: 8px 0; }
+.asset-filter-dept-item { display: block; width: 100%; padding: 8px 12px; text-align: left; font-size: 14px; color: var(--color-text-primary); background: none; border: none; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.asset-filter-dept-item:hover { background: var(--color-primary-10); color: var(--color-primary); }
+.asset-filter-dept-item.active { background: var(--color-primary-10); color: var(--color-primary); font-weight: 600; }
 
 /* ========== 버튼 컴포넌트 — Figma 323-3588 Button/Button-34px ========== */
 .btn-ds { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 34px; min-width: 60px; padding: 7.5px 12px; border-radius: 4px; font-size: 14px; line-height: 1; font-family: var(--font-pretendard); border: 1px solid transparent; cursor: pointer; box-sizing: border-box; white-space: nowrap; }
@@ -509,8 +566,14 @@ body {
 .asset-table-responsive .asset-table th,
 .asset-table-responsive .asset-table td { white-space: nowrap; }
 .asset-table-thead { background: var(--color-bg-subtle) !important; }
-.asset-table-th { height: 40px; padding: 10px 15px; font-size: 14px; font-weight: 600; color: var(--color-text-primary); border-bottom: 1px solid var(--color-border-light); vertical-align: middle; }
-.asset-table-td { height: 56px; padding: 0 15px; font-size: 14px; color: var(--color-text-primary); border-bottom: 1px solid var(--color-border-light); vertical-align: middle; }
+/* Bootstrap .table>:not(caption)>*>* 패딩 덮어쓰기 */
+.asset-table-th { height: 40px; padding: 0 10px !important; font-size: 14px; font-weight: 600; color: var(--color-text-primary); border-bottom: 1px solid rgba(0, 0, 0, 0.2); vertical-align: middle; box-sizing: border-box; }
+.asset-table-td { height: 56px; padding: 0 10px !important; font-size: 14px; color: var(--color-text-primary); border-bottom: 1px solid rgba(0, 0, 0, 0.2); vertical-align: middle; box-sizing: border-box; }
+/* 얼룩무늬(Zebra): 짝수 행 연한 회색, 홀수 행 흰색 */
+.asset-table-tbody tr:nth-child(odd) td { background: #fff; }
+.asset-table-tbody tr:nth-child(even) td { background: var(--color-black-4); }
+/* 선택된 행: 연한 파란 배경으로 하이라이트(얼룩무늬 덮어씀) */
+.asset-table-row-selected td { background: var(--color-primary-10) !important; }
 /* 서버 명 컬럼(3번째) — 본문만 Status Blue, 클릭 시 상세 팝업 */
 .asset-table-tbody tr td:nth-child(3) { color: var(--color-status-blue); cursor: pointer; }
 .asset-table-tbody tr td:nth-child(3):hover { text-decoration: underline; }
@@ -529,10 +592,10 @@ body {
 .custom-checkbox { position: absolute; opacity: 0; width: 16px; height: 16px; margin: 0; cursor: pointer; }
 .custom-checkbox-box { position: relative; width: 16px; height: 16px; border: 2px solid var(--color-border); border-radius: 4px; background: var(--color-bg-white); transition: border-color 0.15s, background 0.15s; box-sizing: border-box; }
 .custom-checkbox:checked + .custom-checkbox-box { background: var(--color-primary); border-color: var(--color-primary); }
-.custom-checkbox:checked + .custom-checkbox-box::after { content: ''; position: absolute; left: 5px; top: 1px; width: 5px; height: 9px; border: solid var(--color-white-100); border-width: 0 2px 2px 0; transform: rotate(45deg); box-sizing: border-box; }
+.custom-checkbox:checked + .custom-checkbox-box::after { content: ''; position: absolute; left: 50%; top: 50%; width: 5px; height: 9px; border: solid var(--color-white-100); border-width: 0 2px 2px 0; transform: translate(-50%, -50%) rotate(45deg); margin-top: -1px; box-sizing: border-box; }
 .custom-checkbox-wrap { width: 16px; height: 16px; }
 .custom-checkbox:indeterminate + .custom-checkbox-box { background: var(--color-primary); border-color: var(--color-primary); }
-.custom-checkbox:indeterminate + .custom-checkbox-box::after { content: ''; position: absolute; left: 2px; top: 6px; width: 10px; height: 2px; background: var(--color-white-100); }
+.custom-checkbox:indeterminate + .custom-checkbox-box::after { content: ''; position: absolute; left: 50%; top: 50%; width: 10px; height: 2px; transform: translate(-50%, -50%); background: var(--color-white-100); }
 
 /* 페이지네이션 */
 .asset-pagination { display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; border-top: 1px solid var(--color-border-light); flex-shrink: 0; }
@@ -541,9 +604,10 @@ body {
 .asset-pagination-info { font-size: 14px; color: var(--color-text-secondary); }
 .asset-pagination-right { display: flex; align-items: center; }
 .asset-pagination-nav { display: flex; align-items: center; gap: 4px; }
-.asset-pagination-btn { padding: 4px 8px; font-size: 14px; color: var(--color-text-secondary); text-decoration: none; min-width: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.asset-pagination-btn { padding: 4px 8px; font-size: 14px; color: var(--color-text-primary); text-decoration: none; min-width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer; box-sizing: border-box; }
 .asset-pagination-btn:hover { color: var(--color-primary); }
-.asset-pagination-btn.active { color: var(--color-primary); font-weight: 700; }
+.asset-pagination-btn.active { background: var(--color-primary); color: #fff !important; font-weight: 700; }
+.asset-pagination-btn.active:hover { background: var(--color-primary); color: #fff !important; }
 .asset-pagination-btn .material-symbols-outlined { font-size: 20px; }
 
 /* ========== 슬림 스크롤바 (웹킷 + 파이어폭스) ========== */

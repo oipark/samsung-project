@@ -42,28 +42,30 @@
                   <div class="asset-portlet-group asset-portlet-group-region">
                     <h3 class="asset-portlet-group-title">지역별 자산 현황</h3>
                     <div class="asset-portlet-boxes d-flex flex-nowrap gap-3">
-                      <div class="asset-portlet-box asset-portlet-box-active flex-grow-1">
+                      <div class="asset-portlet-box asset-portlet-box-active flex-grow-1" data-portlet-group="region" data-portlet-value="전체" tabindex="0" role="button">
                         <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
                           <span class="asset-portlet-box-label">전체</span>
-                          <span class="material-symbols-outlined asset-portlet-box-check" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                          <span class="material-symbols-outlined asset-portlet-box-check" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">check</span>
                         </div>
                         <p class="asset-portlet-box-value">500</p>
                       </div>
-                      <div class="asset-portlet-box flex-grow-1">
+                      <div class="asset-portlet-box flex-grow-1" data-portlet-group="region" data-portlet-value="국내" tabindex="0" role="button">
                         <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
                           <span class="d-flex align-items-center gap-2">
                             <span class="asset-portlet-dot asset-portlet-dot-domestic"></span>
                             <span class="asset-portlet-box-label">국내</span>
                           </span>
+                          <span class="material-symbols-outlined asset-portlet-box-check" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">check</span>
                         </div>
                         <p class="asset-portlet-box-value">420</p>
                       </div>
-                      <div class="asset-portlet-box flex-grow-1">
+                      <div class="asset-portlet-box flex-grow-1" data-portlet-group="region" data-portlet-value="해외" tabindex="0" role="button">
                         <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
                           <span class="d-flex align-items-center gap-2">
                             <span class="asset-portlet-dot asset-portlet-dot-overseas"></span>
                             <span class="asset-portlet-box-label">해외</span>
                           </span>
+                          <span class="material-symbols-outlined asset-portlet-box-check" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">check</span>
                         </div>
                         <p class="asset-portlet-box-value">80</p>
                       </div>
@@ -74,33 +76,45 @@
                   <div class="asset-portlet-group asset-portlet-group-os">
                     <h3 class="asset-portlet-group-title">OS별 자산 현황</h3>
                     <div class="asset-portlet-boxes d-flex flex-nowrap gap-3">
-                      <div class="asset-portlet-box flex-grow-1">
+                      <div class="asset-portlet-box flex-grow-1" data-portlet-group="os" data-portlet-value="Window" tabindex="0" role="button">
                         <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
                           <span class="asset-portlet-box-label">Window</span>
+                          <span class="material-symbols-outlined asset-portlet-box-check" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">check</span>
                           <img src="img/window_logo.png" alt="" class="asset-portlet-os-logo" />
                         </div>
                         <p class="asset-portlet-box-value">200</p>
                       </div>
-                      <div class="asset-portlet-box flex-grow-1">
+                      <div class="asset-portlet-box flex-grow-1" data-portlet-group="os" data-portlet-value="Linux" tabindex="0" role="button">
                         <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
                           <span class="asset-portlet-box-label">Linux</span>
+                          <span class="material-symbols-outlined asset-portlet-box-check" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">check</span>
                           <img src="img/Linux_logo.png" alt="" class="asset-portlet-os-logo" />
                         </div>
                         <p class="asset-portlet-box-value">200</p>
                       </div>
-                      <div class="asset-portlet-box flex-grow-1">
+                      <div class="asset-portlet-box flex-grow-1" data-portlet-group="os" data-portlet-value="Solaris" tabindex="0" role="button">
                         <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
                           <span class="asset-portlet-box-label">Solaris</span>
+                          <span class="material-symbols-outlined asset-portlet-box-check" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">check</span>
                           <img src="img/Oracle_logo.png" alt="" class="asset-portlet-os-logo" />
                         </div>
                         <p class="asset-portlet-box-value">150</p>
                       </div>
-                      <div class="asset-portlet-box asset-portlet-box-extra flex-grow-1">
-                        <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
-                          <span class="asset-portlet-box-label">기타 OS</span>
-                        </div>
-                        <p class="asset-portlet-box-value">50</p>
-                        <span class="material-symbols-outlined asset-portlet-box-chevron">expand_more</span>
+                      <div class="asset-portlet-box asset-portlet-box-extra flex-grow-1 dropdown" id="asset-portlet-os-extra-wrap">
+                        <button type="button" class="asset-portlet-os-extra-trigger btn w-100 h-100 text-start border-0 bg-transparent p-0 d-flex flex-column position-relative" id="asset-portlet-os-extra-trigger" data-bs-toggle="dropdown" data-bs-auto-close="true" data-bs-boundary="viewport" data-bs-reference="toggle" aria-expanded="false" aria-haspopup="true">
+                          <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
+                            <span class="asset-portlet-box-label" id="asset-portlet-os-extra-label">기타 OS</span>
+                            <span class="material-symbols-outlined asset-portlet-box-check asset-portlet-os-extra-check d-none" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">check</span>
+                          </div>
+                          <p class="asset-portlet-box-value mb-0 mt-auto" id="asset-portlet-os-extra-value">50</p>
+                          <span class="material-symbols-outlined asset-portlet-box-chevron">expand_more</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end asset-portlet-os-dropdown-menu" id="asset-portlet-os-extra-menu" aria-labelledby="asset-portlet-os-extra-trigger">
+                          <li><button type="button" class="dropdown-item asset-portlet-os-dropdown-item d-flex justify-content-between align-items-center" data-label="AIX" data-value="20">AIX<span>20</span></button></li>
+                          <li><button type="button" class="dropdown-item asset-portlet-os-dropdown-item d-flex justify-content-between align-items-center" data-label="MacOS" data-value="15">MacOS<span>15</span></button></li>
+                          <li><button type="button" class="dropdown-item asset-portlet-os-dropdown-item d-flex justify-content-between align-items-center" data-label="Android" data-value="10">Android<span>10</span></button></li>
+                          <li><button type="button" class="dropdown-item asset-portlet-os-dropdown-item d-flex justify-content-between align-items-center" data-label="iOS" data-value="5">iOS<span>5</span></button></li>
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -109,21 +123,24 @@
                   <div class="asset-portlet-group asset-portlet-group-env">
                     <h3 class="asset-portlet-group-title">환경별 자산 현황</h3>
                     <div class="asset-portlet-boxes d-flex flex-nowrap gap-3">
-                      <div class="asset-portlet-box flex-grow-1">
+                      <div class="asset-portlet-box flex-grow-1" data-portlet-group="env" data-portlet-value="PRD" tabindex="0" role="button">
                         <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
                           <span class="asset-portlet-box-label">PRD</span>
+                          <span class="material-symbols-outlined asset-portlet-box-check" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">check</span>
                         </div>
                         <p class="asset-portlet-box-value">250</p>
                       </div>
-                      <div class="asset-portlet-box flex-grow-1">
+                      <div class="asset-portlet-box flex-grow-1" data-portlet-group="env" data-portlet-value="DEV" tabindex="0" role="button">
                         <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
                           <span class="asset-portlet-box-label">DEV</span>
+                          <span class="material-symbols-outlined asset-portlet-box-check" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">check</span>
                         </div>
                         <p class="asset-portlet-box-value">200</p>
                       </div>
-                      <div class="asset-portlet-box flex-grow-1">
+                      <div class="asset-portlet-box flex-grow-1" data-portlet-group="env" data-portlet-value="STG" tabindex="0" role="button">
                         <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
                           <span class="asset-portlet-box-label">STG</span>
+                          <span class="material-symbols-outlined asset-portlet-box-check" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">check</span>
                         </div>
                         <p class="asset-portlet-box-value">50</p>
                       </div>
@@ -147,41 +164,30 @@
                   </button>
                 </li>
                 <li class="asset-filter-bar-item asset-filter-right-wrap d-flex align-items-center flex-grow-1 min-w-0">
-                  <div class="asset-filter-chips-wrap">
-                    <span class="filter-chip">국내/해외 : <strong class="text-custom-primary">전체</strong> <span class="material-symbols-outlined filter-chip-close">close</span></span>
-                    <span class="filter-chip">OS : <strong class="text-custom-primary">Window</strong> <span class="material-symbols-outlined filter-chip-close">close</span></span>
-                  </div>
-                  <button type="button" class="asset-filter-reset-btn">
+                  <div class="asset-filter-tags-container asset-filter-chips-wrap" id="asset-filter-tags-container"></div>
+                  <button type="button" class="asset-filter-reset-btn" id="asset-filter-reset-btn" aria-label="전체 필터 초기화">
                     <span class="material-symbols-outlined">refresh</span>
                     필터 초기화
                   </button>
                 </li>
               </ul>
-              <!-- 상세 필터 팝업 패널 -->
+              <!-- 상세 필터 팝업 패널 (Figma 383-2087: 3단 그리드, 운영부서 검색 드롭다운) -->
               <div class="asset-filter-panel d-none" id="asset-filter-panel" role="dialog" aria-label="상세 필터">
                 <div class="asset-filter-panel-inner">
-                  <div class="asset-filter-panel-body">
-                    <div class="row g-3">
-                      <div class="col-12 col-md-6">
-                        <label class="form-label asset-filter-field-label">국내/해외</label>
-                        <div class="d-flex gap-3">
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="filterRegion" id="filterRegionAll" value="전체" checked />
-                            <label class="form-check-label" for="filterRegionAll">전체</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="filterRegion" id="filterRegionDomestic" value="국내" />
-                            <label class="form-check-label" for="filterRegionDomestic">국내</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="filterRegion" id="filterRegionOverseas" value="해외" />
-                            <label class="form-check-label" for="filterRegionOverseas">해외</label>
-                          </div>
+                  <div class="asset-filter-panel-body asset-filter-panel-grid">
+                    <!-- 컬럼 1 -->
+                    <div class="asset-filter-panel-col">
+                      <div class="asset-filter-field">
+                        <label class="asset-filter-field-label">국내/해외</label>
+                        <div class="asset-filter-radio-group" role="radiogroup" aria-label="국내/해외">
+                          <label class="asset-filter-radio-btn"><input type="radio" name="filterRegion" value="전체" checked /><span>전체</span></label>
+                          <label class="asset-filter-radio-btn"><input type="radio" name="filterRegion" value="국내" /><span>국내</span></label>
+                          <label class="asset-filter-radio-btn"><input type="radio" name="filterRegion" value="해외" /><span>해외</span></label>
                         </div>
                       </div>
-                      <div class="col-12 col-md-6">
-                        <label class="form-label asset-filter-field-label" for="filterSite">사업장/권역</label>
-                        <select class="form-select form-select-sm" id="filterSite" name="filterSite">
+                      <div class="asset-filter-field">
+                        <label class="asset-filter-field-label" for="filterSite">사업장/권역</label>
+                        <select class="form-select form-select-sm asset-filter-input" id="filterSite" name="filterSite">
                           <option value="">전체</option>
                           <option value="수원사업장">수원사업장</option>
                           <option value="구미사업장">구미사업장</option>
@@ -190,33 +196,108 @@
                           <option value="동남아">동남아</option>
                         </select>
                       </div>
-                      <div class="col-12 col-md-6">
-                        <label class="form-label asset-filter-field-label" for="filterServerName">서버 명</label>
-                        <input type="text" class="form-control form-control-sm" id="filterServerName" name="filterServerName" placeholder="서버 명 입력" />
+                      <div class="asset-filter-field">
+                        <label class="asset-filter-field-label" for="filterCorp">사업부/법인</label>
+                        <select class="form-select form-select-sm asset-filter-input" id="filterCorp" name="filterCorp">
+                          <option value="">전체</option>
+                        </select>
                       </div>
-                      <div class="col-12 col-md-6">
-                        <label class="form-label asset-filter-field-label">VM 여부</label>
-                        <div class="d-flex gap-3">
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="filterVM" id="filterVMAll" value="" checked />
-                            <label class="form-check-label" for="filterVMAll">전체</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="filterVM" id="filterVMYes" value="Yes" />
-                            <label class="form-check-label" for="filterVMYes">Yes</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="filterVM" id="filterVMNo" value="No" />
-                            <label class="form-check-label" for="filterVMNo">No</label>
+                      <div class="asset-filter-field">
+                        <label class="asset-filter-field-label" for="filterServerName">서버명</label>
+                        <input type="text" class="form-control form-control-sm asset-filter-input" id="filterServerName" name="filterServerName" placeholder="서버 명 입력" />
+                      </div>
+                      <div class="asset-filter-field">
+                        <label class="asset-filter-field-label" for="filterIP">IP</label>
+                        <input type="text" class="form-control form-control-sm asset-filter-input" id="filterIP" name="filterIP" placeholder="IP 입력" />
+                      </div>
+                      <div class="asset-filter-field">
+                        <label class="asset-filter-field-label" for="filterOS">OS</label>
+                        <select class="form-select form-select-sm asset-filter-input" id="filterOS" name="filterOS">
+                          <option value="">전체</option>
+                          <option value="Window">Window</option>
+                          <option value="Linux">Linux</option>
+                          <option value="Solaris">Solaris</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="asset-filter-panel-col">
+                      <div class="asset-filter-field">
+                        <label class="asset-filter-field-label">VM 여부</label>
+                        <div class="asset-filter-radio-group" role="radiogroup" aria-label="VM 여부">
+                          <label class="asset-filter-radio-btn"><input type="radio" name="filterVM" value="" checked /><span>전체</span></label>
+                          <label class="asset-filter-radio-btn"><input type="radio" name="filterVM" value="Yes" /><span>Yes</span></label>
+                          <label class="asset-filter-radio-btn"><input type="radio" name="filterVM" value="No" /><span>No</span></label>
+                        </div>
+                      </div>
+                      <div class="asset-filter-field">
+                        <label class="asset-filter-field-label" for="filterUsage">용도</label>
+                        <select class="form-select form-select-sm asset-filter-input" id="filterUsage" name="filterUsage">
+                          <option value="">전체</option>
+                          <option value="개발">개발</option>
+                          <option value="운영">운영</option>
+                          <option value="테스트">테스트</option>
+                        </select>
+                      </div>
+                      <div class="asset-filter-field">
+                        <label class="asset-filter-field-label" for="filterLocation">서버위치</label>
+                        <input type="text" class="form-control form-control-sm asset-filter-input" id="filterLocation" name="filterLocation" placeholder="서버 위치 입력" />
+                      </div>
+                      <div class="asset-filter-field">
+                        <label class="asset-filter-field-label" for="filterDept">담당부서</label>
+                        <input type="text" class="form-control form-control-sm asset-filter-input" id="filterDept" name="filterDept" placeholder="담당부서 입력" />
+                      </div>
+                      <div class="asset-filter-field">
+                        <label class="asset-filter-field-label" for="filterManagerName">담당자 명</label>
+                        <input type="text" class="form-control form-control-sm asset-filter-input" id="filterManagerName" name="filterManagerName" placeholder="담당자 명 입력" />
+                      </div>
+                      <div class="asset-filter-field">
+                        <label class="asset-filter-field-label" for="filterSystem">연계시스템</label>
+                        <input type="text" class="form-control form-control-sm asset-filter-input" id="filterSystem" name="filterSystem" placeholder="연계시스템 입력" />
+                      </div>
+                    </div>
+                    <div class="asset-filter-panel-col">
+                      <div class="asset-filter-field">
+                        <label class="asset-filter-field-label">운영부서</label>
+                        <div class="asset-filter-dept-dropdown" id="asset-filter-dept-dropdown">
+                          <button type="button" class="asset-filter-dept-trigger btn form-select form-select-sm asset-filter-input text-start d-flex align-items-center justify-content-between" id="asset-filter-dept-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="운영부서 선택">
+                            <span class="asset-filter-dept-trigger-text">선택안함</span>
+                            <span class="material-symbols-outlined asset-filter-dept-chevron">expand_more</span>
+                          </button>
+                          <div class="asset-filter-dept-panel d-none" id="asset-filter-dept-panel" role="listbox">
+                            <div class="asset-filter-dept-search-wrap" id="asset-filter-dept-search-wrap">
+                              <span class="material-symbols-outlined asset-filter-dept-search-icon">search</span>
+                              <input type="text" class="form-control form-control-sm asset-filter-dept-search" id="asset-filter-dept-search" placeholder="부서 ID, 부서 명" autocomplete="off" aria-label="부서 검색" />
+                            </div>
+                            <div class="asset-filter-dept-list custom-scrollbar" id="asset-filter-dept-list">
+                              <button type="button" class="asset-filter-dept-item active" role="option" data-code="" data-name="선택안함">선택안함</button>
+                              <button type="button" class="asset-filter-dept-item" role="option" data-code="00030170" data-name="그룹사정보지원사업부">00030170 그룹사정보지원사업부</button>
+                              <button type="button" class="asset-filter-dept-item" role="option" data-code="00030080" data-name="서비스IT사업부">00030080 서비스IT사업부</button>
+                              <button type="button" class="asset-filter-dept-item" role="option" data-code="00050310" data-name="경영지원실">00050310 경영지원실</button>
+                              <button type="button" class="asset-filter-dept-item" role="option" data-code="00030100" data-name="디지털기술센터">00030100 디지털기술센터</button>
+                              <button type="button" class="asset-filter-dept-item" role="option" data-code="00050050" data-name="판매시스템실">00050050 판매시스템실</button>
+                              <button type="button" class="asset-filter-dept-item" role="option" data-code="00071150" data-name="컨설팅/솔루션기획팀">00071150 컨설팅/솔루션기획팀</button>
+                              <button type="button" class="asset-filter-dept-item" role="option" data-code="00050120" data-name="네트웍서비스실">00050120 네트웍서비스실</button>
+                              <button type="button" class="asset-filter-dept-item" role="option" data-code="00050130" data-name="컨설팅지원실">00050130 컨설팅지원실</button>
+                            </div>
                           </div>
                         </div>
+                      </div>
+                      <div class="asset-filter-field">
+                        <label class="asset-filter-field-label" for="filterOperatorName">운영자 명</label>
+                        <input type="text" class="form-control form-control-sm asset-filter-input" id="filterOperatorName" name="filterOperatorName" placeholder="운영자 명 입력" />
+                      </div>
+                      <div class="asset-filter-field">
+                        <label class="asset-filter-field-label" for="filterIRP">IRP 코드</label>
+                        <input type="text" class="form-control form-control-sm asset-filter-input" id="filterIRP" name="filterIRP" placeholder="IRP 코드 입력" />
                       </div>
                     </div>
                   </div>
                   <div class="asset-filter-panel-footer">
-                    <button type="button" class="btn btn-outline-secondary btn-sm asset-filter-panel-btn" id="asset-filter-panel-reset">필터 초기화</button>
-                    <button type="button" class="btn btn-outline-primary btn-sm asset-filter-panel-btn" id="asset-filter-panel-cancel">취소</button>
-                    <button type="button" class="btn btn-primary btn-sm asset-filter-panel-btn" id="asset-filter-panel-apply">필터 적용</button>
+                    <button type="button" class="btn-ds btn-ds-2nd" id="asset-filter-panel-reset">필터 초기화</button>
+                    <div class="asset-filter-panel-footer-right">
+                      <button type="button" class="btn-ds btn-ds-2nd" id="asset-filter-panel-cancel">취소</button>
+                      <button type="button" class="btn-ds btn-ds-1st" id="asset-filter-panel-apply">필터 적용</button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -237,7 +318,7 @@
                   <table class="table table-borderless asset-table mb-0 text-nowrap">
                     <thead class="asset-table-thead sticky-top bg-white">
                       <tr>
-                        <th class="asset-table-th asset-table-th-check"><span class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" id="th-check-all" aria-label="전체 선택" /><span class="custom-checkbox-box"></span></span></th>
+                        <th class="asset-table-th asset-table-th-check"><label class="custom-checkbox-wrap" for="th-check-all"><input type="checkbox" class="custom-checkbox" id="th-check-all" aria-label="전체 선택" /><span class="custom-checkbox-box"></span></label></th>
                         <th class="asset-table-th">순번</th>
                         <th class="asset-table-th">서버 명</th>
                         <th class="asset-table-th">IP</th>
@@ -259,7 +340,7 @@
                     </thead>
                     <tbody class="asset-table-tbody">
                       <tr>
-                        <td class="asset-table-td"><span class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></span></td>
+                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
                         <td class="asset-table-td">1</td>
                         <td class="asset-table-td">DESKTOP-0001</td>
                         <td class="asset-table-td">193.186.4.132</td>
@@ -279,7 +360,7 @@
                         <td class="asset-table-td">2026-02-06 14:30</td>
                       </tr>
                       <tr>
-                        <td class="asset-table-td"><span class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></span></td>
+                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
                         <td class="asset-table-td">2</td>
                         <td class="asset-table-td">DESKTOP-0002</td>
                         <td class="asset-table-td">193.186.4.133</td>
@@ -299,7 +380,7 @@
                         <td class="asset-table-td">2026-02-05 11:20</td>
                       </tr>
                       <tr>
-                        <td class="asset-table-td"><span class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></span></td>
+                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
                         <td class="asset-table-td">3</td>
                         <td class="asset-table-td">DESKTOP-0003</td>
                         <td class="asset-table-td">193.186.4.134</td>
@@ -319,7 +400,7 @@
                         <td class="asset-table-td">2026-02-04 09:15</td>
                       </tr>
                       <tr>
-                        <td class="asset-table-td"><span class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></span></td>
+                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
                         <td class="asset-table-td">4</td>
                         <td class="asset-table-td">DESKTOP-0004</td>
                         <td class="asset-table-td">193.186.4.135</td>
@@ -339,7 +420,7 @@
                         <td class="asset-table-td">2026-02-03 16:00</td>
                       </tr>
                       <tr>
-                        <td class="asset-table-td"><span class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></span></td>
+                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
                         <td class="asset-table-td">5</td>
                         <td class="asset-table-td">DESKTOP-0005</td>
                         <td class="asset-table-td">193.186.4.136</td>
@@ -359,7 +440,7 @@
                         <td class="asset-table-td">2026-02-02 10:45</td>
                       </tr>
                       <tr>
-                        <td class="asset-table-td"><span class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></span></td>
+                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
                         <td class="asset-table-td">6</td>
                         <td class="asset-table-td">DESKTOP-0006</td>
                         <td class="asset-table-td">193.186.4.137</td>
@@ -379,7 +460,7 @@
                         <td class="asset-table-td">2026-02-01 14:20</td>
                       </tr>
                       <tr>
-                        <td class="asset-table-td"><span class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></span></td>
+                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
                         <td class="asset-table-td">7</td>
                         <td class="asset-table-td">DESKTOP-0007</td>
                         <td class="asset-table-td">193.186.4.138</td>
@@ -399,7 +480,7 @@
                         <td class="asset-table-td">2026-01-31 09:00</td>
                       </tr>
                       <tr>
-                        <td class="asset-table-td"><span class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></span></td>
+                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
                         <td class="asset-table-td">8</td>
                         <td class="asset-table-td">DESKTOP-0008</td>
                         <td class="asset-table-td">193.186.4.139</td>
@@ -418,18 +499,218 @@
                         <td class="asset-table-td">2024</td>
                         <td class="asset-table-td">2026-01-30 17:30</td>
                       </tr>
+                      <tr>
+                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
+                        <td class="asset-table-td">9</td>
+                        <td class="asset-table-td">DESKTOP-0009</td>
+                        <td class="asset-table-td">193.186.4.140</td>
+                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/window_logo.png" alt="" class="asset-os-icon" />Window</span></td>
+                        <td class="asset-table-td">11 Pro</td>
+                        <td class="asset-table-td">No</td>
+                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
+                        <td class="asset-table-td">수원사업장</td>
+                        <td class="asset-table-td">MX</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="웹개발팀 / 이영희 / Y.Lee">웹개발팀 / 이영희 / Y.Lee</div></td>
+                        <td class="asset-table-td">HQ-1F</td>
+                        <td class="asset-table-td">ERP</td>
+                        <td class="asset-table-td">개발</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="웹개발팀 / 이영희 / Y.Lee">웹개발팀 / 이영희 / Y.Lee</div></td>
+                        <td class="asset-table-td">IRP-009</td>
+                        <td class="asset-table-td">2023</td>
+                        <td class="asset-table-td">2026-01-29 11:15</td>
+                      </tr>
+                      <tr>
+                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
+                        <td class="asset-table-td">10</td>
+                        <td class="asset-table-td">DESKTOP-0010</td>
+                        <td class="asset-table-td">193.186.4.141</td>
+                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/Linux_logo.png" alt="" class="asset-os-icon" />Linux</span></td>
+                        <td class="asset-table-td">CentOS 7.9</td>
+                        <td class="asset-table-td">Yes</td>
+                        <td class="asset-table-td"><span class="region-badge region-badge-overseas">해외</span></td>
+                        <td class="asset-table-td">중동</td>
+                        <td class="asset-table-td">-</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="인프라팀 / 박준호 / J.Park">인프라팀 / 박준호 / J.Park</div></td>
+                        <td class="asset-table-td">HQ-2F</td>
+                        <td class="asset-table-td">MES</td>
+                        <td class="asset-table-td">운영</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="인프라팀 / 박준호 / J.Park">인프라팀 / 박준호 / J.Park</div></td>
+                        <td class="asset-table-td">IRP-010</td>
+                        <td class="asset-table-td">2022</td>
+                        <td class="asset-table-td">2026-01-28 15:45</td>
+                      </tr>
+                      <tr>
+                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
+                        <td class="asset-table-td">11</td>
+                        <td class="asset-table-td">DESKTOP-0011</td>
+                        <td class="asset-table-td">193.186.4.142</td>
+                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/window_logo.png" alt="" class="asset-os-icon" />Window</span></td>
+                        <td class="asset-table-td">10 Pro</td>
+                        <td class="asset-table-td">No</td>
+                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
+                        <td class="asset-table-td">구미사업장</td>
+                        <td class="asset-table-td">MX</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 최민수 / M.Choi">솔루션개발그룹 / 최민수 / M.Choi</div></td>
+                        <td class="asset-table-td">HQ-3F</td>
+                        <td class="asset-table-td">ERP</td>
+                        <td class="asset-table-td">테스트</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 최민수 / M.Choi">솔루션개발그룹 / 최민수 / M.Choi</div></td>
+                        <td class="asset-table-td">IRP-011</td>
+                        <td class="asset-table-td">2021</td>
+                        <td class="asset-table-td">2026-01-27 10:20</td>
+                      </tr>
+                      <tr>
+                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
+                        <td class="asset-table-td">12</td>
+                        <td class="asset-table-td">DESKTOP-0012</td>
+                        <td class="asset-table-td">193.186.4.143</td>
+                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/Oracle_logo.png" alt="" class="asset-os-icon" />Solaris</span></td>
+                        <td class="asset-table-td">11.4</td>
+                        <td class="asset-table-td">Yes</td>
+                        <td class="asset-table-td"><span class="region-badge region-badge-overseas">해외</span></td>
+                        <td class="asset-table-td">동남아</td>
+                        <td class="asset-table-td">-</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="미들웨어팀 / 정수진 / S.Jung">미들웨어팀 / 정수진 / S.Jung</div></td>
+                        <td class="asset-table-td">HQ-4F</td>
+                        <td class="asset-table-td">ERP</td>
+                        <td class="asset-table-td">운영</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="미들웨어팀 / 정수진 / S.Jung">미들웨어팀 / 정수진 / S.Jung</div></td>
+                        <td class="asset-table-td">IRP-012</td>
+                        <td class="asset-table-td">2020</td>
+                        <td class="asset-table-td">2026-01-26 14:00</td>
+                      </tr>
+                      <tr>
+                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
+                        <td class="asset-table-td">13</td>
+                        <td class="asset-table-td">DESKTOP-0013</td>
+                        <td class="asset-table-td">193.186.4.144</td>
+                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/Linux_logo.png" alt="" class="asset-os-icon" />Linux</span></td>
+                        <td class="asset-table-td">Ubuntu 22.04</td>
+                        <td class="asset-table-td">Yes</td>
+                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
+                        <td class="asset-table-td">수원사업장</td>
+                        <td class="asset-table-td">MX</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="웹개발팀 / 한지우 / J.Han">웹개발팀 / 한지우 / J.Han</div></td>
+                        <td class="asset-table-td">HQ-5F</td>
+                        <td class="asset-table-td">CRM</td>
+                        <td class="asset-table-td">개발</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="웹개발팀 / 한지우 / J.Han">웹개발팀 / 한지우 / J.Han</div></td>
+                        <td class="asset-table-td">IRP-013</td>
+                        <td class="asset-table-td">2024</td>
+                        <td class="asset-table-td">2026-01-25 09:30</td>
+                      </tr>
+                      <tr>
+                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
+                        <td class="asset-table-td">14</td>
+                        <td class="asset-table-td">DESKTOP-0014</td>
+                        <td class="asset-table-td">193.186.4.145</td>
+                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/window_logo.png" alt="" class="asset-os-icon" />Window</span></td>
+                        <td class="asset-table-td">11 Pro</td>
+                        <td class="asset-table-td">No</td>
+                        <td class="asset-table-td"><span class="region-badge region-badge-overseas">해외</span></td>
+                        <td class="asset-table-td">중남미</td>
+                        <td class="asset-table-td">-</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="인프라팀 / 오서연 / S.Oh">인프라팀 / 오서연 / S.Oh</div></td>
+                        <td class="asset-table-td">HQ-6F</td>
+                        <td class="asset-table-td">ERP</td>
+                        <td class="asset-table-td">운영</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="인프라팀 / 오서연 / S.Oh">인프라팀 / 오서연 / S.Oh</div></td>
+                        <td class="asset-table-td">IRP-014</td>
+                        <td class="asset-table-td">2023</td>
+                        <td class="asset-table-td">2026-01-24 16:45</td>
+                      </tr>
+                      <tr>
+                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
+                        <td class="asset-table-td">15</td>
+                        <td class="asset-table-td">DESKTOP-0015</td>
+                        <td class="asset-table-td">193.186.4.146</td>
+                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/window_logo.png" alt="" class="asset-os-icon" />Window</span></td>
+                        <td class="asset-table-td">11 Pro</td>
+                        <td class="asset-table-td">Yes</td>
+                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
+                        <td class="asset-table-td">수원사업장</td>
+                        <td class="asset-table-td">MX</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 윤도현 / D.Yoon">솔루션개발그룹 / 윤도현 / D.Yoon</div></td>
+                        <td class="asset-table-td">HQ-1F</td>
+                        <td class="asset-table-td">ERP</td>
+                        <td class="asset-table-td">테스트</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="솔루션개발그룹 / 윤도현 / D.Yoon">솔루션개발그룹 / 윤도현 / D.Yoon</div></td>
+                        <td class="asset-table-td">IRP-015</td>
+                        <td class="asset-table-td">2022</td>
+                        <td class="asset-table-td">2026-01-23 11:00</td>
+                      </tr>
+                      <tr>
+                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
+                        <td class="asset-table-td">16</td>
+                        <td class="asset-table-td">DESKTOP-0016</td>
+                        <td class="asset-table-td">193.186.4.147</td>
+                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/Linux_logo.png" alt="" class="asset-os-icon" />Linux</span></td>
+                        <td class="asset-table-td">RHEL 8.6</td>
+                        <td class="asset-table-td">Yes</td>
+                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
+                        <td class="asset-table-td">구미사업장</td>
+                        <td class="asset-table-td">-</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="미들웨어팀 / 강민지 / M.Kang">미들웨어팀 / 강민지 / M.Kang</div></td>
+                        <td class="asset-table-td">HQ-2F</td>
+                        <td class="asset-table-td">MES</td>
+                        <td class="asset-table-td">개발</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="미들웨어팀 / 강민지 / M.Kang">미들웨어팀 / 강민지 / M.Kang</div></td>
+                        <td class="asset-table-td">IRP-016</td>
+                        <td class="asset-table-td">2021</td>
+                        <td class="asset-table-td">2026-01-22 14:20</td>
+                      </tr>
+                      <tr>
+                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
+                        <td class="asset-table-td">17</td>
+                        <td class="asset-table-td">DESKTOP-0017</td>
+                        <td class="asset-table-td">193.186.4.148</td>
+                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/Oracle_logo.png" alt="" class="asset-os-icon" />Solaris</span></td>
+                        <td class="asset-table-td">11.3</td>
+                        <td class="asset-table-td">No</td>
+                        <td class="asset-table-td"><span class="region-badge region-badge-overseas">해외</span></td>
+                        <td class="asset-table-td">중동</td>
+                        <td class="asset-table-td">MX</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="웹개발팀 / 조현우 / H.Jo">웹개발팀 / 조현우 / H.Jo</div></td>
+                        <td class="asset-table-td">HQ-7F</td>
+                        <td class="asset-table-td">ERP</td>
+                        <td class="asset-table-td">운영</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="웹개발팀 / 조현우 / H.Jo">웹개발팀 / 조현우 / H.Jo</div></td>
+                        <td class="asset-table-td">IRP-017</td>
+                        <td class="asset-table-td">2020</td>
+                        <td class="asset-table-td">2026-01-21 10:15</td>
+                      </tr>
+                      <tr>
+                        <td class="asset-table-td"><label class="custom-checkbox-wrap"><input type="checkbox" class="custom-checkbox" aria-label="선택" /><span class="custom-checkbox-box"></span></label></td>
+                        <td class="asset-table-td">18</td>
+                        <td class="asset-table-td">DESKTOP-0018</td>
+                        <td class="asset-table-td">193.186.4.149</td>
+                        <td class="asset-table-td"><span class="asset-os-cell"><img src="img/window_logo.png" alt="" class="asset-os-icon" />Window</span></td>
+                        <td class="asset-table-td">11 Pro</td>
+                        <td class="asset-table-td">Yes</td>
+                        <td class="asset-table-td"><span class="region-badge region-badge-domestic">국내</span></td>
+                        <td class="asset-table-td">수원사업장</td>
+                        <td class="asset-table-td">-</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="인프라팀 / 신동혁 / D.Shin">인프라팀 / 신동혁 / D.Shin</div></td>
+                        <td class="asset-table-td">HQ-3F</td>
+                        <td class="asset-table-td">ERP</td>
+                        <td class="asset-table-td">개발</td>
+                        <td class="asset-table-td asset-table-td-clamp"><div class="line-clamp-2 asset-tooltip-cell" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-primary-tooltip" title="인프라팀 / 신동혁 / D.Shin">인프라팀 / 신동혁 / D.Shin</div></td>
+                        <td class="asset-table-td">IRP-018</td>
+                        <td class="asset-table-td">2024</td>
+                        <td class="asset-table-td">2026-01-20 13:40</td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
                 <!-- 5. 페이지네이션 -->
                 <div class="asset-pagination">
                   <div class="asset-pagination-left">
-                    <select class="form-select form-select-sm asset-pagination-select" aria-label="행 개수">
-                      <option value="10">10 rows</option>
-                      <option value="20">20 rows</option>
+                    <select class="form-select form-select-sm asset-pagination-select" id="asset-pagination-select" aria-label="행 개수">
+                      <option value="10" selected>10 rows</option>
+                      <option value="25">25 rows</option>
                       <option value="50">50 rows</option>
                     </select>
-                    <span class="asset-pagination-info">전체 158개 중 1-20 표시 (필터됨)</span>
+                    <span class="asset-pagination-info" id="asset-pagination-info">전체 18개 중 1-10 표시</span>
                   </div>
                   <div class="asset-pagination-right">
                     <nav class="asset-pagination-nav" aria-label="페이지 네비게이션">
@@ -629,6 +910,63 @@
           closeBtn.addEventListener('click', function () { alertEl.classList.add('d-none'); });
         }
 
+        /* 테이블: 얼룩무늬 + 체크박스 선택 행 하이라이트 + 전체 선택 연동 */
+        var assetTbody = document.querySelector('.asset-table-tbody');
+        var thCheckAll = document.getElementById('th-check-all');
+        function syncThCheckAll() {
+          if (!thCheckAll || !assetTbody) return;
+          var rowCbs = assetTbody.querySelectorAll('.custom-checkbox');
+          var checkedCount = 0;
+          rowCbs.forEach(function (cb) { if (cb.checked) checkedCount++; });
+          thCheckAll.checked = checkedCount === rowCbs.length && rowCbs.length > 0;
+          thCheckAll.indeterminate = checkedCount > 0 && checkedCount < rowCbs.length;
+        }
+        if (assetTbody) {
+          assetTbody.querySelectorAll('.custom-checkbox').forEach(function (cb) {
+            cb.addEventListener('change', function () {
+              var row = this.closest('tr');
+              if (row) {
+                if (this.checked) row.classList.add('asset-table-row-selected');
+                else row.classList.remove('asset-table-row-selected');
+              }
+              syncThCheckAll();
+            });
+          });
+        }
+        if (thCheckAll && assetTbody) {
+          thCheckAll.addEventListener('change', function () {
+            var checked = this.checked;
+            assetTbody.querySelectorAll('tr').forEach(function (tr) {
+              var cb = tr.querySelector('.custom-checkbox');
+              if (cb) {
+                cb.checked = checked;
+                if (checked) tr.classList.add('asset-table-row-selected');
+                else tr.classList.remove('asset-table-row-selected');
+              }
+            });
+          });
+        }
+
+        /* 테이블 행 개수: 셀렉트 값(10/25/50)만큼만 tr 표시, 기본 10 */
+        function applyAssetTableRowLimit() {
+          var tbody = document.querySelector('.asset-table-tbody');
+          var sel = document.getElementById('asset-pagination-select');
+          var infoEl = document.getElementById('asset-pagination-info');
+          if (!tbody || !sel) return;
+          var rows = tbody.querySelectorAll('tr');
+          var total = rows.length;
+          var limit = Math.max(1, parseInt(sel.value, 10) || 10);
+          rows.forEach(function (tr, i) {
+            if (i < limit) tr.classList.remove('d-none');
+            else tr.classList.add('d-none');
+          });
+          var shown = Math.min(limit, total);
+          if (infoEl) infoEl.textContent = '전체 ' + total + '개 중 1-' + shown + ' 표시';
+        }
+        var rowLimitSelect = document.getElementById('asset-pagination-select');
+        if (rowLimitSelect) rowLimitSelect.addEventListener('change', applyAssetTableRowLimit);
+        applyAssetTableRowLimit();
+
         var filterTrigger = document.getElementById('asset-filter-trigger');
         var filterPanel = document.getElementById('asset-filter-panel');
         var panelReset = document.getElementById('asset-filter-panel-reset');
@@ -656,17 +994,52 @@
           });
         }
         if (panelCancel) panelCancel.addEventListener('click', closeFilterPanel);
-        if (panelApply) panelApply.addEventListener('click', closeFilterPanel);
+        if (panelApply) panelApply.addEventListener('click', function () {
+          if (typeof renderFilterChips === 'function' && typeof getFullFilterState === 'function') { renderFilterChips(getFullFilterState()); updateFilterBadge(); }
+          if (typeof applyPortletFilter === 'function') applyPortletFilter();
+          closeFilterPanel();
+        });
         if (panelReset) {
           panelReset.addEventListener('click', function () {
-            var rAll = document.getElementById('filterRegionAll');
-            var vAll = document.getElementById('filterVMAll');
+            var regionRadios = document.querySelectorAll('input[name="filterRegion"]');
+            var vmRadios = document.querySelectorAll('input[name="filterVM"]');
+            if (regionRadios.length) regionRadios[0].checked = true;
+            if (vmRadios.length) vmRadios[0].checked = true;
             var site = document.getElementById('filterSite');
             var serverName = document.getElementById('filterServerName');
-            if (rAll) rAll.checked = true;
-            if (vAll) vAll.checked = true;
+            var corp = document.getElementById('filterCorp');
+            var ip = document.getElementById('filterIP');
+            var os = document.getElementById('filterOS');
+            var usage = document.getElementById('filterUsage');
+            var location = document.getElementById('filterLocation');
+            var dept = document.getElementById('filterDept');
+            var managerName = document.getElementById('filterManagerName');
+            var system = document.getElementById('filterSystem');
+            var operatorName = document.getElementById('filterOperatorName');
+            var irp = document.getElementById('filterIRP');
             if (site) site.selectedIndex = 0;
             if (serverName) serverName.value = '';
+            if (corp) corp.selectedIndex = 0;
+            if (ip) ip.value = '';
+            if (os) os.selectedIndex = 0;
+            if (usage) usage.selectedIndex = 0;
+            if (location) location.value = '';
+            if (dept) dept.value = '';
+            if (managerName) managerName.value = '';
+            if (system) system.value = '';
+            if (operatorName) operatorName.value = '';
+            if (irp) irp.value = '';
+            var deptTriggerText = document.querySelector('.asset-filter-dept-trigger-text');
+            var deptPanel = document.getElementById('asset-filter-dept-panel');
+            var deptSearch = document.getElementById('asset-filter-dept-search');
+            var deptItems = document.querySelectorAll('.asset-filter-dept-item');
+            if (deptTriggerText) deptTriggerText.textContent = '선택안함';
+            if (deptPanel) deptPanel.classList.add('d-none');
+            if (deptSearch) deptSearch.value = '';
+            deptItems.forEach(function (el) { el.style.display = ''; el.classList.remove('active'); });
+            if (deptItems.length) deptItems[0].classList.add('active');
+            if (typeof syncFilterInputSelectedState === 'function') syncFilterInputSelectedState();
+            if (typeof renderFilterChips === 'function' && typeof getFullFilterState === 'function') { renderFilterChips(getFullFilterState()); updateFilterBadge(); }
           });
         }
         document.addEventListener('click', function (e) {
@@ -675,12 +1048,304 @@
           }
         });
 
+        /* 필터 셀렉트/인풋: 값이 있으면 .is-selected로 선택 상태 시각 구분(흰 배경+파란 테두리+굵은 글씨) */
+        function syncFilterInputSelectedState() {
+          if (!filterPanel) return;
+          filterPanel.querySelectorAll('.asset-filter-input').forEach(function (el) {
+            var hasValue = el.tagName === 'SELECT' ? el.value !== '' : (el.value || '').trim() !== '';
+            if (hasValue) el.classList.add('is-selected'); else el.classList.remove('is-selected');
+          });
+          var deptTrigger = document.getElementById('asset-filter-dept-trigger');
+          var deptTriggerText = filterPanel.querySelector('.asset-filter-dept-trigger-text');
+          if (deptTrigger && deptTriggerText) {
+            if (deptTriggerText.textContent !== '선택안함' && deptTriggerText.textContent !== '') deptTrigger.classList.add('is-selected');
+            else deptTrigger.classList.remove('is-selected');
+          }
+        }
+        if (filterPanel) {
+          filterPanel.querySelectorAll('.asset-filter-input').forEach(function (el) {
+            el.addEventListener('change', syncFilterInputSelectedState);
+            el.addEventListener('input', syncFilterInputSelectedState);
+          });
+          syncFilterInputSelectedState();
+        }
+
+        /* 포틀릿 박스 필터 버튼: 그룹별 단일 선택 + 필터 연동 뼈대 */
+        function applyPortletFilter() {
+          var regionBox = document.querySelector('.asset-portlet-group-region .asset-portlet-box-active');
+          var osBox = document.querySelector('.asset-portlet-group-os .asset-portlet-box-active, .asset-portlet-group-os .asset-portlet-box-extra.asset-portlet-box-active');
+          var envBox = document.querySelector('.asset-portlet-group-env .asset-portlet-box-active');
+          var rLabel = regionBox && regionBox.querySelector('.asset-portlet-box-label');
+          var oLabel = osBox && osBox.querySelector('.asset-portlet-box-label');
+          var osExtraLabelEl = document.getElementById('asset-portlet-os-extra-label');
+          var eLabel = envBox && envBox.querySelector('.asset-portlet-box-label');
+          var state = {
+            region: regionBox ? (regionBox.getAttribute('data-portlet-value') || (rLabel && rLabel.textContent.trim())) : null,
+            os: osBox ? (osBox.getAttribute('data-portlet-value') || (oLabel && oLabel.textContent.trim()) || (osExtraLabelEl && osExtraLabelEl.textContent.trim())) : null,
+            env: envBox ? (envBox.getAttribute('data-portlet-value') || (eLabel && eLabel.textContent.trim())) : null
+          };
+          if (typeof console !== 'undefined' && console.log) console.log('applyPortletFilter', state);
+        }
+
+        /* 동적 필터 태그: 전체 상태 수집 → 칩 렌더링 → 개별 삭제/전체 초기화 연동 */
+        var FILTER_CHIP_LABELS = { region: '국내/해외', os: 'OS', env: '환경', site: '사업장/권역', corp: '사업부/법인', serverName: '서버명', ip: 'IP', osDetail: 'OS', vm: 'VM 여부', usage: '용도', location: '서버위치', dept: '담당부서', managerName: '담당자 명', system: '연계시스템', opDept: '운영부서', operatorName: '운영자 명', irp: 'IRP 코드' };
+
+        function getFullFilterState() {
+          var regionBox = document.querySelector('.asset-portlet-group-region .asset-portlet-box-active');
+          var osBox = document.querySelector('.asset-portlet-group-os .asset-portlet-box-active, .asset-portlet-group-os .asset-portlet-box-extra.asset-portlet-box-active');
+          var envBox = document.querySelector('.asset-portlet-group-env .asset-portlet-box-active');
+          var region = regionBox ? (regionBox.getAttribute('data-portlet-value') || (regionBox.querySelector('.asset-portlet-box-label') && regionBox.querySelector('.asset-portlet-box-label').textContent.trim())) : null;
+          var os = osBox ? (osBox.getAttribute('data-portlet-value') || (osBox.querySelector('.asset-portlet-box-label') && osBox.querySelector('.asset-portlet-box-label').textContent.trim()) || (document.getElementById('asset-portlet-os-extra-label') && document.getElementById('asset-portlet-os-extra-label').textContent.trim())) : null;
+          var env = envBox ? (envBox.getAttribute('data-portlet-value') || (envBox.querySelector('.asset-portlet-box-label') && envBox.querySelector('.asset-portlet-box-label').textContent.trim())) : null;
+          var el = function (id) { return document.getElementById(id); };
+          var deptText = document.querySelector('.asset-filter-dept-trigger-text');
+          return {
+            region: region,
+            os: os,
+            env: env,
+            site: (el('filterSite') && el('filterSite').value) || '',
+            corp: (el('filterCorp') && el('filterCorp').value) || '',
+            serverName: (el('filterServerName') && el('filterServerName').value.trim()) || '',
+            ip: (el('filterIP') && el('filterIP').value.trim()) || '',
+            osDetail: (el('filterOS') && el('filterOS').value) || '',
+            vm: (document.querySelector('input[name="filterVM"]:checked') && document.querySelector('input[name="filterVM"]:checked').value) || '',
+            usage: (el('filterUsage') && el('filterUsage').value) || '',
+            location: (el('filterLocation') && el('filterLocation').value.trim()) || '',
+            dept: (el('filterDept') && el('filterDept').value.trim()) || '',
+            managerName: (el('filterManagerName') && el('filterManagerName').value.trim()) || '',
+            system: (el('filterSystem') && el('filterSystem').value.trim()) || '',
+            opDept: (deptText && deptText.textContent.trim() !== '선택안함' ? deptText.textContent.trim() : ''),
+            operatorName: (el('filterOperatorName') && el('filterOperatorName').value.trim()) || '',
+            irp: (el('filterIRP') && el('filterIRP').value.trim()) || ''
+          };
+        }
+
+        function renderFilterChips(state) {
+          var container = document.getElementById('asset-filter-tags-container');
+          if (!container) return;
+          container.innerHTML = '';
+          var defaults = { region: '전체', site: '', corp: '', serverName: '', ip: '', osDetail: '', vm: '', usage: '', location: '', dept: '', managerName: '', system: '', opDept: '', operatorName: '', irp: '' };
+          var order = ['region', 'os', 'env', 'site', 'corp', 'serverName', 'ip', 'osDetail', 'vm', 'usage', 'location', 'dept', 'managerName', 'system', 'opDept', 'operatorName', 'irp'];
+          order.forEach(function (key) {
+            var val = state[key];
+            if (val == null) val = '';
+            var def = defaults[key] != null ? defaults[key] : '';
+            if (String(val).trim() === '' || val === def) return;
+            var label = FILTER_CHIP_LABELS[key] || key;
+            var chip = document.createElement('span');
+            chip.className = 'filter-chip';
+            chip.setAttribute('data-filter-type', key);
+            chip.setAttribute('data-filter-value', val);
+            chip.innerHTML = label + ' : <strong class="text-custom-primary">' + (String(val).replace(/</g, '&lt;').replace(/>/g, '&gt;')) + '</strong> <span class="material-symbols-outlined filter-chip-close" aria-label="제거">close</span>';
+            container.appendChild(chip);
+          });
+        }
+
+        function clearFilterByType(type) {
+          if (type === 'region') {
+            var r = document.querySelector('.asset-portlet-group-region .asset-portlet-boxes');
+            if (r) {
+              r.querySelectorAll('.asset-portlet-box').forEach(function (b) { b.classList.remove('asset-portlet-box-active'); });
+              var first = r.querySelector('.asset-portlet-box');
+              if (first) first.classList.add('asset-portlet-box-active');
+            }
+          } else if (type === 'os') {
+            var osWrap = document.querySelector('.asset-portlet-group-os .asset-portlet-boxes');
+            if (osWrap) osWrap.querySelectorAll('.asset-portlet-box').forEach(function (b) { b.classList.remove('asset-portlet-box-active'); });
+            var extraCheck = document.querySelector('.asset-portlet-os-extra-check');
+            if (extraCheck) extraCheck.classList.add('d-none');
+          } else if (type === 'env') {
+            var envWrap = document.querySelector('.asset-portlet-group-env .asset-portlet-boxes');
+            if (envWrap) envWrap.querySelectorAll('.asset-portlet-box').forEach(function (b) { b.classList.remove('asset-portlet-box-active'); });
+          } else {
+            var el = document.getElementById('filterSite');
+            if (type === 'site' && el) { el.selectedIndex = 0; return; }
+            el = document.getElementById('filterCorp'); if (type === 'corp' && el) { el.selectedIndex = 0; return; }
+            el = document.getElementById('filterServerName'); if (type === 'serverName' && el) { el.value = ''; return; }
+            el = document.getElementById('filterIP'); if (type === 'ip' && el) { el.value = ''; return; }
+            el = document.getElementById('filterOS'); if (type === 'osDetail' && el) { el.selectedIndex = 0; return; }
+            if (type === 'vm') { var vm = document.querySelector('input[name="filterVM"][value=""]'); if (vm) vm.checked = true; return; }
+            el = document.getElementById('filterUsage'); if (type === 'usage' && el) { el.selectedIndex = 0; return; }
+            el = document.getElementById('filterLocation'); if (type === 'location' && el) { el.value = ''; return; }
+            el = document.getElementById('filterDept'); if (type === 'dept' && el) { el.value = ''; return; }
+            el = document.getElementById('filterManagerName'); if (type === 'managerName' && el) { el.value = ''; return; }
+            el = document.getElementById('filterSystem'); if (type === 'system' && el) { el.value = ''; return; }
+            if (type === 'opDept') {
+              var dt = document.querySelector('.asset-filter-dept-trigger-text');
+              var list = document.querySelectorAll('.asset-filter-dept-item');
+              if (dt) dt.textContent = '선택안함';
+              list.forEach(function (x) { x.classList.remove('active'); });
+              if (list.length) list[0].classList.add('active');
+              if (typeof syncFilterInputSelectedState === 'function') syncFilterInputSelectedState();
+              return;
+            }
+            el = document.getElementById('filterOperatorName'); if (type === 'operatorName' && el) { el.value = ''; return; }
+            el = document.getElementById('filterIRP'); if (type === 'irp' && el) { el.value = ''; return; }
+          }
+        }
+
+        function updateFilterBadge() {
+          var container = document.getElementById('asset-filter-tags-container');
+          var badge = document.querySelector('.asset-filter-badge');
+          if (badge && container) badge.textContent = container.querySelectorAll('.filter-chip').length;
+        }
+
+        function masterResetFilter() {
+          var container = document.getElementById('asset-filter-tags-container');
+          if (container) container.innerHTML = '';
+          document.querySelectorAll('.asset-portlet-box').forEach(function (b) { b.classList.remove('asset-portlet-box-active'); });
+          var regionBoxes = document.querySelector('.asset-portlet-group-region .asset-portlet-boxes');
+          if (regionBoxes) { var first = regionBoxes.querySelector('.asset-portlet-box'); if (first) first.classList.add('asset-portlet-box-active'); }
+          var regionRadios = document.querySelectorAll('input[name="filterRegion"]');
+          var vmRadios = document.querySelectorAll('input[name="filterVM"]');
+          if (regionRadios.length) regionRadios[0].checked = true;
+          if (vmRadios.length) vmRadios[0].checked = true;
+          ['filterSite', 'filterServerName', 'filterCorp', 'filterIP', 'filterOS', 'filterUsage', 'filterLocation', 'filterDept', 'filterManagerName', 'filterSystem', 'filterOperatorName', 'filterIRP'].forEach(function (id) {
+            var el = document.getElementById(id);
+            if (!el) return;
+            if (el.tagName === 'SELECT') el.selectedIndex = 0; else el.value = '';
+          });
+          var deptTriggerText = document.querySelector('.asset-filter-dept-trigger-text');
+          var deptPanel = document.getElementById('asset-filter-dept-panel');
+          var deptSearch = document.getElementById('asset-filter-dept-search');
+          var deptItems = document.querySelectorAll('.asset-filter-dept-item');
+          if (deptTriggerText) deptTriggerText.textContent = '선택안함';
+          if (deptPanel) deptPanel.classList.add('d-none');
+          if (deptSearch) deptSearch.value = '';
+          if (deptItems.length) { deptItems.forEach(function (el) { el.style.display = ''; el.classList.remove('active'); }); deptItems[0].classList.add('active'); }
+          if (typeof syncFilterInputSelectedState === 'function') syncFilterInputSelectedState();
+          applyPortletFilter();
+          renderFilterChips(getFullFilterState());
+          updateFilterBadge();
+        }
+
+        var tagsContainer = document.getElementById('asset-filter-tags-container');
+        if (tagsContainer) {
+          tagsContainer.addEventListener('click', function (e) {
+            if (!e.target.closest('.filter-chip-close')) return;
+            e.preventDefault();
+            e.stopPropagation();
+            var chip = e.target.closest('.filter-chip');
+            if (!chip) return;
+            var type = chip.getAttribute('data-filter-type');
+            clearFilterByType(type);
+            applyPortletFilter();
+            renderFilterChips(getFullFilterState());
+            updateFilterBadge();
+          });
+        }
+        var barResetBtn = document.getElementById('asset-filter-reset-btn');
+        if (barResetBtn) barResetBtn.addEventListener('click', masterResetFilter);
+
+        var portletSection = document.getElementById('asset-portlet');
+        if (portletSection) {
+          portletSection.addEventListener('click', function (e) {
+            var box = e.target.closest('.asset-portlet-box:not(.asset-portlet-box-extra)');
+            if (!box) return;
+            var boxesWrap = box.closest('.asset-portlet-boxes');
+            if (!boxesWrap) return;
+            boxesWrap.querySelectorAll('.asset-portlet-box').forEach(function (b) { b.classList.remove('asset-portlet-box-active'); });
+            box.classList.add('asset-portlet-box-active');
+            applyPortletFilter();
+            renderFilterChips(getFullFilterState());
+            updateFilterBadge();
+          });
+          portletSection.addEventListener('keydown', function (e) {
+            var box = e.target.closest('.asset-portlet-box:not(.asset-portlet-box-extra)');
+            if (!box || (e.key !== 'Enter' && e.key !== ' ')) return;
+            e.preventDefault();
+            var boxesWrap = box.closest('.asset-portlet-boxes');
+            if (!boxesWrap) return;
+            boxesWrap.querySelectorAll('.asset-portlet-box').forEach(function (b) { b.classList.remove('asset-portlet-box-active'); });
+            box.classList.add('asset-portlet-box-active');
+            applyPortletFilter();
+            renderFilterChips(getFullFilterState());
+            updateFilterBadge();
+          });
+        }
+        renderFilterChips(getFullFilterState());
+        updateFilterBadge();
+
+        /* 운영부서 검색형 커스텀 드롭다운 */
+        var deptDropdown = document.getElementById('asset-filter-dept-dropdown');
+        var deptTrigger = document.getElementById('asset-filter-dept-trigger');
+        var deptPanel = document.getElementById('asset-filter-dept-panel');
+        var deptSearchWrap = document.getElementById('asset-filter-dept-search-wrap');
+        var deptSearchInput = document.getElementById('asset-filter-dept-search');
+        var deptList = document.getElementById('asset-filter-dept-list');
+        var deptTriggerText = document.querySelector('.asset-filter-dept-trigger-text');
+        if (deptDropdown && deptTrigger && deptPanel && deptList) {
+          deptTrigger.addEventListener('click', function (e) {
+            e.stopPropagation();
+            deptPanel.classList.toggle('d-none');
+            deptTrigger.setAttribute('aria-expanded', deptPanel.classList.contains('d-none') ? 'false' : 'true');
+          });
+          deptSearchWrap.addEventListener('click', function (e) { e.stopPropagation(); });
+          deptSearchInput.addEventListener('click', function (e) { e.stopPropagation(); });
+          deptSearchInput.addEventListener('input', function (e) { e.stopPropagation(); });
+          deptSearchInput.addEventListener('keydown', function (e) { e.stopPropagation(); });
+          deptSearchInput.addEventListener('input', function () {
+            var q = (this.value || '').trim().toLowerCase();
+            deptList.querySelectorAll('.asset-filter-dept-item').forEach(function (item) {
+              var code = (item.getAttribute('data-code') || '').toLowerCase();
+              var name = (item.getAttribute('data-name') || '').toLowerCase();
+              var show = !q || code.indexOf(q) !== -1 || name.indexOf(q) !== -1;
+              item.style.display = show ? '' : 'none';
+            });
+          });
+          deptList.querySelectorAll('.asset-filter-dept-item').forEach(function (item) {
+            item.addEventListener('click', function (e) {
+              e.stopPropagation();
+              var name = this.getAttribute('data-name');
+              if (deptTriggerText) deptTriggerText.textContent = name || '선택안함';
+              deptList.querySelectorAll('.asset-filter-dept-item').forEach(function (x) { x.classList.remove('active'); });
+              this.classList.add('active');
+              deptPanel.classList.add('d-none');
+              deptTrigger.setAttribute('aria-expanded', 'false');
+              if (deptSearchInput) deptSearchInput.value = '';
+              deptList.querySelectorAll('.asset-filter-dept-item').forEach(function (el) { el.style.display = ''; });
+            });
+          });
+          document.addEventListener('click', function (e) {
+            if (!deptDropdown.contains(e.target)) {
+              deptPanel.classList.add('d-none');
+              deptTrigger.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+
         var portletSection = document.getElementById('asset-portlet');
         var portletToggle = document.getElementById('asset-portlet-toggle');
         if (portletSection && portletToggle) {
           portletToggle.addEventListener('click', function () {
             portletSection.classList.toggle('collapsed');
             portletToggle.setAttribute('aria-label', portletSection.classList.contains('collapsed') ? '포틀릿 펼치기' : '포틀릿 접기');
+          });
+        }
+
+        /* 기타 OS 드롭다운: 항목 선택 시 카드 라벨/숫자 갱신, 카드·메뉴 액티브 상태 */
+        var osExtraWrap = document.getElementById('asset-portlet-os-extra-wrap');
+        var osExtraLabel = document.getElementById('asset-portlet-os-extra-label');
+        var osExtraValue = document.getElementById('asset-portlet-os-extra-value');
+        var osExtraCheck = document.querySelector('.asset-portlet-os-extra-check');
+        var osExtraMenu = document.getElementById('asset-portlet-os-extra-menu');
+        if (osExtraWrap && osExtraMenu) {
+          osExtraMenu.querySelectorAll('.asset-portlet-os-dropdown-item').forEach(function (btn) {
+            btn.addEventListener('click', function (e) {
+              e.preventDefault();
+              var label = btn.getAttribute('data-label');
+              var value = btn.getAttribute('data-value');
+              if (osExtraLabel) osExtraLabel.textContent = label;
+              if (osExtraValue) osExtraValue.textContent = value;
+              var boxesWrap = osExtraWrap.closest('.asset-portlet-boxes');
+              if (boxesWrap) boxesWrap.querySelectorAll('.asset-portlet-box').forEach(function (b) { b.classList.remove('asset-portlet-box-active'); });
+              osExtraWrap.classList.add('asset-portlet-box-active');
+              if (osExtraCheck) osExtraCheck.classList.remove('d-none');
+              osExtraMenu.querySelectorAll('.asset-portlet-os-dropdown-item').forEach(function (b) { b.classList.remove('active'); });
+              btn.classList.add('active');
+              if (typeof applyPortletFilter === 'function') applyPortletFilter();
+              if (typeof renderFilterChips === 'function' && typeof getFullFilterState === 'function') { renderFilterChips(getFullFilterState()); updateFilterBadge(); }
+            });
           });
         }
 

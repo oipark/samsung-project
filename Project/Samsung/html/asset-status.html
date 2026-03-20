@@ -103,7 +103,10 @@
                       <div class="asset-portlet-box asset-portlet-box-extra flex-grow-1 dropdown" id="asset-portlet-os-extra-wrap">
                         <button type="button" class="asset-portlet-os-extra-trigger btn w-100 h-100 text-start border-0 bg-transparent p-0 d-flex flex-column position-relative" id="asset-portlet-os-extra-trigger" data-bs-toggle="dropdown" data-bs-auto-close="true" data-bs-boundary="viewport" data-bs-reference="toggle" aria-expanded="false" aria-haspopup="true">
                           <div class="asset-portlet-box-head d-flex align-items-center justify-content-between">
-                            <span class="asset-portlet-box-label" id="asset-portlet-os-extra-label">기타 OS</span>
+                            <span class="d-flex align-items-center gap-2 min-w-0">
+                              <span class="material-symbols-outlined asset-portlet-os-other-icon" aria-hidden="true">devices_other</span>
+                              <span class="asset-portlet-box-label" id="asset-portlet-os-extra-label">기타 OS</span>
+                            </span>
                             <span class="material-symbols-outlined asset-portlet-box-check asset-portlet-os-extra-check d-none" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">check</span>
                           </div>
                           <p class="asset-portlet-box-value mb-0 mt-auto" id="asset-portlet-os-extra-value">50</p>
@@ -148,7 +151,7 @@
                   </div>
                   </div>
                 <button type="button" class="asset-portlet-toggle btn btn-link p-0 border-0 bg-transparent" id="asset-portlet-toggle" aria-label="포틀릿 접기">
-                  <span class="material-symbols-outlined">expand_less</span>
+                  <span class="material-symbols-outlined asset-portlet-toggle-icon">expand_less</span>
                 </button>
               </div>
             </section>
@@ -910,10 +913,13 @@
 
         var portletSection = document.getElementById('asset-portlet');
         var portletToggle = document.getElementById('asset-portlet-toggle');
+        var portletToggleIcon = portletToggle && portletToggle.querySelector('.asset-portlet-toggle-icon');
         if (portletSection && portletToggle) {
           portletToggle.addEventListener('click', function () {
-            portletSection.classList.toggle('collapsed');
-            portletToggle.setAttribute('aria-label', portletSection.classList.contains('collapsed') ? '포틀릿 펼치기' : '포틀릿 접기');
+            portletSection.classList.toggle('is-collapsed');
+            var isCollapsed = portletSection.classList.contains('is-collapsed');
+            portletToggle.setAttribute('aria-label', isCollapsed ? '포틀릿 펼치기' : '포틀릿 접기');
+            if (portletToggleIcon) portletToggleIcon.textContent = isCollapsed ? 'expand_more' : 'expand_less';
           });
         }
 

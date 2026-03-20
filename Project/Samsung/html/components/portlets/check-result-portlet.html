@@ -1,0 +1,123 @@
+<!-- 점검 결과 요약 포틀릿 (Figma 403-2138) -->
+<div class="cr-portlet-wrap d-flex align-items-stretch" id="cr-portlet-wrap">
+
+  <!-- ── 카드 1: 전체 점검 현황 ── -->
+  <div class="cr-portlet-card">
+    <div class="cr-portlet-card-inner">
+      <!-- 타이틀 -->
+      <div class="cr-portlet-head">
+        <span class="cr-portlet-head-icon" aria-hidden="true">
+          <span class="material-symbols-outlined">dns</span>
+        </span>
+        <span class="cr-portlet-label">전체 점검 현황</span>
+      </div>
+      <!-- 숫자 + stat -->
+      <div class="cr-portlet-body">
+        <div class="cr-portlet-row">
+          <span class="cr-portlet-value">420</span>
+          <div class="cr-portlet-stats">
+            <span class="cr-stat">
+              <span class="cr-bullet cr-bullet-pass" aria-hidden="true"></span>
+              <span class="cr-stat-label cr-stat-pass">Pass</span>
+              <strong class="cr-stat-num">385</strong>
+            </span>
+            <span class="cr-stat">
+              <span class="cr-bullet cr-bullet-fail" aria-hidden="true"></span>
+              <span class="cr-stat-label cr-stat-fail">Fail</span>
+              <strong class="cr-stat-num">35</strong>
+            </span>
+          </div>
+        </div>
+        <!-- 프로그레스 바: Pass(초록) 91.7% / Fail(빨강) 8.3% -->
+        <div class="cr-progress-bar" role="img" aria-label="Pass 385건, Fail 35건">
+          <div class="cr-prog-seg cr-prog-pass" style="flex:385"></div>
+          <div class="cr-prog-gap"></div>
+          <div class="cr-prog-seg cr-prog-fail" style="flex:35"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cr-portlet-vdivider" aria-hidden="true"></div>
+
+  <!-- ── 카드 2: 전체 취약점 요약 ── -->
+  <div class="cr-portlet-card">
+    <div class="cr-portlet-card-inner">
+      <div class="cr-portlet-head">
+        <span class="cr-portlet-head-icon" aria-hidden="true">
+          <span class="material-symbols-outlined">bar_chart</span>
+        </span>
+        <span class="cr-portlet-label">전체 취약점 요약</span>
+      </div>
+      <div class="cr-portlet-body">
+        <div class="cr-portlet-row">
+          <span class="cr-portlet-value">23.0K</span>
+          <div class="cr-portlet-stats cr-portlet-stats-3">
+            <span class="cr-stat">
+              <span class="cr-bullet cr-bullet-pass" aria-hidden="true"></span>
+              <span class="cr-stat-label cr-stat-pass">양호</span>
+              <strong class="cr-stat-num" data-cr-tooltip="22,060">22.6K</strong>
+            </span>
+            <span class="cr-stat">
+              <span class="cr-bullet cr-bullet-fail" aria-hidden="true"></span>
+              <span class="cr-stat-label cr-stat-fail">취약</span>
+              <strong class="cr-stat-num">300</strong>
+            </span>
+            <span class="cr-stat">
+              <span class="cr-bullet cr-bullet-interview" aria-hidden="true"></span>
+              <span class="cr-stat-label cr-stat-interview">인터뷰</span>
+              <strong class="cr-stat-num">50</strong>
+            </span>
+          </div>
+        </div>
+        <!-- 프로그레스 바 3색: 양호/취약/인터뷰 -->
+        <div class="cr-progress-bar" role="img" aria-label="양호 22,060건, 취약 300건, 인터뷰 50건">
+          <div class="cr-prog-seg cr-prog-pass" style="flex:22660"></div>
+          <div class="cr-prog-gap"></div>
+          <div class="cr-prog-seg cr-prog-fail" style="flex:300;min-width:12px"></div>
+          <div class="cr-prog-gap"></div>
+          <div class="cr-prog-seg cr-prog-interview" style="flex:50;min-width:6px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cr-portlet-vdivider" aria-hidden="true"></div>
+
+  <!-- ── 카드 3: 긴급 조치 필요 TOP2 ── -->
+  <div class="cr-portlet-card cr-portlet-card-urgent">
+    <div class="cr-portlet-card-inner">
+      <div class="cr-portlet-head">
+        <span class="cr-portlet-head-icon cr-portlet-head-icon-urgent" aria-hidden="true">
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0;">error</span>
+        </span>
+        <span class="cr-portlet-label">긴급 조치 필요 TOP2</span>
+      </div>
+      <div class="cr-portlet-body cr-top2-body">
+        <!-- 리스트 행 1 — 파란 배경 (선택/강조) -->
+        <div class="cr-top2-row cr-top2-row-highlight">
+          <div class="cr-top2-bar" aria-hidden="true"></div>
+          <span class="cr-top2-server">seemoon-virtual-machine</span>
+          <span class="cr-top2-cce">CCE-37166-7</span>
+          <span class="cr-risk-badge cr-risk-high">
+            <span class="cr-risk-dot"></span>High
+          </span>
+        </div>
+        <!-- 리스트 행 2 -->
+        <div class="cr-top2-row">
+          <div class="cr-top2-bar" aria-hidden="true"></div>
+          <span class="cr-top2-server">seemoon-virtual-machine</span>
+          <span class="cr-top2-cce">CCE-37167-3</span>
+          <span class="cr-risk-badge cr-risk-medium">
+            <span class="cr-risk-dot"></span>Medium
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 접기/펼치기 토글 -->
+  <button type="button" class="cr-portlet-toggle" id="cr-portlet-toggle" aria-label="포틀릿 접기">
+    <span class="material-symbols-outlined cr-portlet-toggle-icon">expand_less</span>
+  </button>
+</div>

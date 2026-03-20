@@ -1,29 +1,35 @@
-<div class="check-status-portlet-wrap d-flex align-items-stretch gap-0" id="check-status-portlet-wrap">
+<div class="check-status-portlet-wrap d-flex align-items-stretch" id="check-status-portlet-wrap">
   <!-- 카드 1: 전체 점검 계획 -->
   <div class="check-status-card">
-    <div class="check-status-card-head">
-      <span class="material-symbols-outlined check-status-card-icon" aria-hidden="true">dns</span>
-      <span class="check-status-card-label">전체 점검 계획</span>
-    </div>
-    <div class="check-status-card-body d-flex">
-      <div class="check-status-card-left">
+    <div class="check-status-card-inner d-flex">
+      <div class="check-status-card-left d-flex flex-column justify-content-between">
+        <div class="check-status-card-head d-flex align-items-center gap-1">
+          <span class="material-symbols-outlined check-status-card-icon" aria-hidden="true">dns</span>
+          <span class="check-status-card-label">전체 점검 계획</span>
+        </div>
         <span class="check-status-card-value" id="check-status-total-value">1,420</span>
       </div>
       <div class="check-status-card-divider" aria-hidden="true"></div>
-      <div class="check-status-card-right">
-        <div class="check-status-card-row">
-          <span class="check-status-bullet check-status-bullet-blue"></span>
-          <span class="check-status-row-label">전체 대상</span>
+      <div class="check-status-card-right d-flex flex-column justify-content-center gap-1">
+        <div class="check-status-card-row d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center gap-2">
+            <span class="check-status-bullet check-status-bullet-blue"></span>
+            <span class="check-status-row-label">전체 대상</span>
+          </div>
           <span class="check-status-row-num">610</span>
         </div>
-        <div class="check-status-card-row">
-          <span class="check-status-bullet check-status-bullet-purple"></span>
-          <span class="check-status-row-label">사업장/권역 대상</span>
+        <div class="check-status-card-row d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center gap-2">
+            <span class="check-status-bullet check-status-bullet-purple"></span>
+            <span class="check-status-row-label">사업장/권역 대상</span>
+          </div>
           <span class="check-status-row-num">490</span>
         </div>
-        <div class="check-status-card-row">
-          <span class="check-status-bullet check-status-bullet-cyan"></span>
-          <span class="check-status-row-label">개별 대상</span>
+        <div class="check-status-card-row d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center gap-2">
+            <span class="check-status-bullet check-status-bullet-cyan"></span>
+            <span class="check-status-row-label">개별 대상</span>
+          </div>
           <span class="check-status-row-num">320</span>
         </div>
       </div>
@@ -32,67 +38,78 @@
 
   <!-- 카드 2: 진행중 인 점검 -->
   <div class="check-status-card">
-    <div class="check-status-card-head">
-      <span class="material-symbols-outlined check-status-card-icon" aria-hidden="true">settings</span>
-      <span class="check-status-card-label">진행중 인 점검</span>
-    </div>
-    <div class="check-status-card-body d-flex">
-      <div class="check-status-card-left">
+    <div class="check-status-card-inner d-flex">
+      <div class="check-status-card-left d-flex flex-column justify-content-between">
+        <div class="check-status-card-head d-flex align-items-center gap-1">
+          <span class="material-symbols-outlined check-status-card-icon" aria-hidden="true">settings</span>
+          <span class="check-status-card-label">진행중 인 점검</span>
+        </div>
         <span class="check-status-card-value" id="check-status-progress-value">45</span>
       </div>
       <div class="check-status-card-divider" aria-hidden="true"></div>
-      <div class="check-status-card-right">
-        <div class="check-status-card-row">
-          <span class="check-status-bullet check-status-bullet-blue"></span>
-          <span class="check-status-row-label">전체 대상</span>
+      <div class="check-status-card-right d-flex flex-column justify-content-center gap-1">
+        <div class="check-status-card-row d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center gap-2">
+            <span class="check-status-bullet check-status-bullet-blue"></span>
+            <span class="check-status-row-label">전체 대상</span>
+          </div>
           <span class="check-status-row-num">12</span>
         </div>
-        <div class="check-status-card-row">
-          <span class="check-status-bullet check-status-bullet-purple"></span>
-          <span class="check-status-row-label">사업장/권역 대상</span>
+        <div class="check-status-card-row d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center gap-2">
+            <span class="check-status-bullet check-status-bullet-purple"></span>
+            <span class="check-status-row-label">사업장/권역 대상</span>
+          </div>
           <span class="check-status-row-num">9</span>
         </div>
-        <div class="check-status-card-row">
-          <span class="check-status-bullet check-status-bullet-cyan"></span>
-          <span class="check-status-row-label">개별 대상</span>
+        <div class="check-status-card-row d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center gap-2">
+            <span class="check-status-bullet check-status-bullet-cyan"></span>
+            <span class="check-status-row-label">개별 대상</span>
+          </div>
           <span class="check-status-row-num">24</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 카드 3: 점검 오류 정보 (빨간색 테마) -->
+  <!-- 카드 3: 점검 오류 정보 -->
   <div class="check-status-card check-status-card-error">
-    <div class="check-status-card-head">
-      <span class="material-symbols-outlined check-status-card-icon" aria-hidden="true">error</span>
-      <span class="check-status-card-label">점검 오류 정보</span>
-    </div>
-    <div class="check-status-card-body d-flex">
-      <div class="check-status-card-left">
+    <div class="check-status-card-inner d-flex">
+      <div class="check-status-card-left d-flex flex-column justify-content-between">
+        <div class="check-status-card-head d-flex align-items-center gap-1">
+          <span class="material-symbols-outlined check-status-card-icon" aria-hidden="true">error</span>
+          <span class="check-status-card-label">점검 오류 정보</span>
+        </div>
         <span class="check-status-card-value" id="check-status-error-value">12</span>
       </div>
       <div class="check-status-card-divider" aria-hidden="true"></div>
-      <div class="check-status-card-right">
-        <div class="check-status-card-row">
-          <span class="check-status-bullet check-status-bullet-red"></span>
-          <span class="check-status-row-label">전체 대상</span>
+      <div class="check-status-card-right d-flex flex-column justify-content-center gap-1">
+        <div class="check-status-card-row d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center gap-2">
+            <span class="check-status-bullet check-status-bullet-blue"></span>
+            <span class="check-status-row-label">전체 대상</span>
+          </div>
           <span class="check-status-row-num">3</span>
         </div>
-        <div class="check-status-card-row">
-          <span class="check-status-bullet check-status-bullet-red"></span>
-          <span class="check-status-row-label">사업장/권역 대상</span>
+        <div class="check-status-card-row d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center gap-2">
+            <span class="check-status-bullet check-status-bullet-purple"></span>
+            <span class="check-status-row-label">사업장/권역 대상</span>
+          </div>
           <span class="check-status-row-num">1</span>
         </div>
-        <div class="check-status-card-row">
-          <span class="check-status-bullet check-status-bullet-red"></span>
-          <span class="check-status-row-label">개별 대상</span>
+        <div class="check-status-card-row d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center gap-2">
+            <span class="check-status-bullet check-status-bullet-cyan"></span>
+            <span class="check-status-row-label">개별 대상</span>
+          </div>
           <span class="check-status-row-num">8</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 우측 접기/펼치기 토글 -->
   <button type="button" class="check-status-portlet-toggle btn btn-link p-0 d-flex align-items-center justify-content-center" id="check-status-portlet-toggle" aria-label="포틀릿 접기/펼치기">
     <span class="material-symbols-outlined check-status-toggle-icon">expand_less</span>
   </button>

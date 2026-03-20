@@ -54,9 +54,10 @@
     var base = getBasePath() || COMPONENTS_BASE;
     if (!base.endsWith('/')) base += '/';
 
-    var hasTable = !!document.getElementById('asset-table-section-placeholder');
-    var hasDetail = !!document.getElementById('asset-detail-placeholder');
-    var isCheckPlanPage = !!document.getElementById('portlet-group-check-status-placeholder');
+  var hasTable = !!document.getElementById('asset-table-section-placeholder');
+  var hasDetail = !!document.getElementById('asset-detail-placeholder');
+  var isCheckPlanPage = !!document.getElementById('portlet-group-check-status-placeholder');
+  var isCheckResultPage = !!document.getElementById('cr-portlet-placeholder');
 
     var lnbP = fetchSafe(base + 'lnb.html', 'lnb.html');
     var gnbP = fetchSafe(base + 'gnb.html', 'gnb.html');
@@ -73,6 +74,14 @@
         fetchSafe(base + 'check-plan-detail-slide.html', 'check-plan-detail-slide.html')
       );
       resultKeys = ['lnb', 'gnb', 'portlet', 'filterBar', 'tableSection', 'tableBody', 'detailSlide'];
+    } else if (isCheckResultPage) {
+      promises.push(
+        fetchSafe(base + 'portlets/check-result-portlet.html', 'check-result-portlet.html'),
+        fetchSafe(base + 'check-result-filter-bar.html', 'check-result-filter-bar.html'),
+        fetchSafe(base + 'check-result-table-section.html', 'check-result-table-section.html'),
+        fetchSafe(base + 'check-result-tbody-rows.html', 'check-result-tbody-rows.html')
+      );
+      resultKeys = ['lnb', 'gnb', 'portlet', 'filterBar', 'tableSection', 'tableBody'];
     } else {
       promises.push(
         hasTable ? fetchSafe(base + 'asset-table-section.html', 'asset-table-section.html') : Promise.resolve(null),
@@ -100,6 +109,78 @@
       if (lnbPlaceholder && lnbHtml) lnbPlaceholder.innerHTML = lnbHtml;
       if (gnbPlaceholder && gnbHtml) gnbPlaceholder.innerHTML = gnbHtml;
 
+      /* LNB: 현재 페이지에 따라 active 그룹/링크 적용 */
+      (function applyLnbActive() {
+        var path = window.location.pathname || '';
+        var isDashboard = path.endsWith('/') || path.indexOf('index.html') !== -1;
+        var isCheckPlan = path.indexOf('check-plan-management') !== -1;
+        var isAssetStatus = path.indexOf('asset-status') !== -1;
+        var isCheckResult = path.indexOf('check-result-management') !== -1;
+
+        var nav = document.querySelector('#lnb .lnb-nav');
+        if (!nav) return;
+
+        var groups = nav.querySelectorAll('.lnb-group[data-lnb-group]');
+        groups.forEach(function (g) {
+          g.classList.remove('active');
+        });
+        var dashboardGroup = nav.querySelector('.lnb-group[data-lnb-group="dashboard"]');
+        var inspectionGroup = nav.querySelector('.lnb-group[data-lnb-group="inspection"]');
+        if (dashboardGroup) {
+          var dashboardLink = dashboardGroup.querySelector('a[href*="index.html"]');
+          if (dashboardLink) {
+            dashboardLink.classList.remove('active', 'bg-custom-primary', 'text-white');
+            dashboardLink.classList.add('text-custom-secondary');
+          }
+        }
+        if (inspectionGroup) {
+          var header = inspectionGroup.querySelector('.lnb-group-header');
+          var chevron = inspectionGroup.querySelector('.lnb-group-chevron');
+          if (header) {
+            header.classList.remove('text-custom-primary');
+            header.classList.add('text-custom-secondary');
+          }
+          if (chevron) {
+            chevron.classList.remove('text-custom-primary');
+            chevron.classList.add('text-custom-muted');
+          }
+          inspectionGroup.querySelectorAll('a[href*="check-plan-management"], a[href*="asset-status"]').forEach(function (a) {
+            a.classList.remove('bg-custom-primary', 'text-white');
+            a.classList.add('text-custom-muted');
+          });
+        }
+
+        if (isDashboard && dashboardGroup) {
+          dashboardGroup.classList.add('active');
+          var link = dashboardGroup.querySelector('a[href*="index.html"]');
+          if (link) {
+            link.classList.add('active');
+            link.classList.remove('text-custom-secondary');
+          }
+        } else if ((isCheckPlan || isAssetStatus || isCheckResult) && inspectionGroup) {
+          inspectionGroup.classList.add('active');
+          var header = inspectionGroup.querySelector('.lnb-group-header');
+          var chevron = inspectionGroup.querySelector('.lnb-group-chevron');
+          if (header) {
+            header.classList.remove('text-custom-secondary');
+            header.classList.add('text-custom-primary');
+          }
+          if (chevron) {
+            chevron.classList.remove('text-custom-muted');
+            chevron.classList.add('text-custom-primary');
+          }
+          var activeLink = inspectionGroup.querySelector(
+            isCheckPlan ? 'a[href*="check-plan-management"]' :
+            isCheckResult ? 'a[href*="check-result-management"]' :
+            'a[href*="asset-status"]'
+          );
+          if (activeLink) {
+            activeLink.classList.add('bg-custom-primary', 'text-white');
+            activeLink.classList.remove('text-custom-muted');
+          }
+        }
+      })();
+
       var mainContentWrap = document.querySelector('.main-content-wrap');
       if (mainContentWrap && gnbHtml) {
         var first = mainContentWrap.querySelector('[data-gnb-title]');
@@ -125,17 +206,28 @@
             var target = document.getElementById('check-plan-tbody');
             if (tbody && target) target.innerHTML = tbody.innerHTML;
           }
-          document.dispatchEvent(new CustomEvent('check-plan-table-ready'));
         }
         if (modalPh && results[6]) modalPh.innerHTML = results[6];
-
-        var checkPlanLink = document.querySelector('a[href*="check-plan-management.html"]');
-        var assetStatusLink = document.querySelector('a[href*="asset-status.html"]');
-        if (checkPlanLink) {
-          checkPlanLink.classList.add('bg-custom-primary', 'text-white');
-          checkPlanLink.classList.remove('text-custom-muted');
+      } else if (isCheckResultPage) {
+        var crPortletPh = document.getElementById('cr-portlet-placeholder');
+        var crFilterBarPh = document.getElementById('cr-filter-bar-placeholder');
+        var crTableSectionPh = document.getElementById('cr-table-section-placeholder');
+        if (crPortletPh && results[2]) crPortletPh.innerHTML = results[2];
+        if (crFilterBarPh && results[3]) crFilterBarPh.innerHTML = results[3];
+        if (crTableSectionPh && results[4]) {
+          crTableSectionPh.innerHTML = results[4];
+          if (results[5]) {
+            var target = document.getElementById('cr-table-tbody');
+            if (target) {
+              /* <tbody>를 단독 파싱하면 브라우저가 테이블 컨텍스트 없이 처리해
+                 querySelector('tbody')가 null을 반환하므로 <table>로 래핑 후 파싱 */
+              var parser = new DOMParser();
+              var doc = parser.parseFromString('<table>' + results[5] + '</table>', 'text/html');
+              var tbody = doc.querySelector('tbody');
+              if (tbody) target.innerHTML = tbody.innerHTML;
+            }
+          }
         }
-        if (assetStatusLink) assetStatusLink.classList.remove('bg-custom-primary', 'text-white');
       } else {
         if (hasTable && results[2]) {
           var tablePlaceholder = document.getElementById('asset-table-section-placeholder');
@@ -166,8 +258,66 @@
     /* 3. 페이지별 스크립트 순차 로드 */
     if (isCheckPlanPage) {
       try { await loadScript(base + 'check-plan-table.js'); } catch (e) { console.error('[load.js] check-plan-table.js 로드 실패:', e); }
+      document.dispatchEvent(new CustomEvent('check-plan-table-ready'));
       try { await loadScript(base + 'check-plan-filter.js'); } catch (e) { console.error('[load.js] check-plan-filter.js 로드 실패:', e); }
       try { await loadScript(base + 'check-plan-detail-slide.js'); } catch (e) { console.error('[load.js] check-plan-detail-slide.js 로드 실패:', e); }
+    } else if (isCheckResultPage) {
+      /* 점검 결과 포틀릿 접기/펼치기 */
+      (function initCrPortletToggle() {
+        var wrap = document.getElementById('cr-portlet-wrap');
+        var toggle = document.getElementById('cr-portlet-toggle');
+        var icon = toggle && toggle.querySelector('.cr-portlet-toggle-icon');
+        if (!wrap || !toggle) return;
+        toggle.addEventListener('click', function () {
+          wrap.classList.toggle('is-collapsed');
+          var collapsed = wrap.classList.contains('is-collapsed');
+          toggle.setAttribute('aria-label', collapsed ? '포틀릿 펼치기' : '포틀릿 접기');
+          if (icon) icon.textContent = collapsed ? 'expand_more' : 'expand_less';
+        });
+      })();
+      /* 알림 배너 닫기 */
+      (function initCrAlert() {
+        var btn = document.querySelector('.cr-alert .asset-alert-close');
+        if (btn) btn.addEventListener('click', function () {
+          var alert = document.querySelector('.cr-alert');
+          if (alert) alert.style.display = 'none';
+        });
+      })();
+      /* 전체 체크박스 */
+      (function initCrCheckAll() {
+        var all = document.getElementById('cr-check-all');
+        if (!all) return;
+        all.addEventListener('change', function () {
+          document.querySelectorAll('.cr-row-check').forEach(function (cb) { cb.checked = all.checked; });
+        });
+      })();
+      /* Bootstrap 툴팁 초기화 (동적 주입 후 실행) */
+      (function initCrTooltips() {
+        if (typeof bootstrap === 'undefined' || !bootstrap.Tooltip) return;
+        document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function (el) {
+          new bootstrap.Tooltip(el, { container: 'body' });
+        });
+      })();
+      /* 페이지당 행 수 필터링 (check-plan 동일 방식) */
+      (function initCrRowLimit() {
+        var tbody = document.getElementById('cr-table-tbody');
+        var sel = document.getElementById('cr-pagination-select');
+        var infoEl = document.getElementById('cr-pagination-info');
+        if (!tbody || !sel) return;
+        function applyRowLimit() {
+          var rows = tbody.querySelectorAll('tr');
+          var total = rows.length;
+          var limit = Math.max(1, parseInt(sel.value, 10) || 10);
+          rows.forEach(function (tr, i) {
+            if (i < limit) tr.classList.remove('d-none');
+            else tr.classList.add('d-none');
+          });
+          var shown = Math.min(limit, total);
+          if (infoEl) infoEl.textContent = '전체 ' + total + '개 중 1-' + shown + ' 표시';
+        }
+        sel.addEventListener('change', applyRowLimit);
+        applyRowLimit();
+      })();
     } else {
       try {
         if (hasDetail) await loadScript(base + 'asset-detail-slide.js');

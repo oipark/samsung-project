@@ -70,15 +70,34 @@
     }
     applyRowLimit();
 
+    /* 점검 완료인 행만 보기 버튼 활성화, 나머지는 비활성( opacity 30%, 커서 기본, 클릭 불가 ) */
+    var STATUS_CELL_INDEX = 7;
+    tbody.querySelectorAll('tr').forEach(function (tr) {
+      var statusCell = tr.cells[STATUS_CELL_INDEX];
+      var btn = tr.querySelector('.check-plan-detail-btn');
+      if (!btn) return;
+      var isDone = statusCell && statusCell.querySelector('.badge-done');
+      if (isDone) {
+        btn.classList.remove('check-plan-detail-btn-disabled');
+        btn.removeAttribute('disabled');
+      } else {
+        btn.classList.add('check-plan-detail-btn-disabled');
+        btn.setAttribute('disabled', 'disabled');
+      }
+    });
+
     tbody.querySelectorAll('.check-plan-detail-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
+      btn.removeEventListener('click', btn._detailClick);
+      btn._detailClick = function () {
+        if (this.disabled || this.classList.contains('check-plan-detail-btn-disabled')) return;
         var row = this.closest('tr');
         if (row && typeof window.openCheckPlanDetail === 'function') {
           window.openCheckPlanDetail(row);
         } else {
           document.getElementById('check-plan-detail-wrap') && document.getElementById('check-plan-detail-wrap').classList.remove('d-none') && (document.getElementById('check-plan-detail-wrap').setAttribute('aria-hidden', 'false'));
         }
-      });
+      };
+      btn.addEventListener('click', btn._detailClick);
     });
   }
 

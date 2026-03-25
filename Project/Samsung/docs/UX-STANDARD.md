@@ -11,10 +11,9 @@
 ### 1.0 전제 — Primary(메인 브랜드 컬러)는 **고객사·빌드마다 바뀐다**
 
 - **메인 컬러 = `--color-primary`**. 솔루션 전역의 “브랜드 축”은 이 변수(와 아래 **Primary 파생** 변수들)로만 표현한다.
-- **본 문서에는 색상 리터럴(HEX, `rgb()`, `rgba()` 숫자)을 적지 않는다.**  
-  이유: 문서만 다른 PC·레포에 복사해도 “특정 고객사 색이 박힌 공식 문서”가 되지 않게 하기 위함이다. **실제 픽셀 값은 오직 구현 파일** (예: `Project/Samsung/html/style.css`의 `:root`) 에만 둔다.
-- **동작 보장:** 화면·컴포넌트 CSS/마크업에서는 **항상 `var(--토큰이름)`만** 쓴다. 그래야 Primary만 `:root`에서 갈아끼워도 레이아웃·대비 관계가 유지되고 오류 없이 재사용된다.
-- **단일 소스:** 토큰의 **현재 기본값**은 항상 `style.css` 맨 위 `:root`가 기준이다. 본 절은 **이름·의미·관계**만 정의한다.
+- **서술 vs 코드 블록:** 본문 표·절에서는 **토큰 이름·역할**을 우선 쓴다. **HEX·rgba 등 픽셀 기준값**은 **§1.13 참조 `:root` 스냅샷** 코드 블록에만 모아 둔다. 레포에 전역 CSS가 없을 때는 그 블록을 그대로 붙여 넣고, 있으면 해당 `:root`와 동기화한다.
+- **동작 보장 (컴포넌트):** 화면·컴포넌트 CSS/마크업에는 **항상 `var(--토큰이름)`만** 쓴다 (§1.11). Primary만 `:root`에서 바꿔도 대비 관계가 유지되게 한다.
+- **기준값 위치:** 토큰의 **참조 기본값**은 §1.13과 동일한 내용이어야 한다. Samsung HTML 프로젝트에서는 `Project/Samsung/html/style.css` 맨 위 `:root`가 그 사본 역할을 한다.
 
 ---
 
@@ -52,7 +51,7 @@
 
 ### 1.3 Black (중립·투명도 스케일)
 
-고정 **검정 베이스**에서 투명도만 줄인 스케일. 본문·구분선·비활성 등에 쓴다. (구체 수치는 `style.css` 참고)
+고정 **검정 베이스**에서 투명도만 줄인 스케일. 본문·구분선·비활성 등에 쓴다. **구체 `rgba` 값은 §1.13 `--color-black-*` 행**과 동일하다.
 
 | CSS 변수 | 의미·용도 |
 |----------|-----------|
@@ -98,9 +97,8 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 
 ### 1.7 Status 색상 (Figma 디자인 시스템 — **본색 / Light / White** 3단)
 
-**참고 파일:** [디자인 시스템 · Color · Status](https://www.figma.com/design/8WXSIme1vHHblQwqHbggyD/%EB%94%94%EC%9E%90%EC%9D%B8-%EC%8B%9C%EC%8A%A4%ED%85%9C?node-id=2-363&m=dev) (`node-id=2-363`)
 
-의미색은 **색상 패밀리 8종**(Purple, Indigo, Blue, Cyan, Green, Yellow, Orange, Red)마다 아래 **3단계**만 쓴다. 구체 수치는 `style.css` `:root`에만 두고, 여기서는 **단계별 역할**만 고정한다.
+의미색은 **색상 패밀리 8종**(Purple, Indigo, Blue, Cyan, Green, Yellow, Orange, Red)마다 아래 **3단계**만 쓴다. **HEX·rgba 값은 §1.13 `--color-status-*` 행**에 있다. 여기서는 **단계별 역할**만 고정한다.
 
 | 단계 | Figma 스와치 이름 | 역할·타이포 권장 |
 |------|-------------------|------------------|
@@ -163,14 +161,14 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 | `--color-border-primary` | → `--color-primary` | 메인컬러 테두리 |
 | `--color-border-light` | → `--color-black-10` | 연한 테두리 |
 | `--color-border-card` | → `--color-bg-base` | 카드와 베이스 경계 |
-| `--color-border-panel` | `:root`에 정의 | 패널·슬레이트 느낌 구분선 |
-| `--color-card-accent` | `:root`에 정의 | 카드 강조 배경 (브랜드 바뀌면 조정 검토) |
-| `--color-emergency` | `:root`에 정의 | 긴급·강조 알림 면 |
-| `--color-badge-success` | `:root`에 정의 | 성공 뱃지 배경 |
+| `--color-border-panel` | §1.13 → `#e2e8f0` | 패널·슬레이트 느낌 구분선 |
+| `--color-card-accent` | §1.13 → `#e3ebf9` | 카드 강조 배경 (브랜드 바뀌면 조정 검토) |
+| `--color-emergency` | §1.13 → `#ffd8e0` | 긴급·강조 알림 면 |
+| `--color-badge-success` | §1.13 → `#d5f5dd` | 성공 뱃지 배경 |
 | `--color-badge-success-text` | → `--color-status-green` | 성공 뱃지 글자 |
-| `--color-f1f5f9` | `:root`에 정의 | 유틸 단색 면 |
-| `--color-logo` | 다른 토큰 참조(구현 확인) | 로고·브랜드 마크 톤 |
-| `--color-button-primary-hover` | 다른 토큰 참조(구현 확인) | 레거시/호환 호버 별칭 |
+| `--color-f1f5f9` | §1.13 → `#f1f5f9` | 유틸 단색 면 |
+| `--color-logo` | §1.13 → `var(--color-status-blue)` | 로고·브랜드 마크 톤 |
+| `--color-button-primary-hover` | §1.13 → `var(--color-status-indigo)` | 레거시/호환 호버 별칭 |
 
 **일반 테두리**가 필요하면 **`--color-border`** 또는 **`--color-border-panel`** 중 UI 맥락에 맞는 쪽을 쓴다.
 
@@ -178,23 +176,24 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 
 ### 1.10 그림자·모서리 (비색 토큰)
 
-카드·팝오버·버튼·뱃지의 **깊이·라운딩**. 구체 수치·그림자 식은 **`style.css` `:root`**만 본다.
+카드·팝오버·버튼·뱃지의 **깊이·라운딩**. 아래는 §1.13과 동일한 **참조 값**이다.
 
-| CSS 변수 | 용도 |
-|----------|------|
-| `--shadow-card` | 카드 그림자 |
-| `--shadow-popover` | 팝오버·플로팅 |
-| `--radius-card` | 카드·큰 박스 |
-| `--radius-button` | 버튼 |
-| `--radius-popover` | 팝오버 |
-| `--radius-badge` | 뱃지 |
+| CSS 변수 | 참조 값 (Samsung §1.13) | 용도 |
+|----------|-------------------------|------|
+| `--shadow-card` | `0 1px 1.75px rgba(0, 0, 0, 0.05)` | 카드 그림자 |
+| `--shadow-popover` | `0 4px 3.5px rgba(0, 0, 0, 0.25)` | 팝오버·플로팅 |
+| `--radius-card` | `8px` | 카드·큰 박스 |
+| `--radius-button` | `4px` | 버튼 (§3과 동일) |
+| `--radius-popover` | `8px` | 팝오버 |
+| `--radius-badge` | `4px` | 뱃지 |
 
 ---
 
 ### 1.11 AI·개발 강제 규칙 (테마 안전)
 
 - **금지:** 브랜드·테두리·배경·상태 표현에 **문자열로 색 숫자를 박는 것** (`#rrggbb`, `rgb(...)`, `rgba(...)` 를 컴포넌트 단 CSS/HTML 스타일에 직접 기입).
-- **허용:** `var(--color-…)` 만 사용. 예외가 필요하면 **먼저 `:root`에 토큰을 추가**한 뒤 변수로 참조한다.
+- **예외(문서만):** §1.13·§3 등 **본 문서 안의 코드 펜스**에 나온 리터럴은 `:root` 참조용이다. 화면용 CSS에는 **그대로 복사하지 말고** `var(--color-…)` 로만 연결한다.
+- **허용:** `var(--color-…)` 만 사용. 예외가 필요하면 **먼저 `:root`(§1.13)에 토큰을 추가**한 뒤 변수로 참조한다.
 - **Primary 교체 후 검증:** 전역 검색으로 **이전 고객사 RGB/HEX 리터럴**이 남아 있지 않은지 확인한다.
 
 ---
@@ -207,18 +206,142 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 - **테두리:** `--color-border`, `--color-border-light`, 필요 시 `--color-border-panel`
 - **상태:** 패밀리별 **본색 → Light → White** 3단 (`--color-status-{색}`, `--color-status-light-{색}`, `--color-status-white-{색}`). 구 탭용 `*-10`은 White와 동일 용도
 
+### 1.13 참조 `:root` 스냅샷 (Samsung HTML / 전역 CSS 동기화용)
+
+> **정본 파일:** 이 문서와 같은 폴더의 `UX-STANDARD-root.css` (내용은 `Project/Samsung/html/style.css` 1~101행과 동기화). 레포에 전역 CSS가 없으면 아래 블록 또는 해당 `.css` 파일을 그대로 쓴다. **인라인 블록**은 문서만 열었을 때 복사·붙여넣기용이다.
+
+```css
+/* 디자인 시스템 CSS 변수 — Figma 디자인 시스템 (Color 2-363) */
+/* UX-STANDARD.md §1.13 과 동기화. 원본: Project/Samsung/html/style.css 1~101행 */
+:root {
+  --font-pretendard: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-family: var(--font-pretendard);
+  line-height: 1.5;
+  color: #111111;
+  background-color: #edf0f4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* ===== Figma Color Scheme — Primary (100% + 80/60/40/20/10/5% 알파 스케일) ===== */
+  --color-primary: #13289f;                           /* Primary / 100% */
+  --color-primary-80: rgba(19, 40, 159, 0.8);        /* 80% */
+  --color-primary-60: rgba(19, 40, 159, 0.6);        /* 60% */
+  --color-primary-40: rgba(19, 40, 159, 0.4);        /* 40% */
+  --color-primary-20: rgba(19, 40, 159, 0.2);        /* 20% */
+  --color-primary-10: rgba(19, 40, 159, 0.1);        /* 10% */
+  --color-primary-5: rgba(19, 40, 159, 0.05);       /* 5% */
+  --color-primary-hover: #0f2085;                     /* 버튼 호버용 (별도 톤) */
+  --color-primary-border: var(--color-primary-20);   /* 테두리 = 20% 단계와 동일 */
+
+  /* ===== Figma Color Scheme — Black ===== */
+  --color-black-100: #111111;                         /* Black 100% */
+  --color-black-80: rgba(17, 17, 17, 0.8);
+  --color-black-60: rgba(17, 17, 17, 0.6);
+  --color-black-40: rgba(17, 17, 17, 0.4);
+  --color-black-20: rgba(17, 17, 17, 0.2);
+  --color-black-10: rgba(17, 17, 17, 0.1);
+  --color-black-4: rgba(17, 17, 17, 0.04);
+
+  /* ===== Figma Color Scheme — White ===== */
+  --color-white-100: #ffffff;                         /* White 100% */
+
+  /* ===== Figma Color Scheme — Background ===== */
+  --color-bg-base: #edf0f4;                           /* bg/EDF0F4 */
+  --color-bg-subtle: #f2f4f8;                         /* bg/F2F4F8 */
+  --color-bg-white: #ffffff;
+
+  /* ===== Figma Color Scheme — Text (Black 계열) ===== */
+  --color-text-primary: #111111;                      /* Black 100% */
+  --color-text-secondary: rgba(17, 17, 17, 0.8);      /* Black 80% */
+  --color-text-muted: rgba(17, 17, 17, 0.6);         /* Black 60% */
+
+  /* ===== Figma Color (node 2:363) — Status 본색 / Light / White 3단 ===== */
+  /* 본색(Solid): 스와치 1열 — 뱃지·아이콘·강조 텍스트 */
+  --color-status-purple: #af52de;
+  --color-status-indigo: #5856d6;
+  --color-status-blue: #007aff;
+  --color-status-cyan: #1ea5e4;
+  --color-status-green: #0a8529;
+  --color-status-yellow: #f1c100;
+  --color-status-orange: #ff8400;
+  --color-status-red: #e80b38;
+
+  /* Light: 스와치 2열 — 파스텔 솔리드, 흰 글자 대비용 */
+  --color-status-light-purple: #b899eb;
+  --color-status-light-indigo: #adadfb;
+  --color-status-light-blue: #7dbbff;
+  --color-status-light-cyan: #a0bce8;
+  --color-status-light-green: #71dd8c;
+  --color-status-light-yellow: #ffe57d;
+  --color-status-light-orange: #ffb55b;
+  --color-status-light-red: #ff7b96;
+
+  /* White: 스와치 3열 — 옅은 배경(동일 hue 30% 알파), 진한 본문색 권장 */
+  --color-status-white-purple: rgba(184, 153, 235, 0.3);
+  --color-status-white-indigo: rgba(173, 173, 251, 0.3);
+  --color-status-white-blue: rgba(125, 187, 255, 0.3);
+  --color-status-white-cyan: rgba(160, 188, 232, 0.3);
+  --color-status-white-green: rgba(113, 221, 140, 0.3);
+  --color-status-white-yellow: rgba(255, 229, 125, 0.3);
+  --color-status-white-orange: rgba(255, 181, 91, 0.3);
+  --color-status-white-red: rgba(255, 123, 150, 0.3);
+
+  /* 호환: 예전 *-10 명칭 = White 티어와 동일 용도(탭·칩 배경 등) */
+  --color-status-indigo-10: var(--color-status-white-indigo);
+  --color-status-red-10: var(--color-status-white-red);
+  --color-status-green-10: var(--color-status-white-green);
+
+  /* ===== 호환용 별칭 ===== */
+  --color-primary-bg: var(--color-primary-10);
+  --color-border-light: var(--color-black-10);
+  --color-border: var(--color-black-20);
+  --color-border-card: var(--color-bg-base);
+  --color-border-panel: #e2e8f0;
+  --color-card-accent: #e3ebf9;
+  --color-emergency: #ffd8e0;
+  --color-badge-success: #d5f5dd;
+  --color-badge-success-text: var(--color-status-green);
+  --color-f1f5f9: #f1f5f9;
+  --color-logo: var(--color-status-blue);
+  --color-button-primary-hover: var(--color-status-indigo);
+
+  /* Shadow & radius */
+  --shadow-card: 0 1px 1.75px rgba(0, 0, 0, 0.05);
+  --shadow-popover: 0 4px 3.5px rgba(0, 0, 0, 0.25);
+  --radius-card: 8px;
+  --radius-button: 4px;
+  --radius-popover: 8px;
+  --radius-badge: 4px;
+}
+```
+
 ---
 
 ## 2. Typography & Font Style Rules (폰트 스타일 규칙)
 
-본 절은 `Project/Samsung/html/components/컴포넌트-구조.md` §8과 동일 축이다. 구현의 **단일 소스**는 `Project/Samsung/html/style.css` 이다.
+본 절은 `Project/Samsung/html/components/컴포넌트-구조.md` §8과 동일 축이다. 폰트 스택·스무딩은 **§1.13 `:root`** 가 정본이며, Samsung HTML에서는 아래 **`#app` 규칙**으로 Bootstrap 등과 맞춘다.
 
 ### 2.1 본문·UI 텍스트 (Pretendard)
 
 - **강제:** 모든 UI 문자열은 **Pretendard** 패밀리만 사용한다. 페이지·컴포넌트 전용 CSS에서 `font-family`를 임의의 웹폰트·시스템 폰트로 바꾸지 않는다.
-- **CSS 변수:** `var(--font-pretendard)`  
-  - `:root` 정의: `'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif`
-- **적용 범위:** `:root`·`body`·`#app` 및 그 하위 **버튼·카드·폼·테이블·드롭다운** 등은 `style.css`에서 위 스택으로 통일한다. (Bootstrap 등 외부 스타일이 덮어쓰지 않도록 프로젝트 규칙을 따른다.)
+- **CSS 변수:** `var(--font-pretendard)` — 스택 문자열은 §1.13에 있다.
+- **Samsung HTML — `#app` 내부 Pretendard 강제 (Bootstrap 덮어쓰기 방지):**
+
+```css
+#app,
+#app .btn,
+#app .card,
+#app .form-control,
+#app .form-select,
+#app .table,
+#app input,
+#app select,
+#app textarea,
+#app .dropdown-menu {
+  font-family: var(--font-pretendard) !important;
+}
+```
+
 - **신규 마크업:** 콘텐츠는 **`#app` 내부**에 두거나, 동일하게 `font-family: var(--font-pretendard)` 를 유지한다.
 
 ### 2.2 기본 타이포그래피 (글로벌)
@@ -240,123 +363,210 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 
 ---
 
-## 3. Component Naming Convention (컴포넌트 명명 규칙)
-AI는 피그마 디자인 레이어 및 개발 컴포넌트의 명칭을 분석하여, 아래 공식에 따라 맥락과 상태를 인지하고 코드를 자동 매핑한다.
+## 3. Button Style Rules (버튼 스타일 규칙)
 
-- **Format:** `[ComponentType] / [Context_DataType] / [State]`
-- **Example:** `Input / Admin_Auth_ID / Error`
-- **Allowed States:** `Default`, `Hover`, `Disabled`, `Error`, `Focused`, `ReadOnly`
+본 절만으로도 **사이즈·패딩·타입·상태·모서리**를 구현할 수 있도록 수치와 시각 규칙을 문장으로 고정한다. **Samsung에서 이미 쓰는 구현 예시는 §3.8** CSS 블록에 수록한다.
+
+### 3.1 사이즈 (2종) — 높이·패딩
+
+버튼은 **Small**과 **Medium** 두 가지 높이만 쓴다. `box-sizing: border-box`를 전제로 한다(테두리가 있는 타입은 높이 안에 테두리 두께가 포함된다).
+
+| 사이즈 | 전체 높이(고정) | 좌우 패딩 | 상·하 패딩 |
+|--------|-----------------|-----------|------------|
+| **Small** | **24px** | **10px** | **0** |
+| **Medium** | **34px** | **15px** | **0** |
+
+- **상·하 패딩 0:** 위아래로 별도 패딩을 주지 않는다. 대신 **`min-height`(또는 `height`)를 위 표와 동일하게 고정**하고, 내부를 **`display: inline-flex` 또는 `flex` + `align-items: center` + `justify-content: center`** 로 채워 텍스트·아이콘을 수직·수평 중앙에 둔다.
+- **짧은 라벨:** 라벨이 매우 짧을 때 **`min-width: 60px`**(Medium 기준)을 둔다. §3.8 `.btn-ds`와 동일.
+- **표 vs 참조 구현:** §3.1 표는 **목표 스펙**(Small 24px·좌우 10px 등). Samsung `.btn-ds`(§3.8)는 **높이 34px·`padding: 7.5px 12px`** 로 표와 다르다. 정리 시 표에 맞추거나 Small 전용 클래스를 추가한다.
+
+### 3.2 너비 (2가지)
+
+- **콘텐츠·패딩 기준 (Hug):** 기본은 `width: auto`. 라벨 길이·아이콘 유무에 따라 너비가 결정되며, 좌우에는 §3.1의 패딩만큼만 여백이 붙는다.
+- **전체 폭:** 폼 하단·모달 푸터 등에서 **한 줄을 꽉 채워야 하면 `width: 100%`** 를 쓴다. 이때도 §3.1의 좌우 패딩·고정 높이·타입별 색 규칙은 그대로 적용한다.
+
+### 3.3 타입·스타일 (3종) — Primary / Black / White 토큰만
+
+버튼의 **배경·글자·테두리·비활성**은 모두 **Primary, Black, White 토큰 family** 안에서만 조합한다 (§1). 컴포넌트 CSS에 **HEX·`rgb()` 숫자 리터럴을 직접 쓰지 않는다.**
+
+아래 세 타입은 이름을 **1st / 2rd / 3rd** 로 부른다(구현 시 클래스·토큰 이름에 그대로 써도 된다).
+
+#### 3.3.1 1st — 솔리드 주요 버튼
+
+- **용도:** 저장, 확인, 로그인 등 화면에서 **가장 중요한 한 가지 행동**에 쓴다. 한 화면에 여러 개를 나란히 두지 않는 것이 일반적이다.
+- **Default:** 배경 **`--color-primary`**, 글자·아이콘 **`--color-white-100`**, **굵기 Bold**. 테두리는 없거나 배경과 동일하게 두어 윤곽이 끊기지 않게 한다.
+- **Hover:** 배경만 **`--color-primary-hover`** 로 바꾼다. 글자·아이콘은 흰색 유지. 포인터 커서(`cursor: pointer`)는 활성 상태에서만.
+- **Disabled:** 클릭 불가(`pointer-events: none` 또는 `disabled` 속성). 배경은 **Black 계열의 옅은 불투명 면**으로 둔다 — 예: **`--color-black-100`에 낮은 불투명도**를 주거나, **`--color-black-20`**에 가까운 단색 면으로 `:root`에 토큰을 정의해 쓴다. 글자·아이콘은 **`--color-white-100`** 을 유지해 “채워진 칩” 형태로 읽히게 한다. 시각적으로는 **채도가 낮고 눌린 느낌**이면 된다.
+
+#### 3.3.2 2rd — 라인(아웃라인) 보조 버튼
+
+- **용도:** 취소 옆의 보조 확인, “다음 단계” 등 **주요 버튼보다 한 단계 약한** 행동.
+- **Default:** 배경 **`--color-white-100`** 또는 **`--color-bg-white`**. 테두리는 **1px 실선**, 색 **`--color-primary`** 또는 **`--color-border-primary`**(둘 다 Primary 계열). 글자·아이콘 **`--color-primary`**, **굵기 Regular**.
+- **Hover:** 배경을 **`--color-primary-10`**(`--color-primary-bg`와 같은 계열)로 채운다. 테두리 색과 글자 색은 Default와 동일하게 유지해, “흰 바탕에서 살짝 올라온 Primary 틴트”로 보이게 한다.
+- **Disabled:** 배경·테두리·글자의 **색 조합은 Default와 동일**하게 두고, **버튼 루트 요소 전체에 불투명도를 낮춘다**(구현 표준: **`opacity: 0.3`** 또는 동일한 시각적 약화를 내는 방식 하나로 프로젝트 전체 통일). 이렇게 하면 테두리·글자가 함께 흐려져 비활성임이 분명해진다.
+
+#### 3.3.3 3rd — 옅은 면(소프트) 보조 버튼
+
+- **용도:** 툴바·필터 줄 등 **밀도 높은 UI**에서 덜 부담스러운 액션.
+- **Default:** 배경은 **아주 연한 면**이다. Samsung 참조(§3.8)는 **`--color-bg-subtle`** (`#f2f4f8`, §1.13). 글자·아이콘 **`--color-primary`**, **Regular**. **외곽 테두리는 두지 않는다**(구분은 배경 톤 차이로만).
+- **Hover:** 배경을 **`--color-primary-10`** 으로 맞추거나 한 단계 진하게 해서, Default보다 **Primary 성분이 조금 더 보이게** 한다. 글자색은 `--color-primary` 유지.
+- **Disabled:** 배경색은 **Default와 동일**하게 유지한다. 대신 **글자와 아이콘이 들어 있는 내부 래퍼만 불투명도를 낮춘다**(예: **`opacity: 0.3`**) — 배경 면은 그대로 두어 2rd Disabled(전체 흐림)와 구분된다.
+
+### 3.4 타이포그래피 (사이즈별)
+
+| 사이즈 | 1st (Bold) | 2rd / 3rd (Regular) |
+|--------|------------|---------------------|
+| Medium | **14px** | **14px** |
+| Small | **12px** | **12px** |
+
+- **줄 높이:** 고정 높이 안에서 잘리지 않도록 **`line-height`는 1 또는 글자 크기에 맞는 단일 줄**로 둔다(여러 줄 라벨이 필요하면 별도 “텍스트 버튼” 패턴으로 분리한다).
+- **폰트:** §2 **Pretendard** (`var(--font-pretendard)`).
+
+### 3.5 아이콘
+
+- **위치:** 라벨 **앞(leading)** 또는 **뒤(trailing)** 에 둘 수 있다. 한 버튼에 아이콘은 하나만 둔다.
+- **간격:** 아이콘과 라벨 사이 **`gap: 6px`** — §3.8 `.btn-ds`와 동일.
+- **크기:** Material Symbols는 라벨과 **같은 `font-size`** 로 두고 `line-height: 1`·flex 정렬로 맞춘다. Medium **14px**면 아이콘 **14px**(필요 시 **18px**까지). Small **12px**면 **12px~16px** 범위에서 통일.
+- **색:** 버튼에 `color`를 타입별 글자 토큰으로 주고, 아이콘은 **`currentColor`** 를 쓰면 상태·타입이 바뀔 때 같이 맞는다.
+- **라이브러리:** §2.3 및 **§9 Iconography** (Material Symbols).
+
+### 3.6 모서리(라운드)
+
+- **표준 값:** 모든 버튼의 모서리는 **`border-radius: 4px`** 로 통일한다.
+- **토큰과의 관계:** §1.10의 **`--radius-button`** 은 버튼에 쓸 때 **반드시 4px와 동일한 값**으로 둔다. 다른 컴포넌트가 같은 변수를 쓰지 않는다면, 버튼 전용으로 `4px`를 직접 써도 되되 **프로젝트 안에서는 한 가지 방식만** 택한다.
+
+### 3.7 상호작용·접근성
+
+- **포커스(탭·칩 등):** Primary 링 예시(Samsung 구현):
+
+```css
+.filter-tab:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+```
+
+- **포커스(슬라이드·모달 래퍼):** 아래처럼 **컨테이너 루트**는 윤곽을 제거한다. **실제 `button`·`a`** 에는 위 패턴 또는 Bootstrap 기본 포커스를 유지한다.
+
+```css
+.offcanvas:focus,
+.offcanvas:focus-visible,
+.offcanvas-body:focus,
+.offcanvas-body:focus-visible,
+.modal:focus,
+.modal:focus-visible,
+[tabindex]:focus,
+[tabindex]:focus-visible {
+  outline: none !important;
+}
+```
+
+- **커서:** 활성 `cursor: pointer`, Disabled `cursor: not-allowed`(§3.8 `.btn-ds`).
+
+### 3.8 Samsung 참조 구현 — `.btn-ds` (Medium 단일 높이)
+
+`Project/Samsung/html/style.css` 발췌. **1st `:hover`** 는 §3.3.1의 `--color-primary-hover` 대신 **`--color-status-indigo`** 를 쓴다. **1st `:disabled`** 는 §3.3.1 서술과 달리 **`--color-black-20` 배경 + `--color-black-40` 글자**다. **3rd `:disabled`** 는 배경을 **`--color-black-10`** 으로 바꾼다(문서 §3.3.3의 “라벨만 opacity”와 다름). 통일이 필요하면 문서 또는 코드 한쪽에 맞춘다.
+
+```css
+/* ========== 버튼 컴포넌트 — Figma 323-3588 Button/Button-34px ========== */
+.btn-ds { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 34px; min-width: 60px; padding: 7.5px 12px; border-radius: 4px; font-size: 14px; line-height: 1; font-family: var(--font-pretendard); border: 1px solid transparent; cursor: pointer; box-sizing: border-box; white-space: nowrap; }
+/* Type 1st — Primary */
+.btn-ds-1st { background: var(--color-primary); color: #fff; font-weight: 700; }
+.btn-ds-1st:hover { background: var(--color-status-indigo); color: #fff; }
+.btn-ds-1st:disabled { background: var(--color-black-20); color: var(--color-black-40); cursor: not-allowed; }
+/* Type 2nd — Outline */
+.btn-ds-2nd { background: #fff; color: var(--color-primary); font-weight: 400; border-color: var(--color-primary); }
+.btn-ds-2nd:hover { background: var(--color-primary-10); color: var(--color-primary); border-color: var(--color-primary); }
+.btn-ds-2nd:disabled { background: #fff; color: var(--color-black-40); border-color: var(--color-black-20); cursor: not-allowed; }
+/* Type 3rd — Tertiary */
+.btn-ds-3rd { background: var(--color-bg-subtle); color: var(--color-primary); font-weight: 400; }
+.btn-ds-3rd:hover { background: var(--color-primary-10); color: var(--color-primary); }
+.btn-ds-3rd:disabled { background: var(--color-black-10); color: var(--color-black-40); cursor: not-allowed; }
+```
+
+### 3.9 AI·개발 강제 요약
+
+- **금지:** Primary·Black·White 밖 팔레트, 버튼 전용 HEX/`rgb()` 하드코딩.
+- **허용:** §1 토큰과 본 절 수치. **Small/Medium × 1st/2rd/3rd × Default/Hover/Disabled × Hug/100%** 는 클래스·컴포넌트로 명시한다.
+- **검증:** 본 절 표·§3.8과 실제 CSS를 diff해 **높이·패딩·4px 라운드·상태별 색**이 어긋나지 않는지 확인한다.
 
 ---
 
-## 4. Layout Architecture (레이아웃 및 Wrapper-Slot 구조)
+#### GNB (Global Navigation Bar) 규칙
 
-### 4.1 Global Layout (불변의 공통 영역)
-GNB(상단)와 LNB(좌측)는 솔루션의 고정된 뼈대인 `<GlobalLayout>` 컴포넌트로 캡슐화되어 있다. 
-- **Constraint:** AI는 신규 화면이나 기능을 생성할 때 GNB와 LNB의 구조, 스타일, DOM 트리를 절대 직접 수정하거나 침범해서는 안 된다.
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 📋 화면 제목               │ 2026.03.20 월요일 │ 매뉴얼 ▼ │ 👤 사용자 ▼  │
+└─────────────────────────────────────────────────────────────────────────┘
 
-### 4.2 Content Slot (가변 콘텐츠 영역)
-- **Rule:** 신규 화면의 모든 UI(대시보드, 목록, 등록 폼 등)는 반드시 `<GlobalLayout>` 내부의 가변 영역인 `<main class="content-area">` 슬롯(Slot/Children) 내부에만 렌더링되도록 코드를 작성한다.
+- **위치**: 상단 고정, 전체 너비, width:100%
+- **구성 (좌→우)**:
+  left
+  - 제목에 맞는 아이콘 + 현재 화면의 제목
+  right
+  - 현재 날짜 (YYYY.MM.DD 요일)
+  - 매뉴얼 버튼 (메뉴얼가이드 리스트 드롭다운)
+  - 사용자 프로필 버튼 (이름 + 드롭다운 아이콘)
+- **높이**: 60px
+- **배경색**: 흰색, 하단 border (`border-bottom: 1px solid #C9D0D7`)
 
----
 
-## 5. Form & Validation Matrix (입력 폼 및 유효성 검증)
-인풋 컴포넌트 생성 시, 컴포넌트에 부여된 `DataType`을 기반으로 아래의 유효성 검증 로직과 Error UI 노출 로직을 자동 포함하여 코드를 생성한다.
+#### GNB 메뉴얼얼 팝오버 (User Popover)
 
-| DataType | Trigger Event | Validation Rule (검증 조건) | Error UI & Message (실패 시 노출) |
-| :--- | :--- | :--- | :--- |
-| `required` | `onBlur` / `onSubmit` | 값이 Null 또는 빈 문자열일 경우 | "필수 입력 항목입니다." |
-| `date_past` | 날짜 선택 완료 시 | 선택된 날짜 < `Today` 일 경우 | "시작일은 과거로 설정할 수 없습니다." |
-| `ip_address` | `onChange` (타이핑) | IPv4 / IPv6 정규표현식 매칭 실패 시 | "올바른 IP 형식이 아닙니다." |
-| `reason_text`| 글자 수 체킹 로직 | 텍스트 길이를 측정하여 10자 미만일 경우 | "상세 사유를 10자 이상 입력해주세요." |
-| `keyword` | `onChange` (타이핑) | 특수문자 입력 시도 감지 시 | (메시지 없음) 해당 입력 자체를 `preventDefault` 처리 |
+```
+┌──────────────────────────────────┐
+│ Manual List                    × │
+├──────────────────────────────────┤
+│ 사용자 메뉴얼 (User Manual)        │
+│ 한국어 │ English                  │  < 버튼
+│──────────────────────────────────│
+│ 테니엄 에이전트(Tanium Agent)      │
+│ 설치가이드 Install Guide           │ < 버튼
+│ 윈도우 │ 리눅스                    │ < 버튼
+│ 솔라리스스 │ aix                   │ < 버튼
+│──────────────────────────────────│
+│ 서버 보안 점검 체크리스트            │
+│ (Server Security Checklist)      │
+│ 한국어 │ English                  │ < 버튼
+│──────────────────────────────────│
+│ 보안 담당자 메뉴얼                  │
+│ (Manual for Security Manager)    │
+│ 한국어 │ English                  │ < 버튼
+│──────────────────────────────────│
+│ 주요 Q&A (Major Q&A) - Mosaic     │
+│ 전사 보안 점검 상세 가이드           │ < 버튼
+│ Security Diagnosis Detailed Guide│
+└──────────────────────────────────┘
+```
 
----
+- 메뉴얼 별로 버튼튼 클릭 시 다운로드 기능 제공
+- 한국어에는 한국국기, English에는 미국국기 이미지 텍스트앞에 배치
+- 설치가이드와 전사 보안점검 상세 가이드 앞엔 알맞는 아이콘 배치
+- 버튼 스타일은 설치가이드'btn btn-primary btn-sm' / 나머지 'btn btn-white btn-sm'
 
-## 6. Composition Standard (모달 및 슬라이드 패널 합성 표준)
+#### GNB 사용자 팝오버 (User Popover)
 
-### 6.1 Slide Panel (Drawer)
-상세 정보 조회/수정에 사용되는 우측 슬라이드 패널은 Container와 Content를 분리하여 합성(Composition) 구조로 렌더링한다.
-- **Wrapper (Container):** `<SlidePanel>` 사용. 너비(1000px), Dimmed 오버레이, 슬라이드 모션, Header(제목, 닫기), Footer(저장/취소 버튼)는 이 컴포넌트에 고정.
-- **Slot (Content):** 패널 내부의 구체적인 폼이나 테이블 데이터는 `<SlidePanel>` 호출 시 `children` props로 주입하여 렌더링한다.
+```
+┌──────────────────┐
+│ My Page        × │
+├──────────────────┤
+│ 부서명            │
+│ knox & 개발그룹    │
+│ 이름              │
+│ 홍길동             │
+│ ID               │
+│ R02              │
+├──────────────────┤
+│ 대시보드 위젯 설정  │
+├──────────────────┤
+│ 언어 변경 Korean ▼ │
+├──────────────────┤
+│ [Logout]         │
+└──────────────────┘
+```
 
-### 6.2 Multi-level Panel (2중 슬라이드)
-- 1차 패널 위에 2차 패널(예외 신청 등)이 겹쳐 열리는 구조를 허용한다 (최대 2 depth).
-- **Rule:** 2차 패널 렌더링 시, 기존 1차 패널은 어둡게 비활성화(Dimmed) 처리하며, 2차 패널 닫기 이벤트 발생 시 1차 패널 상태로 복귀하는 라우팅/상태 관리를 구현한다.
+- 사용자 이름 클릭 시 팝오버 표시 (Bootstrap `popover` 또는 커스텀 드롭다운)
+- 부서명, 이름, ID 표시
+- 대시보드 위젯 설정 링크
+- 언어 변경 드롭다운 (한국어/English)
+- [Logout] 버튼: `btn btn-primary btn-sm`
 
----
-
-## 7. Micro-Interaction Physics (마이크로 인터랙션 물리 법칙)
-모든 동적 UI 전환 및 애니메이션은 하드코딩을 배제하고 아래의 글로벌 물리 법칙(CSS Transition/Animation)을 강제 적용한다.
-
-- **Fast (`0.15s ease-in-out`):** 버튼 Hover 시 명도 변경, 체크박스 토글, 툴팁 렌더링
-- **Base (`0.3s ease-in-out`):** 드롭다운/팝오버 열림, 트리 메뉴 접기/펼치기
-- **Slow (`0.4s ease-out`):** 슬라이드 패널 등장, 모달 팝업 등장, 토스트 알림 등장
-
-**[State Feedback Rules]**
-- **Hover:** 요소에 `cursor: pointer` 적용 및 `var(--color-primary-hover)`로 전환.
-- **Focus:** 키보드 탭(Tab) 접근 시 요소 외곽에 2px 두께의 `var(--color-primary)` Outline 강제 렌더링.
-- **Active:** 버튼 클릭 이벤트 발생 시 `transform: scale(0.98)`을 적용하여 눌림 효과 구현.
-
----
-
-## 8. Domain Business Logic (비즈니스 로직 및 상태 변경)
-
-### 8.1 Submission Flow (임시저장 vs 제출 패턴)
-AI는 폼 전송 이벤트 구현 시 아래의 분기 로직을 반드시 따른다.
-
-- **`[임시저장]` 액션:**
-  - `required` 검증 등 모든 Validation Bypass.
-  - 즉시 Save API 호출 -> 완료 시 Toast Alert("임시저장되었습니다.", `bg-secondary`, 3초 후 Unmount).
-- **`[제출]` 액션:**
-  - 화면 내 전체 필드 Validation 실행.
-  - **Error 핸들링:** 검증 실패 시 최상단 에러 필드로 `window.scrollTo` 및 `element.focus()` 자동 실행.
-  - **Success 핸들링:** 검증 통과 시 다이얼로그 모달("제출하시겠습니까? 제출 후에는 수정이 제한됩니다.") 호출 -> `[확인]` 클릭 시 Submit API 호출 -> 완료 Toast 노출 후 목록 페이지 라우팅.
-
-### 8.2 Data Protection (데이터 보호 및 경고)
-- **삭제 차단:** 참조 중인 데이터 삭제 API 호출 시 (HTTP 409 Conflict 등), 브라우저 기본 `alert()` 사용을 금지하며 시스템 커스텀 `<Modal>`을 호출하여 참조 건수 및 차단 사유를 렌더링한다.
-- **상태 변경:** '운영상태' 토글 등 중요 State 변경 시 "비활성화하면 점검이 일시 중지됩니다" 등의 경고를 포함한 `<Modal>`을 선행 노출하여 유저 컨펌을 받는다.
-
----
-
-## 9. Iconography (아이콘 사용 규칙)
-- **라이브러리 강제:** 프로젝트의 모든 아이콘은 오직 `Google Material Symbols (Outlined)`만 사용한다. 
-- **금지 사항:** FontAwesome, Lucide, Heroicons 등 타 라이브러리 사용 및 SVG Path 직접 드로잉을 절대 금지한다.
-- **알맞는 아이콘이 없을때:** 아이콘을 렌더링할 때는 알맞는 아이콘이 없을경우 최대한 비슷한 아이콘을 골라서 사용한다.
-- **코드 작성 포맷:** 아이콘을 렌더링할 때는 반드시 아래의 HTML/컴포넌트 구조를 따른다.
-  - `(예시) <span class="material-symbols-outlined">search</span>`
-
----
-
-## 10. Company Logo Image (기업 로고 자동 배치 규칙)
-- **로고 경로:** 기업 로고 이미지는 `/assets/logos/` 폴더 내에 위치한다.
-- **파일명 매칭 (Naming Rule):** - AI는 화면에 기업 로고를 렌더링할 때, 전달받은 데이터의 `company_id` 또는 `영문 기업명`을 조합하여 이미지 경로를 자동 생성해야 한다.
-  - `(포맷) /assets/logos/{company_name}_logo.png`
-- **Fallback (대체 이미지):** 만약 해당 기업의 로고 파일이 존재하지 않거나 로드에 실패할 경우, 무조건 `/assets/logos/default_logo.png`를 노출하도록 에러 핸들링 코드를 작성한다.
-
----
-
-## 11. Frontend Architecture & Component Loading Rules
-
-본 프로젝트는 순수 HTML/JS 기반의 동적 컴포넌트 로딩 시스템을 사용한다. AI가 새로운 HTML 페이지나 JS 로직을 생성할 때는 반드시 아래의 렌더링 파이프라인과 규칙을 엄격히 준수해야 한다.
-
-### 11.1 신규 HTML 페이지 생성 규칙 (Boilerplate)
-새로운 화면(예: `new-page.html`)을 생성할 때, GNB, LNB 등의 공통 영역을 하드코딩해서는 안 되며, 반드시 `load.js`가 인식할 수 있는 **Placeholder** 형태로 뼈대를 구성해야 한다.
-
-- **[필수 태그 구조]**
-  1. `<head>` 내부에 페이지 제목 설정: `<meta name="gnb-title" content="페이지 제목">`
-  2. 본문(Body) 좌측 메뉴 영역: `<div id="lnb-placeholder"></div>`
-  3. 본문(Body) 상단 바 영역: `<div id="gnb-placeholder"></div>`
-  4. 공통 로더 스크립트 삽입: `<script src="components/load.js"></script>` (이 스크립트 하나만 직접 로드한다)
-
-### 11.2 동적 DOM 주입 및 스크립트 실행 타이밍 (Race Condition 방지)
-모든 컴포넌트 HTML은 `load.js`를 통해 비동기(Promise.all)로 fetch되어 DOM에 주입된다. 따라서 AI는 스크립트 작성 시 DOM 요소가 즉시 존재한다고 가정해서는 안 된다.
-
-- **[이벤트 리스너 강제]**
-  - 자산 테이블이나 상세 슬라이드 등 동적으로 주입되는 DOM을 조작하는 JS 로직을 작성할 때는, 절대 최상단에서 즉시 실행(`DOMContentLoaded` 포함)하지 마라.
-  - 반드시 `load.js`가 DOM 주입을 완료하고 발행하는 커스텀 이벤트를 수신한 뒤에 초기화 함수를 실행하도록 작성한다.
-  - **예시 코드:** `document.addEventListener('asset-table-ready', initMyTableFunction);`
-
-### 11.3 특수 컴포넌트 사용 규칙 (자산 현황 테이블 및 슬라이드)
-- 데이터 테이블 목록이 필요한 페이지를 구성할 때는 `<section class="asset-table-section" id="asset-table-section-placeholder"></section>` 태그를 삽입하라.
-- 상세 정보가 우측에서 열리는 패널이 필요한 경우, `</main>` 태그 바깥 최하단에 `<div id="asset-detail-placeholder"></div>`를 위치시켜라. `load.js`가 알아서 HTML 조각과 이벤트 핸들러(`asset-detail-slide.js`)를 주입할 것이다.

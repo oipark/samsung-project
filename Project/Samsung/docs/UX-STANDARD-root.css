@@ -1,0 +1,102 @@
+/* 디자인 시스템 CSS 변수 — Figma 디자인 시스템 (Color 2-363) */
+/* UX-STANDARD.md §1.13 과 동기화. 원본: Project/Samsung/html/style.css 1~101행 */
+:root {
+  --font-pretendard: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-family: var(--font-pretendard);
+  line-height: 1.5;
+  color: #111111;
+  background-color: #edf0f4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* ===== Figma Color Scheme — Primary (100% + 80/60/40/20/10/5% 알파 스케일) ===== */
+  --color-primary: #13289f;                           /* Primary / 100% */
+  --color-primary-80: rgba(19, 40, 159, 0.8);        /* 80% */
+  --color-primary-60: rgba(19, 40, 159, 0.6);        /* 60% */
+  --color-primary-40: rgba(19, 40, 159, 0.4);        /* 40% */
+  --color-primary-20: rgba(19, 40, 159, 0.2);        /* 20% */
+  --color-primary-10: rgba(19, 40, 159, 0.1);        /* 10% */
+  --color-primary-5: rgba(19, 40, 159, 0.05);       /* 5% */
+  --color-primary-hover: #0f2085;                     /* 버튼 호버용 (별도 톤) */
+  --color-primary-border: var(--color-primary-20);   /* 테두리 = 20% 단계와 동일 */
+
+  /* ===== Figma Color Scheme — Black ===== */
+  --color-black-100: #111111;                         /* Black 100% */
+  --color-black-80: rgba(17, 17, 17, 0.8);
+  --color-black-60: rgba(17, 17, 17, 0.6);
+  --color-black-40: rgba(17, 17, 17, 0.4);
+  --color-black-20: rgba(17, 17, 17, 0.2);
+  --color-black-10: rgba(17, 17, 17, 0.1);
+  --color-black-4: rgba(17, 17, 17, 0.04);
+
+  /* ===== Figma Color Scheme — White ===== */
+  --color-white-100: #ffffff;                         /* White 100% */
+
+  /* ===== Figma Color Scheme — Background ===== */
+  --color-bg-base: #edf0f4;                           /* bg/EDF0F4 */
+  --color-bg-subtle: #f2f4f8;                         /* bg/F2F4F8 */
+  --color-bg-white: #ffffff;
+
+  /* ===== Figma Color Scheme — Text (Black 계열) ===== */
+  --color-text-primary: #111111;                      /* Black 100% */
+  --color-text-secondary: rgba(17, 17, 17, 0.8);      /* Black 80% */
+  --color-text-muted: rgba(17, 17, 17, 0.6);         /* Black 60% */
+
+  /* ===== Figma Color (node 2:363) — Status 본색 / Light / White 3단 ===== */
+  /* 본색(Solid): 스와치 1열 — 뱃지·아이콘·강조 텍스트 */
+  --color-status-purple: #af52de;
+  --color-status-indigo: #5856d6;
+  --color-status-blue: #007aff;
+  --color-status-cyan: #1ea5e4;
+  --color-status-green: #0a8529;
+  --color-status-yellow: #f1c100;
+  --color-status-orange: #ff8400;
+  --color-status-red: #e80b38;
+
+  /* Light: 스와치 2열 — 파스텔 솔리드, 흰 글자 대비용 */
+  --color-status-light-purple: #b899eb;
+  --color-status-light-indigo: #adadfb;
+  --color-status-light-blue: #7dbbff;
+  --color-status-light-cyan: #a0bce8;
+  --color-status-light-green: #71dd8c;
+  --color-status-light-yellow: #ffe57d;
+  --color-status-light-orange: #ffb55b;
+  --color-status-light-red: #ff7b96;
+
+  /* White: 스와치 3열 — 옅은 배경(동일 hue 30% 알파), 진한 본문색 권장 */
+  --color-status-white-purple: rgba(184, 153, 235, 0.3);
+  --color-status-white-indigo: rgba(173, 173, 251, 0.3);
+  --color-status-white-blue: rgba(125, 187, 255, 0.3);
+  --color-status-white-cyan: rgba(160, 188, 232, 0.3);
+  --color-status-white-green: rgba(113, 221, 140, 0.3);
+  --color-status-white-yellow: rgba(255, 229, 125, 0.3);
+  --color-status-white-orange: rgba(255, 181, 91, 0.3);
+  --color-status-white-red: rgba(255, 123, 150, 0.3);
+
+  /* 호환: 예전 *-10 명칭 = White 티어와 동일 용도(탭·칩 배경 등) */
+  --color-status-indigo-10: var(--color-status-white-indigo);
+  --color-status-red-10: var(--color-status-white-red);
+  --color-status-green-10: var(--color-status-white-green);
+
+  /* ===== 호환용 별칭 ===== */
+  --color-primary-bg: var(--color-primary-10);
+  --color-border-light: var(--color-black-10);
+  --color-border: var(--color-black-20);
+  --color-border-card: var(--color-bg-base);
+  --color-border-panel: #e2e8f0;
+  --color-card-accent: #e3ebf9;
+  --color-emergency: #ffd8e0;
+  --color-badge-success: #d5f5dd;
+  --color-badge-success-text: var(--color-status-green);
+  --color-f1f5f9: #f1f5f9;
+  --color-logo: var(--color-status-blue);
+  --color-button-primary-hover: var(--color-status-indigo);
+
+  /* Shadow & radius */
+  --shadow-card: 0 1px 1.75px rgba(0, 0, 0, 0.05);
+  --shadow-popover: 0 4px 3.5px rgba(0, 0, 0, 0.25);
+  --radius-card: 8px;
+  --radius-button: 4px;
+  --radius-popover: 8px;
+  --radius-badge: 4px;
+}

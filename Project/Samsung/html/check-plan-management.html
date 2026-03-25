@@ -47,8 +47,60 @@
       </div>
     </div>
 
-    <!-- 점검계획 상세정보 슬라이드 팝업 (컴포넌트) -->
-    <div id="modal-placeholder"></div>
+    <!-- 점검계획 상세정보 슬라이드 팝업 (컴포넌트 로드) -->
+    <div id="modal-placeholder" class="slide-popup-placeholder"></div>
+
+    <!-- 점검계획 상세 패널 콘텐츠 (asset-detail-slide.html 패턴 동일) -->
+    <template id="check-plan-detail-content">
+      <div class="check-plan-detail-form">
+        <div class="row g-3 mb-3">
+          <div class="col-12 col-md-6">
+            <label class="form-label asset-detail-label">사업장</label>
+            <input type="text" class="form-control asset-detail-input" id="check-plan-site" readonly />
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="form-label asset-detail-label">부서</label>
+            <input type="text" class="form-control asset-detail-input" id="check-plan-dept" readonly />
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="form-label asset-detail-label">계획명</label>
+            <input type="text" class="form-control asset-detail-input" id="check-plan-name" readonly />
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="form-label asset-detail-label">대상시스템</label>
+            <input type="text" class="form-control asset-detail-input" id="check-plan-system" readonly />
+          </div>
+        </div>
+        <div class="check-plan-map-placeholder mb-3 rounded border bg-light d-flex align-items-center justify-content-center" style="min-height: 200px;">
+          <span class="text-muted">지도/레이아웃 뷰</span>
+        </div>
+        <ul class="nav nav-tabs check-plan-detail-tabs mb-3" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="tab-basic" data-bs-toggle="tab" data-bs-target="#panel-basic" type="button" role="tab">기본정보</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tab-assets" data-bs-toggle="tab" data-bs-target="#panel-assets" type="button" role="tab">대상 자산</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tab-checklist" data-bs-toggle="tab" data-bs-target="#panel-checklist" type="button" role="tab">점검 체크리스트</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tab-contacts" data-bs-toggle="tab" data-bs-target="#panel-contacts" type="button" role="tab">담당자 및 통보처</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="check-plan-tab-content">
+          <div class="tab-pane fade show active" id="panel-basic" role="tabpanel">기본정보 내용 영역</div>
+          <div class="tab-pane fade" id="panel-assets" role="tabpanel">대상 자산 내용 영역</div>
+          <div class="tab-pane fade" id="panel-checklist" role="tabpanel">점검 체크리스트 내용 영역</div>
+          <div class="tab-pane fade" id="panel-contacts" role="tabpanel">담당자 및 통보처 내용 영역</div>
+        </div>
+      </div>
+      <div class="asset-detail-footer check-plan-detail-footer d-flex gap-2 justify-content-end border-top pt-3 mt-3">
+        <button type="button" class="btn-ds btn-ds-2nd" id="check-plan-detail-btn-change">변경</button>
+        <button type="button" class="btn-ds btn-ds-2nd" id="check-plan-detail-btn-delete">삭제</button>
+        <button type="button" class="btn-ds btn-ds-1st" id="check-plan-detail-btn-complete">완료</button>
+      </div>
+    </template>
 
     <script src="components/load.js"></script>
   </div>

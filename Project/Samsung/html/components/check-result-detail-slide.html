@@ -1,0 +1,458 @@
+<!-- 점검 결과 상세 슬라이드 팝업 (1단 + 2단 내장) -->
+<div class="asset-detail-wrap" id="cr-detail-wrap" aria-hidden="true">
+  <div class="asset-detail-overlay" id="cr-detail-overlay"></div>
+
+  <!-- ── 1단: 점검 결과 상세 (80vw) ─────────────────────────────── -->
+  <div class="asset-detail-panel cr-detail-panel" id="cr-detail-panel"
+       role="dialog" aria-labelledby="cr-detail-title" tabindex="-1">
+
+    <!-- Header -->
+    <div class="asset-detail-header cr-detail-header">
+      <div class="d-flex align-items-center gap-2">
+        <span class="material-symbols-outlined cr-detail-header-icon"
+              style="font-variation-settings:'FILL' 1;" aria-hidden="true">shield</span>
+        <h2 class="asset-detail-title" id="cr-detail-title">점검 결과 상세</h2>
+      </div>
+      <button type="button" class="asset-detail-close btn btn-link p-0"
+              id="cr-detail-close" aria-label="닫기">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <!-- 자산 정보바 -->
+    <div class="cr-detail-infobar">
+      <div class="cr-detail-infobar-meta">
+        <span class="cr-info-section-label">자산 정보</span>
+        <span class="cr-info-vsep" aria-hidden="true"></span>
+        <div class="cr-info-items">
+          <div class="cr-info-item">
+            <span class="cr-info-key">서버명</span>
+            <span class="cr-info-val" id="cr-srv-name">seemoon-virtual-machine</span>
+          </div>
+          <span class="cr-info-vdivider" aria-hidden="true"></span>
+          <div class="cr-info-item">
+            <span class="cr-info-key">IP</span>
+            <span class="cr-info-val" id="cr-srv-ip">12.123.123.100</span>
+          </div>
+          <span class="cr-info-vdivider" aria-hidden="true"></span>
+          <div class="cr-info-item">
+            <span class="cr-info-key">OS</span>
+            <span class="cr-info-val" id="cr-srv-os">Windows</span>
+          </div>
+          <span class="cr-info-vdivider" aria-hidden="true"></span>
+          <div class="cr-info-item">
+            <span class="cr-info-key">OS 버전</span>
+            <span class="cr-info-val" id="cr-srv-os-ver">Server 2020</span>
+          </div>
+          <span class="cr-info-vdivider" aria-hidden="true"></span>
+          <div class="cr-info-item">
+            <span class="cr-info-key">점검일</span>
+            <span class="cr-info-val" id="cr-srv-date">2025-12-26 13:48:12</span>
+          </div>
+        </div>
+      </div>
+      <div class="cr-detail-infobar-actions">
+        <button type="button" class="btn-ds btn-ds-1st d-flex align-items-center gap-1"
+                id="cr-exception-btn">
+          <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">edit</span>
+          점검 예외 신청
+        </button>
+      </div>
+    </div>
+
+    <!-- Body: Split (Left CCE list | Right CCE detail + action form) -->
+    <div class="cr-split-wrap">
+
+      <!-- ── 좌측: CCE 리스트 ─────────────────────── -->
+      <div class="cr-split-left">
+
+        <!-- Filter bar (asset-filter-* 컴포넌트 재사용, 2px 축소) -->
+        <div class="cr-cce-filterbar">
+          <ul class="asset-filter-bar-inner list-unstyled mb-0 ps-0 d-flex align-items-center w-100">
+            <li class="asset-filter-bar-item asset-filter-trigger-wrap">
+              <button type="button"
+                      class="asset-filter-trigger-btn d-flex align-items-center gap-2 fw-bold"
+                      id="cr-cce-filter-trigger" aria-expanded="false" aria-haspopup="true">
+                <span class="material-symbols-outlined asset-filter-icon"
+                      style="font-variation-settings:'FILL' 1;" aria-hidden="true">filter_alt</span>
+                <span class="asset-filter-label">Filter</span>
+                <span class="asset-filter-badge" id="cr-cce-filter-badge">0</span>
+              </button>
+            </li>
+            <li class="asset-filter-bar-item asset-filter-right-wrap d-flex align-items-center flex-grow-1 min-w-0">
+              <div class="asset-filter-tags-container asset-filter-chips-wrap"
+                   id="cr-cce-filter-chips"></div>
+              <button type="button" class="asset-filter-reset-btn" id="cr-cce-filter-reset"
+                      aria-label="CCE 필터 초기화">
+                <span class="material-symbols-outlined">refresh</span>
+                필터 초기화
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Filter dropdown panel -->
+        <div class="cr-cce-filter-panel d-none" id="cr-cce-filter-panel">
+          <div class="cr-filter-panel-header">
+            <span class="material-symbols-outlined cr-filter-panel-header-icon"
+                  style="font-variation-settings:'FILL' 1;" aria-hidden="true">filter_alt</span>
+            <span class="cr-filter-panel-title">Filter</span>
+          </div>
+          <div class="cr-filter-panel-body">
+            <div class="cr-filter-row">
+              <label class="cr-filter-row-label" for="cr-fp-id">취약점 ID</label>
+              <input type="text" class="cr-filter-name-input" id="cr-fp-id"
+                     placeholder="CCE ID 입력" autocomplete="off" />
+            </div>
+            <div class="cr-filter-row">
+              <label class="cr-filter-row-label" for="cr-fp-result">점검 결과</label>
+              <select class="cr-fp-select" id="cr-fp-result">
+                <option value="">전체</option>
+                <option value="pass">양호</option>
+                <option value="fail">취약</option>
+                <option value="na">N/A</option>
+              </select>
+            </div>
+          </div>
+          <div class="cr-filter-panel-footer">
+            <button type="button" class="cr-panel-btn cr-panel-btn-reset" id="cr-fp-reset">초기화</button>
+            <div class="cr-filter-panel-footer-right">
+              <button type="button" class="cr-panel-btn cr-panel-btn-cancel" id="cr-fp-cancel">취소</button>
+              <button type="button" class="cr-panel-btn cr-panel-btn-apply" id="cr-fp-apply">적용</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CCE 목록 테이블 (asset-table-* 컴포넌트 재사용) -->
+        <div class="cr-cce-table-wrap custom-scrollbar">
+          <div class="asset-table-toolbar cr-cce-table-toolbar">
+            <span class="asset-table-count-text">전체
+              <strong id="cr-cce-total-count">0</strong>건
+            </span>
+          </div>
+          <table class="table table-borderless asset-table cr-cce-table mb-0 text-nowrap">
+            <thead class="asset-table-thead sticky-top">
+              <tr>
+                <th class="asset-table-th cr-cce-th-cb" style="text-align:center; width:44px;">
+                  <label class="custom-checkbox-wrap" aria-label="전체 선택">
+                    <input type="checkbox" class="custom-checkbox" id="cr-cce-check-all" />
+                    <span class="custom-checkbox-box"></span>
+                  </label>
+                </th>
+                <th class="asset-table-th">취약점 ID</th>
+                <th class="asset-table-th" style="min-width:140px;">취약점 항목명</th>
+                <th class="asset-table-th">조치여부</th>
+                <th class="asset-table-th">점검 결과</th>
+              </tr>
+            </thead>
+            <tbody id="cr-cce-tbody" class="asset-table-tbody"></tbody>
+          </table>
+        </div>
+      </div><!-- /cr-split-left -->
+
+      <!-- 구분선 -->
+      <div class="cr-split-divider" aria-hidden="true"></div>
+
+      <!-- ── 우측: CCE 상세 + 담당자 조치 ──────────── -->
+      <div class="cr-split-right custom-scrollbar">
+
+        <!-- 초기 빈 상태 -->
+        <div class="cr-detail-empty" id="cr-detail-empty">
+          <span class="material-symbols-outlined cr-detail-empty-icon"
+                aria-hidden="true">manage_search</span>
+          <p>좌측 목록에서 취약점을 선택하면<br>상세 정보를 확인할 수 있습니다.</p>
+        </div>
+
+        <!-- CCE 상세 정보 (선택 후 표시) -->
+        <div class="cr-cce-detail d-none" id="cr-cce-detail-section">
+          <div class="cr-cce-detail-header">
+            <h3 class="cr-cce-detail-title">CCE 상세 정보</h3>
+          </div>
+          <table class="cr-cce-info-table">
+            <colgroup>
+              <col style="width:22%"><!-- key-left -->
+              <col style="width:28%"><!-- val-left -->
+              <col style="width:22%"><!-- key-right -->
+              <col>              <!-- val-right -->
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="cr-info-td-key">취약점 ID</td>
+                <td class="cr-info-td-val" id="cce-d-id" colspan="3">-</td>
+              </tr>
+              <!-- 점검결과 + CCE위험도: 50%:50% 분할 행 -->
+              <tr>
+                <td class="cr-info-td-key">점검 결과</td>
+                <td class="cr-info-td-val" id="cce-d-result-cell">
+                  <span id="cce-d-result-badge"></span>
+                </td>
+                <td class="cr-info-td-key">CCE 위험도</td>
+                <td class="cr-info-td-val" id="cce-d-risk-cell">
+                  <span id="cce-d-risk-badge"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="cr-info-td-key">취약점 항목명</td>
+                <td class="cr-info-td-val" id="cce-d-name" colspan="3">-</td>
+              </tr>
+              <tr>
+                <td class="cr-info-td-key">권고값</td>
+                <td class="cr-info-td-val" id="cce-d-recommend" colspan="3">-</td>
+              </tr>
+              <tr>
+                <td class="cr-info-td-key">점검 기준</td>
+                <td class="cr-info-td-val cr-info-multiline" id="cce-d-standard" colspan="3">-</td>
+              </tr>
+              <tr>
+                <td class="cr-info-td-key">점검 상세</td>
+                <td class="cr-info-td-val" id="cce-d-detail" colspan="3">-</td>
+              </tr>
+              <tr>
+                <td class="cr-info-td-key">조치 방법</td>
+                <td class="cr-info-td-val" id="cce-d-remedy" colspan="3">-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 담당자 조치 (result=fail 일 때만 표시) -->
+        <div class="cr-action-section d-none" id="cr-action-section">
+          <div class="cr-action-header">
+            <h3 class="cr-action-title">담당자 조치</h3>
+            <button type="button" class="btn-ds btn-ds-1st" id="cr-action-save-btn">조치 내용 저장</button>
+          </div>
+          <div class="cr-action-form">
+            <div class="cr-action-field">
+              <label class="cr-action-label" for="cr-action-manager">조치 관리자</label>
+              <input type="text" class="form-control asset-detail-input"
+                     id="cr-action-manager" placeholder="조치 관리자 이름 입력" />
+            </div>
+            <div class="cr-action-field-row">
+              <div class="cr-action-field">
+                <label class="cr-action-label">조치 여부 <span class="text-danger">*</span></label>
+                <div class="d-flex gap-3 pt-1">
+                  <label class="cr-radio-label">
+                    <input type="radio" name="cr-action-status"
+                           value="조치" id="cr-radio-done" class="cr-radio-input" />
+                    <span>조치</span>
+                  </label>
+                  <label class="cr-radio-label">
+                    <input type="radio" name="cr-action-status"
+                           value="미조치" id="cr-radio-undone" class="cr-radio-input" />
+                    <span>미조치</span>
+                  </label>
+                </div>
+              </div>
+              <div class="cr-action-field">
+                <label class="cr-action-label" for="cr-action-date">조치 일자</label>
+                <input type="text" class="form-control asset-detail-input" id="cr-action-date"
+                     placeholder="날짜 선택" readonly style="cursor:pointer;" />
+              </div>
+            </div>
+            <div class="cr-action-field" id="cr-reason-field">
+              <label class="cr-action-label" for="cr-action-reason">
+                사유 <span class="text-danger">*</span>
+              </label>
+              <textarea class="form-control asset-detail-textarea cr-action-textarea"
+                        id="cr-action-reason" rows="3"
+                        placeholder="사유를 입력하세요."></textarea>
+            </div>
+            <div class="cr-action-field">
+              <label class="cr-action-label" for="cr-action-memo">비고</label>
+              <textarea class="form-control asset-detail-textarea cr-action-textarea"
+                        id="cr-action-memo" rows="3"
+                        placeholder="비고를 입력하세요."></textarea>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /cr-split-right -->
+    </div><!-- /cr-split-wrap -->
+  </div><!-- /cr-detail-panel -->
+
+  <!-- ── 2단: 점검 결과 예외 처리 신청 ───────────────────────────── -->
+  <div class="asset-detail-panel-2 cr-exception-panel custom-scrollbar"
+       id="cr-exception-panel"
+       role="dialog" aria-labelledby="cr-exception-title"
+       aria-hidden="true" tabindex="-1">
+
+    <!-- Header -->
+    <div class="asset-detail-header cr-detail-header">
+      <div class="d-flex align-items-center gap-2">
+        <span class="material-symbols-outlined cr-detail-header-icon"
+              style="font-variation-settings:'FILL' 1;" aria-hidden="true">shield</span>
+        <h2 class="asset-detail-title" id="cr-exception-title">점검 결과 예외 처리 신청</h2>
+      </div>
+      <button type="button" class="asset-detail-close btn btn-link p-0"
+              id="cr-exception-close" aria-label="닫기">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="asset-detail-body cr-exception-body">
+
+      <!-- 결재선 -->
+      <section class="cr-exc-section">
+        <div class="cr-exc-section-head">
+          <h3 class="cr-exc-section-title">결재선</h3>
+          <button type="button" class="btn-ds btn-ds-2nd" id="cr-exc-add-approver">
+            <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">add</span>
+            결재선 추가
+          </button>
+        </div>
+        <div class="cr-exc-table-wrap">
+          <table class="table table-borderless cr-exc-table mb-0">
+            <thead class="cr-exc-thead">
+              <tr>
+                <th class="cr-exc-th" style="width:60px">순번</th>
+                <th class="cr-exc-th" style="width:100px">Type</th>
+                <th class="cr-exc-th">부서 / 승인자 / 직책</th>
+              </tr>
+            </thead>
+            <tbody id="cr-exc-approver-tbody">
+              <tr class="cr-exc-tr">
+                <td class="cr-exc-td">1</td>
+                <td class="cr-exc-td">
+                  <span class="cr-exc-type-badge cr-exc-type-apply">신청</span>
+                </td>
+                <td class="cr-exc-td">knox개발그룹(솔루션개발) / 포털관리자 / 책임</td>
+              </tr>
+              <tr class="cr-exc-tr">
+                <td class="cr-exc-td">2</td>
+                <td class="cr-exc-td">
+                  <span class="cr-exc-type-badge cr-exc-type-notify">통보</span>
+                </td>
+                <td class="cr-exc-td">knox개발그룹(솔루션개발) / 일반사용자 / 책임</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="cr-exc-note">
+          ※ 통보자는 승인/합의자 다음으로 순서가 자동 변경됩니다.
+        </p>
+      </section>
+
+      <!-- 문서 제목 + 신청 시 주의사항 -->
+      <section class="cr-exc-section">
+        <div class="cr-exc-form">
+          <div class="cr-exc-field">
+            <label class="cr-exc-label" for="cr-exc-doc-title">문서 제목</label>
+            <input type="text" class="form-control asset-detail-input"
+                   id="cr-exc-doc-title" placeholder="문서 제목을 입력하세요." />
+          </div>
+          <div class="cr-exc-field">
+            <label class="cr-exc-label" for="cr-exc-notice">신청 시 주의사항</label>
+            <textarea class="form-control asset-detail-textarea cr-action-textarea"
+                      id="cr-exc-notice" rows="3"
+                      placeholder="주의사항을 입력하세요."></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- 예외 신청 정보 -->
+      <section class="cr-exc-section">
+        <div class="cr-exc-section-head">
+          <h3 class="cr-exc-section-title">예외 신청 정보</h3>
+        </div>
+        <div class="cr-exc-form">
+          <div class="cr-exc-field">
+            <label class="cr-exc-label" for="cr-exc-srv-name">서버명</label>
+            <input type="text" class="form-control asset-detail-input"
+                   id="cr-exc-srv-name" readonly />
+          </div>
+          <div class="cr-exc-field-row">
+            <div class="cr-exc-field">
+              <label class="cr-exc-label" for="cr-exc-srv-ip">IP</label>
+              <input type="text" class="form-control asset-detail-input"
+                     id="cr-exc-srv-ip" readonly />
+            </div>
+            <div class="cr-exc-field">
+              <label class="cr-exc-label" for="cr-exc-period">
+                예외 기간 <span class="text-danger">*</span>
+              </label>
+              <input type="text" class="form-control asset-detail-input"
+                     id="cr-exc-period" placeholder="날짜 범위 선택"
+                     readonly />
+            </div>
+          </div>
+          <div class="cr-exc-field">
+            <label class="cr-exc-label" for="cr-exc-reason">
+              신청 사유 <span class="text-danger">*</span>
+            </label>
+            <textarea class="form-control asset-detail-textarea cr-action-textarea"
+                      id="cr-exc-reason" rows="3"
+                      placeholder="신청 사유를 입력하세요."></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- 예외 처리 대상 정보 -->
+      <section class="cr-exc-section">
+        <div class="cr-exc-section-head">
+          <h3 class="cr-exc-section-title">예외 처리 대상 정보</h3>
+          <span class="cr-exc-target-count">
+            총 <strong id="cr-exc-target-total">0</strong>건
+          </span>
+        </div>
+        <div class="cr-exc-table-wrap">
+          <table class="table table-borderless cr-exc-table mb-0">
+            <thead class="cr-exc-thead">
+              <tr>
+                <th class="cr-exc-th" style="width:60px">순번</th>
+                <th class="cr-exc-th" style="width:140px">취약점 ID</th>
+                <th class="cr-exc-th">취약점 항목명</th>
+                <th class="cr-exc-th" style="width:100px">점검 결과</th>
+                <th class="cr-exc-th" style="width:100px">CCE 위험도</th>
+              </tr>
+            </thead>
+            <tbody id="cr-exc-target-tbody">
+              <tr class="cr-exc-tr">
+                <td class="cr-exc-td cr-exc-td-empty" colspan="5">
+                  좌측 목록에서 체크박스로 CCE 항목을 선택하세요.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div><!-- /cr-exception-body -->
+
+    <!-- Footer -->
+    <div class="cr-exc-footer">
+      <button type="button" class="btn-ds btn-ds-2nd" id="cr-exc-cancel">취소</button>
+      <button type="button" class="btn-ds btn-ds-1st" id="cr-exc-submit">
+        <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">send</span>
+        상신
+      </button>
+    </div>
+
+  </div><!-- /cr-exception-panel -->
+
+  <!-- 예외 신청 상신: 2단 확인 모달 (패널 위 레이어) -->
+  <div class="cr-exc-modal-host d-none" id="cr-exc-modal-host" aria-hidden="true">
+    <div class="cr-exc-modal-backdrop" id="cr-exc-modal-backdrop" tabindex="-1"></div>
+    <div class="cr-exc-modal d-none" id="cr-exc-modal-confirm" role="dialog" aria-labelledby="cr-exc-modal-confirm-title cr-exc-modal-confirm-label" aria-modal="true">
+      <div class="cr-exc-modal-message" id="cr-exc-modal-confirm-text">
+        <span class="cr-exc-modal-title-line" id="cr-exc-modal-confirm-title"></span>
+        <span class="cr-exc-modal-sub-line">상신 하시겠습니까?</span>
+      </div>
+      <span id="cr-exc-modal-confirm-label" class="visually-hidden">상신 신청 확인</span>
+      <div class="cr-exc-modal-actions">
+        <button type="button" class="btn-ds btn-ds-2nd" id="cr-exc-modal-confirm-cancel">취소</button>
+        <button type="button" class="btn-ds btn-ds-1st" id="cr-exc-modal-confirm-ok">확인</button>
+      </div>
+    </div>
+    <div class="cr-exc-modal d-none" id="cr-exc-modal-done" role="dialog" aria-labelledby="cr-exc-modal-done-title cr-exc-modal-done-label" aria-modal="true">
+      <div class="cr-exc-modal-message" id="cr-exc-modal-done-text">
+        <span class="cr-exc-modal-title-line" id="cr-exc-modal-done-title"></span>
+        <span class="cr-exc-modal-sub-line">상신이 완료되었습니다.</span>
+      </div>
+      <span id="cr-exc-modal-done-label" class="visually-hidden">상신 완료</span>
+      <div class="cr-exc-modal-actions">
+        <button type="button" class="btn-ds btn-ds-1st" id="cr-exc-modal-done-ok">확인</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /cr-detail-wrap -->

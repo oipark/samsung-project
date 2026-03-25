@@ -3,51 +3,54 @@
     <button type="button" class="asset-filter-trigger-btn d-flex align-items-center gap-2 fw-bold" id="cr-filter-trigger" aria-expanded="false" aria-haspopup="true">
       <span class="material-symbols-outlined asset-filter-icon" style="font-variation-settings: 'FILL' 1;">filter_alt</span>
       <span class="asset-filter-label">Filter</span>
-      <span class="asset-filter-badge" id="cr-filter-badge">2</span>
+      <span class="asset-filter-badge" id="cr-filter-badge">0</span>
     </button>
   </li>
   <li class="asset-filter-bar-item asset-filter-right-wrap d-flex align-items-center flex-grow-1 min-w-0">
-    <div class="asset-filter-tags-container asset-filter-chips-wrap" id="cr-filter-tags-container">
-      <span class="filter-chip" data-filter-key="status">진행상태 : <strong class="text-custom-primary">전체</strong><span class="material-symbols-outlined filter-chip-close" aria-label="제거">close</span></span>
-      <span class="filter-chip" data-filter-key="type">점검유형 : <strong class="text-custom-primary">권역/사업자별 대상</strong><span class="material-symbols-outlined filter-chip-close" aria-label="제거">close</span></span>
-    </div>
+    <!-- 칩 영역: JS가 동적 렌더링 -->
+    <div class="asset-filter-tags-container asset-filter-chips-wrap" id="cr-filter-tags-container"></div>
     <button type="button" class="asset-filter-reset-btn" id="cr-filter-reset-btn" aria-label="전체 필터 초기화">
       <span class="material-symbols-outlined">refresh</span>
       필터 초기화
     </button>
   </li>
 </ul>
-<!-- 점검 결과 상세 필터 패널 -->
+
+<!-- 점검 결과 필터 패널 (Figma 431-2955 기반) -->
 <div class="asset-filter-panel cr-filter-panel d-none" id="cr-filter-panel" role="dialog" aria-label="점검 결과 필터">
-  <div class="asset-filter-panel-inner">
-    <div class="asset-filter-panel-body">
-      <div class="asset-filter-panel-col">
-        <div class="asset-filter-field">
-          <label class="asset-filter-field-label" for="cr-filter-status">진행상태</label>
-          <select class="form-select form-select-sm asset-filter-input" id="cr-filter-status" name="crFilterStatus">
-            <option value="">전체</option>
-            <option value="계획 수립">계획 수립</option>
-            <option value="진행중">진행중</option>
-            <option value="점검 완료">점검 완료</option>
-            <option value="점검 오류">점검 오류</option>
-          </select>
-        </div>
-        <div class="asset-filter-field">
-          <label class="asset-filter-field-label" for="cr-filter-type">점검유형</label>
-          <select class="form-select form-select-sm asset-filter-input" id="cr-filter-type" name="crFilterType">
-            <option value="">전체</option>
-            <option value="권역/사업자별 대상" selected>권역/사업자별 대상</option>
-            <option value="개별">개별</option>
-          </select>
-        </div>
-      </div>
+  <!-- 헤더: 회색 배경, filter_alt 아이콘 + "Filter" 텍스트 -->
+  <div class="cr-filter-panel-header">
+    <span class="material-symbols-outlined cr-filter-panel-header-icon" style="font-variation-settings: 'FILL' 1;">filter_alt</span>
+    <span class="cr-filter-panel-title">Filter</span>
+  </div>
+  <!-- 바디: 점검명 + 점검일 -->
+  <div class="cr-filter-panel-body">
+    <!-- 점검명 -->
+    <div class="cr-filter-row">
+      <label class="cr-filter-row-label" for="cr-filter-name">점검명</label>
+      <input
+        type="text"
+        class="cr-filter-name-input"
+        id="cr-filter-name"
+        placeholder="입력하세요."
+        autocomplete="off"
+      />
     </div>
-    <div class="asset-filter-panel-footer">
-      <button type="button" class="btn-ds btn-ds-2nd" id="cr-filter-panel-reset">필터 초기화</button>
-      <div class="asset-filter-panel-footer-right">
-        <button type="button" class="btn-ds btn-ds-2nd" id="cr-filter-panel-cancel">취소</button>
-        <button type="button" class="btn-ds btn-ds-1st" id="cr-filter-panel-apply">필터 적용</button>
-      </div>
+    <!-- 점검일 (Flatpickr 트리거) -->
+    <div class="cr-filter-row">
+      <label class="cr-filter-row-label">점검일</label>
+      <button type="button" class="cr-date-select-btn" id="cr-panel-date-btn" aria-label="점검일 범위 선택">
+        <span class="material-symbols-outlined cr-date-select-icon">calendar_month</span>
+        <span class="cr-date-select-text cr-date-placeholder" id="cr-date-select-text">날짜 선택</span>
+      </button>
+    </div>
+  </div>
+  <!-- 푸터 -->
+  <div class="cr-filter-panel-footer">
+    <button type="button" class="cr-panel-btn cr-panel-btn-reset" id="cr-filter-panel-reset">필터 초기화</button>
+    <div class="cr-filter-panel-footer-right">
+      <button type="button" class="cr-panel-btn cr-panel-btn-cancel" id="cr-filter-panel-cancel">취소</button>
+      <button type="button" class="cr-panel-btn cr-panel-btn-apply" id="cr-filter-panel-apply">필터 적용</button>
     </div>
   </div>
 </div>

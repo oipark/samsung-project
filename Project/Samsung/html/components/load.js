@@ -79,9 +79,10 @@
         fetchSafe(base + 'portlets/check-result-portlet.html', 'check-result-portlet.html'),
         fetchSafe(base + 'check-result-filter-bar.html', 'check-result-filter-bar.html'),
         fetchSafe(base + 'check-result-table-section.html', 'check-result-table-section.html'),
-        fetchSafe(base + 'check-result-tbody-rows.html', 'check-result-tbody-rows.html')
+        fetchSafe(base + 'check-result-tbody-rows.html', 'check-result-tbody-rows.html'),
+        fetchSafe(base + 'check-result-detail-slide.html', 'check-result-detail-slide.html')
       );
-      resultKeys = ['lnb', 'gnb', 'portlet', 'filterBar', 'tableSection', 'tableBody'];
+      resultKeys = ['lnb', 'gnb', 'portlet', 'filterBar', 'tableSection', 'tableBody', 'detailSlide'];
     } else {
       promises.push(
         hasTable ? fetchSafe(base + 'asset-table-section.html', 'asset-table-section.html') : Promise.resolve(null),
@@ -212,6 +213,7 @@
         var crPortletPh = document.getElementById('cr-portlet-placeholder');
         var crFilterBarPh = document.getElementById('cr-filter-bar-placeholder');
         var crTableSectionPh = document.getElementById('cr-table-section-placeholder');
+        var crDetailPh = document.getElementById('cr-detail-placeholder');
         if (crPortletPh && results[2]) crPortletPh.innerHTML = results[2];
         if (crFilterBarPh && results[3]) crFilterBarPh.innerHTML = results[3];
         if (crTableSectionPh && results[4]) {
@@ -228,6 +230,7 @@
             }
           }
         }
+        if (crDetailPh && results[6]) crDetailPh.innerHTML = results[6];
       } else {
         if (hasTable && results[2]) {
           var tablePlaceholder = document.getElementById('asset-table-section-placeholder');
@@ -318,6 +321,18 @@
         sel.addEventListener('change', applyRowLimit);
         applyRowLimit();
       })();
+
+      /* check-result-filter.js 로드 */
+      try {
+        await loadScript(base + 'check-result-filter.js');
+      } catch (e) {
+        console.error('[load.js] check-result-filter.js 로드 실패:', e);
+      }
+      try {
+        await loadScript(base + 'check-result-detail-slide.js');
+      } catch (e) {
+        console.error('[load.js] check-result-detail-slide.js 로드 실패:', e);
+      }
     } else {
       try {
         if (hasDetail) await loadScript(base + 'asset-detail-slide.js');

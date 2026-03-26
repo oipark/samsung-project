@@ -1,5 +1,5 @@
 /* 디자인 시스템 CSS 변수 — Figma 디자인 시스템 (Color 2-363) */
-/* UX-STANDARD.md §1.13 과 동기화. 원본: Project/Samsung/html/style.css 1~101행 */
+/* UX-STANDARD.md §1.13 과 동기화. 정본: 본 파일(UX-STANDARD-root.css) */
 :root {
   --font-pretendard: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-family: var(--font-pretendard);

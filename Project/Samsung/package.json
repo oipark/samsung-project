@@ -1,5 +1,5 @@
 {
-  "dependencies": {
-    "samsung-dashboard": "file:../.."
-  }
+  "name": "samsung-html-prototype",
+  "private": true,
+  "description": "정적 HTML 프로토타입 (의존성 없음; 필요 시 여기에 추가)"
 }

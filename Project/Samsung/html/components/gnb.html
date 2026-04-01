@@ -1,7 +1,17 @@
 <header class="gnb-header flex-shrink-0 d-flex align-items-center justify-content-between bg-white py-0 border-bottom" style="height: 60px; border-color: var(--color-border); padding-left: 40px; padding-right: 40px;">
-  <div class="d-flex align-items-center gap-2">
-    <span class="material-symbols-outlined text-custom-primary" style="font-size: 20px;">dashboard</span>
-    <span class="fs-6 fw-bold text-custom-primary" data-gnb-title>대시보드</span>
+  <div class="gnb-header-left d-flex align-items-center gap-2 min-w-0 flex-grow-1">
+    <div id="gnb-title-default" class="d-flex align-items-center gap-2">
+      <span class="material-symbols-outlined text-custom-primary" style="font-size: 20px;">dashboard</span>
+      <span class="fs-6 fw-bold text-custom-primary" data-gnb-title>대시보드</span>
+    </div>
+    <nav id="gnb-breadcrumb-nav" class="gnb-breadcrumb-nav d-none" aria-label="위치">
+      <button type="button" id="gnb-ct-back-btn" class="gnb-breadcrumb-back-btn" aria-label="이전 화면으로">
+        <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
+      </button>
+      <span class="gnb-breadcrumb-parent">점검 결과 관리</span>
+      <span class="gnb-breadcrumb-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
+      <span class="gnb-breadcrumb-current" id="gnb-ct-inspection-name">점검</span>
+    </nav>
   </div>
   <div class="d-flex align-items-center gap-0">
     <div class="d-flex align-items-center gap-2 pe-4">
@@ -130,7 +140,7 @@
     </div>
   </div>
   <div>
-    <button type="button" class="btn btn-link w-100 text-start p-0 py-3 fw-bold text-primary border-0">대시보드 위젯 설정</button>
+    <!-- <button type="button" class="btn btn-link w-100 text-start p-0 py-3 fw-bold text-primary border-0">대시보드 위젯 설정</button> -->
     <div class="border-top border-secondary py-4 d-flex align-items-center justify-content-between">
       <span class="fw-bold text-primary">언어 변경</span>
       <div class="dropdown">

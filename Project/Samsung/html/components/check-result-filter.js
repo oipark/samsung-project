@@ -154,6 +154,22 @@
         dateFormat: 'Y-m-d',
         locale:     locale,
         appendTo:   document.body,
+        disableMobile: true,
+        onReady: function (_sd, _ds, fp) {
+          if (fp.calendarContainer.querySelector('.flatpickr-custom-footer')) return;
+          var footer = document.createElement('div');
+          footer.className = 'flatpickr-custom-footer';
+          footer.innerHTML =
+            '<button type="button" class="flatpickr-footer-cancel">닫기</button>' +
+            '<button type="button" class="flatpickr-footer-save">저장</button>';
+          footer.querySelector('.flatpickr-footer-cancel').addEventListener('click', function () {
+            fp.close();
+          });
+          footer.querySelector('.flatpickr-footer-save').addEventListener('click', function () {
+            fp.close();
+          });
+          fp.calendarContainer.appendChild(footer);
+        },
         onChange: function (selectedDates) {
           if (selectedDates.length === 2) {
             stagingDate = fmtDate(selectedDates[0]) + ' ~ ' + fmtDate(selectedDates[1]);

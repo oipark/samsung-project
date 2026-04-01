@@ -211,8 +211,25 @@ body {
 #lnb .lnb-nav .lnb-group > .d-flex:first-child:hover { background-color: var(--color-primary-10) !important; }
 #lnb .lnb-nav .lnb-group.submenu-visible > .d-flex:first-child { background-color: var(--color-primary-10) !important; }
 #lnb .lnb-nav .lnb-group.submenu-visible > .d-flex:first-child .material-symbols-outlined { color: var(--color-primary) !important; }
-#lnb .lnb-nav .lnb-group > a:hover { background-color: var(--color-primary-10) !important; }
-#lnb .lnb-nav a.lnb-item:hover { background-color: var(--color-primary-10) !important; }
+/* §16.4 펼침 — 비활성 2차 링크 호버: primary-10 + primary 글자 (§16.5 서브와 동일 톤) */
+#lnb .lnb-nav .lnb-group > a:hover:not(.bg-custom-primary) {
+  background-color: var(--color-primary-10) !important;
+  color: var(--color-primary) !important;
+}
+/* 활성 2차 링크(솔리드 primary): 호버 시 §3 Primary 버튼과 동일 — primary-hover, 글자 유지 */
+#lnb .lnb-nav .lnb-group > a.bg-custom-primary:hover {
+  background-color: var(--color-primary-hover) !important;
+  color: var(--color-white-100) !important;
+}
+/* 단일 행 링크(대시보드 등) */
+#lnb .lnb-nav a.lnb-item:hover:not(.bg-custom-primary) {
+  background-color: var(--color-primary-10) !important;
+  color: var(--color-primary) !important;
+}
+#lnb .lnb-nav a.lnb-item.bg-custom-primary:hover {
+  background-color: var(--color-primary-hover) !important;
+  color: var(--color-white-100) !important;
+}
 
 /* Summary cards */
 .summary-card { border-color: var(--color-border-card) !important; box-shadow: var(--shadow-card); border-radius: 8px; }
@@ -394,8 +411,59 @@ body {
 #btn-profile:hover .small.fw-semibold { color: var(--color-text-primary) !important; }
 #btn-profile:hover .rounded-circle .material-symbols-outlined { color: var(--color-primary) !important; }
 #btn-manual > span.material-symbols-outlined:first-child { color: var(--color-primary) !important; }
-.gnb-header > div.d-flex.align-items-center.gap-2:first-child .material-symbols-outlined { color: var(--color-primary) !important; }
-.gnb-header > div.d-flex.align-items-center.gap-2:first-child span.fs-6 { color: var(--color-text-primary) !important; font-size: 20px !important; text-align: center; }
+#gnb-title-default .material-symbols-outlined { color: var(--color-primary) !important; }
+#gnb-title-default span.fs-6 { color: var(--color-text-primary) !important; font-size: 20px !important; text-align: center; }
+
+/* GNB 브레드크럼 (점검 대상별 관리 — 상위에서 드릴다운) */
+.gnb-breadcrumb-nav {
+  gap: 8px;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+}
+.gnb-breadcrumb-back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-button, 4px);
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+.gnb-breadcrumb-back-btn:hover {
+  background-color: var(--color-black-10);
+  color: var(--color-text-primary);
+}
+.gnb-breadcrumb-back-btn .material-symbols-outlined {
+  font-size: 22px;
+  color: inherit;
+}
+.gnb-breadcrumb-parent {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+.gnb-breadcrumb-sep {
+  font-size: 22px;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+.gnb-breadcrumb-current {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 /* Figma 시안 기준 패딩/마진/radius */
 .widget-card-header { padding: 15px 20px !important; }
@@ -441,10 +509,10 @@ body {
   min-height: 150px;
   padding: 20px;
   box-sizing: border-box;
-  background: #fff;
-  border: 1px solid #edf0f4;
-  border-radius: 8px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  background: var(--color-white-100);
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
   transition: min-height 0.3s ease-in-out, padding 0.3s ease-in-out;
 }
 .check-status-portlet-wrap .check-status-card {
@@ -942,8 +1010,26 @@ body {
 .asset-filter-reset-btn:hover { color: var(--color-primary); opacity: 0.9; }
 .asset-filter-reset-btn .material-symbols-outlined { font-size: 18px; }
 
-/* 상세 필터 팝업 패널 — Figma 383-2087 (3단 그리드, 구분선, 커스텀 라디오, 운영부서 검색 드롭다운) */
-.asset-filter-panel { position: absolute; left: 20px; top: 100%; margin-top: 4px; width: 100%; max-width: 1213px; background: var(--color-bg-white); border: 1px solid var(--color-border-card); border-radius: var(--radius-card); box-shadow: var(--shadow-card); z-index: 1050; }
+/* 상세 필터 팝업 패널 — Figma 383-2087 (3단 그리드, 구분선, 커스텀 라디오, 운영부서 검색 드롭다운)
+   외곽선·그림자·모서리는 .cr-filter-panel(점검결과/점검대상)과 동일 — primary 보더 + §10.2 popover 그림자 */
+.asset-filter-panel {
+  position: absolute;
+  left: 20px;
+  top: 100%;
+  margin-top: 4px;
+  width: 100%;
+  max-width: 1213px;
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-primary);
+  border-radius: 8px;
+  box-shadow: var(--shadow-popover);
+  z-index: 1050;
+}
+/* 자산현황·점검계획 등: 상단 타이틀 바 — 패널 상단 라운드와 맞춤 */
+.asset-filter-panel > .cr-filter-panel-header:first-child {
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
 .asset-filter-panel-inner { padding: 20px; }
 .asset-filter-panel-body { margin-bottom: 16px; }
 .asset-filter-panel-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; }
@@ -1242,10 +1328,10 @@ body {
   border: 1px solid rgba(10, 133, 41, 0.2);
 }
 
-/* ── 포틀릿 래퍼 ── */
+/* ── 포틀릿 래퍼 — §12.6.1: 화이트·radius-card·shadow-card (페이지 베이스와 구분) */
 .cr-portlet-wrap {
   width: 100%;
-  background: #fff;
+  background: var(--color-white-100);
   border: 1px solid var(--color-border-card) !important;
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
@@ -1512,18 +1598,194 @@ body {
   text-decoration: none !important;
 }
 .cr-portlet-toggle:hover { color: var(--color-primary); }
-.cr-portlet-toggle-icon { font-size: 24px !important; }
+.cr-portlet-toggle-icon { font-size: 20px !important; }
 
-/* 접힘 상태 */
-.cr-portlet-wrap.is-collapsed .cr-portlet-body,
-.cr-portlet-wrap.is-collapsed .cr-portlet-vdivider { display: none !important; }
+/* 접힘 상태 — Figma 476:5877(점검결과)·476:5878(점검대상): 본문·구분선 유지, 한 줄 컴팩트 바 */
+.cr-portlet-wrap.is-collapsed {
+  align-items: center;
+  gap: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.cr-portlet-wrap.is-collapsed .cr-portlet-vdivider {
+  margin: 0;
+  align-self: stretch;
+  min-height: 48px;
+}
 .cr-portlet-wrap.is-collapsed .cr-portlet-card {
+  padding: 15px 10px;
+  min-height: 65px;
+  justify-content: center;
+}
+.cr-portlet-wrap.is-collapsed .cr-portlet-card-inner {
   flex-direction: row;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
+  height: auto;
+  min-height: 0;
 }
-.cr-portlet-wrap.is-collapsed .cr-portlet-head { margin-bottom: 0; }
-.cr-portlet-wrap.is-collapsed .cr-portlet-value { font-size: 20px; }
+.cr-portlet-wrap.is-collapsed .cr-portlet-head {
+  margin-bottom: 0;
+  flex-shrink: 0;
+  max-width: 118px;
+  min-width: 0;
+}
+.cr-portlet-wrap.is-collapsed .cr-portlet-label {
+  font-size: 12px;
+  line-height: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* 접힘 공통: 긴급 카드 타이틀 12px */
+.cr-portlet-wrap.is-collapsed .cr-portlet-card-urgent .cr-portlet-label {
+  font-size: 12px;
+}
+/* 접힘 시 2번 카드(전체 취약점 요약) 제목만 12px */
+.cr-portlet-wrap.is-collapsed > .cr-portlet-card:nth-child(3) .cr-portlet-label {
+  font-size: 12px;
+  line-height: 16px;
+}
+.cr-portlet-wrap.is-collapsed .cr-portlet-body {
+  flex: 1 1 0;
+  min-width: 0;
+  gap: 5px;
+}
+.cr-portlet-wrap.is-collapsed > .cr-portlet-card:first-child { flex: 1 1 0; }
+.cr-portlet-wrap.is-collapsed > .cr-portlet-card:nth-child(3) { flex: 1.1 1 0; }
+.cr-portlet-wrap.is-collapsed > .cr-portlet-card-urgent { flex: 1.4 1 0; }
+/* 점검결과관리 접힘: 3개 카드 동일 폭 */
+#cr-portlet-wrap.is-collapsed > .cr-portlet-card {
+  flex: 1 1 0;
+}
+.cr-portlet-wrap.is-collapsed .cr-portlet-value {
+  font-size: 16px;
+  line-height: 1;
+}
+.cr-portlet-wrap.is-collapsed .cr-portlet-stats {
+  gap: 15px;
+}
+.cr-portlet-wrap.is-collapsed .cr-portlet-stats-3 {
+  gap: 12px;
+}
+/* 접힘 상태 2번 카드 상세 수치: 도트+숫자만 노출(라벨 숨김) */
+.cr-portlet-wrap.is-collapsed > .cr-portlet-card:nth-child(3) .cr-portlet-stats-3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.cr-portlet-wrap.is-collapsed > .cr-portlet-card:nth-child(3) .cr-portlet-stats-3 .cr-stat-label {
+  display: none !important;
+}
+.cr-portlet-wrap.is-collapsed > .cr-portlet-card:nth-child(3) .cr-portlet-stats-3 .cr-stat {
+  gap: 4px;
+}
+/* 긴급 TOP2: 접힘 시 뱃지 숨김·텍스트 12px (시안 476:5877) */
+.cr-portlet-wrap.is-collapsed .cr-risk-badge {
+  display: none;
+}
+.cr-portlet-wrap.is-collapsed .cr-top2-row {
+  height: 24px;
+  min-height: 24px;
+  padding: 0 7px;
+}
+.cr-portlet-wrap.is-collapsed .cr-top2-server {
+  font-size: 12px;
+  max-width: 180px;
+}
+.cr-portlet-wrap.is-collapsed .cr-top2-cce {
+  font-size: 12px;
+  max-width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cr-portlet-wrap.is-collapsed .cr-top2-bar {
+  height: 12px;
+}
+/* 점검 대상 포틀릿 접힘 — Figma 476:5878 (55px 카드·값 20px·단위·국내/해외 칩) */
+#ct-portlet-wrap.is-collapsed .cr-portlet-card {
+  min-height: 55px;
+}
+/* 점검 대상 접힘: 3개 카드 동일 폭 (공통 urgent 1.4 오버라이드) */
+#ct-portlet-wrap.is-collapsed > .cr-portlet-card {
+  flex: 1 1 0;
+}
+#ct-portlet-wrap.is-collapsed > .cr-portlet-card:first-child .cr-portlet-value {
+  font-size: 20px;
+}
+#ct-portlet-wrap.is-collapsed > .cr-portlet-card:nth-child(3) .cr-portlet-value {
+  font-size: 16px;
+}
+#ct-portlet-wrap.is-collapsed > .cr-portlet-card-urgent .cr-portlet-value {
+  font-size: 20px;
+  color: var(--color-status-red);
+}
+.cr-portlet-value-group {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  flex-shrink: 0;
+}
+.cr-portlet-value-suffix {
+  display: none;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--color-text-secondary);
+}
+#ct-portlet-wrap.is-collapsed .cr-portlet-value-suffix {
+  display: inline;
+}
+#ct-portlet-wrap.is-collapsed .cr-portlet-card:first-child .cr-portlet-stats {
+  flex-wrap: nowrap;
+  align-items: center;
+  background: var(--color-primary-5);
+  border: 1px solid var(--color-f1f5f9);
+  border-radius: 5px;
+  padding: 6px 10px 5px;
+  gap: 10px;
+}
+/* 국내/해외 라벨 — 테이블 ct-region 뱃지(인디고·사이언)와 동일 톤 */
+#ct-portlet-wrap > .cr-portlet-card:first-child .cr-portlet-stats .cr-stat:nth-child(1) .cr-stat-label {
+  font-weight: 700;
+  color: var(--color-status-indigo);
+}
+#ct-portlet-wrap > .cr-portlet-card:first-child .cr-portlet-stats .cr-stat:nth-child(2) .cr-stat-label {
+  font-weight: 700;
+  color: var(--color-status-cyan);
+}
+/* 점검 대상 포틀릿(펼침): 국내/해외 요약 박스 테두리 */
+#ct-portlet-wrap:not(.is-collapsed) > .cr-portlet-card:first-child .cr-portlet-stats {
+  flex-wrap: nowrap;
+  align-items: center;
+  background: var(--color-primary-5);
+  border: 1px solid var(--color-f1f5f9);
+  border-radius: 5px;
+  padding: 6px 10px 5px;
+  gap: 10px;
+}
+#ct-portlet-wrap.is-collapsed .cr-portlet-card-urgent .cr-portlet-row {
+  gap: 12px;
+  justify-content: flex-end;
+}
+#ct-portlet-wrap.is-collapsed .cr-portlet-card-urgent #ct-reinspect-btn {
+  flex-shrink: 0;
+  min-width: 60px;
+  height: 32px;
+  padding: 0 12px;
+  font-size: 14px;
+  border-radius: var(--radius-button);
+  border: 1px solid var(--color-primary);
+  background: var(--color-white-100);
+  color: var(--color-primary);
+}
+/* 점검 대상 포틀릿 국내/해외 도트 — 테이블 뱃지 본색과 동일 */
+.cr-bullet-domestic {
+  background: var(--color-status-indigo);
+}
+.cr-bullet-overseas {
+  background: var(--color-status-cyan);
+}
 
 /* ============================================================
    점검 결과 테이블 (Figma 403-2252)
@@ -1598,9 +1860,9 @@ body {
   margin-right: 4px;
   vertical-align: middle;
 }
-.cr-th-bul-pass { background: #0a8529; }
-.cr-th-bul-fail { background: #e80b38; }
-.cr-th-bul-interview { background: #ff8400; }
+.cr-th-bul-pass { background: var(--color-status-green); }
+.cr-th-bul-fail { background: var(--color-status-red); }
+.cr-th-bul-interview { background: var(--color-status-orange); }
 
 .cr-td {
   padding: 12px;
@@ -1620,7 +1882,7 @@ body {
 .cr-name-link {
   font-size: 14px;
   font-weight: 400;
-  color: #007aff !important;
+  color: var(--color-status-blue) !important;
   text-decoration: none !important;
   text-align: left;
 }
@@ -1668,55 +1930,78 @@ body {
   white-space: nowrap;
   color: #111;
 }
-/* 빈 값(-): 연회색 */
+/* 빈 값(-): §4.0.1 중립 */
 .cr-nb-empty {
-  background: rgba(17, 17, 17, 0.06);
-  border: 1px solid rgba(17, 17, 17, 0.12);
-  color: rgba(17, 17, 17, 0.4);
+  background: var(--color-black-10);
+  border: 1px solid var(--color-black-10);
+  color: var(--color-text-muted);
 }
-/* 항목 전체: 중간 회색 */
+/* 항목 전체: §4.0.1 중립(숫자 강조) */
 .cr-nb-total {
-  background: rgba(17, 17, 17, 0.06);
-  border: 1px solid rgba(17, 17, 17, 0.2);
-  color: #111;
+  background: var(--color-black-10);
+  border: 1px solid var(--color-black-20);
+  color: var(--color-text-primary);
 }
-/* 양호: 연초록 배경 + 초록 테두리 */
+/* 양호: §4.0 green 3단 */
 .cr-nb-pass {
-  background: #d5f5dd;
-  border: 1px solid rgba(10, 133, 41, 0.35);
-  color: #111;
+  background: var(--color-status-white-green);
+  border: 1px solid var(--color-status-light-green);
+  color: var(--color-status-green);
   cursor: default;
   position: relative;
 }
-/* 취약: 연빨간 배경 + 빨간 테두리 */
+/* 취약: §4.0 red 3단 */
 .cr-nb-fail {
-  background: #ffd8e0;
-  border: 1px solid rgba(232, 11, 56, 0.35);
-  color: #111;
+  background: var(--color-status-white-red);
+  border: 1px solid var(--color-status-light-red);
+  color: var(--color-status-red);
 }
-/* 인터뷰: 연주황 배경 + 주황 테두리 */
+/* 인터뷰: §4.0 orange 3단 */
 .cr-nb-interview {
-  background: #ffe9ce;
-  border: 1px solid rgba(255, 132, 0, 0.4);
+  background: var(--color-status-white-orange);
+  border: 1px solid var(--color-status-light-orange);
+  color: var(--color-status-orange);
+}
+/* 점검결과 표 뱃지: 텍스트는 검정으로 통일 */
+.cr-table .cr-td-badge .cr-nb-pass,
+.cr-table .cr-td-badge .cr-nb-fail,
+.cr-table .cr-td-badge .cr-nb-interview {
   color: #111;
 }
 /* 점검 전/진행중 컬럼별 빈 뱃지: 해당 색상 50% 불투명도 */
 /* 양호 컬럼 (6번째 td) */
 .cr-table tbody td:nth-child(6) .cr-nb-empty {
-  background: #d5f5dd;
-  border-color: rgba(10, 133, 41, 0.35);
+  background: var(--color-status-white-green);
+  border-color: var(--color-status-light-green);
   opacity: 0.5;
 }
 /* 취약 컬럼 (7번째 td) */
 .cr-table tbody td:nth-child(7) .cr-nb-empty {
-  background: #ffd8e0;
-  border-color: rgba(232, 11, 56, 0.35);
+  background: var(--color-status-white-red);
+  border-color: var(--color-status-light-red);
   opacity: 0.5;
 }
 /* 인터뷰 컬럼 (8번째 td) */
 .cr-table tbody td:nth-child(8) .cr-nb-empty {
-  background: #ffe9ce;
-  border-color: rgba(255, 132, 0, 0.4);
+  background: var(--color-status-white-orange);
+  border-color: var(--color-status-light-orange);
+  opacity: 0.5;
+}
+
+/* 점검 대상 테이블(ct-table): 양호·취약·인터뷰 열 빈 뱃지 틴트 (10~13번째 td) */
+.ct-table tbody td:nth-child(11) .cr-nb-empty {
+  background: var(--color-status-white-green);
+  border-color: var(--color-status-light-green);
+  opacity: 0.5;
+}
+.ct-table tbody td:nth-child(12) .cr-nb-empty {
+  background: var(--color-status-white-red);
+  border-color: var(--color-status-light-red);
+  opacity: 0.5;
+}
+.ct-table tbody td:nth-child(13) .cr-nb-empty {
+  background: var(--color-status-white-orange);
+  border-color: var(--color-status-light-orange);
   opacity: 0.5;
 }
 
@@ -2014,59 +2299,394 @@ body {
 .btn-close-chip .material-symbols-outlined { font-size: 15px !important; }
 .btn-close-chip:hover { opacity: 0.7; }
 
-/* ── Flatpickr 커스텀 테마 (Primary 블루 적용) ── */
+/* ── Flatpickr — 단일 월 vs 듀얼 월(멀티) 분리 (Figma 478:2765) ── */
 .flatpickr-calendar {
   border: 1px solid var(--color-primary) !important;
-  border-radius: 8px !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
   font-family: var(--font-pretendard, 'Pretendard', sans-serif);
   z-index: 9999 !important;
+  background: #fff !important;
+  padding: 20px !important;
+  box-sizing: border-box !important;
 }
-.flatpickr-day.selected,
-.flatpickr-day.startRange,
-.flatpickr-day.endRange,
-.flatpickr-day.selected:hover,
-.flatpickr-day.startRange:hover,
-.flatpickr-day.endRange:hover {
+/* 단일 월: 컴팩트 폭(JS 인라인 width·한 칼럼 레이아웃 유지) */
+.flatpickr-calendar:not(.multiMonth) {
+  width: auto !important;
+  max-width: 320px !important;
+}
+.flatpickr-calendar:not(.multiMonth) .flatpickr-innerContainer {
+  width: 100% !important;
+}
+/* 듀얼 월(레인지): 인라인 width가 한 달 분만 줄 때 깨짐 방지 — 2칼럼+월간격+패딩 */
+.flatpickr-calendar.multiMonth {
+  width: auto !important;
+  max-width: none !important;
+  min-width: 540px !important;
+}
+/* 멀티 월: Flatpickr 기본과 동일하게 flex 행(달 2개 나란히). display:block 덮어쓰면 붕괴 */
+.flatpickr-calendar.multiMonth .flatpickr-innerContainer {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: flex-start !important;
+  gap: 42px !important;
+  width: 100% !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+.flatpickr-calendar.multiMonth .flatpickr-rContainer {
+  width: auto !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+}
+.flatpickr-calendar.multiMonth .flatpickr-rContainer,
+.flatpickr-calendar.multiMonth .flatpickr-days {
+  overflow: visible !important;
+}
+/* 멀티 월: 두 달 사이 간격 (기존 32px + 10px) */
+.flatpickr-calendar.multiMonth .flatpickr-days {
+  width: auto !important;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: flex-start !important;
+  gap: 42px !important;
+}
+.flatpickr-calendar.multiMonth .flatpickr-days .dayContainer + .dayContainer {
+  box-shadow: none !important;
+}
+.flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n + 1) .flatpickr-day.inRange:nth-child(7n + 7) {
+  box-shadow: none !important;
+}
+.flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n + 2) .flatpickr-day.inRange:nth-child(7n + 1) {
+  box-shadow: -5px 0 0 #e8eaf6, 5px 0 0 #e8eaf6 !important;
+}
+.flatpickr-calendar .flatpickr-months {
+  margin-bottom: 24px !important;
+  padding: 6px 0 0 !important;
+  align-items: center !important;
+}
+/* 멀티 월: 화살표를 .flatpickr-current-month(16px·padding 4px·~27px 높이) 줄 옆에 맞춤 */
+.flatpickr-calendar.multiMonth .flatpickr-months {
+  align-items: flex-start !important;
+}
+.flatpickr-calendar.multiMonth .flatpickr-prev-month {
+  top: 24px !important;
+  left: 10px !important;
+  right: auto !important;
+  transform: none !important;
+}
+.flatpickr-calendar.multiMonth .flatpickr-next-month {
+  top: 24px !important;
+  right: 10px !important;
+  left: auto !important;
+  transform: none !important;
+}
+.flatpickr-calendar .flatpickr-month {
+  height: auto !important;
+}
+.flatpickr-calendar .flatpickr-current-month {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: #111 !important;
+  padding: 4px 0 !important;
+  height: auto !important;
+  position: relative !important;
+  left: auto !important;
+  width: 100% !important;
+  transform: none !important;
+  display: block !important;
+}
+.flatpickr-calendar .flatpickr-current-month .flatpickr-monthDropdown-months,
+.flatpickr-calendar .flatpickr-current-month .numInputWrapper,
+.flatpickr-calendar .flatpickr-current-month .numInput {
+  font: inherit !important;
+  font-weight: 700 !important;
+  color: #111 !important;
+}
+.flatpickr-calendar .flatpickr-current-month span.cur-month,
+.flatpickr-calendar .flatpickr-current-month span.cur-year {
+  font-weight: 700 !important;
+  color: #111 !important;
+}
+/* 네비 아이콘 — 한 치수 작게(20px)·상단 여백과 맞춤 */
+.flatpickr-calendar .flatpickr-prev-month,
+.flatpickr-calendar .flatpickr-next-month {
+  top: 6px !important;
+  height: 28px !important;
+  padding: 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  fill: #717c86 !important;
+  color: #717c86 !important;
+}
+.flatpickr-calendar .flatpickr-prev-month:hover,
+.flatpickr-calendar .flatpickr-next-month:hover {
+  color: var(--color-primary) !important;
+  fill: var(--color-primary) !important;
+}
+.flatpickr-calendar .flatpickr-prev-month svg,
+.flatpickr-calendar .flatpickr-next-month svg {
+  width: 20px !important;
+  height: 20px !important;
+  fill: #717c86 !important;
+}
+.flatpickr-calendar .flatpickr-prev-month:hover svg,
+.flatpickr-calendar .flatpickr-next-month:hover svg {
+  fill: var(--color-primary) !important;
+}
+.flatpickr-calendar .flatpickr-weekdays {
+  margin-bottom: 4px !important;
+  height: auto !important;
+}
+.flatpickr-calendar .flatpickr-weekdaycontainer {
+  display: flex !important;
+  gap: 4px !important;
+}
+.flatpickr-calendar span.flatpickr-weekday {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  color: #999 !important;
+  line-height: 32px !important;
+  max-width: 36px !important;
+  flex: 1 !important;
+}
+/* 멀티 월: 요일 2열을 날짜 그리드와 동일 간격(42px)·각 열 224px */
+.flatpickr-calendar.multiMonth .flatpickr-weekdays {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: flex-start !important;
+  gap: 42px !important;
+  width: auto !important;
+  max-width: none !important;
+  padding: 0 !important;
+  margin: 0 0 4px !important;
+  box-sizing: border-box !important;
+}
+.flatpickr-calendar.multiMonth .flatpickr-weekdaycontainer {
+  gap: 0 !important;
+  justify-content: flex-start !important;
+  flex: 0 0 224px !important;
+  width: 224px !important;
+  max-width: 224px !important;
+  min-width: 224px !important;
+  box-sizing: border-box !important;
+}
+.flatpickr-calendar.multiMonth span.flatpickr-weekday {
+  flex: 0 0 32px !important;
+  width: 32px !important;
+  max-width: 32px !important;
+}
+.flatpickr-calendar:not(.multiMonth) .flatpickr-days {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+/* 단일 월: 한 그리드만 가로 채움 */
+.flatpickr-calendar:not(.multiMonth) .dayContainer {
+  gap: 4px 4px !important;
+  flex: 0 1 auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+/* 듀얼 월: 7×32px 셀·열 간격 0(행 내 inRange 연결)·주(행) 사이 3px */
+.flatpickr-calendar.multiMonth .dayContainer {
+  gap: 3px 0 !important;
+  flex: 0 0 auto !important;
+  justify-content: flex-start !important;
+  width: 224px !important;
+  min-width: 224px !important;
+  max-width: 224px !important;
+  overflow: visible !important;
+}
+.flatpickr-calendar .flatpickr-day {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: #333 !important;
+  line-height: 32px !important;
+  height: 32px !important;
+  border-radius: 4px !important;
+  border-color: transparent !important;
+  margin: 0 !important;
+}
+/* 단일 월 셀: 기본 flatpickr처럼 행당 7칸 비율 */
+.flatpickr-calendar:not(.multiMonth) .flatpickr-day {
+  max-width: 39px !important;
+  flex-basis: 14.2857143% !important;
+}
+/* 듀얼 월 셀: 32×32 정원(selected/start/end) 유지 */
+.flatpickr-calendar.multiMonth .flatpickr-day {
+  box-sizing: border-box !important;
+  flex: 0 0 32px !important;
+  width: 32px !important;
+  min-width: 32px !important;
+  max-width: 32px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+/* 멀티 월 범위 띠: 셀 간격 없음에 맞춤 — inRange는 뒤 레이어 */
+.flatpickr-calendar.multiMonth .flatpickr-day.inRange {
+  position: relative;
+  z-index: 0;
+  box-shadow: -4px 0 0 #e8eaf6, 4px 0 0 #e8eaf6 !important;
+}
+.flatpickr-calendar.multiMonth .flatpickr-day.startRange.inRange:not(.endRange) {
+  box-shadow: 4px 0 0 #e8eaf6 !important;
+}
+.flatpickr-calendar.multiMonth .flatpickr-day.endRange.inRange:not(.startRange) {
+  box-shadow: -4px 0 0 #e8eaf6 !important;
+}
+.flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n + 2) .flatpickr-day.inRange:nth-child(7n + 1) {
+  box-shadow: -4px 0 0 #e8eaf6, 4px 0 0 #e8eaf6 !important;
+}
+.flatpickr-calendar.multiMonth .flatpickr-day.startRange,
+.flatpickr-calendar.multiMonth .flatpickr-day.endRange,
+.flatpickr-calendar.multiMonth .flatpickr-day.selected {
+  aspect-ratio: 1 / 1 !important;
+}
+.flatpickr-calendar .flatpickr-day.prevMonthDay,
+.flatpickr-calendar .flatpickr-day.nextMonthDay {
+  color: #999 !important;
+}
+/* 기본 flatpickr pill(50px 0 0 50px) 대신 시안: 끝점 원형 + 중간 primary 10% 바 */
+.flatpickr-calendar .flatpickr-day.selected,
+.flatpickr-calendar .flatpickr-day.startRange,
+.flatpickr-calendar .flatpickr-day.endRange,
+.flatpickr-calendar .flatpickr-day.selected:hover,
+.flatpickr-calendar .flatpickr-day.startRange:hover,
+.flatpickr-calendar .flatpickr-day.endRange:hover {
   background: var(--color-primary) !important;
   border-color: var(--color-primary) !important;
   color: #fff !important;
+  box-shadow: none !important;
 }
-.flatpickr-day.inRange {
-  background: rgba(19, 40, 159, 0.10) !important;
+/* 단일 날짜 모드: inRange 없는 selected만 원형 */
+.flatpickr-calendar .flatpickr-day.selected:not(.inRange) {
+  border-radius: 50% !important;
+}
+.flatpickr-calendar .flatpickr-day.selected.startRange,
+.flatpickr-calendar .flatpickr-day.startRange.startRange,
+.flatpickr-calendar .flatpickr-day.selected.endRange,
+.flatpickr-calendar .flatpickr-day.endRange.endRange {
+  border-radius: 50% !important;
+}
+.flatpickr-calendar .flatpickr-day.selected.startRange.endRange,
+.flatpickr-calendar .flatpickr-day.startRange.endRange {
+  border-radius: 50% !important;
+  box-shadow: none !important;
+}
+/* 범위 구간: 단색 #E8EAF6 (primary 10% 알파 겹침 없음) */
+.flatpickr-calendar .flatpickr-day.inRange {
+  background: #e8eaf6 !important;
   border-color: transparent !important;
-  box-shadow: -5px 0 0 rgba(19, 40, 159, 0.10), 5px 0 0 rgba(19, 40, 159, 0.10) !important;
+  box-shadow: -5px 0 0 #e8eaf6, 5px 0 0 #e8eaf6 !important;
+  color: #333 !important;
+  border-radius: 0 !important;
+}
+.flatpickr-calendar .flatpickr-day.inRange.startRange,
+.flatpickr-calendar .flatpickr-day.inRange.endRange {
+  border-radius: 50% !important;
+}
+.flatpickr-calendar .flatpickr-day.startRange.inRange:not(.endRange) {
+  box-shadow: 5px 0 0 #e8eaf6 !important;
+}
+.flatpickr-calendar .flatpickr-day.endRange.inRange:not(.startRange) {
+  box-shadow: -5px 0 0 #e8eaf6 !important;
+}
+/* 레인지 끝점은 항상 원형(inRange의 border-radius:0과 동특이면 순서로 덮음) */
+.flatpickr-calendar .flatpickr-day.startRange,
+.flatpickr-calendar .flatpickr-day.endRange {
+  border-radius: 50% !important;
+}
+/* 멀티 월: 배경 원이 타원으로 보이지 않도록(가로세로 동일 + 원형 마스크) */
+.flatpickr-calendar.multiMonth .flatpickr-day.startRange,
+.flatpickr-calendar.multiMonth .flatpickr-day.endRange,
+.flatpickr-calendar.multiMonth .flatpickr-day.selected {
+  border-radius: 50% !important;
+}
+/* 선택 끝점(파란 원)이 옆 inRange 배경·그림자에 가리지 않도록 앞 레이어 */
+.flatpickr-calendar.multiMonth .flatpickr-day.startRange,
+.flatpickr-calendar.multiMonth .flatpickr-day.endRange {
+  position: relative;
+  z-index: 2 !important;
+}
+/* 멀티 월 #E8EAF6 — 선택 구간의 모든 외곽 끝 라운드 */
+.flatpickr-calendar.multiMonth .dayContainer .flatpickr-day:not(.inRange):not(.hidden) + .flatpickr-day.inRange {
+  border-top-left-radius: 16px !important;
+  border-bottom-left-radius: 16px !important;
+}
+.flatpickr-calendar.multiMonth .dayContainer .flatpickr-day.startRange + .flatpickr-day.inRange {
+  border-top-left-radius: 16px !important;
+  border-bottom-left-radius: 16px !important;
+}
+.flatpickr-calendar.multiMonth .dayContainer .flatpickr-day.inRange:nth-child(7n) + .flatpickr-day.inRange:nth-child(7n + 1) {
+  border-top-left-radius: 16px !important;
+  border-bottom-left-radius: 16px !important;
+}
+.flatpickr-calendar.multiMonth .dayContainer .flatpickr-day.inRange:has(+ .flatpickr-day:not(.inRange):not(.hidden)) {
+  border-top-right-radius: 16px !important;
+  border-bottom-right-radius: 16px !important;
+}
+.flatpickr-calendar.multiMonth .dayContainer .flatpickr-day.inRange:has(+ .flatpickr-day.endRange) {
+  border-top-right-radius: 16px !important;
+  border-bottom-right-radius: 16px !important;
+}
+.flatpickr-calendar.multiMonth .dayContainer .flatpickr-day.inRange:nth-child(7n):has(+ .flatpickr-day.inRange:nth-child(7n + 1)) {
+  border-top-right-radius: 16px !important;
+  border-bottom-right-radius: 16px !important;
+}
+.flatpickr-calendar .flatpickr-day:hover:not(.selected):not(.startRange):not(.endRange):not(.inRange) {
+  background: var(--color-primary-5) !important;
+  border-color: transparent !important;
   color: #333 !important;
 }
-.flatpickr-day:hover:not(.selected):not(.startRange):not(.endRange) {
-  background: rgba(19, 40, 159, 0.08) !important;
-  border-color: transparent !important;
+.flatpickr-calendar .flatpickr-day.today {
+  border-color: var(--color-primary) !important;
+  color: #333 !important;
 }
-.flatpickr-day.today { border-color: var(--color-primary) !important; }
-.flatpickr-day.today:hover {
-  background: rgba(19, 40, 159, 0.08) !important;
-  color: var(--color-primary) !important;
+.flatpickr-calendar .flatpickr-day.today:hover {
+  background: var(--color-primary-5) !important;
+  color: #333 !important;
+}
+.flatpickr-calendar.arrowTop:before {
+  border-bottom-color: var(--color-primary) !important;
+}
+.flatpickr-calendar.arrowTop:after {
+  border-bottom-color: #fff !important;
+}
+.flatpickr-calendar.arrowBottom:before {
+  border-top-color: var(--color-primary) !important;
+}
+.flatpickr-calendar.arrowBottom:after {
+  border-top-color: #fff !important;
 }
 .flatpickr-months .flatpickr-month,
 .flatpickr-weekdays,
 .flatpickr-current-month {
   font-family: var(--font-pretendard, 'Pretendard', sans-serif);
 }
-.flatpickr-current-month span.cur-month { font-weight: 700; }
 
-/* Flatpickr 커스텀 푸터 (닫기 / 저장 버튼) — Figma 433-4293 */
+/* Flatpickr 커스텀 푸터 — Figma 478:2765 (닫기 / 저장) */
 .flatpickr-custom-footer {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px 14px;
-  border-top: 1px solid rgba(19,40,159,0.15);
+  align-items: flex-end;
+  gap: 12px;
+  padding: 24px 0 0;
+  margin: 0;
+  border-top: none;
 }
 .flatpickr-footer-cancel {
   height: 24px;
   padding: 0 10px;
   font-size: 12px;
+  font-weight: 400;
   font-family: var(--font-pretendard, 'Pretendard', sans-serif);
   color: var(--color-primary);
   background: #fff;
@@ -2075,7 +2695,7 @@ body {
   cursor: pointer;
   line-height: 1;
 }
-.flatpickr-footer-cancel:hover { background: rgba(19,40,159,0.05); }
+.flatpickr-footer-cancel:hover { background: rgba(19, 40, 159, 0.05); }
 .flatpickr-footer-save {
   height: 24px;
   padding: 0 10px;
@@ -2089,7 +2709,7 @@ body {
   cursor: pointer;
   line-height: 1;
 }
-.flatpickr-footer-save:hover { background: #0f1f7a; }
+.flatpickr-footer-save:hover { background: var(--color-primary-hover); }
 
 /* ═══════════════════════════════════════════════════════════════════════════
    점검 결과 상세 슬라이드 (cr-detail) — 1단 Wide + Split Layout + 2단 예외신청
@@ -2159,7 +2779,7 @@ body {
   border: 1px solid var(--color-primary);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  box-shadow: var(--shadow-popover);
   padding: 0;
 }
 
@@ -2204,12 +2824,36 @@ body {
 .cr-action-val-fail { font-weight: 700; color: var(--color-status-red, #e80b38); }
 
 /* ── 점검결과 / 위험도 뱃지 ─────────────────────────────────────────────── */
+/* §4.6 Pass / Fail / Fail-PS — 10px 도트 + 라벨, 무칩(점검 대상 목록 등) */
+.cr-pf-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-pretendard);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  white-space: nowrap;
+}
+.cr-pf-label::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: currentColor;
+  flex-shrink: 0;
+}
+.cr-pf-pass { color: var(--color-status-green); }
+.cr-pf-fail,
+.cr-pf-failps { color: var(--color-status-red); }
+
+/* (레거시) 칩형 점검결과 — CCE·기타 테이블에서 사용 시 6px 도트 + 칩 */
 /* 뱃지 앞 컬러 도트 (currentColor = 텍스트 색상과 동일) */
 .cr-result-badge { display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px; border-radius: 4px; font-size: 13px; font-weight: 600; white-space: nowrap; border: 1px solid; }
 .cr-result-badge::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background-color: currentColor; flex-shrink: 0; }
-.cr-result-pass  { background: rgba(213,245,221,0.8); color: #0a8529; border-color: #71dd8c; }
-.cr-result-fail  { background: rgba(255,216,224,0.8); color: #e80b38; border-color: #ff7b96; }
-.cr-result-na    { background: rgba(17,17,17,0.06);   color: #888;    border-color: rgba(17,17,17,0.15); }
+.cr-result-pass  { background: var(--color-status-white-green); color: var(--color-status-green); border-color: var(--color-status-light-green); }
+.cr-result-fail  { background: var(--color-status-white-red); color: var(--color-status-red); border-color: var(--color-status-light-red); }
+.cr-result-na    { background: var(--color-black-10); color: var(--color-text-muted); border-color: var(--color-black-10); }
 .cr-risk-high   { background: rgba(255,216,224,0.9); color: #e80b38; border-color: #ff7b96; }
 .cr-risk-medium { background: rgba(255,236,200,0.9); color: #b85c00; border-color: #ffb84d; }
 .cr-risk-low    { background: rgba(213,245,221,0.8); color: #0a8529; border-color: #71dd8c; }
@@ -2335,4 +2979,325 @@ body {
   flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   점검 대상별 관리 (check-target-management) — §10·§12·§17 정합
+   ══════════════════════════════════════════════════════════════════ */
+
+/* §17 경고형 안내 배너 (토큰만 사용) */
+.asset-alert--warning {
+  width: 100%;
+  background-color: var(--color-status-white-red);
+  border: 1px solid var(--color-status-light-red);
+  border-radius: var(--radius-badge, 4px);
+  padding: 12px 16px;
+  box-sizing: border-box;
+}
+.asset-alert--warning .asset-alert-inner {
+  align-items: flex-start;
+  gap: 12px;
+}
+.asset-alert--warning .asset-alert-icon {
+  color: var(--color-status-red);
+  font-size: 20px;
+}
+.asset-alert--warning .asset-alert-text {
+  font-size: 14px;
+  line-height: 1.5;
+}
+.asset-alert--warning .asset-alert-title {
+  font-weight: 700;
+  margin: 0 0 4px;
+  font-size: 14px;
+  color: var(--color-text-primary);
+}
+.asset-alert--warning .asset-alert-close {
+  position: static;
+  transform: none;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* §17.1 정보형 안내 배너 — Figma 478:2079 (점검 대상 정보) */
+.asset-alert--info {
+  width: 100%;
+  background-color: rgba(213, 245, 221, 0.8);
+  border: 1px solid var(--color-status-light-green);
+  border-radius: 8px;
+  padding: 11px 21px;
+  box-sizing: border-box;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+.asset-alert--info .asset-alert-inner {
+  align-items: flex-start;
+  gap: 10px;
+}
+.asset-alert--info .asset-alert-icon {
+  color: var(--color-status-green);
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  flex-shrink: 0;
+}
+.asset-alert--info .asset-alert-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  color: #111;
+}
+.asset-alert--info .asset-alert-title {
+  font-weight: 700;
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: #111;
+}
+.asset-alert--info .asset-alert-body-line {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  color: #111;
+}
+.asset-alert--info .ct-notice-kw {
+  font-weight: 700;
+}
+.asset-alert--info .ct-notice-kw--pass {
+  color: #0a8529;
+}
+.asset-alert--info .ct-notice-kw--fail {
+  color: #e80b38;
+}
+.asset-alert--info .asset-alert-footnotes {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  color: rgba(17, 17, 17, 0.8);
+}
+.asset-alert--info .asset-alert-footnotes p {
+  margin: 0;
+}
+.asset-alert--info .asset-alert-close {
+  position: static;
+  transform: none;
+  flex-shrink: 0;
+  margin-left: auto;
+  align-self: flex-start;
+  color: var(--color-status-green);
+  min-width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.asset-alert--info .asset-alert-close:hover {
+  color: var(--color-status-green);
+  opacity: 0.85;
+}
+.asset-alert--info .asset-alert-close .material-symbols-outlined {
+  font-size: 24px;
+}
+
+/* 브레드크럼 (§14 — 본문 상단; 점검 대상 드릴다운은 GNB .gnb-breadcrumb-nav) */
+.ct-page-head { margin-bottom: 0; }
+.ct-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+.ct-breadcrumb-back {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-primary);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.ct-breadcrumb-back:hover { color: var(--color-primary-hover, var(--color-primary)); }
+.ct-breadcrumb-sep {
+  font-size: 16px;
+  color: var(--color-text-muted);
+  opacity: 0.7;
+}
+.ct-breadcrumb-cur {
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+/* 테이블: OS 아이콘 + 지역 뱃지 */
+.ct-td-os { display: flex; align-items: center; gap: 6px; }
+.ct-os-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.ct-region-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 22px;
+  padding: 2px 10px;
+  border-radius: var(--radius-badge, 4px);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+/* 국내: §4.0 indigo 3단 */
+.ct-region-domestic {
+  background: var(--color-status-white-indigo);
+  border: 1px solid var(--color-status-light-indigo);
+  color: var(--color-status-indigo);
+}
+/* 해외: §4.0 cyan 3단 */
+.ct-region-overseas {
+  background: var(--color-status-white-cyan);
+  border: 1px solid var(--color-status-light-cyan);
+  color: var(--color-status-cyan);
+}
+
+/* 점검 대상 테이블: 숫자 뱃지 열 정렬 */
+.ct-table .ct-td-badge { text-align: center; vertical-align: middle; }
+.ct-table .ct-td-no { text-align: center; color: var(--color-text-muted); }
+.ct-table .ct-td-result { vertical-align: middle; }
+
+/* 필터 패널 그림자 — §10.2 (popover 그림자 통일) */
+.cr-filter-panel {
+  box-shadow: var(--shadow-popover);
+}
+
+/* 점검 대상 필터 패널 — 폭만 2열용으로 확장, 보더·그림자·헤더/푸터는 .cr-filter-panel 공통과 동일 */
+.ct-target-filter-panel.cr-filter-panel {
+  width: 802px !important;
+  max-width: min(802px, calc(100vw - 48px)) !important;
+}
+.ct-filter-cols {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  width: 100%;
+}
+.ct-filter-col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ct-filter-col-divider {
+  flex: 0 0 0;
+  width: 0;
+  align-self: stretch;
+  min-height: 160px;
+  border-left: 1px dashed var(--color-border-light);
+}
+.ct-filter-row--segments {
+  align-items: center;
+}
+.ct-fp-seg-row {
+  flex: 1 1 0;
+  display: flex;
+  gap: 5px;
+  min-width: 0;
+}
+.ct-fp-seg {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 70px;
+  min-height: 40px;
+  margin: 0;
+  padding: 0 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid #a0a0a0;
+  background: var(--color-white-100);
+  box-sizing: border-box;
+  transition: border-color 0.15s, background 0.15s;
+}
+.ct-fp-seg:hover {
+  border-color: #a0a0a0;
+  background: #f5f5f5;
+}
+.ct-fp-seg:has(.ct-fp-seg-input:checked) {
+  background: #fff;
+  border: 2px solid var(--color-primary);
+  padding: 0 7px;
+}
+.ct-fp-seg:has(.ct-fp-seg-input:checked) .ct-fp-seg-text {
+  color: #000;
+  font-weight: 700;
+}
+.ct-fp-seg-input {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin: 0;
+  accent-color: var(--color-primary);
+}
+.ct-fp-seg-text {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.14px;
+  color: var(--color-text-primary);
+}
+.ct-fp-select-wrap {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+}
+.ct-fp-select-wrap .cr-fp-select {
+  width: 100%;
+  padding-right: 36px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.ct-fp-select-chevron {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  pointer-events: none;
+  color: var(--color-text-muted);
+}
+.ct-fp-select--disabled {
+  cursor: not-allowed;
+  opacity: 1;
+}
+.ct-fp-input--disabled {
+  cursor: not-allowed;
+}
+.ct-fp-select--disabled,
+.ct-fp-input--disabled {
+  background: var(--color-black-10) !important;
+  border-color: rgba(17, 17, 17, 0.4) !important;
+  color: var(--color-text-muted) !important;
+}
+.ct-fp-select--disabled:focus,
+.ct-fp-input--disabled:focus {
+  box-shadow: none !important;
+}
+.ct-fp-select--primary-border {
+  border-color: var(--color-primary) !important;
+  font-weight: 700;
+}
+.ct-fp-input--focus:focus {
+  border-color: var(--color-primary);
 }

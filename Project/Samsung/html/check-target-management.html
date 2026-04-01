@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="gnb-title" content="점검 대상별 관리" />
+  <title>점검 대상별 관리 | Samsung</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .min-h-0 { min-height: 0 !important; }
+  </style>
+</head>
+<body class="bg-custom-base custom-scrollbar">
+  <div id="app" class="vh-100 d-flex flex-column">
+    <div class="d-flex flex-grow-1 min-h-0 bg-custom-base" style="min-width: 1440px;">
+      <div id="lnb-placeholder" class="flex-shrink-0" style="width: 260px;"></div>
+
+      <div class="main-content-wrap d-flex flex-column flex-grow-1 min-h-0 position-relative">
+        <div id="gnb-placeholder"></div>
+
+        <!-- §7.2 메인 인셋 40px · 섹션 gap 20px — 점검결과 관리와 동일 -->
+        <main class="flex-grow-1 d-flex flex-column min-h-0 overflow-y-auto main-content cr-main custom-scrollbar">
+          <div class="d-flex flex-column main-inner cr-inner">
+
+            <!-- §14 브레드크럼: GNB 제목 영역(gnb-breadcrumb-nav) — 점검 대상별 관리 -->
+
+            <!-- §17 정보형 안내 배너 (Pass / Fail / Fail-PS 설명) -->
+            <section class="flex-shrink-0" id="ct-notice-bar">
+              <div class="asset-alert asset-alert--info flex-shrink-0" role="status" aria-live="polite">
+                <div class="asset-alert-inner w-100">
+                  <span class="material-symbols-outlined asset-alert-icon" aria-hidden="true">error</span>
+                  <div class="asset-alert-text flex-grow-1">
+                    <p class="asset-alert-title">점검 대상 정보</p>
+                    <p class="asset-alert-body-line mb-0">
+                      ① <span class="ct-notice-kw ct-notice-kw--pass">Pass</span> : 보안 점검 성공&nbsp;&nbsp;② <span class="ct-notice-kw ct-notice-kw--fail">Fail</span> : 서버 통신 불가 (ex, Tanium Agent 비활성, 서버 Off 등)&nbsp;&nbsp;③ <span class="ct-notice-kw ct-notice-kw--fail">Fail-PS</span> : Windows 파워쉘 버전 낮음으로 점검 제한
+                    </p>
+                    <div class="asset-alert-footnotes">
+                      <p class="mb-0">※ 서버별 점검항목이 상이한 이유: 필수로 확인하는 서버 보안 점검항목 외 DB가 설치되어 있는 경우 일부 점검항목 포함</p>
+                      <p class="mb-0">※ 재점검은 50개 이하의 서버를 대상으로만 하시길 권고드립니다.</p>
+                    </div>
+                  </div>
+                  <button type="button" class="asset-alert-close btn btn-link p-0" id="ct-notice-close" aria-label="닫기">
+                    <span class="material-symbols-outlined">close</span>
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <!-- §12 요약 포틀릿 -->
+            <section class="flex-shrink-0" id="ct-portlet-placeholder"></section>
+
+            <!-- §10.1 필터 선택·확인 바 -->
+            <section class="asset-filter-bar flex-shrink-0 position-relative" id="ct-filter-bar-placeholder"></section>
+
+            <!-- §8 세로형 테이블 카드 -->
+            <section class="asset-table-section flex-grow-1 min-h-0 d-flex flex-column" id="ct-table-section-placeholder"></section>
+
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <div id="cr-detail-placeholder" class="slide-popup-placeholder"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var name = (params.get('inspection') || '').trim();
+      if (!name) {
+        try {
+          name = (sessionStorage.getItem('ctInspectionTitle') || '').trim();
+        } catch (e) {}
+      }
+      if (!name) name = '점검';
+      document.title = name + ' — 점검 대상별 관리 | Samsung';
+      document.getElementById('ct-notice-close')?.addEventListener('click', function () {
+        var bar = document.getElementById('ct-notice-bar');
+        if (bar) bar.style.display = 'none';
+      });
+    })();
+  </script>
+  <script src="components/load.js"></script>
+</body>
+</html>

@@ -11,7 +11,7 @@
 | 허용 | 설명 |
 |------|------|
 | **`UX-STANDARD-root.css`** | 동일 폴더의 `:root` 토큰 정본. 구현 프로젝트 전역 CSS는 이 파일(또는 §1.13 블록)과 동기화한다. |
-| **`img/`** | 동일 폴더 아래 `img/` 안의 자산만. 예: `img/파일명.png` |
+| **`img/`** | 동일 폴더 아래 `img/` 안의 자산만. 예: `img/파일명.png`, 하위 폴더 **`img/design-system/`** (디자인 가이드 캡처; 예: `GNB/`, `Filters/`, `Modal/`). |
 
 스크린샷·다이어그램이 필요하면 `img/`에 두고 위 형식으로만 말한다.
 
@@ -202,6 +202,7 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 | `--color-border-light` | → `--color-black-10` | 연한 테두리 |
 | `--color-border-card` | → `--color-bg-base` | 카드와 베이스 경계 |
 | `--color-border-panel` | §1.13 → `#e2e8f0` | 패널·슬레이트 느낌 구분선 |
+| `--color-border-gnb` | §1.13 → `#c9d0d7` | GNB 하단 구분선 (§15) |
 | `--color-card-accent` | §1.13 → `#e3ebf9` | 카드 강조 배경 (브랜드 바뀌면 조정 검토) |
 | `--color-emergency` | §1.13 → `#ffd8e0` | 긴급·강조 알림 면 |
 | `--color-badge-success` | §1.13 → `#d5f5dd` | 성공 뱃지 배경 |
@@ -221,7 +222,8 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 | CSS 변수 | 참조 값 (§1.13) | 용도 |
 |----------|-------------------------|------|
 | `--shadow-card` | `0 1px 1.75px rgba(0, 0, 0, 0.05)` | 카드 그림자 |
-| `--shadow-popover` | `0 4px 3.5px rgba(0, 0, 0, 0.25)` | 팝오버·플로팅 |
+| `--shadow-table` | `0 1px 2px var(--color-black-5)` | 세로형 테이블 카드 등 |
+| `--shadow-popover` | `0 4px 4px var(--color-black-20)` | 필터 패널·모달·GNB 팝오버 공통 |
 | `--radius-card` | `8px` | 카드·큰 박스 |
 | `--radius-button` | `4px` | 버튼 (§3과 동일) |
 | `--radius-popover` | `8px` | 팝오버 |
@@ -333,10 +335,12 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 
   /* ===== 호환용 별칭 ===== */
   --color-primary-bg: var(--color-primary-10);
+  --color-border-primary: var(--color-primary);
   --color-border-light: var(--color-black-10);
   --color-border: var(--color-black-20);
   --color-border-card: var(--color-bg-base);
   --color-border-panel: #e2e8f0;
+  --color-border-gnb: #c9d0d7;
   --color-card-accent: #e3ebf9;
   --color-emergency: #ffd8e0;
   --color-badge-success: #d5f5dd;
@@ -347,7 +351,8 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 
   /* Shadow & radius */
   --shadow-card: 0 1px 1.75px rgba(0, 0, 0, 0.05);
-  --shadow-popover: 0 4px 3.5px rgba(0, 0, 0, 0.25);
+  --shadow-table: 0 1px 2px var(--color-black-5);
+  --shadow-popover: 0 4px 4px var(--color-black-20);
   --radius-card: 8px;
   --radius-button: 4px;
   --radius-popover: 8px;
@@ -394,7 +399,7 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 
 - **본문 폰트와 분리:** 아이콘은 **Google Material Symbols (Outlined)** 만 사용한다. 본문 `font-family`와 혼동하지 않는다.
 - **마크업:** `<span class="material-symbols-outlined" …>아이콘명</span>` (필요 시 `font-variation-settings` 로 FILL 등 조정).
-- **상세 금지 사항·대체 규칙:** 아래 **§9 Iconography** 를 따른다.
+- **상세 금지 사항·대체 규칙:** 본 절 **§2.3** 이 아이콘·Material Symbols의 정본이다(문서의 **§9** 는 탭·텍스트에어리어 절이므로 아이콘과 혼동하지 않는다).
 
 ### 2.4 AI·개발 강제 요약
 
@@ -416,6 +421,12 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 | **Small** | **24px** | **10px** | **0** |
 | **Medium** | **34px** | **15px** | **0** |
 
+**시각 참고 (디자인 시스템):**
+
+![버튼 Small 24px 예시](img/design-system/Button/Button-24px.png)
+
+![버튼 Medium 34px 예시](img/design-system/Button/Button-34px.png)
+
 - **상·하 패딩 0:** 위아래로 별도 패딩을 주지 않는다. 대신 **`min-height`(또는 `height`)를 위 표와 동일하게 고정**하고, 내부를 **`display: inline-flex` 또는 `flex` + `align-items: center` + `justify-content: center`** 로 채워 텍스트·아이콘을 수직·수평 중앙에 둔다.
 - **짧은 라벨:** 라벨이 매우 짧을 때 **`min-width: 60px`**(Medium 기준)을 둔다. §3.8 `.btn-ds`와 동일.
 - **표 vs 참조 구현:** §3.1 표는 **목표 스펙**(Small 24px·좌우 10px 등). §3.8 `.btn-ds`는 **높이 34px·`padding: 7.5px 12px`** 로 표와 다르다. 정리 시 표에 맞추거나 Small 전용 클래스를 추가한다.
@@ -429,7 +440,7 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 
 버튼의 **배경·글자·테두리·비활성**은 모두 **Primary, Black, White 토큰 family** 안에서만 조합한다 (§1). 컴포넌트 CSS에 **HEX·`rgb()` 숫자 리터럴을 직접 쓰지 않는다.**
 
-아래 세 타입은 이름을 **1st / 2rd / 3rd** 로 부른다(구현 시 클래스·토큰 이름에 그대로 써도 된다).
+아래 세 타입은 이름을 **1st / 2nd / 3rd** 로 부른다(구현 시 클래스·토큰 이름에 그대로 써도 된다).
 
 #### 3.3.1 1st — 솔리드 주요 버튼
 
@@ -438,7 +449,7 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 - **Hover:** 배경만 **`--color-primary-hover`** 로 바꾼다. 글자·아이콘은 흰색 유지. 포인터 커서(`cursor: pointer`)는 활성 상태에서만.
 - **Disabled:** 클릭 불가(`pointer-events: none` 또는 `disabled` 속성). 배경은 **Black 계열의 옅은 불투명 면**으로 둔다 — 예: **`--color-black-100`에 낮은 불투명도**를 주거나, **`--color-black-20`**에 가까운 단색 면으로 `:root`에 토큰을 정의해 쓴다. 글자·아이콘은 **`--color-white-100`** 을 유지해 “채워진 칩” 형태로 읽히게 한다. 시각적으로는 **채도가 낮고 눌린 느낌**이면 된다.
 
-#### 3.3.2 2rd — 라인(아웃라인) 보조 버튼
+#### 3.3.2 2nd — 라인(아웃라인) 보조 버튼
 
 - **용도:** 취소 옆의 보조 확인, “다음 단계” 등 **주요 버튼보다 한 단계 약한** 행동.
 - **Default:** 배경 **`--color-white-100`** 또는 **`--color-bg-white`**. 테두리는 **1px 실선**, 색 **`--color-primary`** 또는 **`--color-border-primary`**(둘 다 Primary 계열). 글자·아이콘 **`--color-primary`**, **굵기 Regular**.
@@ -450,11 +461,11 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 - **용도:** 툴바·필터 줄 등 **밀도 높은 UI**에서 덜 부담스러운 액션.
 - **Default:** 배경은 **아주 연한 면**이다. §3.8 참조 구현은 **`--color-bg-subtle`** (`#f2f4f8`, §1.13). 글자·아이콘 **`--color-primary`**, **Regular**. **외곽 테두리는 두지 않는다**(구분은 배경 톤 차이로만).
 - **Hover:** 배경을 **`--color-primary-10`** 으로 맞추거나 한 단계 진하게 해서, Default보다 **Primary 성분이 조금 더 보이게** 한다. 글자색은 `--color-primary` 유지.
-- **Disabled:** 배경색은 **Default와 동일**하게 유지한다. 대신 **글자와 아이콘이 들어 있는 내부 래퍼만 불투명도를 낮춘다**(예: **`opacity: 0.3`**) — 배경 면은 그대로 두어 2rd Disabled(전체 흐림)와 구분된다.
+- **Disabled:** 배경색은 **Default와 동일**하게 유지한다. 대신 **글자와 아이콘이 들어 있는 내부 래퍼만 불투명도를 낮춘다**(예: **`opacity: 0.3`**) — 배경 면은 그대로 두어 2nd Disabled(전체 흐림)와 구분된다.
 
 ### 3.4 타이포그래피 (사이즈별)
 
-| 사이즈 | 1st (Bold) | 2rd / 3rd (Regular) |
+| 사이즈 | 1st (Bold) | 2nd / 3rd (Regular) |
 |--------|------------|---------------------|
 | Medium | **14px** | **14px** |
 | Small | **12px** | **12px** |
@@ -468,7 +479,7 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 - **간격:** 아이콘과 라벨 사이 **`gap: 6px`** — §3.8 `.btn-ds`와 동일.
 - **크기:** Material Symbols는 라벨과 **같은 `font-size`** 로 두고 `line-height: 1`·flex 정렬로 맞춘다. Medium **14px**면 아이콘 **14px**(필요 시 **18px**까지). Small **12px**면 **12px~16px** 범위에서 통일.
 - **색:** 버튼에 `color`를 타입별 글자 토큰으로 주고, 아이콘은 **`currentColor`** 를 쓰면 상태·타입이 바뀔 때 같이 맞는다.
-- **라이브러리:** §2.3 및 **§9 Iconography** (Material Symbols).
+- **라이브러리:** **§2.3** (Material Symbols Outlined).
 
 ### 3.6 모서리(라운드)
 
@@ -505,34 +516,39 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 
 ### 3.8 참조 구현 — `.btn-ds` (Medium 단일 높이)
 
-본 문서에 수록한 **참조 CSS**. **1st `:hover`** 는 §3.3.1의 `--color-primary-hover` 대신 **`--color-status-indigo`** 를 쓴다. **1st `:disabled`** 는 §3.3.1 서술과 달리 **`--color-black-20` 배경 + `--color-black-40` 글자**다. **3rd `:disabled`** 는 배경을 **`--color-black-10`** 으로 바꾼다(문서 §3.3.3의 “라벨만 opacity”와 다름). 통일이 필요하면 §3.3 서술과 본 블록 중 한쪽에 맞춘다.
+**§3.3이 타입·상태(색·호버·비활성)의 정본**이다. 아래는 그에 맞춘 **참조 CSS**다.
+
+- **1st `disabled`:** §3.3.1의 “Black 계열 옅은 면 + 흰 글자”에 맞추기 위해 배경 **`--color-black-60`**, 글자 **`--color-white-100`** 로 둔다(대비는 프로젝트에서 `:root` 토큰으로 미세 조정 가능).
+- **2nd `disabled`:** §3.3.2에 따라 **Default 색 조합을 유지한 채 루트에 `opacity: 0.3`**.
+- **3rd `disabled`:** §3.3.3에 따라 배경은 Default와 동일. 라벨·아이콘은 **`<span class="btn-ds__in">`** 으로 감싼 뒤 그 요소에만 **`opacity: 0.3`**. 래퍼 없이 구현할 경우 루트 `opacity` 로 근사할 수 있으나 배경까지 흐려져 본문과 완전 동일하지는 않다.
 
 ```css
 /* ========== 버튼 컴포넌트 — Figma 323-3588 Button/Button-34px ========== */
 .btn-ds { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 34px; min-width: 60px; padding: 7.5px 12px; border-radius: 4px; font-size: 14px; line-height: 1; font-family: var(--font-pretendard); border: 1px solid transparent; cursor: pointer; box-sizing: border-box; white-space: nowrap; }
 /* Type 1st — Primary */
-.btn-ds-1st { background: var(--color-primary); color: #fff; font-weight: 700; }
-.btn-ds-1st:hover { background: var(--color-status-indigo); color: #fff; }
-.btn-ds-1st:disabled { background: var(--color-black-20); color: var(--color-black-40); cursor: not-allowed; }
+.btn-ds-1st { background: var(--color-primary); color: var(--color-white-100); font-weight: 700; }
+.btn-ds-1st:hover { background: var(--color-primary-hover); color: var(--color-white-100); }
+.btn-ds-1st:disabled { background: var(--color-black-60); color: var(--color-white-100); cursor: not-allowed; pointer-events: none; }
 /* Type 2nd — Outline */
-.btn-ds-2nd { background: #fff; color: var(--color-primary); font-weight: 400; border-color: var(--color-primary); }
+.btn-ds-2nd { background: var(--color-white-100); color: var(--color-primary); font-weight: 400; border-color: var(--color-primary); }
 .btn-ds-2nd:hover { background: var(--color-primary-10); color: var(--color-primary); border-color: var(--color-primary); }
-.btn-ds-2nd:disabled { background: #fff; color: var(--color-black-40); border-color: var(--color-black-20); cursor: not-allowed; }
-/* Type 3rd — Tertiary */
+.btn-ds-2nd:disabled { opacity: 0.3; cursor: not-allowed; pointer-events: none; }
+/* Type 3rd — Tertiary — 라벨·아이콘은 .btn-ds__in 로 감쌀 것 */
 .btn-ds-3rd { background: var(--color-bg-subtle); color: var(--color-primary); font-weight: 400; }
 .btn-ds-3rd:hover { background: var(--color-primary-10); color: var(--color-primary); }
-.btn-ds-3rd:disabled { background: var(--color-black-10); color: var(--color-black-40); cursor: not-allowed; }
+.btn-ds-3rd:disabled { background: var(--color-bg-subtle); color: var(--color-primary); cursor: not-allowed; pointer-events: none; }
+.btn-ds-3rd:disabled .btn-ds__in { opacity: 0.3; }
 ```
 
 ### 3.9 AI·개발 강제 요약
 
 - **금지:** Primary·Black·White 밖 팔레트, 버튼 전용 HEX/`rgb()` 하드코딩.
-- **허용:** §1 토큰과 본 절 수치. **Small/Medium × 1st/2rd/3rd × Default/Hover/Disabled × Hug/100%** 는 클래스·컴포넌트로 명시한다.
+- **허용:** §1 토큰과 본 절 수치. **Small/Medium × 1st/2nd/3rd × Default/Hover/Disabled × Hug/100%** 는 클래스·컴포넌트로 명시한다.
 - **검증:** 본 절 표·§3.8과 실제 CSS를 diff해 **높이·패딩·4px 라운드·상태별 색**이 어긋나지 않는지 확인한다.
 
 ---
 
-## 4. Badge & Status Label Rules (뱃지    ·스테이터스 라벨)
+## 4. Badge & Status Label Rules (뱃지·스테이터스 라벨)
 
 스테이터스 **색상 패밀리**(Green, Red, Blue 등)가 정해진 뱃지·칩은 아래 **3단 토큰 규칙**을 따른다. 구현은 `var(--color-…)` 만 사용한다 (§1.11).
 
@@ -573,6 +589,8 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 | 점검완료 | 그린 | `--color-status-white-green` | `--color-status-light-green` | `--color-status-green` |
 | 점검오류 | 레드 | `--color-status-white-red` | `--color-status-light-red` | `--color-status-red` |
 
+**시각 참고:** ![점검계획 스테이터스 칩](img/design-system/Status-Badge/inspection-plan-status.png)
+
 ---
 
 ### 4.2 점검결과 스테이터스 (6px 도트 + 라벨)
@@ -589,6 +607,8 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 | 예외 | 블루 | `--color-status-white-blue` | `--color-status-light-blue` | `--color-status-blue` |
 | NA | 그레이 | §4.0.1 배경 | §4.0.1 테두리 | §4.0.1 글자·도트 |
 
+**시각 참고:** ![점검결과 스테이터스 칩](img/design-system/Status-Badge/inspection-result-status.png)
+
 ---
 
 ### 4.3 위험도 (6px 도트 + 라벨)
@@ -602,6 +622,8 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 | High | `--color-status-white-red` | `--color-status-light-red` | `--color-status-red` |
 | Medium | `--color-status-white-orange` | `--color-status-light-orange` | `--color-status-orange` |
 | Low | `--color-status-white-yellow` | `--color-status-light-yellow` | `--color-status-yellow` |
+
+**시각 참고:** ![위험도 칩](img/design-system/Status-Badge/risk-level.png)
 
 ---
 
@@ -627,6 +649,12 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 | 수정 | — | **O** | 오렌지 | `--color-status-white-orange` | `--color-status-light-orange` | `--color-status-orange` |
 | 삭제 | — | **O** | 레드 | `--color-status-white-red` | `--color-status-light-red` | `--color-status-red` |
 
+**시각 참고:**
+
+![신청 현황 칩 18px](img/design-system/Status-Badge/application-status-18px.png)
+
+![신청 현황 칩 22px](img/design-system/Status-Badge/application-status-22px.png)
+
 ---
 
 ### 4.5 그래프 수치 (변동률 칩)
@@ -641,6 +669,8 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 | 중앙선 + 0% | 가로 중립선(—) | 그레이 | `--color-black-10` | `--color-black-40` (선·숫자 동일) |
 
 > **의미:** “수치 **하락** = 긍정” 맥락에 맞춰 하락·음수는 **그린**, 상승·플러스는 **레드**로 고정한다. 제품 정책이 바뀌면 본 표만 수정한다.
+
+**시각 참고:** ![그래프 수치 칩 16px 라인](img/design-system/Status-Badge/metric-chip-16px.png)
 
 ---
 
@@ -794,6 +824,8 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 | **Error** | 흰색 | **`--color-status-red`** | 필드 값은 **`--color-text-primary`**, 하단 도움말(있으면) **11px Regular** + **`--color-status-red`**, 우측 경고 아이콘 가능 |
 | **Completed Disabled** | **`--color-bg-base`** | **`--color-black-40`** | 값 **`--color-text-primary`**, **Regular** — 읽기 전용·비활성 확정값 |
 
+**시각 참고:** ![일반 인풋](img/design-system/Input/input-default.png)
+
 ---
 
 ### 5.2 필터 인풋 (Filter)
@@ -809,6 +841,8 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 
 셀렉트 트리거(On) 변형도 **상태별 테두리·면 규칙은 위와 동일**하게 맞춘다.
 
+**시각 참고:** ![필터 인풋](img/design-system/Input/filter-input.png)
+
 ---
 
 ### 5.3 검색 인풋 (Search) — 페이지·툴바 등 단독 필드
@@ -822,6 +856,8 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 | **Default** | 흰색 (§5.0) | **`--color-black-40`** | 플레이스홀더 **`--color-black-40`**, 검색 아이콘 **`--color-black-60`** 계열 허용 |
 | **Type text** (포커스·입력 중) | 흰색 | **`--color-primary`** | 입력 값 **`--color-text-primary`**, 클리어(예: **12px**) + 검색 아이콘 트레일링, **gap 5px** |
 
+**시각 참고:** ![검색 필드](img/design-system/Input/Search-Field.png)
+
 ---
 
 ### 5.4 드롭다운 메뉴 패널 & 패널 내 검색 행
@@ -831,6 +867,8 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
   - 행 배경 **`--color-bg-base`** (페이지 베이스와 동일 톤).
   - **테두리 없음** (`border: none` / `border-color: transparent`) — Default·입력 중·포커스 모두 **외곽선 없음**.
   - 플레이스홀더 **`--color-black-40`**, 입력 텍스트 **`--color-text-primary`**, **14px Regular**. 좌측 검색 아이콘(**14px** 영역), 텍스트와 **gap 7px**. 입력 중에는 우측 클리어(**12px**) 가능.
+
+**시각 참고 (검색 가능한 드롭다운·패널):** ![검색형 드롭다운 메뉴](img/design-system/Filters/search-dropdown-menu.png) — §10.4와 동일 패턴.
 
 ---
 
@@ -858,6 +896,8 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 
 **박스 치수 (참고):** **`min-width: 70px`**, 좌우 **`padding: 12px`**, 상하 **`10px`**, **`border-radius: 4px`**. 라디오 그룹은 옵션마다 동일 박스 규칙을 반복한다.
 
+**시각 참고:** ![라디오 Type1](img/design-system/Input/Radio-Type1.png) · ![라디오 Type2](img/design-system/Input/Radio-Type2.png)
+
 ---
 
 ### 6.2 체크박스 (아이콘만, 16×16 기준)
@@ -874,6 +914,8 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 
 라벨이 붙으면 **§5.0.1** 과 맞춘다(일반 폼이면 라벨 위·필드 아래, 필터 행이면 가로).
 
+**시각 참고:** ![체크박스 상태](img/design-system/Input/Checkbox.png)
+
 ---
 
 ### 6.3 토글 (스위치, On / Off)
@@ -883,9 +925,11 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 | 상태 | 트랙(배경) | 썸 |
 |------|------------|-----|
 | **On** | **`--color-primary`** | **`--color-white-100`**, 트랙 **오른쪽** 정렬 |
-| **Off** | **`--color-black-20`** (Black 20% 면) | **`--color-white-100`**, **`1px solid var(--color-primary)`** 테두리, 트랙 **왼쪽** 정렬 |
+| **Off** | **`--color-black-20`** (Black 20% 면) | **`--color-white-100`**, **`1px solid var(--color-black-40)`** 테두리(중립 윤곽 — On/Off 비텍스트 대비 혼동 완화, WCAG 1.4.11 검토 시 조정), 트랙 **왼쪽** 정렬 |
 
 접근성: `role="switch"` / `aria-checked`, 키보드 포커스 시 **§3.7** 포커스 링 패턴을 따른다.
+
+**시각 참고:** ![토글 On/Off](img/design-system/Input/Toggle.png)
 
 ---
 
@@ -893,7 +937,7 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 
 - **금지:** 선택·On 상태에 Primary 대신 임의 HEX, 체크박스만 예외 없이 다른 브랜드색.
 - **허용:** 액티브 = **`--color-primary`**(및 필요 시 **`--color-primary-10`** 박스 틴트), 비활성·중립 = **`--color-black-*`**, **`--color-bg-subtle`**, **`--color-white-100`**.
-- **검증:** 라디오 박스의 **2px / 1px 테두리** 전환이 상태표와 일치하는지, 체크 **Partial** 에 **`opacity: 0.5`** 가 빠지지 않았는지, 토글 **Off** 썸의 **Primary 1px 테두리**가 유지되는지 확인한다.
+- **검증:** 라디오 박스의 **2px / 1px 테두리** 전환이 상태표와 일치하는지, 체크 **Partial** 에 **`opacity: 0.5`** 가 빠지지 않았는지, 토글 **Off** 썸의 **`--color-black-40` 1px 테두리**가 유지되는지 확인한다.
 
 ---
 
@@ -1038,7 +1082,9 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 | **셀 패딩** | 좌우 **`15px`**, 상하 **`0`** — 세로 정렬은 **`align-items: center`** 등으로 중앙. |
 | **본문 글자** | **14px** Regular(열·맥락에 따라 Bold 허용). |
 | **외곽 보더** | **`1px solid var(--color-border-panel)`** (`#e2e8f0`, §1.9). |
-| **그림자** | **`0 1px 2px rgba(17, 17, 17, 0.05)`** (오프셋 Y **1px**, 블러 **2px**, Black **5%**). |
+| **그림자** | **`var(--shadow-table)`** (§1.10·`UX-STANDARD-root.css` — Black **5%** 계열, `var(--color-black-5)` 기반). |
+
+**시각 참고:** ![세로형 테이블·카드 예시](img/design-system/table.png)
 
 **상단 헤더 바(테이블 위·카드 헤더):**
 
@@ -1074,7 +1120,7 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 
 **`<th>` 역할 셀 (왼쪽 라벨):**
 
-- **높이 `36px`**(기본 행), 배경 **Black 5%** — **`rgba(17, 17, 17, 0.05)`** (또는 `:root`에 동일 값 토큰으로 고정).
+- **높이 `36px`**(기본 행), 배경 **Black 5%** — **`var(--color-black-5)`** (§1.13·`UX-STANDARD-root.css`).
 - 글자색 가변 가능, **기본 `var(--color-black-80)`**.
 
 **`<td>` 값 셀:**
@@ -1123,6 +1169,8 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 | **박스** | **`border-radius: 5px`**, 안쪽 패딩 **`12px 8px`** (디자인 기준). |
 | **화살표** | 트리거 방향에 맞춘 삼각형(Top/Right 등) — Primary 면과 동일 색으로 맞춘다. |
 
+**시각 참고:** ![툴팁](img/design-system/Tooltip.png)
+
 접근성: **`title`만으로 대체하지 말고**, 키보드 포커스 가능한 요소에는 **포커스 시에도** 동일 정보를 노출할 수 있도록 구현을 검토한다.
 
 ---
@@ -1151,6 +1199,8 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 - 인접 탭 사이 구분이 필요하면 **공통 하단 베이스라인**(`1px solid var(--color-border-light)` 등)을 탭 **전체 너비**에 두고, 활성 탭만 **Primary 3px** 로 덮어쓰는 패턴을 쓴다.
 - **호버:** 비활성 탭은 `cursor: pointer`, 호버 시 **`--color-primary-10`** 배경 등 **은은한 피드백**을 줄 수 있다(프로젝트 통일).
 
+**시각 참고:** ![기본 탭](img/design-system/Basic-Tab.png)
+
 ---
 
 ### 9.2 텍스트에어리어 (`<textarea>`)
@@ -1167,6 +1217,8 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 
 포커스·에러·비활성 상태는 **§5 일반 인풋**과 같은 토큰 규칙을 적용한다 — **Focused** 테두리 **`var(--color-primary)`**, **Error** **`var(--color-status-red)`**, **Disabled** 면·글자 **`--color-black-10` / `--color-black-20`** 계열.
 
+**시각 참고:** ![텍스트에어리어](img/design-system/Input/textarea.png)
+
 ---
 
 ### 9.3 AI·개발 강제 요약
@@ -1182,6 +1234,8 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 테이블 **위**에는 **필터 트리거 + 적용 조건 칩** 한 줄이 있고, 클릭 시 **필터 패널(팝업)** 이 열린다. 패널 안에는 **날짜(Flatpickr)**·**검색형 드롭다운** 등이 올 수 있다. 색은 **`var(--color-…)`** (§1.11). 글씨 크기는 기본 14px.
 
 ### 10.1 필터 선택·확인 바 (테이블 상단)
+
+**시각 참고:** ![필터 선택·확인 바(필터 버튼 + 적용 칩)](img/design-system/Filters/filter-select-confirm-bar.png)
 
 **위치:** 세로형 테이블 **바로 위**, 한 줄. **두 구역으로 나뉘되 `gap: 0`** 으로 맞닿게 한다.
 
@@ -1200,12 +1254,17 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 
 ### 10.2 필터 패널 (드롭다운·모달)
 
+**시각 참고:**
+
+- **1열(한 단 그리드) 예시:** ![필터 패널 1단](img/design-system/Filters/filter-panel-single-column.png)
+- **3열(다단 그리드) 예시:** ![필터 패널 3단](img/design-system/Filters/filter-panel-three-columns.png)
+
 **구조 (세 블록):**
 
 1. **상단 타이틀 바** — 필터 아이콘 + **「필터」** 제목, 하단 **`1px`** 구분선(패널 테두리와 동일 계열).
 2. **본문** — 스크롤 가능 영역 안에 **필터 행**만 세로로 쌓는다.
 3. **하단 버튼 바** — `flex` + `space-between`.
-4. **색상 및 그림자** - 'background'는 흰색, 보더라인은 primary100%의 색상을 입힌다. 그림자는 x0, y4, blur4, color : black20% 으로 설정한다.
+4. **색상 및 그림자:** 배경 **`--color-white-100`**, 외곽 테두리 **`1px solid var(--color-primary)`**. 그림자는 **§15.2 GNB 팝오버·§13 모달**과 동일하게 **`box-shadow: var(--shadow-popover)`** (§1.10) 로 통일한다.
 
 **본문 규칙:**
 
@@ -1226,6 +1285,8 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 
 **구현:** 날짜·기간 선택은 **Flatpickr**만 사용한다(로케일 `ko` 등). `style.css` 의 **`.flatpickr-*` 커스텀**과 **커스텀 푸터(닫기/저장)** 패턴을 유지·확장한다.
 
+**시각 참고:** ![데이트피커 트리거·유형](img/design-system/Date-Picker/Date-Picker-Type.png) · ![데이트피커 선택 UI](img/design-system/Date-Picker/Date-Picker-Select.png)
+
 #### 트리거 인풋 (활성 전·후)
 
 | 상태 | 테두리 | 기타 |
@@ -1237,8 +1298,8 @@ Black 스케일과 같은 계열을 **역할 이름**으로 고정한다.
 
 - **컨테이너:** 흰 배경, **`1px solid var(--color-primary)`**, **`border-radius: 4px`**, 안쪽 **`padding: 20px`**.
 - **범위 선택:** **시작일·종료일**은 **원형**, 배경 **`--color-primary`**, 글자 **`--color-white-100`**. **그 사이 구간**은 행 단위 **`--color-primary-10`** 면으로 이어지는 **캡슐형 하이라이트**(Flatpickr `inRange` 스타일).
-- **요일 헤더:** **12px**, 색 **`#999`** 계열(토큰 없으면 **`--color-black-40`** 대비 약한 보조색으로 통일).
-- **일자 숫자:** **14px**, 본문 **`#333`** 계열 → **`--color-text-primary`** 에 가깝게.
+- **요일 헤더:** **12px**, 색 **`var(--color-text-muted)`** (보조 라벨 톤, §1.6).
+- **일자 숫자:** **14px**, 색 **`var(--color-text-primary)`**.
 - **월 제목:** **16px Bold**, **`--color-text-primary`**; 좌우 **이전/다음** **24px** 아이콘 영역.
 - **이중 월:** 나란히 두 달(범위 선택), 월 헤더 간격·그리드 열 정렬은 피그마 레이아웃을 따른다.
 - **하단:** **닫기** — 흰 배경 + **`1px solid var(--color-primary)`** + Primary 글자; **저장** — 배경 **`--color-primary`** + 흰 글자. 높이 **24px** 전후, **`border-radius: 4px`**, **`padding: 0 10px`**.
@@ -1250,6 +1311,8 @@ Flatpickr 테마는 **선택·범위·오늘** 등 모든 강조색을 **`--colo
 ### 10.4 드롭다운 + 패널 내 검색
 
 **용도:** 옵션이 많을 때 **트리거 → 패널**에서 **검색으로 걸러 선택**한다.
+
+**시각 참고:** ![검색 가능한 드롭다운(트리거 + 패널)](img/design-system/Filters/search-dropdown-menu.png)
 
 **트리거 (필터용 셀렉트):**
 
@@ -1275,6 +1338,8 @@ Flatpickr 테마는 **선택·범위·오늘** 등 모든 강조색을 **`--colo
 ---
 
 ## 11. Slide Panel (슬라이드 팝업)
+
+**시각 참고:** ![슬라이드 패널](img/design-system/Modal/Slide.png)
 
 화면 **우측**에서 들어오는 **패널형 UI**다. **내부 컨텐츠**는 화면마다 달라지므로 본 절에서는 **껍질·동작·치수·시각 규칙**만 정한다. 시각은 고객사 디자인 시안의 슬라이드 패널 프레임과 맞추되, **수치·동작은 본 절이 우선**이다. 레이아웃·스크롤/하단 분리 패턴은 **자산 소유 현황** 화면의 슬라이드 팝업을 참고할 수 있으나, **구현 수치는 본 절과 다르면 본 절에 맞출 것**.
 
@@ -1472,6 +1537,12 @@ Flatpickr 테마는 **선택·범위·오늘** 등 모든 강조색을 **`--colo
 
 화면 중앙에 뜨는 **차단형(blocking) 대화상자**다. **§11 슬라이드 팝업**과 달리 **딤으로 뒤 컨텐츠를 가리고 클릭을 막는다.** 내부 폼·문구는 화면마다 다르므로 본 절은 **껍질·딤·타이포 기본값·버튼 배치**만 정한다. 시각은 고객사 디자인 시안과 맞추되 **수치·토큰은 본 절이 우선**이다.
 
+**시각 참고 (차단형 모달, §13.6 버튼 개수별):**
+
+![모달 하단 버튼 2개 예시](img/design-system/Modal/modal-two-buttons.png)
+
+![모달 하단 버튼 3개 예시](img/design-system/Modal/modal-three-buttons.png)
+
 ### 13.1 슬라이드 팝업과 구분
 
 | 항목 | 모달 (본 절) | 슬라이드 (§11) |
@@ -1601,6 +1672,8 @@ Flatpickr 테마는 **선택·범위·오늘** 등 모든 강조색을 **`--colo
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
+**시각 참고:** ![GNB 바(제목·날짜·매뉴얼·사용자)](img/design-system/GNB/GNB.png)
+
 - **위치:** 상단 고정, 전체 너비 `width: 100%`.
 - **구성 (좌→우):**
   - **left**
@@ -1611,7 +1684,7 @@ Flatpickr 테마는 **선택·범위·오늘** 등 모든 강조색을 **`--colo
     - **매뉴얼** 트리거(클릭 시 매뉴얼 리스트 팝오버)
     - **사용자** 트리거(클릭 시 마이페이지 팝오버)
 - **높이:** 60px
-- **배경:** 흰색, 하단 **`border-bottom: 1px solid`** — 구현에서는 **`#C9D0D7`** 에 맞추거나 중립 보더 토큰으로 통일한다.
+- **배경:** 흰색, 하단 **`border-bottom: 1px solid var(--color-border-gnb)`** (§1.9·`UX-STANDARD-root.css`).
 
 ### 15.2 매뉴얼 리스트·마이페이지 팝오버 — 공통 시각
 
@@ -1627,7 +1700,7 @@ Flatpickr 테마는 **선택·범위·오늘** 등 모든 강조색을 **`--colo
 .gnb-popover-panel {
   background: var(--color-white-100);
   border: 1px solid var(--color-primary);
-  box-shadow: 0 4px 4px var(--color-black-20);
+  box-shadow: var(--shadow-popover);
 }
 ```
 
@@ -1636,6 +1709,8 @@ Flatpickr 테마는 **선택·범위·오늘** 등 모든 강조색을 **`--colo
 - **가로 너비**는 팝오버 종류마다 다르다 — **§15.3·§15.4** 참고.
 
 ### 15.3 매뉴얼 리스트 팝오버
+
+**시각 참고:** ![매뉴얼 리스트 팝오버](img/design-system/GNB/manual-list-popover.png)
 
 ```
 ┌──────────────────────────────────┐
@@ -1671,6 +1746,8 @@ Flatpickr 테마는 **선택·범위·오늘** 등 모든 강조색을 **`--colo
 - **설치 가이드·OS별·전사 보안 점검 상세 가이드 등:** 언어가 아닌 분기는 **Material Symbols 등 아이콘**을 라벨 앞에 둘 수 있다(§2.3). OS·제품은 필요 시 **`img/os-*.png`** 도 사용 가능하다.
 
 ### 15.4 마이페이지 팝오버
+
+**시각 참고:** ![사용자(마이페이지) 팝오버](img/design-system/GNB/gnb-user-popover.png)
 
 ```
 ┌──────────────────┐
@@ -1743,6 +1820,8 @@ Flatpickr 테마는 **선택·범위·오늘** 등 모든 강조색을 **`--colo
 - **우측 구분선:** **`1px solid`** — **`var(--color-border)`** 또는 **`#cccccc`** 계열로 통일(구현·시안 동기화).
 - **z-index:** 본문·슬라이드·모달과 **겹침 순서**가 깨지지 않게 한 값으로 고정(예: **1050** 전후 — 프로젝트 단일 기준).
 
+**시각 참고 (펼침 메뉴):** ![LNB 펼침](img/design-system/LNB/side-menu.png)
+
 ### 16.2 폭·전환
 
 | 상태 | 폭 | 비고 |
@@ -1775,6 +1854,8 @@ Flatpickr 테마는 **선택·범위·오늘** 등 모든 강조색을 **`--colo
 
 ### 16.5 접힘 — 아이콘 슬롯·호버 서브메뉴
 
+**시각 참고:** ![LNB 접힘 아이콘 슬롯](img/design-system/LNB/folded-menu.png) · ![LNB 접힘·호버 서브메뉴](img/design-system/LNB/folded-submenu.png)
+
 - **그룹 헤더·단일 링크:** **50×50px** 안에 아이콘만 중앙 정렬, **`border-radius: 10px`**, 라벨·쉐브론은 숨김.
 - **아이콘 크기:** **24px**.
 - **활성 그룹(접힘):** 슬롯 배경 **`var(--color-primary)`**, 아이콘 **`--color-white-100`**.
@@ -1782,9 +1863,9 @@ Flatpickr 테마는 **선택·범위·오늘** 등 모든 강조색을 **`--colo
   - **위치:** 접힘 폭(**80px**) 바로 옆(예: `left: 80px`), **`position: fixed`**, **`z-index`** 는 LNB보다 한 단계 위(예: **1060**).
   - **크기:** **`min-width: 160px`**, 안쪽 **`padding: 10px`**.
   - **모양:** **`border-radius: 0 10px 10px 10px`** (LNB에 닿는 쪽 직각).
-  - **배경:** **`--color-primary-10`** 계열 옅은 면(구현 예: 라벤더 틴트) — 시안 HEX가 있으면 **동기화**하되 토큰으로 옮기는 것을 권장.
-  - **테두리:** **`1px solid var(--color-black-4)`** 또는 **`rgba(17,17,17,0.08)`** 계열.
-  - **그림자:** **`0 4px 12px rgba(0,0,0,0.1)`** 또는 **`--shadow-popover`** 에 가깝게 통일.
+  - **배경:** **`var(--color-primary-10)`** (옅은 Primary 면). 피그마 등에서 다른 톤이 나오면 **`:root`에 토큰을 추가한 뒤 `var(--…)`만** 쓴다(§1.11 — 문서·컴포넌트에 임의 HEX 직접 박지 않음).
+  - **테두리:** **`1px solid var(--color-black-4)`** (또는 동일 계열을 `:root`에만 정의).
+  - **그림자:** **`var(--shadow-popover)`** (§1.10) 로 통일하거나, 필요 시 **같은 파일 `:root`에 별도 그림자 토큰**을 두고 `var` 로만 참조한다.
   - **항목 링크:** 높이 **36px**, **14px Regular**, 좌 **`padding-left: 20px`**, **`border-radius: 7px`**, 기본 **`var(--color-text-secondary)`**.
   - **항목 호버:** 배경 **`--color-primary-10`**, 글자 **`var(--color-primary)`**.
   - **항목 활성:** 배경 **`var(--color-primary)`**, 글자 **`--color-white-100`**, **Bold**.
@@ -1905,6 +1986,22 @@ Flatpickr 테마는 **선택·범위·오늘** 등 모든 강조색을 **`--colo
 | **권한 없음** | `lock`, `no_accounts` |
 
 - 동일 의미에는 **항목·화면 간 같은 아이콘**을 쓴다.
+
+### 18.4.1 시각 참고 (디자인 시스템 캡처)
+
+아래 캡처는 **형태·밀도**를 맞출 때 참고한다. 아이콘·문구는 §18.2·§18.4 권장과 달라도 되나, **중앙 정렬·여백·타이포 단계**는 본 절과 통일한다.
+
+**데이터 없음**  
+![데이터 없음](img/design-system/Blank-Screen/No-data.png)
+
+**차트 데이터 없음**  
+![차트 데이터 없음](img/design-system/Blank-Screen/no-chart-data.png)
+
+**연결 끊김**  
+![연결 끊김](img/design-system/Blank-Screen/connection-interrupted.png)
+
+**서버 오류**  
+![서버 오류](img/design-system/Blank-Screen/internal-server-error.png)
 
 ### 18.5 §8 테이블과의 관계
 

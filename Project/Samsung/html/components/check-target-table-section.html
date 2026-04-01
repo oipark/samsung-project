@@ -1,0 +1,89 @@
+<!-- 점검 대상별 관리 테이블 (Figma 475:5623, UX §4·§8) -->
+<div class="card cr-table-card flex-grow-1 d-flex flex-column min-h-0">
+
+  <!-- 툴바 -->
+  <div class="asset-table-toolbar">
+    <span class="asset-table-count-text">전체 <strong id="ct-table-total-count">158</strong>건</span>
+    <div class="asset-table-actions">
+      <button type="button" class="btn-ds btn-ds-1st d-flex align-items-center gap-1">
+        <span class="material-symbols-outlined fs-6" aria-hidden="true">refresh</span>
+        재 점검
+      </button>
+      <button type="button" class="btn-ds btn-ds-2nd d-flex align-items-center gap-1">
+        <span class="material-symbols-outlined fs-6" aria-hidden="true">download</span>
+        점검 결과 다운로드
+      </button>
+    </div>
+  </div>
+
+  <!-- 테이블 -->
+  <div class="table-responsive asset-table-responsive flex-grow-1 min-h-0 custom-scrollbar">
+    <table class="table table-borderless asset-table mb-0 text-nowrap cr-table ct-table">
+      <thead class="asset-table-thead sticky-top bg-white">
+        <tr>
+          <th class="asset-table-th asset-table-th-check">
+            <label class="custom-checkbox-wrap" for="ct-check-all">
+              <input type="checkbox" class="custom-checkbox" id="ct-check-all" aria-label="전체 선택" />
+              <span class="custom-checkbox-box"></span>
+            </label>
+          </th>
+          <th class="asset-table-th cr-th-no">순번</th>
+          <th class="asset-table-th" style="min-width:200px;">서버명</th>
+          <th class="asset-table-th" style="min-width:140px;">IP</th>
+          <th class="asset-table-th" style="min-width:110px;">OS</th>
+          <th class="asset-table-th" style="min-width:120px;">OS버전</th>
+          <th class="asset-table-th" style="min-width:100px;">점검 결과</th>
+          <th class="asset-table-th" style="min-width:96px;">국내/해외</th>
+          <th class="asset-table-th" style="min-width:110px;">사업장/권역</th>
+          <th class="asset-table-th cr-th-badge">항목 전체</th>
+          <th class="asset-table-th cr-th-badge">
+            <span class="cr-th-bul cr-th-bul-pass" aria-hidden="true"></span>양호
+          </th>
+          <th class="asset-table-th cr-th-badge">
+            <span class="cr-th-bul cr-th-bul-fail" aria-hidden="true"></span>취약
+          </th>
+          <th class="asset-table-th cr-th-badge">
+            <span class="cr-th-bul cr-th-bul-interview" aria-hidden="true"></span>인터뷰
+          </th>
+        </tr>
+      </thead>
+      <tbody class="asset-table-tbody" id="ct-table-tbody" data-ct-total="158">
+        <!-- check-target-tbody-rows.html 주입 -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 페이지네이션 -->
+  <div class="asset-pagination">
+    <div class="asset-pagination-left">
+      <select class="form-select form-select-sm asset-pagination-select"
+              id="ct-pagination-select" aria-label="페이지당 표시 수">
+        <option value="10" selected>10 rows</option>
+        <option value="20">20 rows</option>
+        <option value="50">50 rows</option>
+      </select>
+      <span class="asset-pagination-info" id="ct-pagination-info">전체 158개 중 1–8 표시</span>
+    </div>
+    <div class="asset-pagination-right">
+      <nav class="asset-pagination-nav" aria-label="페이지 네비게이션">
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="처음">
+          <span class="material-symbols-outlined">first_page</span>
+        </button>
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="이전">
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn active">1</button>
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn">2</button>
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn">3</button>
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn">4</button>
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn">5</button>
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="다음">
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+        <button type="button" class="btn btn-link btn-sm asset-pagination-btn" aria-label="마지막">
+          <span class="material-symbols-outlined">last_page</span>
+        </button>
+      </nav>
+    </div>
+  </div>
+</div>

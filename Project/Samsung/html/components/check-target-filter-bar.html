@@ -1,0 +1,132 @@
+<ul class="asset-filter-bar-inner list-unstyled mb-0 ps-0 d-flex align-items-center">
+  <li class="asset-filter-bar-item asset-filter-trigger-wrap">
+    <button type="button" class="asset-filter-trigger-btn d-flex align-items-center gap-2 fw-bold"
+            id="ct-filter-trigger" aria-expanded="false" aria-haspopup="true">
+      <span class="material-symbols-outlined asset-filter-icon" style="font-variation-settings:'FILL' 1;">filter_alt</span>
+      <span class="asset-filter-label">Filter</span>
+      <span class="asset-filter-badge" id="ct-filter-badge">2</span>
+    </button>
+  </li>
+  <li class="asset-filter-bar-item asset-filter-right-wrap d-flex align-items-center flex-grow-1 min-w-0">
+    <div class="asset-filter-tags-container asset-filter-chips-wrap" id="ct-filter-tags-container">
+      <span class="filter-chip cr-master-chip" data-ct-chip="region">
+        <span class="material-symbols-outlined cr-master-chip-icon">public</span>
+        국내/해외&nbsp;:&nbsp;<strong class="text-custom-primary">전체</strong>
+        <button type="button" class="btn-close-chip" data-ct-clear="region" aria-label="국내/해외 필터 제거">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </span>
+      <span class="filter-chip cr-master-chip" data-ct-chip="os">
+        <span class="material-symbols-outlined cr-master-chip-icon">computer</span>
+        OS&nbsp;:&nbsp;<strong class="text-custom-primary">Window</strong>
+        <button type="button" class="btn-close-chip" data-ct-clear="os" aria-label="OS 필터 제거">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </span>
+    </div>
+    <button type="button" class="asset-filter-reset-btn" id="ct-filter-reset-btn" aria-label="전체 필터 초기화">
+      <span class="material-symbols-outlined">refresh</span>
+      필터 초기화
+    </button>
+  </li>
+</ul>
+
+<!-- §10.2 점검 대상 필터 — Figma 475:5624 (Filter / Filters Set Modal) -->
+<div class="asset-filter-panel cr-filter-panel ct-target-filter-panel d-none" id="ct-filter-panel" role="dialog" aria-labelledby="ct-filter-panel-title">
+  <div class="cr-filter-panel-header">
+    <span class="material-symbols-outlined cr-filter-panel-header-icon" style="font-variation-settings:'FILL' 1;">filter_alt</span>
+    <span class="cr-filter-panel-title" id="ct-filter-panel-title">Filter</span>
+  </div>
+  <div class="cr-filter-panel-body ct-target-filter-body">
+    <div class="ct-filter-cols">
+      <!-- 좌열 -->
+      <div class="ct-filter-col">
+        <div class="cr-filter-row ct-filter-row--segments">
+          <span class="cr-filter-row-label" id="ct-lbl-region">국내/해외</span>
+          <div class="ct-fp-seg-row" role="radiogroup" aria-labelledby="ct-lbl-region">
+            <label class="ct-fp-seg">
+              <input type="radio" name="ct-fp-region" value="" checked class="ct-fp-seg-input" />
+              <span class="ct-fp-seg-text">전체</span>
+            </label>
+            <label class="ct-fp-seg">
+              <input type="radio" name="ct-fp-region" value="국내" class="ct-fp-seg-input" />
+              <span class="ct-fp-seg-text">국내</span>
+            </label>
+            <label class="ct-fp-seg">
+              <input type="radio" name="ct-fp-region" value="해외" class="ct-fp-seg-input" />
+              <span class="ct-fp-seg-text">해외</span>
+            </label>
+          </div>
+        </div>
+        <div class="cr-filter-row">
+          <label class="cr-filter-row-label" for="ct-fp-site-sel">사업장/권역</label>
+          <div class="ct-fp-select-wrap ct-fp-select-wrap--disabled">
+            <select id="ct-fp-site-sel" class="cr-fp-select ct-fp-select--disabled" disabled aria-disabled="true" title="준비 중">
+              <option value="">Disable</option>
+            </select>
+            <span class="material-symbols-outlined ct-fp-select-chevron" aria-hidden="true">expand_more</span>
+          </div>
+        </div>
+        <div class="cr-filter-row">
+          <label class="cr-filter-row-label" for="ct-fp-division">사업부/법인</label>
+          <input type="text" id="ct-fp-division" class="cr-filter-name-input ct-fp-input--disabled" value="Disable" disabled aria-disabled="true" />
+        </div>
+        <div class="cr-filter-row">
+          <label class="cr-filter-row-label" for="ct-fp-server">서버명</label>
+          <input type="text" id="ct-fp-server" class="cr-filter-name-input ct-fp-input--focus" placeholder="입력하세요." autocomplete="off" />
+        </div>
+        <div class="cr-filter-row">
+          <label class="cr-filter-row-label" for="ct-fp-ip">IP</label>
+          <input type="text" id="ct-fp-ip" class="cr-filter-name-input" placeholder="입력하세요." autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="ct-filter-col-divider" aria-hidden="true"></div>
+
+      <!-- 우열 -->
+      <div class="ct-filter-col">
+        <div class="cr-filter-row">
+          <label class="cr-filter-row-label" for="ct-fp-os">OS</label>
+          <div class="ct-fp-select-wrap">
+            <select id="ct-fp-os" class="cr-fp-select ct-fp-select--primary-border">
+              <option value="">전체</option>
+              <option value="Window" selected>Window</option>
+              <option value="Linux">Linux</option>
+              <option value="Solaris">Solaris</option>
+              <option value="AIX">AIX</option>
+            </select>
+            <span class="material-symbols-outlined ct-fp-select-chevron" aria-hidden="true">expand_more</span>
+          </div>
+        </div>
+        <div class="cr-filter-row">
+          <label class="cr-filter-row-label" for="ct-fp-osver">OS 버전</label>
+          <input type="text" id="ct-fp-osver" class="cr-filter-name-input" placeholder="입력하세요." autocomplete="off" />
+        </div>
+        <div class="cr-filter-row ct-filter-row--segments">
+          <span class="cr-filter-row-label" id="ct-lbl-result">점검 결과</span>
+          <div class="ct-fp-seg-row" role="radiogroup" aria-labelledby="ct-lbl-result">
+            <label class="ct-fp-seg">
+              <input type="radio" name="ct-fp-result" value="" checked class="ct-fp-seg-input" />
+              <span class="ct-fp-seg-text">전체</span>
+            </label>
+            <label class="ct-fp-seg">
+              <input type="radio" name="ct-fp-result" value="pass" class="ct-fp-seg-input" />
+              <span class="ct-fp-seg-text">Pass</span>
+            </label>
+            <label class="ct-fp-seg">
+              <input type="radio" name="ct-fp-result" value="fail" class="ct-fp-seg-input" />
+              <span class="ct-fp-seg-text">Fail</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cr-filter-panel-footer">
+    <button type="button" class="cr-panel-btn cr-panel-btn-reset" id="ct-fp-reset">필터 초기화</button>
+    <div class="cr-filter-panel-footer-right">
+      <button type="button" class="cr-panel-btn cr-panel-btn-cancel" id="ct-fp-cancel">취소</button>
+      <button type="button" class="cr-panel-btn cr-panel-btn-apply" id="ct-fp-apply">필터 적용</button>
+    </div>
+  </div>
+</div>

@@ -150,7 +150,7 @@
                     </div>
                   </div>
                   </div>
-                <button type="button" class="asset-portlet-toggle btn btn-link p-0 border-0 bg-transparent" id="asset-portlet-toggle" aria-label="포틀릿 접기">
+                <button type="button" class="asset-portlet-toggle btn btn-link p-0 border-0 bg-transparent" id="asset-portlet-toggle" aria-label="요약 포틀릿 접기" aria-expanded="true" aria-controls="asset-portlet">
                   <span class="material-symbols-outlined asset-portlet-toggle-icon">expand_less</span>
                 </button>
               </div>
@@ -175,7 +175,11 @@
                 </li>
               </ul>
               <!-- 상세 필터 팝업 패널 (Figma 383-2087: 3단 그리드, 운영부서 검색 드롭다운) -->
-              <div class="asset-filter-panel d-none" id="asset-filter-panel" role="dialog" aria-label="상세 필터">
+              <div class="asset-filter-panel d-none" id="asset-filter-panel" role="dialog" aria-labelledby="asset-filter-panel-title">
+                <div class="cr-filter-panel-header">
+                  <span class="material-symbols-outlined cr-filter-panel-header-icon" style="font-variation-settings: 'FILL' 1;">filter_alt</span>
+                  <span class="cr-filter-panel-title" id="asset-filter-panel-title">Filter</span>
+                </div>
                 <div class="asset-filter-panel-inner">
                   <div class="asset-filter-panel-body asset-filter-panel-grid">
                     <!-- 컬럼 1 -->
@@ -918,7 +922,8 @@
           portletToggle.addEventListener('click', function () {
             portletSection.classList.toggle('is-collapsed');
             var isCollapsed = portletSection.classList.contains('is-collapsed');
-            portletToggle.setAttribute('aria-label', isCollapsed ? '포틀릿 펼치기' : '포틀릿 접기');
+            portletToggle.setAttribute('aria-expanded', isCollapsed ? 'false' : 'true');
+            portletToggle.setAttribute('aria-label', isCollapsed ? '요약 포틀릿 펼치기' : '요약 포틀릿 접기');
             if (portletToggleIcon) portletToggleIcon.textContent = isCollapsed ? 'expand_more' : 'expand_less';
           });
         }

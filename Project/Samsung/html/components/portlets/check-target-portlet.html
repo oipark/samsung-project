@@ -1,0 +1,98 @@
+<!-- 점검 대상별 관리 요약 포틀릿 — §12 뼈대, 점검결과 포틀릿과 동일 컴포넌트 클래스 (Figma 473:4491) -->
+<div class="cr-portlet-wrap d-flex align-items-stretch" id="ct-portlet-wrap">
+
+  <!-- 카드 1: 전체 대상 서버 -->
+  <div class="cr-portlet-card">
+    <div class="cr-portlet-card-inner">
+      <div class="cr-portlet-head">
+        <span class="cr-portlet-head-icon" aria-hidden="true">
+          <span class="material-symbols-outlined">dns</span>
+        </span>
+        <span class="cr-portlet-label">전체 대상 서버</span>
+      </div>
+      <div class="cr-portlet-body">
+        <div class="cr-portlet-row">
+          <div class="cr-portlet-value-group">
+            <span class="cr-portlet-value">8</span>
+            <span class="cr-portlet-value-suffix">대</span>
+          </div>
+          <div class="cr-portlet-stats">
+            <span class="cr-stat">
+              <span class="cr-bullet cr-bullet-domestic" aria-hidden="true"></span>
+              <span class="cr-stat-label">국내:</span>
+              <strong class="cr-stat-num">5</strong>
+            </span>
+            <span class="cr-stat">
+              <span class="cr-bullet cr-bullet-overseas" aria-hidden="true"></span>
+              <span class="cr-stat-label">해외:</span>
+              <strong class="cr-stat-num">3</strong>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cr-portlet-vdivider" aria-hidden="true"></div>
+
+  <!-- 카드 2: 점검 성공률 -->
+  <div class="cr-portlet-card">
+    <div class="cr-portlet-card-inner">
+      <div class="cr-portlet-head">
+        <span class="cr-portlet-head-icon" aria-hidden="true">
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">check_circle</span>
+        </span>
+        <span class="cr-portlet-label">점검 성공률</span>
+      </div>
+      <div class="cr-portlet-body">
+        <div class="cr-portlet-row">
+          <span class="cr-portlet-value">8</span>
+          <div class="cr-portlet-stats">
+            <span class="cr-stat">
+              <span class="cr-bullet cr-bullet-pass" aria-hidden="true"></span>
+              <span class="cr-stat-label cr-stat-pass">Pass</span>
+              <strong class="cr-stat-num">5</strong>
+            </span>
+            <span class="cr-stat">
+              <span class="cr-bullet cr-bullet-fail" aria-hidden="true"></span>
+              <span class="cr-stat-label cr-stat-fail">Fail</span>
+              <strong class="cr-stat-num">3</strong>
+            </span>
+          </div>
+        </div>
+        <div class="cr-progress-bar" role="img" aria-label="Pass 5건, Fail 3건">
+          <div class="cr-prog-seg cr-prog-pass" style="flex:5"></div>
+          <div class="cr-prog-gap"></div>
+          <div class="cr-prog-seg cr-prog-fail" style="flex:3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cr-portlet-vdivider" aria-hidden="true"></div>
+
+  <!-- 카드 3: 재 점검 대상 -->
+  <div class="cr-portlet-card cr-portlet-card-urgent">
+    <div class="cr-portlet-card-inner">
+      <div class="cr-portlet-head">
+        <span class="cr-portlet-head-icon cr-portlet-head-icon-urgent" aria-hidden="true">
+          <span class="material-symbols-outlined">error</span>
+        </span>
+        <span class="cr-portlet-label">재 점검 대상</span>
+      </div>
+      <div class="cr-portlet-body">
+        <div class="cr-portlet-row">
+          <div class="cr-portlet-value-group">
+            <span class="cr-portlet-value">3</span>
+            <span class="cr-portlet-value-suffix">대</span>
+          </div>
+          <button type="button" class="btn-ds btn-ds-2nd" id="ct-reinspect-btn">재 점검</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" class="cr-portlet-toggle" id="ct-portlet-toggle" aria-label="요약 포틀릿 접기" aria-expanded="true" aria-controls="ct-portlet-wrap">
+    <span class="material-symbols-outlined cr-portlet-toggle-icon">expand_less</span>
+  </button>
+</div>

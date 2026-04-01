@@ -113,7 +113,8 @@
     portletToggle.addEventListener('click', function () {
       portletWrap.classList.toggle('is-collapsed');
       var isCollapsed = portletWrap.classList.contains('is-collapsed');
-      portletToggle.setAttribute('aria-label', isCollapsed ? '포틀릿 펼치기' : '포틀릿 접기');
+      portletToggle.setAttribute('aria-expanded', isCollapsed ? 'false' : 'true');
+      portletToggle.setAttribute('aria-label', isCollapsed ? '요약 포틀릿 펼치기' : '요약 포틀릿 접기');
       if (toggleIcon) toggleIcon.textContent = isCollapsed ? 'expand_more' : 'expand_less';
     });
   }

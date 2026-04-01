@@ -491,8 +491,20 @@
         showMonths: 2,
         dateFormat: 'Y-m-d',
         locale: window.flatpickr.l10ns && window.flatpickr.l10ns.ko ? 'ko' : 'default',
+        disableMobile: true,
         onClose(dates, dateStr) {
           if (dates.length === 2) periodInput.value = dateStr;
+        },
+        onReady(_sd, _ds, fp) {
+          if (fp.calendarContainer.querySelector('.flatpickr-custom-footer')) return;
+          const footer = document.createElement('div');
+          footer.className = 'flatpickr-custom-footer';
+          footer.innerHTML =
+            '<button type="button" class="flatpickr-footer-cancel">닫기</button>' +
+            '<button type="button" class="flatpickr-footer-save">저장</button>';
+          footer.querySelector('.flatpickr-footer-cancel').addEventListener('click', () => fp.close());
+          footer.querySelector('.flatpickr-footer-save').addEventListener('click', () => fp.close());
+          fp.calendarContainer.appendChild(footer);
         }
       });
     }
@@ -730,23 +742,36 @@
       alert('저장되었습니다.');
     });
 
-    /* 메인 테이블 행 클릭 이벤트 (cr-td-name) */
+    /* 점검 결과 목록(#cr-table-tbody)의 점검명 링크 → 점검 대상별 관리 (GNB 브레드크럼 제목 = 클릭한 점검명) */
     document.addEventListener('click', e => {
-      const td = e.target.closest('td.cr-td-name');
+      const tbody = document.getElementById('cr-table-tbody');
+      const nameBtn = e.target.closest('#cr-table-tbody .cr-name-link');
+      if (!tbody || !nameBtn || !tbody.contains(nameBtn)) return;
+      const td = nameBtn.closest('td.cr-td-name');
+      if (!td || !tbody.contains(td)) return;
+      e.preventDefault();
+      const name = (nameBtn.dataset.inspection || nameBtn.textContent || '').trim();
+      if (!name) return;
+      try {
+        sessionStorage.setItem('ctInspectionTitle', name);
+      } catch (err) { /* ignore */ }
+      const q = new URLSearchParams({ inspection: name });
+      window.location.href = 'check-target-management.html?' + q.toString();
+    });
+
+    /* 점검 대상별 관리 테이블 행 클릭 이벤트 (ct-td-name) → 팝업 열기 */
+    document.addEventListener('click', e => {
+      const td = e.target.closest('td.ct-td-name');
       if (!td) return;
       const tr = td.closest('tr');
       if (!tr) return;
-
-      /* 행에서 데이터 추출 */
-      const cells = tr.querySelectorAll('td');
-      const srvCell = tr.querySelector('.cr-td-srv');
-      const dateCell = tr.querySelector('.cr-td-date');
+      const btn = td.querySelector('.cr-name-link');
       const rowData = {
-        srvName: srvCell ? srvCell.textContent.split('Total')[0].trim() || 'seemoon-virtual-machine' : 'seemoon-virtual-machine',
-        ip: '12.123.123.100',
-        os: 'Windows',
-        osVer: 'Server 2020',
-        date: dateCell ? dateCell.textContent.trim() : '2025-12-26 13:48:12'
+        srvName: btn ? (btn.dataset.srv || btn.textContent.trim()) : 'seemoon-virtual-machine',
+        ip:      btn ? (btn.dataset.ip  || '12.123.123.100')          : '12.123.123.100',
+        os:      btn ? (btn.dataset.os  || 'Windows')                  : 'Windows',
+        osVer:   btn ? (btn.dataset.osVer || 'Server 2020')            : 'Server 2020',
+        date:    btn ? (btn.dataset.date  || '2025-12-26 13:48:12')    : '2025-12-26 13:48:12'
       };
       openPanel(rowData);
     });
